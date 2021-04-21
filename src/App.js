@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit <code>src/App.js</code> Classroom without borders!!!
         </p>
         <a
           className="App-link"
@@ -20,6 +20,11 @@ function App() {
       </header>
     </div>
   );
+
+
+  //submission with name
+  //search function
+  
 }
 
 export default App;
