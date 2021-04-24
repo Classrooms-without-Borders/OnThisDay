@@ -2,14 +2,15 @@ const { admin, db } = require('../util/admin');
 
 exports.getAllSubmissions = (request, response) => {
     db.collection('submissions')
-        .orderBy('date', 'desc')
+        .orderBy('dateAdded', 'desc')
         .get()
         .then((data) => {
             let submissions = [];
             data.forEach((entry) => {
                 submissions.push({
                     id: entry.id,
-                    class: entry.data().class,
+                    dateAdded: entry.data().dateAdded,
+                    class: entry.data().class["_path"], // .class sends credentials as well
                     date: entry.data().date,
                     description: entry.data().description,
                     images: entry.data().images,
@@ -29,15 +30,16 @@ exports.getAllSubmissions = (request, response) => {
 
 exports.postSubmission = (request, response) => {
     const newSubmission = {
-        class: request.query.class,
-        date: new Date(request.query.date),
-        description: request.query.description,
-        images: JSON.parse(request.query.images),
-        location: new admin.firestore.GeoPoint(parseFloat(request.query.latitude), parseFloat(request.query.longitude)),
-        sourceTitles: JSON.parse(request.query.sourceTitles),
-        sourceUrls: JSON.parse(request.query.sourceUrls),
-        student: request.query.student,
-        subject: request.query.subject
+        dateAdded: new Date(),
+        class: request.body.class, // new admin.firestore.DocumentReference(request.body.class),
+        date: new Date(request.body.date),
+        description: request.body.description,
+        images: request.body.images,
+        location: new admin.firestore.GeoPoint(parseFloat(request.body.latitude), parseFloat(request.body.longitude)),
+        sourceTitles: request.body.sourceTitles,
+        sourceUrls: request.body.sourceUrls,
+        student: request.body.student,
+        subject: request.body.subject
     };
 
     db.collection('submissions')
@@ -72,8 +74,11 @@ exports.editSubmission = (request, response) => {
     if (request.body.submissionId) {
         response.status(403).json({ message: 'Cannot edit submission ID' });
     }
+    if (request.body.dateAdded) {
+        response.status(403).json({ message: 'Cannot edit date added' });
+    }
     let submission = db.collection('submissions').doc(`${request.params.submissionId}`);
-    submission.update(request.query)
+    submission.update(request.body)
         .then(() => {
             response.json({ message: 'Update successful' });
         }).catch((err) => {
