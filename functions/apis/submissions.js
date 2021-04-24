@@ -78,6 +78,7 @@ exports.editSubmission = (request, response) => {
         response.status(403).json({ message: 'Cannot edit date added' });
     }
     let submission = db.collection('submissions').doc(`${request.params.submissionId}`);
+    // TODO: pre-process request.body before updating
     submission.update(request.body)
         .then(() => {
             response.json({ message: 'Update successful' });
