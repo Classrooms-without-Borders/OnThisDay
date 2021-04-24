@@ -67,3 +67,17 @@ exports.deleteSubmission = (request, response) => {
             return response.status(500).json({ error: err.code });
         });
 };
+
+exports.editSubmission = (request, response) => {
+    if (request.body.submissionId) {
+        response.status(403).json({ message: 'Cannot edit submission ID' });
+    }
+    let submission = db.collection('submissions').doc(`${request.params.submissionId}`);
+    submission.update(request.query)
+        .then(() => {
+            response.json({ message: 'Update successful' });
+        }).catch((err) => {
+            console.error(err);
+            return response.status(500).json({ error: err.code });
+        });
+};
