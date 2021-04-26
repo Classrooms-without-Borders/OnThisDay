@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <!-- Load the Firebase library before loading the body. -->
+    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+
+    <!-- anipulate HTML elements with Javascript using jquery lib -->
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+    <!-- Load Bootstrap stylesheet -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <!-- Load the application script, which will save data to Firebase app when we click the button -->
+    <script src="submissionformjscript.js"></script>
+
+    <div class="container">
+      <h1>Submission Form</h1>
+
+      <h3>Submit Here</h3>
+
+      <form id="submissionForm">
+          <!--date in history-->
+        <div class="form-group">
+          <label for="dateinhist">Date In History</label>
+          <input class="form-control" id="dateinhist" placeholder="Date in history">
+        </div>
+        <!--name of person-->
+        <div class="form-group">
+          <label for="nameofindv">Name of person</label>
+          <input class="form-control" id="nameofindv" placeholder="Name of the person">
+        </div>
+        <!--source link-->
+        <div class="form-group">
+          <label for="sourceLink">Source Link</label>
+          <input type="url" class="form-control" id="sourceLink" placeholder="Link to source">
+        </div>
+        <!--city-->
+        <div class="form-group">
+            <label for="cityvar">City</label>
+            <input class="form-control" id="cityvar" placeholder="City">
+          </div>
+        
+        <!--country-->
+        <div class="form-group">
+            <label for="countryvar">Country</label>
+            <input class="form-control" id="countryvar" placeholder="Country">
+          </div>
+
+        <!--source-->
+        <div class="form-group">
+            <label for="sourcevar">Source</label>
+            <input class="form-control" id="sourcevar" placeholder="Source name">
+        </div>
+
+        <!--description of event-->
+        <div class="form-group">
+            <label for="eventdesc">Event Description</label>
+            <input class="form-control" id="eventdesc" placeholder="Event description">
+        </div>
+
+        <!--image submission (single, work on multiple image submissions later)-->
+        <div class="form-group">
+            <input type="file" class="form-control" id="subimage" placeholder="Event pic">
+            <label for="subimage">Select Picture of Event/Person To Upload</label>
+        
+        </div>
+        <!-- When you click this button, trigger the submit event on this form. -->
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
