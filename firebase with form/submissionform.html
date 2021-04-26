@@ -1,19 +1,11 @@
 <html>
   <head>
-    <!-- Load the Firebase library before loading the body. -->
-    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
-
-    <!-- anipulate HTML elements with Javascript using jquery lib -->
-    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-
     <!-- Load Bootstrap stylesheet -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   </head>
 
   <body>
-    <!-- Load the javascript connecting to our form, which will save data to Firebase app when we click the button -->
-    <script src="submissionformjscript.js"></script>
-
+    
     <div class="container">
       <h1>Submission Form</h1>
 
@@ -69,5 +61,33 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
     </div>
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-firestore.js"></script>
+
+    <!-- anipulate HTML elements with Javascript using jquery lib -->
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    
+    <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+        apiKey: "AIzaSyCO3fRNVd52LRfJtdvd3vTRjBUCtDMkMTs",
+        authDomain: "sample1-7cd2a.firebaseapp.com",
+        databaseURL: "https://sample1-7cd2a-default-rtdb.firebaseio.com",
+        projectId: "sample1-7cd2a",
+        storageBucket: "sample1-7cd2a.appspot.com",
+        messagingSenderId: "601707243582",
+        appId: "1:601707243582:web:9dfe1fb447bed779ad496f",
+        measurementId: "G-T8E3S1F2DS"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    </script>
+    <!-- Load the javascript connecting to our form, which will save data to Firebase app when we click the button -->
+    <script src="submissionformjscript.js"></script>
   </body>
 </html>
