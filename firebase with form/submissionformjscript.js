@@ -9,7 +9,7 @@ var config = {
 // Initialize Firebase app
 firebase.initializeApp(config);
 
-// Reference to the submissions object in Firebase database
+// Reference to submissions object in Firebase database
 var submissions = firebase.database().ref("submission");
 
 // Save a new submission to the database, using the input in the form
