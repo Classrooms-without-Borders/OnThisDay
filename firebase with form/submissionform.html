@@ -53,9 +53,9 @@
 
         <!--image submission (single, work on multiple image submissions later)-->
         <div class="form-group">
-            <input type="file" class="form-control" id="subimage" placeholder="Event pic">
             <label for="subimage">Select Picture of Event/Person To Upload</label>
-        
+            <input type="file" class="form-control" id="subimage" placeholder="Event pic" multiple="">
+            <div id="picpreview"></div>
         </div>
         <!-- When you click this button, trigger the submit event on this form. -->
         <button type="submit" class="btn btn-default">Submit</button>
@@ -66,6 +66,7 @@
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-storage.js"></script>
 
     <!-- anipulate HTML elements with Javascript using jquery lib -->
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
@@ -85,7 +86,7 @@
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-
+    var storage = firebase.storage();
     </script>
     <!-- Load the javascript connecting to our form, which will save data to Firebase app when we click the button -->
     <script src="submissionformjscript.js"></script>
