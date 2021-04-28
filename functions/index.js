@@ -1,9 +1,16 @@
 const functions = require("firebase-functions");
+const app = require('express')();
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+const {
+  getAllSubmissions,
+  postSubmission,
+  deleteSubmission,
+  editSubmission,
+} = require('./apis/submissions');
+
+app.get('/submissions', getAllSubmissions);
+app.post('/submissions/new', postSubmission);
+app.delete('/submissions/delete/:submissionId', deleteSubmission);
+app.put('/submissions/edit/:submissionId', editSubmission);
+
+exports.api = functions.https.onRequest(app);
