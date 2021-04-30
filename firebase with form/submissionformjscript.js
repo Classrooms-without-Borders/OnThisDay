@@ -15,7 +15,11 @@ function sub (event) {
   var country = $("#countryvar").val();
   var description = $("#eventdesc").val();
   var sourceName = $("#sourcevar").val();
- 
+  var studentName = $("#studentname").val();
+  var gradeLevel=$("#gradelevel").val();
+  var teacherName=$("#teachername").val();
+  var schoolName=$("#schoolname").val();
+  var submissionID=studentName.concat(schoolName);
   // uploads the images to firebase storage
   let picReferences = [];
   for (let i = 0; i < input[0].files.length; i++) {
@@ -27,8 +31,13 @@ function sub (event) {
     });
   }
 
+  db.collection("classes").doc(submissionID).set({
+    gradeLevel: gradeLevel,
+    schoolName: schoolName,
+    teacherName: teacherName
+  })
   // Push a new submission object to the database using those values
-  db.collection("submissions").add({
+  db.collection("unverified").doc(submissionID).set({
     title: title,
     name: person,
     cityName: city,
