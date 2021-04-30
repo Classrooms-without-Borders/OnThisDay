@@ -68,7 +68,7 @@ class Submit extends Component {
     handleOnClick = () => {
         // if user had an existing job request, delete that
         if (this.state.jobId) {
-            axios.delete(`./simulations/${this.state.jobId}`, { cancelToken: this.source.token })
+            axios.delete(`./about/${this.state.jobId}`, { cancelToken: this.source.token })
                 .catch(err => {
                     if (axios.isCancel(err)) {
                         console.log('Request canceled:', err.message);
@@ -170,7 +170,7 @@ class Submit extends Component {
                      </Grid>
                  <Grid item xs={6}>
                     <div className='GreenBackground'>
-                        <h3>Map</h3>
+                        <h3>Another heading</h3>
                     </div>
 
                     
