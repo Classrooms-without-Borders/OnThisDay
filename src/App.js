@@ -1,6 +1,55 @@
+import React from 'react';
+import './App.css';
+//import { Header, Footer } from '../components';
+
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import About from './pages/About';
+import Gallery from './pages/Gallery';
+import Submit from './pages/Submit';
+
+
+//import {Home, About, Gallery, Submit} from './pages';
+import { Provider } from 'react-redux';
+//import store from './store';
+
+// routers
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Redirect
+} from "react-router-dom";
+
+function App() {
+  return (
+          <div className={"App"}>
+              <Router>
+                  <Header />
+                  <Switch>
+                      <Route exact path="/" component={Home} />
+                      <Route exact path="/about" component={About} />
+                      <Route exact path="/gallery" component={Gallery} />
+                      <Route exact path="/submit" component={Submit} />
+                  </Switch>
+                  <Footer />
+              </Router>
+          </div>
+  );
+}
+
+export default App;
+
+
+
+
+
+/*
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Header, Footer } from './components';
 import {
   firebase
 } from './util';
@@ -42,3 +91,4 @@ function App() {
 }
 
 export default App;
+*/
