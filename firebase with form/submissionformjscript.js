@@ -37,7 +37,7 @@ function sub (event) {
     teacherName: teacherName
   })
   // Push a new submission object to the database using those values
-  db.collection("unverified").doc(submissionID).set({
+  db.collection("unverified1").doc(submissionID).set({
     title: title,
     name: person,
     cityName: city,
@@ -53,7 +53,41 @@ function sub (event) {
   .catch((error) => {
     console.error("Error writing document: ", error);
   });
+  let docID = db.collection("unverified1").doc(submissionID);
+  
+  verify(docID);
 };
+
+function verify(docRef) {
+  
+  setTimeout(() => {
+    docRef.get().then((doc) => {
+      if (doc.exists) {
+          var promise = db.collection("verified").doc(docRef.id).set(doc.data());
+          console.log("Document data:", doc.data());
+          return true;
+      } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+          return false;
+      }
+    }).catch((error) => {
+        console.log("Error getting document:", error);
+    });
+
+    
+  }, 3000);
+
+  setTimeout(() => {
+    docRef.delete().then(() => {
+      console.log("Document successfully deleted!");
+    }).catch((error) => {
+        console.error("Error removing document: ", error);
+    });
+  }, 6000);
+    
+  
+}
 
 // Multiple images preview in browser
 input.change(function() {
