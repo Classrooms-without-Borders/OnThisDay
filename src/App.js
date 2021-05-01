@@ -11,7 +11,7 @@ import Submit from './pages/Submit';
 
 
 //import {Home, About, Gallery, Submit} from './pages';
-import { Provider } from 'react-redux';
+//import { Provider } from 'react-redux';
 //import store from './store';
 
 // routers
@@ -19,7 +19,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Redirect
+   // Redirect
 } from "react-router-dom";
 
 function App() {
@@ -28,6 +28,7 @@ function App() {
               <Router>
                   <Header />
                   <Switch>
+                      <Route exact path="/" component={Home} /> 
                       <Route exact path="/home" component={Home} />
                       <Route exact path="/about" component={About} />
                       <Route exact path="/gallery" component={Gallery} />
