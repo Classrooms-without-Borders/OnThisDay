@@ -28,6 +28,7 @@ function Home() {
   return (
     <div className="Home">
       <header className="Home-header">
+        <h2>Welcome to home page</h2>
         <p>
           Edit <code>src/Home.js</code> Classroom without borders
         </p>

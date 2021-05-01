@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem } from 'reactstrap';
+import { Navbar,  Nav, NavbarToggler, Collapse, NavItem } from 'reactstrap';
 import {NavLink} from 'react-router-dom';
 import '../styling/Header.css';
 
@@ -45,8 +45,7 @@ class Header extends Component{
             <Navbar expand="md" className="color">
                 <div className="container">
                 <NavbarToggler onClick={this.toggleNav} />
-                <NavbarBrand className="mr-auto" href="/">
-                </NavbarBrand>
+                
                 <Collapse isOpen={this.state.isNavOpen} navbar>
                     <Nav navbar className="ml-auto">
 

@@ -106,6 +106,7 @@ class Submit extends Component {
         // no timeseries: replace with simulation timeseries
         return (
             <div className='GreenBackground'>
+                <h2>Welcome to submit page</h2>
                  <Grid container spacing={3}>
                  <Grid item xs={6}>
 <div>
