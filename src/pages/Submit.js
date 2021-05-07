@@ -11,9 +11,8 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 //import Fab from '@material-ui/core/Fab';
 //import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import {
-    firebase
-  } from '../util';
+import {firebase} from '../util';
+import ImageUpload from '../components/ImageUpload'
 
 const ColoredAccordion = withStyles({
     root: {
@@ -93,7 +92,7 @@ class Submit extends Component {
         return (
             <Grid container>
                  <Grid item xs={12}>
-                     <h1>SUBMIT AN ENTRY</h1>
+                    <h1>SUBMIT AN ENTRY</h1>
                     <form onSubmit={this.addUser}>
                         <h4>ABOUT YOU</h4>
                         <TextField class="outlined-basic" name="studentname" placeholder="Name of Student" onChange={this.updateInput} value={this.state.studentname} />
@@ -112,7 +111,8 @@ class Submit extends Component {
                         <TextField class="outlined-basic" name="sourceName" placeholder="Source name" onChange={this.updateInput} value={this.state.sourceName} />
                         
                         <h4>Photos</h4>
-                        <input type="file" name="images" multiple onChange={this.updateInput} value={this.state.images} />
+                        {/* <input type="file" name="images" multiple onChange={this.updateInput} value={this.state.images} /> */}
+                        <ImageUpload />
                         <br /><br />
                         <Button variant="contained" type="submit">Submit</Button>
 
