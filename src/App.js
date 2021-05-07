@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Gallery from './pages/Gallery';
+import Details from './pages/Details';
 import Submit from './pages/Submit';
 
 
@@ -32,6 +33,7 @@ function App() {
                       <Route exact path="/home" component={Home} />
                       <Route exact path="/about" component={About} />
                       <Route exact path="/gallery" component={Gallery} />
+                      <Route exact path="/details" component={Details} />
                       <Route exact path="/submit" component={Submit} />
                   </Switch>
                   <Footer />
