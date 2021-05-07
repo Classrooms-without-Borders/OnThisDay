@@ -35,19 +35,27 @@ class Header extends Component{
         }
 
         const active={
-            color:'#66FCF1', 
+            color:'#FFFFFF', 
             borderBottom: '1px solid #66FCF1', 
             paddingBottom: '4px', 
+            font: 'Roboto',
+            background:'red',
         
         }
 
         return (
-            <Navbar expand="md" className="color">
+            
+
+
+            <Navbar className="color">
                 <div className="container">
-                <NavbarToggler onClick={this.toggleNav} />
+
+                
                 
                 <Collapse isOpen={this.state.isNavOpen} navbar>
                     <Nav navbar className="ml-auto">
+
+                    <div class="row justify-content-start">
 
                         <NavItem>
                             <NavLink className="Nav-link" to='/home' activeClassName='active' activeStyle={active} style={styleSheet}> Home</NavLink>
@@ -64,6 +72,7 @@ class Header extends Component{
                         <NavItem>
                             <NavLink className="Nav-link"  to='/about' activeClassName='active' activeStyle={active} style={styleSheet}> About</NavLink>
                         </NavItem>
+                        </div>   
                     </Nav>
                 </Collapse>
                 </div>

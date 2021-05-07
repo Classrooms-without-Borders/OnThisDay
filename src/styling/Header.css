@@ -10,10 +10,12 @@
 }
 
 .Nav-link:link {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
     color: #ffffff;
     font-size: 15px;
     line-height: 1.6rem;
-    margin-right: 15px;
     text-decoration: none;
     padding-right: 0;
     padding-left: 0;
