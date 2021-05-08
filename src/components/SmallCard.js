@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
   //having trouble setting dimensions of card
   style: 
-    {minWidth: "5000px"},
+    {minWidth: "5000px", margin: '12px'},
 
 }));
 

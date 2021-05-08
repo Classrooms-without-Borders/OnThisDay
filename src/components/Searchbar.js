@@ -5,7 +5,7 @@ import '../styling/Searchbar.css';
 import { TextInput } from '../components/Input';
 import { StyledButton } from '../components/Button';
 
-export function Searchbar({ location=null, date=null }) {
+function Searchbar({ location=null, date=null }) {
     return (
         <div class='searchbar'>
             <div>

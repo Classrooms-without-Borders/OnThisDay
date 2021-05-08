@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-//import { Header, Footer } from '../components';
+import { constants } from './styling/Constants';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -9,11 +9,6 @@ import About from './pages/About';
 import Gallery from './pages/Gallery';
 import Details from './pages/Details';
 import Submit from './pages/Submit';
-
-
-//import {Home, About, Gallery, Submit} from './pages';
-//import { Provider } from 'react-redux';
-//import store from './store';
 
 // routers
 import {
@@ -25,7 +20,7 @@ import {
 
 function App() {
   return (
-          <div className={"App"}>
+          <div className={"App"} style={{"background-color": constants.color.dark}}>
               <Router>
                   <Header />
                   <Switch>
