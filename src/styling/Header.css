@@ -19,4 +19,20 @@
     text-decoration: none;
     padding-right: 0;
     padding-left: 0;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 21px;
+    line-height: 25px;
+    
   }
+.flexbox-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.right-align {
+    float: right;
+    padding-left: 500px;
+}
