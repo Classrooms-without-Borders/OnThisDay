@@ -1,0 +1,20 @@
+.btn-design{
+    color: #F1592A
+}
+
+.txt-design{
+    position: absolute;
+    width: 594px;
+    height: 133px;
+    left: 64px;
+    top: 1353px;
+
+    /* Heading 1 */
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 54px;
+    line-height: 66px;
+    text-transform: uppercase;
+}

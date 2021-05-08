@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import { Navbar,  Nav, NavbarToggler, Collapse, NavItem } from 'reactstrap';
+import { Navbar,  Nav, Collapse, NavItem } from 'reactstrap';
 import {NavLink} from 'react-router-dom';
 import '../styling/Header.css';
+import SearchIcon from '@material-ui/icons/Search';
 
 class Header extends Component{
 
@@ -11,8 +12,7 @@ class Header extends Component{
             isNavOpen: false,
             isModalOpen: false
         };
-        this.toggleNav = this.toggleNav.bind(this);
-        this.toggleModal = this.toggleModal.bind(this);
+ 
     }
 
     toggleNav(){
@@ -27,45 +27,66 @@ class Header extends Component{
         });
     }
 
+    handleClick() {
+        console.log("Search icon works"); //logs Observer class instance
+      }
+
 
     render(){
 
         const styleSheet = {
             color: "white"
+           
         }
 
         const active={
-            color:'#66FCF1', 
+            color:'#FFFFFF', 
             borderBottom: '1px solid #66FCF1', 
             paddingBottom: '4px', 
-        
+            font: 'Roboto',
+            background:'red',
+    
         }
 
         return (
-            <Navbar expand="md" className="color">
+            
+
+            <Navbar className="color">
                 <div className="container">
-                <NavbarToggler onClick={this.toggleNav} />
-                
-                <Collapse isOpen={this.state.isNavOpen} navbar>
-                    <Nav navbar className="ml-auto">
 
-                        <NavItem>
-                            <NavLink className="Nav-link" to='/home' activeClassName='active' activeStyle={active} style={styleSheet}> Home</NavLink>
-                        </NavItem>
+            
+             
 
-                        <NavItem>
-                            <NavLink className="Nav-link" to='/gallery' activeClassName='active' activeStyle={active} style={styleSheet}>Gallery</NavLink>
-                        </NavItem>
+                    <div class="flexbox-container">
+                        <div>
+                            <NavItem>
+                                <NavLink className="Nav-link" to='/home' activeClassName='active' activeStyle={active} style={styleSheet}> Home</NavLink>
+                            </NavItem>
+                        </div>
 
-                        <NavItem>
-                            <NavLink className="Nav-link" to='/submit' activeClassName='active' activeStyle={active} style={styleSheet}>Submit</NavLink>
-                        </NavItem>
+                        <div>
+                            <NavItem>
+                                <NavLink className="Nav-link" to='/gallery' activeClassName='active' activeStyle={active} style={styleSheet}>Gallery</NavLink>
+                            </NavItem>
+                        </div>
+                        <div>
+                            <NavItem>
+                                <NavLink className="Nav-link" to='/submit' activeClassName='active' activeStyle={active} style={styleSheet}>Submit</NavLink>
+                            </NavItem>
+                        </div>
+                        <div>
+                            <NavItem>
+                                <NavLink className="Nav-link"  to='/about' activeClassName='active' activeStyle={active} style={styleSheet}> About</NavLink>
+                            </NavItem>
+                        </div>
 
-                        <NavItem>
-                            <NavLink className="Nav-link"  to='/about' activeClassName='active' activeStyle={active} style={styleSheet}> About</NavLink>
-                        </NavItem>
-                    </Nav>
-                </Collapse>
+                        <div class="right-align">
+                            <SearchIcon color="secondary" fontSize="large" onClick={this.handleClick} />
+                        </div>
+                           
+                    </div>   
+                    
+           
                 </div>
             </Navbar>
             

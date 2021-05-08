@@ -30,76 +30,12 @@ class Submit extends Component {
     constructor() {
         super();
         this.state = {
-            hidden: false,
-            policy: '',
-            data: [],
-            loading: false,
-            jobId: null,
+          
         };
-        this._isMounted = false;
+     
     }
 
-    componentDidMount() {
-        this._isMounted = true;
-        this.source = axios.CancelToken.source();
-    }
-
-    handleOnClick = () => {
-        // if user had an existing job request, delete that
-        if (this.state.jobId) {
-            axios.delete(`./about/${this.state.jobId}`, { cancelToken: this.source.token })
-                .catch(err => {
-                    if (axios.isCancel(err)) {
-                        console.log('Request canceled:', err.message);
-                    } else { console.log(err) }
-                });
-        }
-
-        // configure post body with specific model params
-        let body = {};
-
-        // send post request
-        axios.post('./simulations', body, { cancelToken: this.source.token })
-            .then(res => {
-                // only upon successful post request, update state with in progress state and
-                if (res.status === 200) {
-                    this._isMounted && this.setState({ jobId: `${res.data}`, loading: true });
-                    console.log('post sent with job id ' + res.data);
-
-                    axios.get(`./simulations/${res.data}`, { cancelToken: this.source.token })
-                        .then(result => {
-                            this._isMounted && this.setState({ loading: false, data: [...result.data] });
-                            console.log('simulation finished running');
-                        })
-                        .catch(err => {
-                            if (axios.isCancel(err)) {
-                                console.log('Request canceled:', err.message);
-                            } else { console.log(err) }
-                        });
-
-                    // should probably save data to redux store
-                    // maybe also save jobId? idk yet
-                }
-            })
-            .catch(err => {
-                if (axios.isCancel(err)) {
-                    console.log('Request canceled:', err.message);
-                } else { console.log(err) }
-            });
-    }
-
-    componentWillUnmount() {
-        this._isMounted = false;
-        this.source.cancel('Operation canceled by the user.');
-
-        // remove existing job request, if it existed
-        if (this.state.jobId) {
-            axios.delete(`./simulations/${this.state.jobId}`)
-                .catch(err => console.log(err));
-        }
-    }
     //<p style={{ textAlign: 'left', fontSize: '20px', color: '#66FCF1' }}>Model Parameters</p>
-
     render() {
         const { jobId, loading } = this.state;
 
@@ -109,7 +45,7 @@ class Submit extends Component {
                 <h2>Welcome to submit page</h2>
                  <Grid container spacing={3}>
                  <Grid item xs={6}>
-<div>
+            <div>
                         <div className='GreenBackground'>
                             <h3>Submit an Entry</h3>
                             <ColoredAccordion>
