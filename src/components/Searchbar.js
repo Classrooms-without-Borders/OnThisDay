@@ -24,3 +24,5 @@ export function Searchbar({ location=null, date=null }) {
         </div>
     )
 }
+
+export default Searchbar;

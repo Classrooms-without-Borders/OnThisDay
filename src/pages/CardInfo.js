@@ -1,3 +1,4 @@
+//when a user clicks on an historical event card, this is the site they are brought to
 import React from "react";
 import '../styling/About.css'
 import map from '../images/aboout-stock-image.png';
@@ -10,7 +11,7 @@ import SearchBar from '../components/Searchbar';
 
   
 
-class About extends React.Component {
+class CardInfo extends React.Component {
     /*
     constructor () {
   		super();
@@ -41,7 +42,6 @@ class About extends React.Component {
 				</React.Fragment>
 				
 
-
 					
 				
 			);
@@ -49,6 +49,4 @@ class About extends React.Component {
 }
 
 
-export default About;
-
-
+export default CardInfo;
