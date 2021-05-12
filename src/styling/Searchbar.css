@@ -1,0 +1,35 @@
+.searchbar {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+    width: 100%;
+    height: fit-content;
+    padding: 6px 0 16px;
+    background-color: #0093d0;
+    color: white;
+    text-align: center;
+}
+
+.searchbar > div {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+}
+
+.searchbar p {
+    margin: 18px;
+}
+
+.searchbar-btn-div {
+    display: grid;
+    margin-left: 16px;
+}
+
+.searchbar-btn-div button {
+    margin: 28px 0 8px 0;
+}
+
+.searchbar a {
+    font-size: 12px;
+    text-decoration: underline;
+    color: #303132;
+}

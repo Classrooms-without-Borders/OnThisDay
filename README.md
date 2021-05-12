@@ -8,6 +8,8 @@ All code goes in the `src` directory. Each subdirectory contains an `index.js` f
 * `src/util` exports all backend-related functionality. This includes any functions which read or write from Firestore. In theory, only the code in this directory should have to import Firebase.
 * `src/components` exports modular components used to create the UI.
 * `src/pages` exports full pages of the app created by combining various components and utility functions.
+* `src/styling` for styling the website pages
+* `src/images` for any pitures or logo that we want to place in website
 
 # Coding Style
 A general React style guide to follow: https://github.com/airbnb/javascript/blob/master/react/README.md
