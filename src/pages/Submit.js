@@ -33,17 +33,19 @@ class Submit extends Component {
     constructor() {
         super();
         this.state = {
-            dateinhist: "",
-            nameofindv: "",
+            date: "",
+            subjectName: "",
             sourceLink: "",
             location: "",
             sourceName: "",
-            eventdesc: "",
+            description: "",
             images: [],
-            studentname: "",
-            schoolname: "",
-            gradelevel: "",
-            teachername: ""
+            studentName: "",
+            school: "",
+            grade: "",
+            teacherName: "",
+            lat:"",
+            lng:""
         };
     }
 
@@ -53,38 +55,59 @@ class Submit extends Component {
         });
     }
 
-    addUser = e => {
+    processInfo = e => {
         e.preventDefault();
+        // API call
+        // need to figure out how to securely store api key, maybe heroku config vars?
+        const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.location}&key=AIzaSyBQ6AXhN1dWqYH5pjf8zuIoUyfTb1j0bAY`
+        axios.get(apiUrl).then(res => {
+            // console.log(res);
+            this.setState({lat : res.data.results[0].geometry.location.lat});
+            this.setState({lng : res.data.results[0].geometry.location.lng});
+            console.log("lat" + this.state.lat);
+            console.log("lng" + this.state.lng);
+            this.addUser();
+        })
+
+    }
+    addUser = e => {
         const db = firebase.firestore();
+
+        // create new class
+        const classRef = db.collection("testClass").add({
+            school: this.state.school,
+            grade: this.state.grade,
+            teacherName: this.state.teacherName
+        }); 
+    
+        // create new submission
+        let sources = {};
+        sources[this.state.sourceName] = this.state.sourceLink;
         const subRef = db.collection("testSub").add({
-            dateinhist: this.state.dateinhist,
-            nameofindv: this.state.nameofindv,
-            sourceLink: this.state.sourceLink,
-            location: this.state.location,
-            sourceName: this.state.sourceName,
-            eventdesc: this.state.eventdesc,
+            date: firebase.firestore.Timestamp.fromDate(new Date(this.state.date)),
+            description: this.state.description,
             images: this.state.images,
+            location: new firebase.firestore.GeoPoint(this.state.lat, this.state.lng),
+            sources: sources,
+            studentName: this.state.studentName,
+            subjectName: this.state.subjectName,
+            submittedDate: firebase.firestore.Timestamp.fromDate(new Date())
         }); 
         
-        const classRef = db.collection("testClass").add({
-            studentname: this.state.studentname,
-            schoolname: this.state.schoolname,
-            gradelevel: this.state.gradelevel,
-            teachername: this.state.teachername
-        }); 
-
         this.setState({
-            dateinhist: "",
-            nameofindv: "",
+            date: "",
+            subjectName: "",
             sourceLink: "",
             location: "",
             sourceName: "",
-            eventdesc: "",
+            description: "",
             images: [],
-            studentname: "",
-            schoolname: "",
-            gradelevel: "",
-            teachername: ""
+            studentName: "",
+            school: "",
+            grade: "",
+            teacherName: "",
+            lat: "",
+            lng: ""
         });
     };
 
@@ -93,18 +116,18 @@ class Submit extends Component {
             <Grid container>
                  <Grid item xs={12}>
                     <h1>SUBMIT AN ENTRY</h1>
-                    <form onSubmit={this.addUser}>
+                    <form onSubmit={this.processInfo}>
                         <h4>ABOUT YOU</h4>
-                        <TextField class="outlined-basic" name="studentname" placeholder="Name of Student" onChange={this.updateInput} value={this.state.studentname} />
-                        <TextField class="outlined-basic" name="schoolname" placeholder="School" onChange={this.updateInput} value={this.state.schoolname} />
-                        <TextField class="outlined-basic" name="gradelevel" placeholder="Grade" onChange={this.updateInput} value={this.state.gradelevel}/>
-                        <TextField class="outlined-basic" name="teachername" placeholder="Name of Teacher" onChange={this.updateInput} value={this.state.teachername} />
+                        <TextField class="outlined-basic" name="studentName" placeholder="Name of Student" onChange={this.updateInput} value={this.state.studentName} />
+                        <TextField class="outlined-basic" name="school" placeholder="School" onChange={this.updateInput} value={this.state.school} />
+                        <TextField class="outlined-basic" name="grade" placeholder="Grade" onChange={this.updateInput} value={this.state.grade}/>
+                        <TextField class="outlined-basic" name="teacherName" placeholder="Name of Teacher" onChange={this.updateInput} value={this.state.teacherName} />
                         
                         <h4>ABOUT YOUR ENTRY</h4>
-                        <TextField class="outlined-basic" name="nameofindv" placeholder="Full name of historical figure" onChange={this.updateInput} value={this.state.nameofindv} />
+                        <TextField class="outlined-basic" name="subjectName" placeholder="Full name of historical figure" onChange={this.updateInput} value={this.state.subjectName} />
                         <TextField class="outlined-basic" name="location" placeholder="Location" onChange={this.updateInput} value={this.state.location} />
-                        <TextField class="outlined-basic" name="dateinhist" placeholder="Date" onChange={this.updateInput} value={this.state.dateinhist} />
-                        <TextField class="outlined-multiline-static" multiline rows={5} name="eventdesc" placeholder="Event description" onChange={this.updateInput} value={this.state.eventdesc} />
+                        <TextField class="outlined-basic" name="date" placeholder="Date" onChange={this.updateInput} value={this.state.date} />
+                        <TextField class="outlined-multiline-static" multiline rows={5} name="description" placeholder="Event description" onChange={this.updateInput} value={this.state.description} />
                         
                         <h4>Sources</h4>
                         <TextField class="outlined-basic" name="sourceLink" placeholder="Source URL" onChange={this.updateInput} value={this.state.sourceLink} />
