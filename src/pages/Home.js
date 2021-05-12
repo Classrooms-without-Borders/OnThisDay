@@ -8,6 +8,13 @@ import Searchbar from '../components/Searchbar';
 import { StyledButton } from '../components/Button';
 import BigCard from '../components/BigCard';
 import SmallCard from '../components/SmallCard';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import { Container } from '@material-ui/core';
+import { spacing } from '@material-ui/system';
+import Box from '@material-ui/core/Box';
+
+
 
 function Home() {
     const style = {
@@ -21,54 +28,48 @@ function Home() {
     return (
         <div style={style}>
             <Searchbar />
-            <BigCard />
-            <div style={smallDivStyle}>
-                <SmallCard />
-                <SmallCard />
-                <SmallCard />
+
+            {/* item xs, md changes width length of paper */}
+            <Container>
+                <Grid container>
+                    <Box m={2} pt={3}>
+
+                        <Grid item xs={12}>
+
+                            <BigCard></BigCard>
+
+                        </Grid>
+                    </Box>
+
+                </Grid>
+            </Container>
+            <br></br>
+            <div class="flexbox-container">
+            {/* want to make a three row card :( */}
+            <Container>
+                    <Grid container>
+                        <Box m={2} pt={1}>
+                            <Grid  p={2} item md={4}>
+                                <SmallCard p={2} ></SmallCard>
+                            </Grid>
+                        </Box>
+                        <Box m={2} pt={1}>
+                            <Grid  p={2} item md={4}>
+                                <SmallCard p={2} ></SmallCard>
+                            </Grid>
+                        </Box>
+                        <Box m={2} pt={1}>
+                            <Grid  p={2} item md={4}>
+                                <SmallCard p={2} ></SmallCard>
+                            </Grid>
+                        </Box>
+                        
+                    </Grid>
+            </Container>
             </div>
         </div>
     )
 }
 
-//import {
-//  firebase
-//} from '../util';
-
-//function Home() {
-//  const [teacher, setTeacher] = useState('');
-
-//  let db = firebase.firestore();
-//  let docRef = db.collection("classes").doc("CTodKLrFNrf3b8k4E6X1");
-
-//  docRef.get().then((doc) => {
-//    if (doc.exists) {
-//      console.log("Document data:", doc.data());
-//      setTeacher(doc.data()['teacherName']);
-//    } else {
-//      console.log("No such document!");
-//    }
-//  }).catch((error) => {
-//    console.log("Error getting document:", error);
-//  });
-
-//  return (
-//    <div className="Home">
-//      <header className="Home-header">
-//        <h2>Welcome to home page</h2>
-//        <p>
-//          Edit <code>src/Home.js</code> Classroom without borders
-//        </p>
-//        <h1>
-//          A teacher in this project is: {teacher}
-//        </h1>
-//      </header>
-//    </div>
-//  );
-
-//  //submission with name
-//  //search function
-  
-//}
 
 export default Home;
