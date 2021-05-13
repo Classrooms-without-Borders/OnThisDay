@@ -20,7 +20,7 @@ import {
 
 function App() {
   return (
-          <div className={"App"} style={{"background-color": constants.color.dark}}>
+          <div className={"App"} style={{"background-color": constants.color.dark}} >
               <Router>
                   <Header />
                   <Switch>

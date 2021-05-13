@@ -4,7 +4,14 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import logo from '../images/cwb-logo-reverse-w-tagline 1.png';
+import stockPhoto from '../images/home-stock-image.png';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import { CardHeader } from '@material-ui/core';
+import '../styling/BigCard.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,37 +35,51 @@ const useStyles = makeStyles((theme) => ({
   //having trouble setting dimensions of card
   style: 
     {minWidth: "5000px"},
+  
 
 }));
+
+var cardStyle = {
+  width: '1311px',
+  height: '466px',
+  left: '64px',
+  top: '247px'
+
+}
 
 export default function BigCard() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <Paper className={classes.paper}>
-        <Grid container spacing={2} style={{minWidth: "250px"}}>
-          <Grid item style={{minWidth: "250px"}}>
-            <ButtonBase className={classes.image} width={1}>
-              <img className={classes.img} alt="complex" src={logo} />
-            </ButtonBase>
-          </Grid>
-          <Grid item xs={20} sm container style={{minWidth: "250px"}}>
-            <Grid item xs container direction="column" spacing={2}  style={{minWidth: "250px"}}>
-              <Grid item xs style={{minWidth: "250px"}}>
-                <Typography gutterBottom variant="subtitle1"   >
-                  London, England
-                </Typography>
-                <Typography variant="body2" gutterBottom>
-                 3 April 1944
-                </Typography>
-              </Grid>
-              <Grid item>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Paper>
+    <div>
+
+      <Card style={cardStyle}>
+          <CardMedia
+              component="img"
+              alt="Contemplative Reptile"
+              height="200"
+              image={stockPhoto}
+              title="Contemplative Reptile"
+            />
+            <CardContent>
+            <h3 className="location"> London, England</h3>
+
+            <h3 className="date"> 3 Apr 1944</h3>
+
+            <h3 className="event"> Sofka Skipwith</h3>
+
+            <h3 className="author"> by Jane Doe</h3>
+
+          </CardContent>
+
+        </Card>
+
     </div>
+   
+
+      
+      
+
+    
   );
 }

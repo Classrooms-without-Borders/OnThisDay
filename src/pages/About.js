@@ -113,10 +113,7 @@ stories and artifacts presented here as well as research and submit their own st
 					</form>
 
 				
-      
-
-				
-				
+    
 					<Button variant="contained" color="primary">
         				Submit an Entry
       				</Button>
