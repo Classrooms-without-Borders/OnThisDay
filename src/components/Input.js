@@ -1,7 +1,7 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 //import { DateFnsUtils } from 'date-fns';
-import { constants } from '../styling/Constants.js';
-
+import constants from '../styling/Constants';
 import { TextField } from '@material-ui/core';
 import { 
     DatePicker, 
@@ -9,20 +9,20 @@ import {
 } from '@material-ui/pickers';
 
 export function TextInput({ label, children }) {
-    const style = {
-        'font-family': constants.fontFamily.body,
-        'background': constants.color.light,
-        'border-radius': '5px',
-        'height': 'fit-content',
-        // todo
-    }
+    const useStyles = makeStyles({
+        root: {
+            fontFamily: constants.fontFamily.body,
+            background: constants.color.light,
+            borderRadius: '5px',
+            height: 'fit-content'
+        }
+    });
 
     return (
         <TextField 
             variant='outlined' 
             label={label} 
-            style={style}
-            inputProps={{style: style}}
+            className={useStyles().root}
         >
             {children}
         </TextField>

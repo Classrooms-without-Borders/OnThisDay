@@ -1,17 +1,52 @@
 import React from 'react';
-import { constants } from '../styling/Constants.js';
-import '../styling/Searchbar.css';
-
+import { makeStyles } from '@material-ui/core/styles';
+import constants from '../styling/Constants';
 import { TextInput } from '../components/Input';
 import { StyledButton } from '../components/Button';
 
 function Searchbar({ location=null, date=null }) {
+    const useStyles = makeStyles({
+        root: {
+            fontFamily: constants.fontFamily.body,
+            fontSize: constants.fontSize.l,
+            width: '100%',
+            height: 'fit-content',
+            padding: '6px 0 16px',
+            backgroundColor: constants.color.accentPrimary,
+            color: constants.color.light,
+            boxShadow: constants.boxShadow,
+            textAlign: 'center',
+            position: 'fixed',
+            margin: '50px 0 0 0',
+            '& div': {
+                display: 'inline-flex',
+                width: 'fit-content',
+                alignItems: 'center'
+            },
+            '& p': {
+                margin: '18px'
+            },
+            '& .searchbar-btn-div': {
+                display: 'grid',
+                margin: '0 0 0 16px',
+                '& button': {
+                    margin: '28px 0 8px 0',
+                }
+            },
+            '& a': {
+                fontSize: '12px',
+                textDecoration: 'underline',
+                color: constants.color.dark,
+            },
+        },
+    });
+
     return (
-        <div class='searchbar'>
+        <div className={useStyles().root}>
             <div>
-                <p>What happened in </p>
+                <p>What happened in</p>
                 <TextInput label='City, Country' />
-                <p> on </p>
+                <p>on</p>
                 <TextInput label='Date' />
                 <p>?</p>
                 <div class='searchbar-btn-div'>
@@ -22,7 +57,7 @@ function Searchbar({ location=null, date=null }) {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default Searchbar;

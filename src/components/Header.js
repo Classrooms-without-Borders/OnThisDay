@@ -1,97 +1,110 @@
-import React, {Component} from 'react';
+import React, { Component, useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import constants from '../styling/Constants';
 import { Navbar,  Nav, Collapse, NavItem } from 'reactstrap';
-import {NavLink} from 'react-router-dom';
-import '../styling/Header.css';
+import { NavLink } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
 
-class Header extends Component{
+function Header(props) {
+    const [showSearchIcon, setShowSearchIcon] = useState(false);
+    const [basicSearchOpen, setBasicSearchOpen] = useState(true);
+    const [advSearchOpen, setAdvSearchOpen] = useState(false);
 
-    constructor(props){
-        super(props);
-        this.state = {
-            isNavOpen: false,
-            isModalOpen: false
-        };
- 
-    }
+    const searchOpen = () => basicSearchOpen || advSearchOpen;
 
-    toggleNav(){
-        this.setState({
-            isNavOpen: !this.state.isNavOpen
-        });
-    }
+    const useStyles = makeStyles({
+        root: {
+            backgroundColor: constants.color.dark,
+            boxShadow: constants.boxShadow,
+            zIndex: 1,
+            width: '100%',
+            position: 'fixed',
+            '& > div': {
+                justifyContent: 'space-between',
+                display: 'flex',
+                alignItems: 'center',
+                '& a': {
+                    margin: '0 0 0 18px',
+                },
+            },
+            '& .flexbox-container': {
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                '& a': {
+                    fontFamily: constants.fontFamily.body,
+                    fontWeight: 'normal',
+                    textTransform: 'capitalize',
+                    margin: '0 12px',
+                },
+            },
+            '& li': {
+                listStyleType: 'none',
+                '& a': {
+                    textDecoration: 'none',
+                    color: constants.color.light,
+                    fontFamily: constants.fontFamily.header,
+                    fontWeight: 'bold',
+                    textTransform: 'uppercase',
+                    fontSize: constants.fontSize.s,
+                },
+            },
+            '& #search-icon': {
+                color: constants.color.light,
+                backgroundColor: searchOpen() 
+                    ? constants.color.accentPrimary 
+                    : constants.color.dark,
+                padding: '12px 18px',
+                margin: '0 0 0 6px',
+            },
+        },
+    });
 
-    toggleModal(){
-        this.setState({
-            isModalOpen: !this.state.isModalOpen,
-        });
-    }
-
-    handleClick() {
-        console.log("Search icon works"); //logs Observer class instance
-      }
-
-
-    render(){
-
-        const styleSheet = {
-            color: "white"
-           
+    const onClickSearch = () => {
+        if (searchOpen()) {
+            setBasicSearchOpen(false);
+            setAdvSearchOpen(false);
+        } else {
+            setBasicSearchOpen(true);
         }
+    };
 
-        const active={
-            color:'#FFFFFF', 
-            borderBottom: '1px solid #66FCF1', 
-            paddingBottom: '4px', 
-            font: 'Roboto',
-            background:'red',
-    
+    const toggleSearchType = () => {
+        if (advSearchOpen) {
+            basicSearchOpen = true;
+            advSearchOpen = false;
+        } else {
+            basicSearchOpen = false;
+            advSearchOpen = true;
         }
+    };
 
-        return (
-            
-
-            <Navbar className="color">
-                <div className="container">
-
-            
-             
-
-                    <div class="flexbox-container">
-                        <div>
-                            <NavItem>
-                                <NavLink className="Nav-link" to='/home' activeClassName='active' activeStyle={active} style={styleSheet}> Home</NavLink>
-                            </NavItem>
-                        </div>
-
-                        <div>
-                            <NavItem>
-                                <NavLink className="Nav-link" to='/gallery' activeClassName='active' activeStyle={active} style={styleSheet}>Gallery</NavLink>
-                            </NavItem>
-                        </div>
-                        <div>
-                            <NavItem>
-                                <NavLink className="Nav-link" to='/submit' activeClassName='active' activeStyle={active} style={styleSheet}>Submit</NavLink>
-                            </NavItem>
-                        </div>
-                        <div>
-                            <NavItem>
-                                <NavLink className="Nav-link"  to='/about' activeClassName='active' activeStyle={active} style={styleSheet}> About</NavLink>
-                            </NavItem>
-                        </div>
-
-                        <div class="right-align">
-                            <SearchIcon color="secondary" fontSize="large" onClick={this.handleClick} />
-                        </div>
-                           
-                    </div>   
-                    
-           
-                </div>
-            </Navbar>
-            
-        );
-    }
+    return (
+        <Navbar className={useStyles().root}>
+            <div>
+                <NavItem>
+                    <NavLink exact to='/'>On This Day in History</NavLink>
+                </NavItem>
+                <div className="flexbox-container">
+                    <NavItem>
+                        <NavLink exact to='/'>Home</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink to='/gallery'>Gallery</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink to='/submit'>Submit</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink to='/about'>About</NavLink>
+                    </NavItem>
+                    <NavItem id='search-icon'>
+                        <SearchIcon fontSize="medium" onClick={onClickSearch} />
+                    </NavItem>
+                </div>   
+            </div>
+        </Navbar>
+    );
 }
 
 export default Header;

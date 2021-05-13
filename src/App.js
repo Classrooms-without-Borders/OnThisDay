@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { constants } from './styling/Constants';
+import constants from './styling/Constants';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
