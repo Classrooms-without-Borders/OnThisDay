@@ -9,12 +9,14 @@ import About from './pages/About';
 import Gallery from './pages/Gallery';
 import Details from './pages/Details';
 import Submit from './pages/Submit';
+import Login from './pages/Login';
 
 // routers
 import {
     BrowserRouter as Router,
     Switch,
     Route,
+    Link,
    // Redirect
 } from "react-router-dom";
 
@@ -30,6 +32,7 @@ function App() {
                       <Route exact path="/gallery" component={Gallery} />
                       <Route exact path="/details" component={Details} />
                       <Route exact path="/submit" component={Submit} />
+                      <Route exact path="/login" component={Login} />
                   </Switch>
                   <Footer />
               </Router>

@@ -1,4 +1,6 @@
 import React from 'react';
+import { useState } from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -12,6 +14,22 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import { CardHeader } from '@material-ui/core';
 import '../styling/SmallCard.css'
+import About from '../pages/About';
+import Button from '@material-ui/core/Button';
+
+
+
+
+
+// routers
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+ // Redirect
+} from "react-router-dom";
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -55,22 +73,26 @@ export default function SmallCard({submission}) {
     <div>
 
       { /*{submission.title}*/ }
-      <Card p={1} style={cardStyle}>
-        <CardMedia
-            component="img"
-            alt="Contemplative Reptile"
-            height="350"
-            image={stockPhoto}
-            title="Contemplative Reptile"
-          />
-          <CardContent>
+      <Button component={Link} to="/details" color="primary">
 
-          <h3 className="location"> London, England</h3>
+        <Card p={1} style={cardStyle}>
+        
+              <CardMedia
+                    component="img"
+                    alt="Contemplative Reptile"
+                    height="350"
+                    image={stockPhoto}
+                    title="Contemplative Reptile"
+                  />
+                  <CardContent>
 
-          <h3 className="date"> 3 Apr 1944</h3>
-        </CardContent>
+                  <h3 className="location"> London, England</h3>
 
-      </Card>
+                  <h3 className="date"> 3 Apr 1944</h3>
+                </CardContent>
+        </Card>
+      </Button>
+
     </div>
     
   );

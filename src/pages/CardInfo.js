@@ -40,8 +40,6 @@ class CardInfo extends React.Component {
         				Submit an Entry
       				</Button>
 				</React.Fragment>
-				
-
 					
 				
 			);

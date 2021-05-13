@@ -1,0 +1,24 @@
+.timeline-container {
+    /* Accent */
+    width: 94px;
+
+    background: #0093D0;
+    /* Dark */
+
+    border: 1px solid #303132;
+    box-shadow: 4px 0px 8px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.timeline-container::after {
+    background-color: #FFFFFF;
+    content: '';
+    width: 4px;
+    height: 4.7%;
+    position: absolute;
+    
+
+
+}
