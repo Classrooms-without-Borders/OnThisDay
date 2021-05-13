@@ -40,8 +40,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 var cardStyle = {
-  width: '1311px',
-  height: '466px',
+  width: '1411px',
+  height: '666px',
   left: '64px',
   top: '247px'
 
@@ -53,11 +53,11 @@ export default function BigCard() {
   return (
     <div>
 
-      <Card style={cardStyle}>
+      <Card style={cardStyle} >
           <CardMedia
               component="img"
               alt="Contemplative Reptile"
-              height="200"
+              height="475"
               image={stockPhoto}
               title="Contemplative Reptile"
             />

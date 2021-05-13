@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 var cardStyle = {
-  width: '424px',
+  width: '450px',
   height: '466px',
   left: '64px',
   top: '761px',
@@ -59,12 +59,12 @@ export default function SmallCard({submission}) {
         <CardMedia
             component="img"
             alt="Contemplative Reptile"
-            height="300"
+            height="350"
             image={stockPhoto}
             title="Contemplative Reptile"
           />
           <CardContent>
-          
+
           <h3 className="location"> London, England</h3>
 
           <h3 className="date"> 3 Apr 1944</h3>
