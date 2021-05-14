@@ -83,6 +83,11 @@ class Header extends Component{
                         <div class="right-align">
                             <SearchIcon color="secondary" fontSize="large" onClick={this.handleClick} />
                         </div>
+                        <div>
+                            <NavItem>
+                                <NavLink className="Nav-link"  to='/login' activeClassName='active' activeStyle={active} style={styleSheet}> Log In </NavLink>
+                            </NavItem>
+                        </div>
                            
                     </div>   
                     

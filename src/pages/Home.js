@@ -44,29 +44,31 @@ function Home() {
                 </Grid>
             </Container>
             <br></br>
-            <div class="flexbox-container">
             {/* want to make a three row card :( */}
-            <Container>
-                    <Grid container>
-                        <Box m={2} pt={1}>
-                            <Grid  p={2} item md={4}>
-                                <SmallCard p={2} ></SmallCard>
-                            </Grid>
-                        </Box>
-                        <Box m={2} pt={1}>
-                            <Grid  p={2} item md={4}>
-                                <SmallCard p={2} ></SmallCard>
-                            </Grid>
-                        </Box>
-                        <Box m={2} pt={1}>
-                            <Grid  p={2} item md={4}>
-                                <SmallCard p={2} ></SmallCard>
-                            </Grid>
-                        </Box>
-                        
-                    </Grid>
-            </Container>
-            </div>
+                <Container>
+                        <Grid container>
+                        <div class="flexbox-container">
+                                <Box m={2} pt={3}>
+                                    <Grid  p={2} item md={4}>
+                                        <SmallCard p={2} ></SmallCard>
+                                    </Grid>
+                                </Box>
+                                <Box m={2} pt={3}>
+                                    <Grid  p={2} item md={4}>
+                                        <SmallCard p={2} ></SmallCard>
+                                    </Grid>
+                                </Box>
+                                <Box m={2} pt={3}>
+                                    <Grid  p={2} item md={4}>
+                                        <SmallCard p={2} ></SmallCard>
+                                    </Grid>
+                                </Box>
+                            </div>
+                            
+                        </Grid>
+                </Container>
+                <br></br>
+                <br></br>
         </div>
     )
 }

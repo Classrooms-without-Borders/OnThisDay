@@ -11,7 +11,17 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import { CardHeader } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+
 import '../styling/BigCard.css';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+ // Redirect
+} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,8 +50,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 var cardStyle = {
-  width: '1311px',
-  height: '466px',
+  width: '1411px',
+  height: '666px',
   left: '64px',
   top: '247px'
 
@@ -52,27 +62,28 @@ export default function BigCard() {
 
   return (
     <div>
+      <Button component={Link} to="/details" color="primary">
+        <Card style={cardStyle} >
+            <CardMedia
+                component="img"
+                alt="Contemplative Reptile"
+                height="475"
+                image={stockPhoto}
+                title="Contemplative Reptile"
+              />
+              <CardContent>
+              <h3 className="location"> London, England</h3>
 
-      <Card style={cardStyle}>
-          <CardMedia
-              component="img"
-              alt="Contemplative Reptile"
-              height="200"
-              image={stockPhoto}
-              title="Contemplative Reptile"
-            />
-            <CardContent>
-            <h3 className="location"> London, England</h3>
+              <h3 className="date"> 3 Apr 1944</h3>
 
-            <h3 className="date"> 3 Apr 1944</h3>
+              <h3 className="event"> Sofka Skipwith</h3>
 
-            <h3 className="event"> Sofka Skipwith</h3>
+              <h3 className="author"> by Jane Doe</h3>
 
-            <h3 className="author"> by Jane Doe</h3>
+            </CardContent>
 
-          </CardContent>
-
-        </Card>
+          </Card>
+        </Button>
 
     </div>
    

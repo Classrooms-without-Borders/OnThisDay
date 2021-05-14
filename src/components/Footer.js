@@ -42,9 +42,11 @@ function Footer(props) {
           </div>
         
           <div>
-          <a href="https://www.instagram.com/classroomswithoutborders/">
-            <img src={insta}  alt="logo"  />
-          </a>
+          {/*
+            <a href="https://www.instagram.com/classroomswithoutborders/">
+              <img src={insta}  alt="logo"  />
+            </a>
+          */}
           </div>
         </div>
 
