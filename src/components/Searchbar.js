@@ -9,6 +9,7 @@ function Searchbar({ open=true }) {
 
     const useStyles = makeStyles({
         root: {
+            zIndex: 98,
             display: open ? 'inherit' : 'none',
             fontFamily: constants.fontFamily.body,
             fontSize: constants.fontSize.l,

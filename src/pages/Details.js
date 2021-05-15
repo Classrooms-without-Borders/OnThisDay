@@ -3,7 +3,6 @@ import '../styling/Details.css'
 import Source from '../components/Source'
 //import { makeStyles } from '@material-ui/core/styles';
 import Carousel from 'react-bootstrap/Carousel' 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../images/cwb-logo-reverse-w-tagline 1.png';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';

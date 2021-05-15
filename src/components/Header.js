@@ -19,7 +19,7 @@ function Header({ active }) {
         root: {
             backgroundColor: constants.color.dark,
             boxShadow: constants.boxShadow,
-            zIndex: 1,
+            zIndex: 99,
             width: '100%',
             position: 'fixed',
             '& > div': {
