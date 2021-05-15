@@ -1,4 +1,4 @@
-export const constants = {
+const constants = {
     fontFamily: {
         header: '"Montserrat", sans-serif',
         body: '"Open Sans", sans-serif'
@@ -19,5 +19,7 @@ export const constants = {
         lightAccentPrimary: '#AFD7F2',
         accentSecondary: '#F1592A'
     },
-    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.4)'
+    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.6)'
 }
+
+export default constants;
