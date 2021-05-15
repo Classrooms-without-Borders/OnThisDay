@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 //import { Place, GoogleMap, Parameters, OptionMenu, SimulationTimeseries, PersistentDrawerLeft } from '../components';
 import '../styling/Submit.css'
-import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
