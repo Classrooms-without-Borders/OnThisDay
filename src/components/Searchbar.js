@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import constants from '../styling/Constants';
-import { TextInput } from '../components/Input';
+import { TextInput, DateInput } from '../components/Input';
 import { StyledButton } from '../components/Button';
 
-function Searchbar({ location=null, date=null }) {
+function Searchbar({ open=true }) {
+    const advancedOpen = useState(false);
+
     const useStyles = makeStyles({
         root: {
+            display: open ? 'inherit' : 'none',
             fontFamily: constants.fontFamily.body,
             fontSize: constants.fontSize.l,
             width: '100%',

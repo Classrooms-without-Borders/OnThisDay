@@ -4,17 +4,12 @@ import { constants } from '../styling/Constants';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Searchbar from '../components/Searchbar';
 import { StyledButton } from '../components/Button';
 import BigCard from '../components/BigCard';
 import SmallCard from '../components/SmallCard';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import { Container } from '@material-ui/core';
-import { spacing } from '@material-ui/system';
 import Box from '@material-ui/core/Box';
-
-
 
 function Home() {
     const style = {
@@ -27,7 +22,7 @@ function Home() {
 
     return (
         <div style={style}>
-            <Searchbar />
+            <Header active='Home'/>
 
             {/* item xs, md changes width length of paper */}
             <Container>

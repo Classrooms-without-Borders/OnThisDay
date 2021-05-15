@@ -1,10 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-//import { DateFnsUtils } from 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
 import constants from '../styling/Constants';
 import { TextField } from '@material-ui/core';
 import { 
-    DatePicker, 
+    KeyboardDatePicker, 
     MuiPickersUtilsProvider 
 } from '@material-ui/pickers';
 
@@ -29,12 +29,20 @@ export function TextInput({ label, children }) {
     )
 }
 
-//export function DateInput({ children }) {
-//    return (
-//        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-//            <DatePicker variant='outlined' format='MM/dd/yyyy'>
-//                {children}
-//            </DatePicker>
-//        </MuiPickersUtilsProvider>
-//    );
-//}
+export function DateInput() {
+    const [selectedDate, setSelectedDate] = React.useState();
+
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+    }
+
+    return (
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardDatePicker 
+                variant='outlined' 
+                format='MM/dd/yyyy'
+                onChange={handleDateChange}
+            />
+        </MuiPickersUtilsProvider>
+    );
+}
