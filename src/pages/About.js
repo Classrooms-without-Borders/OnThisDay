@@ -3,8 +3,12 @@ import '../styling/About.css'
 import map from '../images/aboout-stock-image.png';
 import BigCard from '../components/BigCard';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import SearchBar from '../components/Searchbar';
+import { Container, Row, Col } from 'reactstrap';
+import pic from '../images/cwb-logo-reverse-w-tagline 1.png';
+
 //import { makeStyles } from '@material-ui/core/styles';
 
 
@@ -24,11 +28,17 @@ class About extends React.Component {
 				<React.Fragment>
 			
 				<SearchBar/>
-
-					<Typography variant="h1" component="h2" >
+				<div className="body">
+				<Typography variant="h1" component="h2" className="title">
 						On this Day in History
       				</Typography>
-					<Typography variant="subtitle1" gutterBottom>
+				<Container>
+					<Row>
+					<Col sm="1" md="4" lg="4">
+						<img src={pic}></img>
+					</Col>
+					<Col sm="1" md="8" lg="8">
+					<Typography variant="subtitle1" gutterBottom className="title">
 					On this day, a project of Classrooms Without Borders, is a collection of student research to
 		uncover and share the personal histories of the individuals during World War II and the
 		Holocaust. For too long, Holocaust education has been taught at the macro level, with total
@@ -51,9 +61,11 @@ be largely unknown. Only by understanding what was, can we really understand wha
 on a specific time period or a specific region to research. We invite students to dig into the
 stories and artifacts presented here as well as research and submit their own stories.
 		     		</Typography>
-
+						 </Col>
+						</Row>
 					  {/*divider*/}.
-
+					<Row>
+					<Col sm="1" md="8" lg="8">
 					  <Typography variant="subtitle1" gutterBottom>
 					  Classrooms Without Borders, is a premier provider of transformational professional
 					development and learning opportunities both in and out of the classroom, with an educational
@@ -61,7 +73,7 @@ stories and artifacts presented here as well as research and submit their own st
 					and social justice. CWB works to combat discrimination, systemic racism and hate while
 					promoting the values of diversity, acceptance, and respect.
 		     		</Typography>
-
+						
 					 <Typography variant="h1" component="h2" >
 					 How it works
       				</Typography>
@@ -83,7 +95,8 @@ stories and artifacts presented here as well as research and submit their own st
 					<Typography variant="subtitle1" gutterBottom>
 					4) Live - once verified your research will be made public on the site for others to use in future research.
 					</Typography>
-
+					</Col>
+					<Col sm="1" md="4" lg="4">
 					<Typography variant="h1" component="h2" >
 					Contact
       				</Typography>
@@ -97,22 +110,30 @@ stories and artifacts presented here as well as research and submit their own st
 							Name:
 							<input type="text" name="name" />
 						</label>
+						<br></br>
 						<label>
 							Email:
 							<input type="text" name="name" />
 						</label>
+						<br></br>
 						<label>
 							School:
 							<input type="text" name="name" />
 						</label>
+						<br></br>
 						<label>
 							Message:
 							<textarea name="Text1" cols="20" rows="5"></textarea>
 						</label>
 						<input type="submit" value="Send Message" />
 					</form>
-
-				
+					
+					<br></br>
+					<br></br>
+					<br></br>
+					</Col>
+					</Row>
+					</Container>
     
 					<Button variant="contained" color="primary">
         				Submit an Entry
@@ -120,6 +141,8 @@ stories and artifacts presented here as well as research and submit their own st
 					<Button variant="contained" color="primary">
         				Explore the Gallery
       				</Button>
+					
+					</div>
 				</React.Fragment>
 				
 
