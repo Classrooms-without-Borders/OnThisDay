@@ -1,0 +1,148 @@
+import logo from './logo.svg';
+import './App.css';
+import React, {useState} from "react";
+import {Component} from "react";
+import firebase from 'firebase/app';
+import 'firebase/firestore'
+import { render } from 'react-dom';
+
+//firebase init stuff
+var firebaseConfig = {
+  apiKey: "AIzaSyCO3fRNVd52LRfJtdvd3vTRjBUCtDMkMTs",
+  authDomain: "sample1-7cd2a.firebaseapp.com",
+  databaseURL: "https://sample1-7cd2a-default-rtdb.firebaseio.com",
+  projectId: "sample1-7cd2a",
+  storageBucket: "sample1-7cd2a.appspot.com",
+  messagingSenderId: "601707243582",
+  appId: "1:601707243582:web:9dfe1fb447bed779ad496f",
+  measurementId: "G-T8E3S1F2DS"
+};
+// Initialize Firebase database and stop it from refreshing
+if (!firebase.apps.length){
+  firebase.initializeApp(firebaseConfig);
+}
+
+//let options=["Validate?"];
+let docs = [];
+let options = [];
+let db=firebase.firestore();
+//class function for displaying all output
+class App extends Component{
+
+  //constructor for array holding unverified collection
+  constructor(props) {
+    super(props);
+    this.state={
+      docs: [],
+      checks: [],
+    }
+  }
+  
+  //populate options and create checkbox for eah option so it can be rendered
+
+  
+  
+  
+  
+
+//get ALL the data from the unverified database and put it into docs array
+//also populate options checkbox array with corresponding name
+componentDidMount = () => {
+
+  db.collection("unverified").get().then((snapshot) => (
+    snapshot.forEach((doc) => (
+      
+      this.setState((prevState) => ({
+        docs: [...prevState.docs, {
+          docID: doc.id,
+          name: doc.data().name,
+          description: doc.data().description
+        }],
+      }
+
+      ))
+    ))
+  ))
+
+
+}
+
+//state for checkboxes
+
+
+//makes sure individual checkboxes can be checked and stuff
+handleCheckboxChange = changeEvent => {
+  let boxArray=[...this.state.checks, changeEvent.target.id];
+  if(this.state.checks.includes(changeEvent.target.id)){
+    boxArray = boxArray.filter(check => check !== changeEvent.target.id);
+  }
+ 
+  this.setState({
+    checks: boxArray,
+  });
+
+};
+
+//function to create a named checkbox
+handleFormSubmit = formSubmitEvent => {
+  formSubmitEvent.preventDefault();
+  //array of id strings for delete
+  let stringarr = this.state.checks.map((c)=>
+    db.collection("unverified").doc(String(c))
+  .get()
+  .then(function(doc) {
+    if (doc.exists) {
+      //console.log("Document data:", doc.data());
+      //push doc with same name to verified collection
+      db.collection("verified").doc(String(c)).set(doc.data());
+      //delete document from unverified collection
+      db.collection("unverified").doc(String(c)).delete().then(()=>{
+          console.log("Document successfully deleted!");
+      }).catch((error)=>{
+        console.error("Error removing document: ", error);
+      });
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  })
+  )
+  
+};
+
+
+//render the data grabbed from database
+render() {
+  //console.log(this.state.checks);
+  let displayDocs = this.state.docs.map((d) =>(     
+    <div key={d.docID}>
+      <h1>{d.docID}</h1>
+      <p>{d.description}</p>
+      <div>
+      <label>
+      Validate {d.name}?
+      <input
+                id={d.docID}
+                type="checkbox"
+                onChange={this.handleCheckboxChange}
+      />
+      </label>
+      </div>
+    </div>
+  ))
+
+  //create array of checkboxes
+  //if checked, match index with corresponding doc index and delete accordingly
+  
+  return(
+    <p>
+      {displayDocs}
+      <button onClick={this.handleFormSubmit.bind(this)}>Submit</button>
+    </p> 
+    
+  );
+}
+
+}
+
+export default AdminPortal;
