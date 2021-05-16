@@ -1,5 +1,2 @@
-import firebase from './Firestore';
-
-export {
-  firebase
-};
+export { default as firebase } from './Firestore';
+export * from './Submissions';

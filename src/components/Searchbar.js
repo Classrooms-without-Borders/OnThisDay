@@ -4,7 +4,7 @@ import constants from '../styling/Constants';
 import { TextInput, DateInput } from '../components/Input';
 import { StyledButton } from '../components/Button';
 
-function Searchbar({ open=true }) {
+export function Searchbar({ open=true }) {
     const advancedOpen = useState(false);
 
     const useStyles = makeStyles({
@@ -63,5 +63,3 @@ function Searchbar({ open=true }) {
         </div>
     );
 }
-
-export default Searchbar;

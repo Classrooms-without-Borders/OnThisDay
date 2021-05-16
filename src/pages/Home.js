@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import '../styling/Home.css';
 import { constants } from '../styling/Constants';
-
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import { StyledButton } from '../components/Button';
-import BigCard from '../components/BigCard';
-import SmallCard from '../components/SmallCard';
-import Grid from '@material-ui/core/Grid';
-import { Container } from '@material-ui/core';
-import Box from '@material-ui/core/Box';
+import {
+    Header,
+    Footer,
+    StyledButton,
+    BigCard,
+    SmallCard,
+} from '../components';
+import { 
+    Grid, 
+    Container,
+    Box,
+} from '@material-ui/core';
 
 function Home() {
     const style = {

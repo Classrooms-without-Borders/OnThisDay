@@ -1,16 +1,12 @@
 import React from 'react';
-import timelineYears from  './timelineYears.js';
-import TimelineItem from './TimelineItem.js';
+import { getTimelineYears } from  '../util';
+import { TimelineItem } from './TimelineItem.js';
 import '../styling/Timeline.css'
 
-
-
-const Timeline = () => timelineYears.length > 0 && (
+export const Timeline = () => timelineYears.length > 0 && (
     <div className="timeline-container">
-        {timelineYears.map((data, idx) => (
-            <TimelineItem data = {data} key={idx} />
+        {timelineYears.forEach((yr) => (
+            <TimelineItem data='year' key={yr} />
         ))}
     </div>
 );
-
-export default Timeline;

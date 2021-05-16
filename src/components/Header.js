@@ -4,9 +4,9 @@ import constants from '../styling/Constants';
 import { Navbar,  NavItem } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
-import Searchbar from './Searchbar';
+import { Searchbar } from './Searchbar';
 
-function Header({ active }) {
+export function Header({ active }) {
     // keep search permanently open on home page
     const [showSearchIcon, setShowSearchIcon] = useState(
         active === 'Home' ? false : true
@@ -121,5 +121,3 @@ function Header({ active }) {
         </React.Fragment>
     );
 }
-
-export default Header;

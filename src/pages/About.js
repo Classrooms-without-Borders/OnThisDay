@@ -1,33 +1,16 @@
 import React from "react";
 import '../styling/About.css'
-import map from '../images/aboout-stock-image.png';
-import BigCard from '../components/BigCard';
 import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import SearchBar from '../components/Searchbar';
+import { Searchbar } from '../components';
 import { Container, Row, Col } from 'reactstrap';
 import pic from '../images/cwb-logo-reverse-w-tagline 1.png';
 
-//import { makeStyles } from '@material-ui/core/styles';
-
-
-  
-
 class About extends React.Component {
-    /*
-    constructor () {
-  		super();
-     }
-     */
-	 //classes = useStyles();
-	 
 	render() {
 		return (
-			
-				<React.Fragment>
-			
-				<SearchBar/>
+			<React.Fragment>
+				<Searchbar/>
 				<div className="body">
 				<Typography variant="h1" component="h2" className="title">
 						On this Day in History
@@ -97,40 +80,43 @@ stories and artifacts presented here as well as research and submit their own st
 					</Typography>
 					</Col>
 					<Col sm="1" md="4" lg="4">
-					<Typography variant="h1" component="h2" >
-					Contact
-      				</Typography>
+						<Typography variant="h1" component="h2">
+							Contact
+						</Typography>
 
-					<Typography variant="subtitle1" gutterBottom>
-					Educators, interested in learning more about how to bring on this day to your classroom? Contact CWB's <a href="ellen@classroomswithoutborders.org">Educational Programs and Outreach Manager</a>
-					</Typography>
+						<Typography variant="subtitle1" gutterBottom>
+							Educators, interested in learning more about how to bring on this day to your classroom? Contact CWB's 
+							<a href="ellen@classroomswithoutborders.org">
+								Educational Programs and Outreach Manager
+							</a>
+						</Typography>
 
-					<form class="contact-us-form">
-						<label>
-							Name:
-							<input type="text" name="name" />
-						</label>
+						<form class="contact-us-form">
+							<label>
+								Name:
+								<input type="text" name="name" />
+							</label>
+							<br></br>
+							<label>
+								Email:
+								<input type="text" name="name" />
+							</label>
+							<br></br>
+							<label>
+								School:
+								<input type="text" name="name" />
+							</label>
+							<br></br>
+							<label>
+								Message:
+								<textarea name="Text1" cols="20" rows="5"></textarea>
+							</label>
+							<input type="submit" value="Send Message" />
+						</form>
+						
 						<br></br>
-						<label>
-							Email:
-							<input type="text" name="name" />
-						</label>
 						<br></br>
-						<label>
-							School:
-							<input type="text" name="name" />
-						</label>
 						<br></br>
-						<label>
-							Message:
-							<textarea name="Text1" cols="20" rows="5"></textarea>
-						</label>
-						<input type="submit" value="Send Message" />
-					</form>
-					
-					<br></br>
-					<br></br>
-					<br></br>
 					</Col>
 					</Row>
 					</Container>
@@ -142,18 +128,10 @@ stories and artifacts presented here as well as research and submit their own st
         				Explore the Gallery
       				</Button>
 					
-					</div>
-				</React.Fragment>
-				
-
-
-					
-				
-			);
+				</div>
+			</React.Fragment>
+		);
 	}
 }
 
-
 export default About;
-
-
