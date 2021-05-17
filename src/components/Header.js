@@ -111,6 +111,9 @@ export function Header({ active }) {
                         <NavItem>
                             <NavLink to='/about' style={navlinkStyle('About')}>About</NavLink>
                         </NavItem>
+                        <NavItem>
+                            <NavLink to='/login' style={navlinkStyle('About')}>Login</NavLink>
+                        </NavItem>
                         <NavItem id='search-icon' onClick={onClickSearchIcon}>
                             <SearchIcon fontSize="medium" />
                         </NavItem>

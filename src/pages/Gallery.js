@@ -25,7 +25,7 @@ function Gallery(props) {
   
     return (
         
-         
+  
            
       <Timeline/>
  
