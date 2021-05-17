@@ -1,40 +1,48 @@
 import React from 'react';
-//import { DateFnsUtils } from 'date-fns';
-import { constants } from '../styling/Constants.js';
-
+import { makeStyles } from '@material-ui/core/styles';
+import DateFnsUtils from '@date-io/date-fns';
+import constants from '../styling/Constants';
 import { TextField } from '@material-ui/core';
 import { 
-    DatePicker, 
+    KeyboardDatePicker, 
     MuiPickersUtilsProvider 
 } from '@material-ui/pickers';
 
 export function TextInput({ label, children }) {
-    const style = {
-        'font-family': constants.fontFamily.body,
-        'background': constants.color.light,
-        'border-radius': '5px',
-        'height': 'fit-content',
-        // todo
-    }
+    const useStyles = makeStyles({
+        root: {
+            fontFamily: constants.fontFamily.body,
+            background: constants.color.light,
+            borderRadius: '5px',
+            height: 'fit-content'
+        }
+    });
 
     return (
         <TextField 
-            variant='outlined' 
+            variant='outlined'
             label={label} 
-            style={style}
-            inputProps={{style: style}}
+            className={useStyles().root}
         >
             {children}
         </TextField>
     )
 }
 
-//export function DateInput({ children }) {
-//    return (
-//        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-//            <DatePicker variant='outlined' format='MM/dd/yyyy'>
-//                {children}
-//            </DatePicker>
-//        </MuiPickersUtilsProvider>
-//    );
-//}
+export function DateInput() {
+    const [selectedDate, setSelectedDate] = React.useState();
+
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+    }
+
+    return (
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardDatePicker 
+                variant='inline' 
+                format='MM/dd/yyyy'
+                onChange={handleDateChange}
+            />
+        </MuiPickersUtilsProvider>
+    );
+}

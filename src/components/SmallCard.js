@@ -1,36 +1,14 @@
 import React from 'react';
-import { useState } from 'react';
-
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import stockPhoto from '../images/home-stock-image.png';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import { CardHeader } from '@material-ui/core';
-import '../styling/SmallCard.css'
-import About from '../pages/About';
-import Button from '@material-ui/core/Button';
-
-
-
-
-
-// routers
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
- // Redirect
-} from "react-router-dom";
-
-
+  Card,
+  CardContent,
+  CardMedia,
+  Button,
+} from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import '../styling/SmallCard.css'
+import stockPhoto from '../images/home-stock-image.png';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,19 +42,15 @@ var cardStyle = {
   top: '761px',
   margin: 'auto',
   spacing: 8,
-  
 }
 
-export default function SmallCard({submission}) {
+export function SmallCard({submission}) {
   const classes = useStyles();
   return (
     <div>
-
       { /*{submission.title}*/ }
       <Button component={Link} to="/details" color="primary">
-
         <Card p={1} style={cardStyle}>
-        
               <CardMedia
                     component="img"
                     alt="Contemplative Reptile"
@@ -85,15 +59,11 @@ export default function SmallCard({submission}) {
                     title="Contemplative Reptile"
                   />
                   <CardContent>
-
                   <h3 className="location"> London, England</h3>
-
                   <h3 className="date"> 3 Apr 1944</h3>
                 </CardContent>
         </Card>
       </Button>
-
     </div>
-    
   );
 }

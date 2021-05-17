@@ -2,6 +2,17 @@
     color: #F1592A
 }
 
+.contact-us-form{
+  max-width: 500px;
+}
+
+.body {
+  color:white;
+}
+.title {
+  color: white;
+  font-family: Montserrat;
+}
 .txt-design{
     position: absolute;
     width: 594px;
@@ -12,6 +23,7 @@
     /* Heading 1 */
 
     font-family: Montserrat;
+    
     font-style: normal;
     font-weight: 800;
     font-size: 54px;

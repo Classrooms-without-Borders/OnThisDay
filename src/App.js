@@ -1,22 +1,21 @@
 import React from 'react';
 import './App.css';
-import { constants } from './styling/Constants';
-
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import About from './pages/About';
-import Gallery from './pages/Gallery';
-import Details from './pages/Details';
-import Submit from './pages/Submit';
-import Login from './pages/Login';
+import constants from './styling/Constants';
+import { Header, Footer } from './components';
+import {
+  Home,
+  About,
+  Gallery,
+  Details,
+  Submit,
+  Login,
+} from './pages';
 
 // routers
 import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
    // Redirect
 } from "react-router-dom";
 

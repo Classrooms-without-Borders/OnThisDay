@@ -1,6 +1,6 @@
 import React from 'react';
-import { constants } from '../styling/Constants';
-
+import { makeStyles } from '@material-ui/core/styles';
+import constants from '../styling/Constants';
 import { Button } from '@material-ui/core';
 
 export function StyledButton({
@@ -10,20 +10,21 @@ export function StyledButton({
     active=true,
     onClick=null
 }) {
-    const style = {
-        'background-color': color,
-        'opacity': active ? '100%' : '40%',
-        'color': constants.color.light,
-        'font-family': constants.fontFamily.body,
-        'text-transform': 'none',
-        'font-size':  callToAction ? constants.fontSize.s
-            : constants.fontSize.xs
-    }
+    const useStyles = makeStyles({
+        root: {
+            backgroundColor: color,
+            opacity: active ? '100%' : '40%',
+            color: constants.color.light,
+            fontFamily: constants.fontFamily.body,
+            textTransform: 'none',
+            fontSize: callToAction ? constants.fontSize.s : constants.fontSize.xs
+        },
+    });
 
     return (
         <Button 
             variant='contained' disableElevation 
-            style={style} onclick={onClick}
+            className={useStyles().root} onclick={onClick}
         >
             {children}
         </Button>

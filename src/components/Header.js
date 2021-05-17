@@ -1,102 +1,126 @@
-import React, {Component} from 'react';
-import { Navbar,  Nav, Collapse, NavItem } from 'reactstrap';
-import {NavLink} from 'react-router-dom';
-import '../styling/Header.css';
+import React, { useEffect, useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import constants from '../styling/Constants';
+import { Navbar,  NavItem } from 'reactstrap';
+import { NavLink } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
+import { Searchbar } from './Searchbar';
 
-class Header extends Component{
+export function Header({ active }) {
+    // keep search permanently open on home page
+    const [showSearchIcon, setShowSearchIcon] = useState(
+        active === 'Home' ? false : true
+    );
+    const [searchOpen, setSearchOpen] = useState(
+        active === 'Home' ? true : false
+    );
 
-    constructor(props){
-        super(props);
-        this.state = {
-            isNavOpen: false,
-            isModalOpen: false
-        };
- 
-    }
+    const useStyles = makeStyles({
+        root: {
+            backgroundColor: constants.color.dark,
+            boxShadow: constants.boxShadow,
+            zIndex: 99,
+            width: '100%',
+            position: 'fixed',
+            '& > div': {
+                justifyContent: 'space-between',
+                display: 'flex',
+                alignItems: 'center',
+                '& a': {
+                    margin: '0 0 0 18px',
+                },
+            },
+            '& .flexbox-container': {
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+            },
+            '& li': {
+                listStyleType: 'none',
+                '& a': {
+                    textDecoration: 'none',
+                    fontFamily: constants.fontFamily.header,
+                    fontWeight: 'bold',
+                    textTransform: 'uppercase',
+                    fontSize: constants.fontSize.s,
+                    color: constants.color.light,
+                }
+            },
+            '& #search-icon': {
+                color: constants.color.light,
+                opacity: searchOpen ? '100%' : '50%',
+                backgroundColor: searchOpen 
+                    ? constants.color.accentPrimary 
+                    : constants.color.dark,
+                padding: '12px 18px',
+                margin: '0 0 0 6px',
+                cursor: 'pointer',
+            },
+        },
+    });
 
-    toggleNav(){
-        this.setState({
-            isNavOpen: !this.state.isNavOpen
-        });
-    }
-
-    toggleModal(){
-        this.setState({
-            isModalOpen: !this.state.isModalOpen,
-        });
-    }
-
-    handleClick() {
-        console.log("Search icon works"); //logs Observer class instance
-      }
-
-
-    render(){
-
-        const styleSheet = {
-            color: "white"
-           
+    const navlinkStyle = (linkName) => {
+        return {
+            color: constants.color.light,
+            opacity: linkName === active ? '100%' : '50%',
+            fontFamily: constants.fontFamily.body,
+            fontWeight: 'normal',
+            textTransform: 'capitalize',
+            margin: '0 12px',
         }
+    }
 
-        const active={
-            color:'#FFFFFF', 
-            borderBottom: '1px solid #66FCF1', 
-            paddingBottom: '4px', 
-            font: 'Roboto',
-            background:'red',
-    
+    let searchbarStyle = {
+        display: searchOpen ? 'inherit' : 'none'
+    }
+
+    // show or hide searchbars
+    const onClickSearchIcon = () => {
+        if (searchOpen) {
+            setSearchOpen(false);
+        } else {
+            setSearchOpen(true);
         }
+    };
 
-        return (
-            
+    useEffect(() => {
+        if (searchOpen) {
+            searchbarStyle.display = 'inherit'
+        } else {
+            searchbarStyle.display = 'none'
+        }
+    }, [searchOpen]);
 
-            <Navbar className="color">
-                <div className="container">
-
-            
-             
-
-                    <div class="flexbox-container">
-                        <div>
-                            <NavItem>
-                                <NavLink className="Nav-link" to='/home' activeClassName='active' activeStyle={active} style={styleSheet}> Home</NavLink>
-                            </NavItem>
-                        </div>
-
-                        <div>
-                            <NavItem>
-                                <NavLink className="Nav-link" to='/gallery' activeClassName='active' activeStyle={active} style={styleSheet}>Gallery</NavLink>
-                            </NavItem>
-                        </div>
-                        <div>
-                            <NavItem>
-                                <NavLink className="Nav-link" to='/submit' activeClassName='active' activeStyle={active} style={styleSheet}>Submit</NavLink>
-                            </NavItem>
-                        </div>
-                        <div>
-                            <NavItem>
-                                <NavLink className="Nav-link"  to='/about' activeClassName='active' activeStyle={active} style={styleSheet}> About</NavLink>
-                            </NavItem>
-                        </div>
-
-                        <div class="right-align">
-                            <SearchIcon color="secondary" fontSize="large" onClick={this.handleClick} />
-                        </div>
-                        <div>
-                            <NavItem>
-                                <NavLink className="Nav-link"  to='/login' activeClassName='active' activeStyle={active} style={styleSheet}> Log In </NavLink>
-                            </NavItem>
-                        </div>
-                           
-                    </div>   
-                    
-           
+    return (
+        <React.Fragment>
+            <Navbar className={useStyles().root}>
+                <div>
+                    <NavItem>
+                        <NavLink exact to='/'>On This Day in History</NavLink>
+                    </NavItem>
+                    <div className="flexbox-container">
+                        <NavItem>
+                            <NavLink exact to='/' style={navlinkStyle('Home')}>Home</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink to='/gallery' style={navlinkStyle('Gallery')}>Gallery</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink to='/submit' style={navlinkStyle('Submit')}>Submit</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink to='/about' style={navlinkStyle('About')}>About</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink to='/login' style={navlinkStyle('About')}>Login</NavLink>
+                        </NavItem>
+                        <NavItem id='search-icon' onClick={onClickSearchIcon}>
+                            <SearchIcon fontSize="medium" />
+                        </NavItem>
+                    </div>
                 </div>
             </Navbar>
-            
-        );
-    }
+            <Searchbar open={searchOpen} />
+        </React.Fragment>
+    );
 }
-
-export default Header;
