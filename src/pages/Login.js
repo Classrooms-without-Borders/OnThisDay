@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef} from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -12,6 +12,38 @@ import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+
+import {useAuth} from '../utils/AuthContext';
+
+function SignUp() {
+  const classes = useStyles();
+
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
+  const {signup} = useAuth();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError('Passwords do not match')
+    }
+
+    try {
+      setError('');
+      setLoading(true)
+      await signup(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      setError('Failed to create an account');
+    }
+
+    setLoading(false);
+
+  }
+
+
+}
 
 
 
@@ -49,6 +81,10 @@ const useStyles = makeStyles((theme) => ({
 export default function Login({ loggedIn, logout, login }) {
   const classes = useStyles();
 
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
+
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -72,6 +108,7 @@ export default function Login({ loggedIn, logout, login }) {
             </Typography>
             <form className={classes.form} noValidate>
               <TextField
+                ref={emailRef}
                 variant="outlined"
                 margin="normal"
                 required
