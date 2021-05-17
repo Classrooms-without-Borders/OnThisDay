@@ -3,6 +3,9 @@ import { Card, Button, Alert } from "react-bootstrap"
 import { useAuth } from "../util/AuthContext"  //import to help us get the current user
 import { Link, useHistory } from "react-router-dom"
 
+//this is the page where the client interface will be and where submissions
+//will be verified
+
 export default function Dashboard() {
   const [error, setError] = useState("")
   const { currentUser, logout } = useAuth()
