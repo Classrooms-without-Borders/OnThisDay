@@ -56,7 +56,12 @@ componentDidMount = () => {
         docs: [...prevState.docs, {
           docID: doc.id,
           name: doc.data().name,
-          description: doc.data().description
+          description: doc.data().description,
+          date: doc.data().title,
+          country: doc.data().countryName,
+          city: doc.data().cityName,
+          sourcename: doc.data().sources,
+          link: doc.data().url
         }],
       }
 
@@ -113,11 +118,16 @@ handleFormSubmit = formSubmitEvent => {
 
 //render the data grabbed from database
 render() {
-  //console.log(this.state.checks);
-  let displayDocs = this.state.docs.map((d) =>(     
+  let displayDocs = this.state.docs.map((d) =>(  
     <div key={d.docID}>
-      <h1>{d.docID}</h1>
-      <p>{d.description}</p>
+      <h1>Submission ID: {d.docID}</h1>
+      <p><strong>Name of Person: </strong> {d.name}</p>
+      <p><strong>Date: </strong> {d.date}</p>
+      <p><strong>City: </strong> {d.city}</p>
+      <p><strong>Country: </strong> {d.country}</p>
+      <p><strong>Name of Source: </strong> {d.sourcename}</p>
+      <p><strong>Source link: </strong> {d.link}</p>
+      <p><strong>Event Description:</strong> {d.description}</p>
       <div>
       <label>
       Validate {d.name}?
@@ -137,6 +147,8 @@ render() {
   return(
     <p>
       {displayDocs}
+      <br />
+      <br />
       <button onClick={this.handleFormSubmit.bind(this)}>Submit</button>
     </p> 
     
