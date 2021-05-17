@@ -20,7 +20,7 @@ export function TextInput({ label, children }) {
 
     return (
         <TextField 
-            variant='outlined' 
+            variant='outlined'
             label={label} 
             className={useStyles().root}
         >
@@ -39,7 +39,7 @@ export function DateInput() {
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardDatePicker 
-                variant='outlined' 
+                variant='inline' 
                 format='MM/dd/yyyy'
                 onChange={handleDateChange}
             />

@@ -4,6 +4,21 @@ import constants from '../styling/Constants';
 import { TextInput, DateInput } from '../components/Input';
 import { StyledButton } from '../components/Button';
 
+function AdvancedSearch({ open=false }) {
+    const useStyles = makeStyles({
+        root: {
+            zIndex: 97,
+            display: open ? 'inherit' : 'none',
+            fontFamily: constants.fontFamily.body,
+            fontSize: constants.fontSize.s,
+            height: 'fit-content',
+            backgroundColor: constants.color.lightGray,
+            color: constants.color.dark,
+            boxShadow: constants.boxShadow,
+        }
+    });
+}
+
 export function Searchbar({ open=true }) {
     const advancedOpen = useState(false);
 
@@ -51,7 +66,7 @@ export function Searchbar({ open=true }) {
                 <p>What happened in</p>
                 <TextInput label='City, Country' />
                 <p>on</p>
-                <TextInput label='Date' />
+                <DateInput label='Date' />
                 <p>?</p>
                 <div class='searchbar-btn-div'>
                     <StyledButton color={constants.color.dark}>
