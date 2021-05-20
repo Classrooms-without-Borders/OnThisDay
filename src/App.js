@@ -1,7 +1,12 @@
 import React from 'react';
 import './App.css';
 import constants from './styling/Constants';
-import { Header, Footer } from './components';
+import { Header, Footer} from './components';
+import Signup from './pages/Signup';
+import Dashboard from './pages/Dashboard';
+import ForgotPassword from './pages/ForgotPassword';
+import PrivateRoute from './components/PrivateRoute';
+import UpdateProfile from './pages/UpdateProfile';
 import {
   Home,
   About,
@@ -9,6 +14,7 @@ import {
   Details,
   Submit,
   Login,
+
 } from './pages';
 
 // routers
@@ -31,7 +37,11 @@ function App() {
                       <Route exact path="/gallery" component={Gallery} />
                       <Route exact path="/details" component={Details} />
                       <Route exact path="/submit" component={Submit} />
+                      <Route exact path="/signup" component={Signup} />
                       <Route exact path="/login" component={Login} />
+                      <Route exact path="/forgot-password" component={ForgotPassword} />
+                      <PrivateRoute path="/dashboard" component={Dashboard} />
+                      <PrivateRoute path="/update-profile" component={UpdateProfile} />
                   </Switch>
                   <Footer />
               </Router>
