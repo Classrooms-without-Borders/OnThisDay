@@ -1,4 +1,5 @@
 import firebase from "firebase";
+import "firebase/auth";
 const config = {
         apiKey: "AIzaSyDQo6NTf4fsIjvqbbhISSAx_X6Svtx2LFw",
         authDomain: "onthisdaycwb.firebaseapp.com",
@@ -9,6 +10,6 @@ const config = {
         measurementId: "G-C4MWCCVMS2"
 };
 
-firebase.initializeApp(config);
+//firebase.initializeApp(config);
 
 export default firebase;
