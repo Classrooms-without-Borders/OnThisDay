@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-//import { Place, GoogleMap, Parameters, OptionMenu, SimulationTimeseries, PersistentDrawerLeft } from '../components';
 import '../styling/Submit.css'
-import Button from '@material-ui/core/Button';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
+import { 
+    Button, 
+    Accordion, 
+    AccordionSummary,
+    Grid,
+} from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import {withStyles} from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
+import { Header } from '../components';
 //import Fab from '@material-ui/core/Fab';
 //import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
@@ -41,11 +43,12 @@ class Submit extends Component {
         // no timeseries: replace with simulation timeseries
         return (
             <div className='GreenBackground'>
+                <Header active='Submit' />
                 <h2>Welcome to submit page</h2>
-                 <Grid container spacing={3}>
-                 <Grid item xs={6}>
-            <div>
-                        <div className='GreenBackground'>
+                <Grid container spacing={3}>
+                <Grid item xs={6}>
+                <div>
+                    <div className='GreenBackground'>
                             <h3>Submit an Entry</h3>
                             <ColoredAccordion>
                               <AccordionSummary
@@ -91,10 +94,8 @@ class Submit extends Component {
                     
                 </Grid>
                 </Grid>
-
-<div className='fab'>
-         
-            </div>
+                <div className='fab'>
+                </div>
             </div>
         );
     }

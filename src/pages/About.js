@@ -1,16 +1,15 @@
 import React from "react";
 import '../styling/About.css'
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import { Searchbar } from '../components';
+import { Button, Typography } from '@material-ui/core';
 import { Container, Row, Col } from 'reactstrap';
 import pic from '../images/cwb-logo-reverse-w-tagline 1.png';
+import { Header } from '../components';
 
 class About extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Searchbar/>
+				<Header active='About' />
 				<div className="body">
 				<Typography variant="h1" component="h2" className="title">
 						On this Day in History

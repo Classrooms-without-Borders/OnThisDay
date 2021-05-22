@@ -2,14 +2,13 @@
 import React from "react";
 import '../styling/About.css'
 import { Button, Typography } from '@material-ui/core';
-import { BigCard, Searchbar } from '../components';
+import { BigCard } from '../components';
 
 class CardInfo extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
 				<h2>Welcome to about page</h2>
-				<Searchbar/>
 				<BigCard/>
 				<Typography variant="h1" component="h2">
 					On this Day in History

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import constants from './styling/Constants';
-import { Header, Footer } from './components';
+import { Footer } from './components';
 import {
   Home,
   About,
@@ -23,7 +23,6 @@ function App() {
   return (
           <div className={"App"} style={{"background-color": constants.color.dark}} >
               <Router>
-                  <Header />
                   <Switch>
                       <Route exact path="/" component={Home} /> 
                       <Route exact path="/home" component={Home} />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Timeline } from '../components';
+import { Timeline, Header } from '../components';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -24,11 +24,10 @@ function Gallery(props) {
     };
   
     return (
-        
-         
-           
-      <Timeline/>
- 
+      <React.Fragment>
+        <Header active='Gallery' />
+        <Timeline/>
+      </React.Fragment>
     );
   }
 
