@@ -56,6 +56,9 @@ export default App;
 
 
 /*
+
+code with how we communicate frontend with backend
+
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
