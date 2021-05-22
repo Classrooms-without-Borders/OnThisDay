@@ -29,22 +29,18 @@ function Home() {
 
             {/* item xs, md changes width length of paper */}
             <Container>
-                <Grid container>
+                <Grid container style={{overflow: 'hidden'}}>
                     <Box m={2} pt={3}>
-
-                        <Grid item xs={12}>
-
+                        <Grid item xs={8}>
                             <BigCard></BigCard>
-
                         </Grid>
                     </Box>
-
                 </Grid>
             </Container>
             <br></br>
             {/* want to make a three row card :( */}
                 <Container>
-                        <Grid container>
+                        <Grid container style={{overflow: 'hidden'}}>
                         <div class="flexbox-container">
                                 <Box m={2} pt={3}>
                                     <Grid  p={2} item md={4}>
