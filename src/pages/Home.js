@@ -1,11 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styling/Home.css';
-import { constants } from '../styling/Constants';
-import {getAllSubmissions} from '../util/AllSubmissions';
 import {
     Header,
-    Footer,
-    StyledButton,
     BigCard,
     SmallCard,
 } from '../components';
@@ -16,17 +12,8 @@ import {
 } from '@material-ui/core';
 
 function Home() {
-    const style = {
-        'text-align': 'center'
-    }
-    const smallDivStyle = {
-        'display': 'flex',
-        'margin': '12px'
-    }
-
-    console.log(getAllSubmissions());
     return (
-        <div style={style}>
+        <div> 
             <Header active='Home'/>
 
             {/* item xs, md changes width length of paper */}
@@ -47,7 +34,7 @@ function Home() {
             {/* want to make a three row card :( */}
                 <Container>
                         <Grid container>
-                        <div class="flexbox-container">
+                        <div className="flexbox-container">
                                 <Box m={2} pt={3}>
                                     <Grid  p={2} item md={4}>
                                         <SmallCard p={2} ></SmallCard>
@@ -72,6 +59,5 @@ function Home() {
         </div>
     )
 }
-
 
 export default Home;

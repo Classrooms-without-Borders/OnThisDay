@@ -1,8 +1,7 @@
-// import React from 'react';
-import React, { useEffect, useState } from "react";
-import {storage} from '../util/Firestore';
+import React, { useState } from "react";
+import { storage } from "../util";
 
-function ImageUpload() {
+export function ImageUpload() {
   const [files, setFiles] = useState([])
   
   const onFileChange = e => {
@@ -52,5 +51,3 @@ function ImageUpload() {
     );
   
 }
-
-export default ImageUpload;

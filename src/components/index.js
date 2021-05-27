@@ -3,7 +3,7 @@ export * from './Button';
 export * from './Footer';
 export * from './Header';
 export * from './Input';
-export * from './Searchbar';
 export * from './SmallCard';
 export * from './Source';
 export * from './Timeline';
+export * from './ImageUpload';

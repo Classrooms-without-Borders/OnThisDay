@@ -3,26 +3,16 @@ Represents an individual student submission, similar to the submission collectio
 */
 
 class StudentSubmission {
-    
-    eventTitle="";
-    //assuming date object
-    eventDate = new Date();
-    eventDescrip="";
-    //image will be array of Strings?
-    image=[];
-    //source will be array of Strings?
-    source = [];
-    studentName="";
-    //assuming date object
-    submitDate = new Date();
-    className="";
-
-    constructor(eventTitle, eventDate, eventDescrip, image, source, studentName, submitDate, className) {
-        this.eventTitle = eventTitle;
+    constructor(
+        subjectName, location, eventDate, description,
+        images, sources, studentName, submitDate, className
+    ) {
+        this.subjectName = subjectName;
+        this.location = location;
         this.eventDate = eventDate;
-        this.eventDescrip = eventDescrip;
-        this.image = image;
-        this.source = source;
+        this.description = description;
+        this.images = images; // list of reference strings
+        this.sources = sources; // map of (title, URL) pairs
         this.studentName = studentName;
         this.submitDate = submitDate;
         this.className = className;
@@ -64,8 +54,17 @@ class StudentSubmission {
         this._source = value;
     }
 
-    get studentName() {
-        return `${this.studentName}`;
+    get school() {
+        // TODO: get school info (JSON) from Firestore
+        return this.schoolRef;
+    }
+    // set school(value) {
+    //     // TODO: get school info (JSON) from Firestore
+    //     this.schoolRef = value;
+    // }
+
+    get studentName(){
+        return this.studentName;
     }
     set studentName(value) {
         this._studentName = value;
@@ -88,4 +87,5 @@ class StudentSubmission {
 
 
 }
+
 export default StudentSubmission;

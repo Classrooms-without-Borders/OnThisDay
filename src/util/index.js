@@ -1,2 +1,6 @@
-export { default as firebase } from './Firestore';
-export * from './Submissions';
+export { default as firebase } from './Firebase';
+export * from './Firebase';
+export * from './AuthContext';
+export { default as StudentSubmission } from './StudentSubmission';
+export { default as getAllSubmissions } from './getAllSubmissions';
+export { default as getTimelineYears } from './getTimelineYears';

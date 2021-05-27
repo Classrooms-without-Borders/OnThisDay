@@ -8,9 +8,6 @@ import { Searchbar } from './Searchbar';
 
 export function Header({ active }) {
     // keep search permanently open on home page
-    const [showSearchIcon, setShowSearchIcon] = useState(
-        active === 'Home' ? false : true
-    );
     const [searchOpen, setSearchOpen] = useState(
         active === 'Home' ? true : false
     );
@@ -115,7 +112,7 @@ export function Header({ active }) {
                             <NavLink to='/signup' style={navlinkStyle('About')}>Signup</NavLink>
                         </NavItem>
                         <NavItem id='search-icon' onClick={onClickSearchIcon}>
-                            <SearchIcon fontSize="medium" />
+                            <SearchIcon fontSize="large" />
                         </NavItem>
                     </div>
                 </div>

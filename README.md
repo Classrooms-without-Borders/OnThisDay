@@ -12,7 +12,7 @@
 All code goes in the `src` directory. Each subdirectory (except `src/styling`) contains an `index.js` file which exports all components used by other modules outside of that subdirectory. When adding a new file to a subdirectory, ensure that you export it from the appropriate `index.js` file as well.
 
 ## src/util
-Exports all backend-related functionality. This includes includes any functions which read or write from Firestore. In theory, only the code in this directory should have to import Firebase.
+Exports all backend-related functionality. This includes any functions which read or write from Firestore. In theory, only the code in this directory should have to import Firebase.
 
 ## src/components
 Exports modular components used to create the UI.

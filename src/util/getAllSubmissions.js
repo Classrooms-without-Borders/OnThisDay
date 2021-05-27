@@ -3,7 +3,7 @@ import StudentSubmission from "./StudentSubmission";
 
 const db = firebase.firestore();
 
-export function getAllSubmissions(){ 
+function getAllSubmissions(){ 
   let documents = []
   const submissionObjects = [];
   var i = 0;
@@ -22,3 +22,5 @@ export function getAllSubmissions(){
 
   return submissionObjects;
 };
+
+export default getAllSubmissions;
