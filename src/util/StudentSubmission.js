@@ -3,89 +3,36 @@ Represents an individual student submission, similar to the submission collectio
 */
 
 class StudentSubmission {
-    
-    eventTitle="";
-    //assuming date object
-    eventDate = new Date();
-    eventDescrip="";
-    //image will be array of Strings?
-    image=[];
-    //source will be array of Strings?
-    source = [];
-    studentName="";
-    //assuming date object
-    submitDate = new Date();
-    className="";
-
-    constructor(eventTitle, eventDate, eventDescrip, image, source, studentName, submitDate, className) {
-        this.eventTitle = eventTitle;
+    constructor(
+        subjectName, location, eventDate, description,
+        images, sources, studentName, submittedDate, classRef
+    ) {
+        this.subjectName = subjectName;
+        this.location = location;
         this.eventDate = eventDate;
-        this.eventDescrip = eventDescrip;
-        this.image = image;
-        this.source = source;
+        this.description = description;
+        this.images = images; // list of reference strings
+        this.sources = sources; // map of (title, URL) pairs
         this.studentName = studentName;
-        this.submitDate = submitDate;
-        this.className = className;
+        this.submittedDate = submittedDate;
+        this.classRef = classRef;
+        this.schoolRef = ""; // TODO: retrieve school using classRef
     }
 
-    //using template strings `${}` so we can console.log() for debugging 
-    get eventTitle() {
-        return `${this.eventTitle}`;
-    }
-    set eventTitle(value) {
-        this.eventTitle = value;
+    get images() {
+        // TODO: get actual images from Cloud Storage
+        return this.images;
     }
 
-    get eventDate() {
-        return this.eventDate;
-    }
-    set eventDate(value) {
-        this.eventDate = value;
+    get class() {
+        // TODO: get class info (JSON) from Firestore
+        return this.classRef;
     }
 
-    get eventDescrip() {
-        return this.eventDescrip;
+    get school() {
+        // TODO: get school info (JSON) from Firestore
+        return this.schoolRef;
     }
-    set eventDescrip(value) {
-        this.eventDescrip = value;
-    }
-
-    get image() {
-        return this.image;
-    }
-    set image(value) {
-        this.eventDescrip = value;
-    }
-
-    get source() {
-        return this.source;
-    }
-    set source(value) {
-        this.source = value;
-    }
-
-    get studentName() {
-        return `${this.studentName}`;
-    }
-    set studentName(value) {
-        this.studentName = value;
-    }
-
-
-    get submitDate() {
-        return this.submitDate;
-    }
-    set submitDate(value) {
-        this.submitDate = value;
-    }
-
-    get className() {
-        return `${this.className}`;
-    }
-    set className(value) {
-        this.className = value;
-    }
-
-
 }
+
 export default StudentSubmission;

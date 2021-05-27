@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import constants from '../styling/Constants';
-import { TextInput, DateInput } from '../components/Input';
-import { StyledButton } from '../components/Button';
+import { TextInput, DateInput, StyledButton } from '../components';
 
 function AdvancedSearch({ open=false }) {
     const useStyles = makeStyles({
@@ -68,7 +67,7 @@ export function Searchbar({ open=true }) {
                 <p>on</p>
                 <DateInput label='Date' />
                 <p>?</p>
-                <div class='searchbar-btn-div'>
+                <div className='searchbar-btn-div'>
                     <StyledButton color={constants.color.dark}>
                         Search
                     </StyledButton>
