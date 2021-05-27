@@ -1,28 +1,9 @@
 import React, { Component } from 'react';
 //import { Place, GoogleMap, Parameters, OptionMenu, SimulationTimeseries, PersistentDrawerLeft } from '../components';
 import '../styling/Submit.css'
-import Button from '@material-ui/core/Button';
-import Paper from "@material-ui/core/Paper";
-import {withStyles} from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import {firebase} from '../util';
-import ImageUpload from '../components/ImageUpload'
+import { firebase } from '../util';
+import { StyledButton, ImageUpload } from '../components';
 import axios from 'axios';
-
-const styles = theme => ({
-    textField: {
-        width: '90%',
-        marginLeft: 'auto',
-        marginRight: 'auto',            
-        paddingBottom: 0,
-        marginTop: 0,
-        fontWeight: 500
-    },
-    input: {
-        color: 'white'
-    }
-});
 
 class Submit extends Component {
     constructor() {
@@ -134,19 +115,20 @@ class Submit extends Component {
 
                     <div id="sources">
                         <h4>Sources</h4>
-                        <input type="text" class="url" name="sourceLink" placeholder="Source URL" onChange={this.updateInput} value={this.state.sourceLink} />
-                        <input type="text" class="srcName" name="sourceName" placeholder="Source name" onChange={this.updateInput} value={this.state.sourceName} />
+                        <input type="text" className="url" name="sourceLink" placeholder="Source URL" onChange={this.updateInput} value={this.state.sourceLink} />
+                        <input type="text" className="srcName" name="sourceName" placeholder="Source name" onChange={this.updateInput} value={this.state.sourceName} />
                     </div>
 
                     <h4>Photos</h4>
                     {/* <input type="file" name="images" multiple onChange={this.updateInput} value={this.state.images} /> */}
                     <ImageUpload />
                     <br /><br />
-                    <Button variant="contained" type="submit">Submit</Button>
+                    <StyledButton type="submit">Submit</StyledButton>
 
                 </form>
             </div>
         );
     }
 }
+
 export default Submit;

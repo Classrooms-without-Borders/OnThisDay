@@ -3,7 +3,7 @@ import StudentSubmission from "./StudentSubmission";
 
 const db = firebase.firestore();
 
-export function getAllSubmissions(){ 
+function getAllSubmissions(){ 
   let documents = []
   db.collection('submissions').get().then((submissions) => {
     submissions.forEach((doc) => {
@@ -17,3 +17,5 @@ export function getAllSubmissions(){
   console.log(submissionObjects);
   return submissionObjects;
 };
+
+export default getAllSubmissions;
