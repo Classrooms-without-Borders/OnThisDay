@@ -24,10 +24,7 @@ function Gallery(props) {
     };
   
     return (
-      <React.Fragment>
-        <Header active='Gallery' />
-        <Timeline/>
-      </React.Fragment>
+      <Timeline/>
     );
   }
 
