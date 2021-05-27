@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styling/Home.css';
-import { constants } from '../styling/Constants';
 import {
     Header,
-    Footer,
-    StyledButton,
     BigCard,
     SmallCard,
 } from '../components';
@@ -15,16 +12,8 @@ import {
 } from '@material-ui/core';
 
 function Home() {
-    const style = {
-        'text-align': 'center'
-    }
-    const smallDivStyle = {
-        'display': 'flex',
-        'margin': '12px'
-    }
-
     return (
-        <div style={style}>
+        <div> 
             <Header active='Home'/>
 
             {/* item xs, md changes width length of paper */}
@@ -40,8 +29,13 @@ function Home() {
             <br></br>
             {/* want to make a three row card :( */}
                 <Container>
+<<<<<<< HEAD
                         <Grid container style={{overflow: 'hidden'}}>
                         <div class="flexbox-container">
+=======
+                        <Grid container>
+                        <div className="flexbox-container">
+>>>>>>> master
                                 <Box m={2} pt={3}>
                                     <Grid  p={2} item md={4}>
                                         <SmallCard p={2} ></SmallCard>
@@ -66,6 +60,5 @@ function Home() {
         </div>
     )
 }
-
 
 export default Home;

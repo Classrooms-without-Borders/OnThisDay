@@ -42,8 +42,6 @@ var cardStyle = {
 }
 
 export function BigCard() {
-  const classes = useStyles();
-
   return (
     <div>
       <Button component={Link} to="/details" color="primary">

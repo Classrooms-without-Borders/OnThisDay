@@ -26,7 +26,7 @@ import {
 
 function App() {
   return (
-          <div className={"App"} style={{"background-color": constants.color.dark}} >
+          <div className="App" style={{backgroundColor: constants.color.dark}} >
               <Router>
                   <Switch>
                       <Route exact path="/" component={Home} /> 

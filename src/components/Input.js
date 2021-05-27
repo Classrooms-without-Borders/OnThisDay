@@ -96,11 +96,14 @@ export function DateInput() {
                 label='Date'
                 onChange={handleDateChange}
                 value={selectedDate}
+<<<<<<< HEAD
                 className={useStyles().root}
                 size='small'
                 minDate={Date('01-01-1925')}
                 maxDate={Date('12-31-1950')}
                 disableFuture={true}
+=======
+>>>>>>> master
             />
         </MuiPickersUtilsProvider>
     );
