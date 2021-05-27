@@ -29,13 +29,8 @@ function Home() {
             <br></br>
             {/* want to make a three row card :( */}
                 <Container>
-<<<<<<< HEAD
-                        <Grid container style={{overflow: 'hidden'}}>
-                        <div class="flexbox-container">
-=======
                         <Grid container>
                         <div className="flexbox-container">
->>>>>>> master
                                 <Box m={2} pt={3}>
                                     <Grid  p={2} item md={4}>
                                         <SmallCard p={2} ></SmallCard>

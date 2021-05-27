@@ -19,9 +19,11 @@ export function Header({ active }) {
             zIndex: 99,
             width: '100%',
             position: 'fixed',
+            padding: 0,
             '& > div': {
                 justifyContent: 'space-between',
                 display: 'flex',
+                width: '100%',
                 alignItems: 'center',
                 '& a': {
                     margin: '0 0 0 18px',
@@ -112,7 +114,7 @@ export function Header({ active }) {
                             <NavLink to='/signup' style={navlinkStyle('About')}>Signup</NavLink>
                         </NavItem>
                         <NavItem id='search-icon' onClick={onClickSearchIcon}>
-                            <SearchIcon fontSize="large" />
+                            <SearchIcon fontSize='default' />
                         </NavItem>
                     </div>
                 </div>

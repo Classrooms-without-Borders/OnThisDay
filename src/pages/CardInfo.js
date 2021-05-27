@@ -2,11 +2,7 @@
 import React from "react";
 import '../styling/About.css'
 import { Button, Typography } from '@material-ui/core';
-<<<<<<< HEAD
-import { BigCard } from '../components';
-=======
 import { BigCard, Header } from '../components';
->>>>>>> master
 
 class CardInfo extends React.Component {
 	render() {

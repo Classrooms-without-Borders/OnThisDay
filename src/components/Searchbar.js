@@ -129,7 +129,6 @@ export function Searchbar({ open=true }) {
     });
 
     return (
-<<<<<<< HEAD
         <div style={{position: 'relative', textAlign: 'center'}}>
             <div className={useStyles().root} id='basic-search'>
                 <div>
@@ -138,16 +137,6 @@ export function Searchbar({ open=true }) {
                     <p>on</p>
                     <DateInput label='Date' />
                     <p>?</p>
-=======
-        <div className={useStyles().root}>
-            <div>
-                <p>What happened in</p>
-                <TextInput label='City, Country' />
-                <p>on</p>
-                <DateInput label='Date' />
-                <p>?</p>
-                <div className='searchbar-btn-div'>
->>>>>>> master
                     <StyledButton color={constants.color.dark}>
                         Search
                     </StyledButton>
