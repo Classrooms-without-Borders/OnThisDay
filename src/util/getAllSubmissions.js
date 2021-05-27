@@ -16,6 +16,7 @@ function getAllSubmissions(){
   })});
   
   // console.log(db.collection('testClass'));
+  console.log("hello world");
   console.log(documents);
   console.log(submissionObjects);
   console.log(submissionObjects.pop());
