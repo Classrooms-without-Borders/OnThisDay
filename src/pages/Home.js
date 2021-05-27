@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../styling/Home.css';
 import { constants } from '../styling/Constants';
+import {getAllSubmissions} from '../util/AllSubmissions';
 import {
     Header,
     Footer,
@@ -23,6 +24,7 @@ function Home() {
         'margin': '12px'
     }
 
+    console.log(getAllSubmissions());
     return (
         <div style={style}>
             <Header active='Home'/>

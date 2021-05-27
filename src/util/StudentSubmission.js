@@ -88,3 +88,4 @@ class StudentSubmission {
 
 
 }
+export default StudentSubmission;
