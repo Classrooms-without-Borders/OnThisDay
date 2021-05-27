@@ -5,15 +5,20 @@ const db = firebase.firestore();
 
 export function getAllSubmissions(){ 
   let documents = []
+  const submissionObjects = [];
+  var i = 0;
   db.collection('submissions').get().then((submissions) => {
     submissions.forEach((doc) => {
-      documents[doc.id] = doc.data();
+      // documents[doc.id] = doc.data();
+      submissionObjects[i] = new StudentSubmission("title", doc.data().date, doc.data().description, doc.data().images, doc.data().sources, doc.data().studentName, doc.data().submittedDate, "");
+      i+=1;
+
   })});
-  const submissionObjects = [];
+  
+  // console.log(db.collection('testClass'));
   console.log(documents);
-  for (var i = 0; i < documents.length; i++){
-    submissionObjects[i] = new StudentSubmission(documents.eventTitle, documents.eventDate, documents.eventDescrip, documents.image, documents.source, documents.studentName, documents.submitDate, documents.className);
-  }
   console.log(submissionObjects);
+  console.log(submissionObjects.pop());
+
   return submissionObjects;
 };

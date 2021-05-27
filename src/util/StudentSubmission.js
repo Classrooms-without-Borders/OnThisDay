@@ -33,42 +33,42 @@ class StudentSubmission {
         return `${this.eventTitle}`;
     }
     set eventTitle(value) {
-        this.eventTitle = value;
+        this._eventTitle = value;
     }
 
     get eventDate() {
         return this.eventDate;
     }
     set eventDate(value) {
-        this.eventDate = value;
+        this._eventDate = value;
     }
 
     get eventDescrip() {
         return this.eventDescrip;
     }
     set eventDescrip(value) {
-        this.eventDescrip = value;
+        this._eventDescrip = value;
     }
 
     get image() {
         return this.image;
     }
     set image(value) {
-        this.eventDescrip = value;
+        this._eventDescrip = value;
     }
 
     get source() {
         return this.source;
     }
     set source(value) {
-        this.source = value;
+        this._source = value;
     }
 
     get studentName() {
         return `${this.studentName}`;
     }
     set studentName(value) {
-        this.studentName = value;
+        this._studentName = value;
     }
 
 
@@ -76,14 +76,14 @@ class StudentSubmission {
         return this.submitDate;
     }
     set submitDate(value) {
-        this.submitDate = value;
+        this._submitDate = value;
     }
 
     get className() {
         return `${this.className}`;
     }
     set className(value) {
-        this.className = value;
+        this._className = value;
     }
 
 
