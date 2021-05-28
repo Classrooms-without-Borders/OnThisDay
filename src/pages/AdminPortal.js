@@ -4,15 +4,14 @@ import firebase from 'firebase/app';
 import 'firebase/firestore'
 
 //firebase init stuff
-var firebaseConfig = {
-  apiKey: "AIzaSyCO3fRNVd52LRfJtdvd3vTRjBUCtDMkMTs",
-  authDomain: "sample1-7cd2a.firebaseapp.com",
-  databaseURL: "https://sample1-7cd2a-default-rtdb.firebaseio.com",
-  projectId: "sample1-7cd2a",
-  storageBucket: "sample1-7cd2a.appspot.com",
-  messagingSenderId: "601707243582",
-  appId: "1:601707243582:web:9dfe1fb447bed779ad496f",
-  measurementId: "G-T8E3S1F2DS"
+const firebaseConfig = {
+    apiKey: "AIzaSyDQo6NTf4fsIjvqbbhISSAx_X6Svtx2LFw",
+    authDomain: "onthisdaycwb.firebaseapp.com",
+    projectId: "onthisdaycwb",
+    storageBucket: "onthisdaycwb.appspot.com",
+    messagingSenderId: "570389339615",
+    appId: "1:570389339615:web:471b8d5c20067bcb52786a",
+    measurementId: "G-C4MWCCVMS2"
 };
 // Initialize Firebase database and stop it from refreshing
 if (!firebase.apps.length){
