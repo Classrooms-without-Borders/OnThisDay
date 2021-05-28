@@ -19,12 +19,9 @@ if (!firebase.apps.length){
   firebase.initializeApp(firebaseConfig);
 }
 
-//let options=["Validate?"];
-let docs = [];
-let options = [];
 let db=firebase.firestore();
 //class function for displaying all output
-class App extends Component{
+class AdminPortal extends Component{
 
   //constructor for array holding unverified collection
   constructor(props) {
@@ -37,120 +34,112 @@ class App extends Component{
   
   //populate options and create checkbox for eah option so it can be rendered
 
-  
-  
-  
-  
 
-//get ALL the data from the unverified database and put it into docs array
-//also populate options checkbox array with corresponding name
-componentDidMount = () => {
+  //get ALL the data from the unverified database and put it into docs array
+  //also populate options checkbox array with corresponding name
+  componentDidMount = () => {
 
-  db.collection("unverified").get().then((snapshot) => (
-    snapshot.forEach((doc) => (
-      
-      this.setState((prevState) => ({
-        docs: [...prevState.docs, {
-          docID: doc.id,
-          name: doc.data().name,
-          description: doc.data().description,
-          date: doc.data().title,
-          country: doc.data().countryName,
-          city: doc.data().cityName,
-          sourcename: doc.data().sources,
-          link: doc.data().url
-        }],
-      }
+    db.collection("unverified").get().then((snapshot) => (
+      snapshot.forEach((doc) => (
+        
+        this.setState((prevState) => ({
+          docs: [...prevState.docs, {
+            docID: doc.id,
+            name: doc.data().name,
+            description: doc.data().description,
+            date: doc.data().title,
+            country: doc.data().countryName,
+            city: doc.data().cityName,
+            sourcename: doc.data().sources,
+            link: doc.data().url
+          }],
+        }
 
+        ))
       ))
     ))
-  ))
-
-
-}
-
-//state for checkboxes
-
-
-//makes sure individual checkboxes can be checked and stuff
-handleCheckboxChange = changeEvent => {
-  let boxArray=[...this.state.checks, changeEvent.target.id];
-  if(this.state.checks.includes(changeEvent.target.id)){
-    boxArray = boxArray.filter(check => check !== changeEvent.target.id);
   }
- 
-  this.setState({
-    checks: boxArray,
-  });
 
-};
-
-//function to create a named checkbox
-handleFormSubmit = formSubmitEvent => {
-  formSubmitEvent.preventDefault();
-  //array of id strings for delete
-  let stringarr = this.state.checks.map((c)=>
-    db.collection("unverified").doc(String(c))
-  .get()
-  .then(function(doc) {
-    if (doc.exists) {
-      //console.log("Document data:", doc.data());
-      //push doc with same name to verified collection
-      db.collection("verified").doc(String(c)).set(doc.data());
-      //delete document from unverified collection
-      db.collection("unverified").doc(String(c)).delete().then(()=>{
-          console.log("Document successfully deleted!");
-      }).catch((error)=>{
-        console.error("Error removing document: ", error);
-      });
-    } else {
-      // doc.data() will be undefined in this case
-      console.log("No such document!");
+  //state for checkboxes
+  //makes sure individual checkboxes can be checked and stuff
+  handleCheckboxChange = changeEvent => {
+    let boxArray=[...this.state.checks, changeEvent.target.id];
+    if(this.state.checks.includes(changeEvent.target.id)){
+      boxArray = boxArray.filter(check => check !== changeEvent.target.id);
     }
-  })
-  )
   
-};
+    this.setState({
+      checks: boxArray,
+    });
 
+  };
 
-//render the data grabbed from database
-render() {
-  let displayDocs = this.state.docs.map((d) =>(  
-    <div key={d.docID}>
-      <h1>Submission ID: {d.docID}</h1>
-      <p><strong>Name of Person: </strong> {d.name}</p>
-      <p><strong>Date: </strong> {d.date}</p>
-      <p><strong>City: </strong> {d.city}</p>
-      <p><strong>Country: </strong> {d.country}</p>
-      <p><strong>Name of Source: </strong> {d.sourcename}</p>
-      <p><strong>Source link: </strong> {d.link}</p>
-      <p><strong>Event Description:</strong> {d.description}</p>
-      <div>
-      <label>
-      Validate {d.name}?
-      <input
-                id={d.docID}
-                type="checkbox"
-                onChange={this.handleCheckboxChange}
-      />
-      </label>
-      </div>
-    </div>
-  ))
-
-  //create array of checkboxes
-  //if checked, match index with corresponding doc index and delete accordingly
-  
-  return(
-    <p>
-      {displayDocs}
-      <br />
-      <br />
-      <button onClick={this.handleFormSubmit.bind(this)}>Submit</button>
-    </p> 
+  //function to create a named checkbox
+  handleFormSubmit = formSubmitEvent => {
+    formSubmitEvent.preventDefault();
+    //array of id strings for delete
+    let stringarr = this.state.checks.map((c)=>
+      db.collection("unverified").doc(String(c))
+    .get()
+    .then(function(doc) {
+      if (doc.exists) {
+        //console.log("Document data:", doc.data());
+        //push doc with same name to verified collection
+        db.collection("verified").doc(String(c)).set(doc.data());
+        //delete document from unverified collection
+        db.collection("unverified").doc(String(c)).delete().then(()=>{
+            console.log("Document successfully deleted!");
+        }).catch((error)=>{
+          console.error("Error removing document: ", error);
+        });
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    })
+    )
     
-  );
-}
+  };
+
+
+  //render the data grabbed from database
+  render() {
+    let displayDocs = this.state.docs.map((d) =>(  
+      <div key={d.docID}>
+        <h1>Submission ID: {d.docID}</h1>
+        <p><strong>Name of Person: </strong> {d.name}</p>
+        <p><strong>Date: </strong> {d.date}</p>
+        <p><strong>City: </strong> {d.city}</p>
+        <p><strong>Country: </strong> {d.country}</p>
+        <p><strong>Name of Source: </strong> {d.sourcename}</p>
+        <p><strong>Source link: </strong> {d.link}</p>
+        <p><strong>Event Description:</strong> {d.description}</p>
+        <div>
+        <label>
+        Validate {d.name}?
+        <input
+                  id={d.docID}
+                  type="checkbox"
+                  onChange={this.handleCheckboxChange}
+        />
+        </label>
+        </div>
+      </div>
+    ))
+
+    //create array of checkboxes
+    //if checked, match index with corresponding doc index and delete accordingly
+    
+    return(
+      <p>
+        {displayDocs}
+        <br />
+        <br />
+        <button onClick={this.handleFormSubmit.bind(this)}>Submit</button>
+      </p> 
+      
+    );
+  }
 
 }
 
