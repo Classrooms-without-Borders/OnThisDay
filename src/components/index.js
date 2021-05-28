@@ -6,4 +6,3 @@ export * from './Input';
 export * from './SmallCard';
 export * from './Source';
 export * from './Timeline';
-export * from './ImageUpload';
