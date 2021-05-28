@@ -3,6 +3,7 @@ import '../styling/Submit.css'
 import {firebase} from '../util';
 import {storage} from '../util/Firestore';
 import axios from 'axios';
+import { StyledButton, ImageUpload } from '../components';
 
 const styles = theme => ({
    
@@ -223,4 +224,5 @@ class Submit extends Component {
         );
     }
 }
+
 export default Submit;

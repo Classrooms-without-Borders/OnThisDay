@@ -42,6 +42,7 @@ export function DateInput() {
                 variant='inline' 
                 format='MM/dd/yyyy'
                 onChange={handleDateChange}
+                value={selectedDate}
             />
         </MuiPickersUtilsProvider>
     );

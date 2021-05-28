@@ -1,6 +1,6 @@
 import React from 'react';
 import { getTimelineYears } from  '../util';
-import { TimelineItem } from './TimelineItem.js';
+import { TimelineItem } from './TimelineItem';
 import '../styling/Timeline.css'
 
 const timelineYears = getTimelineYears();

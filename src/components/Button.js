@@ -24,7 +24,7 @@ export function StyledButton({
     return (
         <Button 
             variant='contained' disableElevation 
-            className={useStyles().root} onclick={onClick}
+            className={useStyles().root} onClick={onClick}
         >
             {children}
         </Button>

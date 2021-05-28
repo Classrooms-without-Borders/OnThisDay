@@ -4,10 +4,10 @@ import programInfo from '../images/jewish-federation-pitt.png';
 import facebook from '../images/facebook-logo.png';
 import '../styling/Footer.css';
 
-export function Footer(props) {
+export function Footer() {
   return (
     <div className="footer" style={{backgroundColor:'#222629', padding:'-10%'}}>
-      <div class="flexbox-container">
+      <div className="flexbox-container">
         <div><img src={logo} alt="logo" /></div>
         <div><img src={programInfo} alt="logo" /></div>
         <div><p style={{color:'white'}}>Classrooms Without Borders is an independently funded program of the Jewish Federation of Greater Pittsburgh</p></div>
