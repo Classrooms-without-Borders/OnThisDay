@@ -1,10 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import React, {useState} from "react";
 import {Component} from "react";
 import firebase from 'firebase/app';
 import 'firebase/firestore'
-import { render } from 'react-dom';
 
 //firebase init stuff
 var firebaseConfig = {
