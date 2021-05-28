@@ -1,6 +1,5 @@
-import './App.css';
-import React, {useState} from "react";
-import {Component} from "react";
+import './AdminPortal.css';
+import React, {Component} from "react";
 import firebase from 'firebase/app';
 import 'firebase/firestore'
 
