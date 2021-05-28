@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard';
 import ForgotPassword from './pages/ForgotPassword';
 import PrivateRoute from './components/PrivateRoute';
 import UpdateProfile from './pages/UpdateProfile';
+import AdminPortal from './pages/AdminPortal';
 import {
   Home,
   About,
@@ -14,7 +15,6 @@ import {
   Details,
   Submit,
   Login,
-
 } from './pages';
 
 // routers
@@ -42,6 +42,7 @@ function App() {
                       <Route exact path="/forgot-password" component={ForgotPassword} />
                       <PrivateRoute path="/dashboard" component={Dashboard} />
                       <PrivateRoute path="/update-profile" component={UpdateProfile} />
+                      <PrivateRoute path="/admin-portal" component={AdminPortal} />
                   </Switch>
                   <Footer />
               </Router>
