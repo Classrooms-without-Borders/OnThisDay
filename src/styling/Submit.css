@@ -1,9 +1,10 @@
+/* prevents cutoff on small screen sizes */
 html,body {
     width: 100%;
     height: 100%;
     margin: 0px;
     padding: 0px;
-    overflow-x: hidden; 
+    overflow-x: hidden;
 }
 
 #submitHeading {
@@ -22,33 +23,68 @@ html,body {
     margin: 40px auto;
 }
 
-#submitForm input, textarea {
+#submitForm input, #submitForm textarea, #submitForm label {
     border: 1px #C4C4C4 solid;
-    padding: 2px 8px;
+    border-radius: 6px;
+    padding: 5px 10px;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+}
+#submitForm input:focus, #submitForm textarea:focus {
+    border: 1px #F1592A solid;
+    outline: none;
 }
 
-#submitForm h4 {
+#submitForm input[type=submit], #submitForm input[type=button], #submitForm label {
+    border-radius: 6px;
+    border:2px #F1592A solid;
+    text-align: center;
+}
+#submitForm input[type=submit] {
+    background-color: #F1592A;
+    color: white;
+    padding: 8px 35px;
+    margin: auto;
+    display: block;
+}
+#submitForm input[type=button], #submitForm label {
+    background-color: white;
+    color: #F1592A;
+    font-weight: bold;
+}
+
+#submitForm h4, #submitForm h5 {
     font-family: "Montserrat", 'Segoe UI', Tahoma, Verdana, sans-serif;
     font-weight: bold;
 }
 
-#submitForm h4:nth-last-child(-n+2) {
-    margin-top: 20px;
+#files {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+    padding: 0px;
+	overflow: hidden;
+	/* position: absolute; */
+	/* z-index: -1; */
+}
+
+.deleteSrc {
+    border: none;
 }
 
 /* styling the about you section */
 #aboutYou {
-    width: 95%;
+    width: 93%;
     display: grid;
     grid-template-columns: repeat(4, 25%);
-    column-gap: 11px;
-    row-gap: 11px;
+    column-gap: 12px;
+    row-gap: 12px;
     grid-template-areas: 
         "header header header header"
         "first first last last"
         "school school school grade"
         "teacher teacher teacher teacher";
-}
+ }
 #aboutYou h4 {
     grid-area: header;
 }
@@ -70,11 +106,11 @@ html,body {
 
 /* styling the about your entry section */
 #aboutYourEntry {
-    width: 95%;
+    width: 93%;
     display: grid;
     grid-template-columns: repeat(4, 25%);
-    column-gap: 11px;
-    row-gap: 11px;
+    column-gap: 12px;
+    row-gap: 12px;
     grid-template-areas: 
         "header header header header"
         "name name name name"
@@ -102,23 +138,33 @@ textarea {
 
 #sources {
     margin: 20px 0px;
-    width: 95%;
-    display: grid;
-    grid-template-columns: repeat(2, 50%);
-    column-gap: 11px;
-    row-gap: 11px;
+    /* width: 95%;
+    display: flex;
+    justify-content: space-between; */
+    /* display: grid;
+    grid-template-columns: 40% 60%;
+    column-gap: 12px;
+    row-gap: 12px;
     grid-template-areas: 
         "header header"
-        "url srcName";
+        "srcName url"
+        "button ."; */
 }
-#sources h4 {
+/* #sources h4 {
     grid-area: header;
-}
+} */
 #sources .url {
-    grid-area: url;
+    width: calc((100% - 26px) * 0.58);
 }
 #sources .srcName {
-    grid-area: srcName;
+    width: calc((100% - 26px) * 0.4);
+    margin-right: calc((100% - 26px) * 0.02);
+    margin-bottom: 12px;
+}
+#submitForm label {
+    padding-bottom: 8px;
+    padding-top: 0px;
+    padding-left: 16px;
 }
 
 @media screen and (max-width: 768px) {

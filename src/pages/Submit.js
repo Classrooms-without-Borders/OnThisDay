@@ -1,38 +1,22 @@
 import React, { Component } from 'react';
-//import { Place, GoogleMap, Parameters, OptionMenu, SimulationTimeseries, PersistentDrawerLeft } from '../components';
 import '../styling/Submit.css'
-import Button from '@material-ui/core/Button';
-import Paper from "@material-ui/core/Paper";
-import {withStyles} from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
 import {firebase} from '../util';
-import ImageUpload from '../components/ImageUpload'
+import {storage} from '../util/Firestore';
 import axios from 'axios';
 
 const styles = theme => ({
-    textField: {
-        width: '90%',
-        marginLeft: 'auto',
-        marginRight: 'auto',            
-        paddingBottom: 0,
-        marginTop: 0,
-        fontWeight: 500
-    },
-    input: {
-        color: 'white'
-    }
+   
 });
 
 class Submit extends Component {
+
     constructor() {
         super();
         this.state = {
             date: "",
             subjectName: "",
-            sourceLink: "",
             location: "",
-            sourceName: "",
+            sourceList: [{sourceName: "", sourceUrl:""}],
             description: "",
             images: [],
             studentFirst: "",
@@ -44,7 +28,7 @@ class Submit extends Component {
             lng:""
         };
     }
-
+    
     updateInput = e => {
         this.setState({
             [e.target.name]: e.target.value
@@ -53,11 +37,10 @@ class Submit extends Component {
 
     processInfo = e => {
         e.preventDefault();
-        // API call
+        this.onUploadSubmission();
         // need to figure out how to securely store api key, maybe heroku config vars?
         const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.location}&key=AIzaSyBQ6AXhN1dWqYH5pjf8zuIoUyfTb1j0bAY`
         axios.get(apiUrl).then(res => {
-            // console.log(res);
             this.setState({lat : res.data.results[0].geometry.location.lat});
             this.setState({lng : res.data.results[0].geometry.location.lng});
             console.log("lat" + this.state.lat);
@@ -66,7 +49,9 @@ class Submit extends Component {
         })
 
     }
-    addUser = e => {
+    addUser = async(e) => {
+        await this.onUploadSubmission();
+        console.log("current images are: ", this.state.images);
         const db = firebase.firestore();
 
         // create new class
@@ -77,14 +62,12 @@ class Submit extends Component {
         }); 
     
         // create new submission
-        let sources = {};
-        sources[this.state.sourceName] = this.state.sourceLink;
         const subRef = db.collection("submissions").add({
             date: firebase.firestore.Timestamp.fromDate(new Date(this.state.date)),
             description: this.state.description,
             images: this.state.images,
             location: new firebase.firestore.GeoPoint(this.state.lat, this.state.lng),
-            sources: sources,
+            sources: this.state.sourceList,
             studentFirst: this.state.studentFirst,
             studentLast: this.state.studentLast,
             subjectName: this.state.subjectName,
@@ -94,11 +77,11 @@ class Submit extends Component {
         this.setState({
             date: "",
             subjectName: "",
-            sourceLink: "",
             location: "",
-            sourceName: "",
+            sourceList: [{sourceName: "", sourceUrl:""}],
             description: "",
             images: [],
+            files:[],
             studentFirst: "",
             studentLast: "",
             school: "",
@@ -107,9 +90,72 @@ class Submit extends Component {
             lat: "",
             lng: ""
         });
+        let fileListDisplay = document.getElementById('file-list-display');
+        let fileInput = document.getElementById('files');
+        fileListDisplay.innerHTML = '';
+        fileInput.value = "";
+    };
+
+    onFileChange = e => {
+        this.setState({files: e.target.files})
+        let fileListDisplay = document.getElementById('file-list-display');
+        fileListDisplay.innerHTML = '';
+        for (let i = 0; i < e.target.files.length; i++) { 
+            fileListDisplay.innerHTML += `<p>${e.target.files[i].name}</p>`;
+        }
+    };
+
+    onUploadSubmission = () => {
+        this.setState({images: []});
+        if (!this.state.files) {
+            return;
+        }
+        const promises = [];
+    
+        Array.from(this.state.files).forEach(file => {
+            const uploadTask = storage.ref().child(`images/${file.name}`).put(file);
+            promises.push(uploadTask);
+            uploadTask.on("state_changed", snapshot => {
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                if (snapshot.state === "running") {
+                    console.log(`Progress: ${progress}%`);
+                }
+            },
+            error => console.log(error.code),
+            async () => {
+                const downloadURL = await uploadTask.snapshot.ref.getDownloadURL();
+                this.setState({images: [...this.state.images, downloadURL]});
+            });
+        });
+
+        return Promise.all(promises)
+        .then(() => console.log("All images successfully uploaded!"))
+        .catch(err => console.log(err.code));
+    }
+
+    handleInputChange = (e, index) => {
+        const { name, value } = e.target;
+        const list = [...this.state.sourceList];
+        list[index][name] = value;
+        this.setState({sourceList: list});
+    };
+
+    handleRemoveClick = index => {
+        const list = [...this.state.sourceList];
+        list.splice(index, 1);
+        this.setState({sourceList: list});
+    };
+
+    handleAddClick = () => {
+        this.setState((prevState) => ({
+            sourceList: [...prevState.sourceList, {sourceName: "", sourceUrl:""}]
+        }));
     };
 
     render() {
+        let sourceList = [{sourceName: "", sourceUrl:""}];
+        sourceList = this.state.sourceList;
+                
         return (
             <div>
                 <h1 id="submitHeading">SUBMIT AN ENTRY</h1>
@@ -133,16 +179,44 @@ class Submit extends Component {
                     </div>
 
                     <div id="sources">
-                        <h4>Sources</h4>
-                        <input type="text" class="url" name="sourceLink" placeholder="Source URL" onChange={this.updateInput} value={this.state.sourceLink} />
-                        <input type="text" class="srcName" name="sourceName" placeholder="Source name" onChange={this.updateInput} value={this.state.sourceName} />
+                        <h5>Sources</h5>
+                        {
+                            sourceList && sourceList.length > 0 ?
+                            sourceList.map((x, i) => {
+                                return (
+                                    <div className="box">
+                                        {this.state.sourceList.length !== 1 && <button
+                                            className="deleteSrc"
+                                            onClick={() => this.handleRemoveClick(i)}>✕</button>}
+
+                                        <input type="text" class="srcName" name="sourceName" placeholder="Source Name" 
+                                        onChange={e => this.handleInputChange(e, i)} 
+                                        value={x.sourceName} 
+                                        />
+                                        
+                                        <input type="text" class="url" name="sourceUrl" placeholder="Source URL"
+                                        value={x.sourceUrl}
+                                        onChange={e => this.handleInputChange(e, i)}
+                                        />   
+
+                                        <br />
+                                        {this.state.sourceList.length - 1 === i && <input type="button" onClick={this.handleAddClick} value="&#xFF0B; Add source"/>}
+                                    </div>
+                                );
+                            }) : "Loading..."
+                        }
+                        
                     </div>
 
-                    <h4>Photos</h4>
-                    {/* <input type="file" name="images" multiple onChange={this.updateInput} value={this.state.images} /> */}
-                    <ImageUpload />
+                    <h5>Photos</h5>
+                    <div id="file-list-display"></div>
+                    <label>
+                    &#xFF0B; Add photos<input type="file" name="images" id="files" multiple onChange={this.onFileChange} />
+                    </label>
+                    
+
                     <br /><br />
-                    <Button variant="contained" type="submit">Submit</Button>
+                    <input type="submit" value="Submit" />
 
                 </form>
             </div>
