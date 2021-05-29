@@ -14,6 +14,7 @@ export function Header({ active }) {
 
     const useStyles = makeStyles({
         root: {
+            top: 0,
             backgroundColor: constants.color.dark,
             boxShadow: constants.boxShadow,
             zIndex: 99,
@@ -111,7 +112,7 @@ export function Header({ active }) {
                             <NavLink to='/about' style={navlinkStyle('About')}>About</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink to='/signup' style={navlinkStyle('About')}>Signup</NavLink>
+                            <NavLink to='/admin' style={navlinkStyle('Admin')}>Admin</NavLink>
                         </NavItem>
                         <NavItem id='search-icon' onClick={onClickSearchIcon}>
                             <SearchIcon fontSize='default' />

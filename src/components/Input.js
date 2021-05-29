@@ -16,6 +16,7 @@ const useStyles = makeStyles({
         '& input': {
             padding: '10px',
             fontFamily: constants.fontFamily.body,
+            textAlign: 'left',
         },
         '& label': {
             fontFamily: constants.fontFamily.body,

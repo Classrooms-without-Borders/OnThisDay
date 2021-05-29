@@ -44,7 +44,7 @@ function AdvancedSearch({ open=false }) {
     return (
         <div className={useStyles().root}>
             <h2>Advanced Search</h2>
-            <div class='adv-search-section' id='adv-search-by-submission'>
+            <div className='adv-search-section' id='adv-search-by-submission'>
                 <h3>By Submission</h3>
                 <div id='adv-search-date-from'>
                     <label htmlFor='date-from'>From</label>
@@ -59,7 +59,7 @@ function AdvancedSearch({ open=false }) {
                     <TextInput placeholder='Name' id='subject-name' name='subject-name' />
                 </div>
             </div>
-            <div class='adv-search-section' id='adv-search-by-submitter'>
+            <div className='adv-search-section' id='adv-search-by-submitter'>
                 <h3>By Submitter</h3>
                 <div id='adv-search-submitter-name'>
                     <label htmlFor='submitter-name'>Submitter name</label>
