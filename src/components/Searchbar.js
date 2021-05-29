@@ -11,7 +11,7 @@ function AdvancedSearch({ open=false }) {
             zIndex: 97,
             display: open ? 'inline-block' : 'none',
             fontFamily: constants.fontFamily.body,
-            fontSize: constants.fontSize.s,
+            fontSize: constants.fontSize.xs,
             height: 'fit-content',
             maxHeight: 'calc(100vh - 200px)',
             overflow: 'auto',
@@ -37,6 +37,22 @@ function AdvancedSearch({ open=false }) {
                 float: 'right',
                 marginRight: 0,
                 marginLeft: 'auto',
+            },
+            '& h2': {
+                fontFamily: constants.fontFamily.header,
+                fontWeight: 'bold',
+                fontSize: constants.fontSize.m,
+                textTransform: 'uppercase',
+            },
+            '& h3': {
+                fontFamily: constants.fontFamily.header,
+                fontWeight: 'bold',
+                fontSize: constants.fontSize.s,
+                textTransform: 'uppercase',
+            },
+            '& .adv-search-section': {
+                margin: '12px auto',
+                padding: '12px 0',
             },
         },
     });
