@@ -13,8 +13,8 @@ export function Footer() {
         <div><a href="https://classroomswithoutborders.org/about-us/" target="_blank" rel="noopener noreferrer"><img src={logo} alt="logo" /></a></div>
         <div><p style={{color:'white'}}>Classrooms Without Borders is an independently funded program of the Jewish Federation of Greater Pittsburgh
         <br />
-        <ul><a href="https://classroomswithoutborders.org/" target="_blank" rel="noopener noreferrer">Website</a></ul>
-        <ul><a href="https://classroomswithoutborders.org/donate/" target="_blank" rel="noopener noreferrer">Donate</a></ul>
+        <ul><b><a href="https://classroomswithoutborders.org/" target="_blank" rel="noopener noreferrer" style={{color:'white'}}>Website</a></b></ul>
+        <ul><b><a href="https://classroomswithoutborders.org/donate/" target="_blank" rel="noopener noreferrer" style={{color:'white'}}>Donate</a></b></ul>
         
           <a href="https://www.facebook.com/classroomswithoutborders">
             <img src={facebook} alt="logo" hspace="20"/>
