@@ -49,10 +49,9 @@ export default function Login() {
             <Link to="/forgot-password">Forgot Password?</Link>
           </div>
         </Card.Body>
+        <p style={{padding:'15px'}}>Need an account? <Link to="/signup">Sign Up</Link></p>
       </Card>
-      <div className="w-100 text-center mt-2">
-        Need an account? <Link to="/signup">Sign Up</Link>
-      </div>
+      
     </>
   )
 }

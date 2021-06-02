@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react"
+import '../styling/Signup.css'
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../util/AuthContext"
 import { Link, useHistory } from "react-router-dom"
@@ -33,7 +34,7 @@ export default function Signup() {
 
   return (
     <>
-      <Card>
+      <Card id="wrapper">
         <Card.Body>
           <h2 className="text-center mb-4">Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
@@ -53,12 +54,14 @@ export default function Signup() {
             <Button disabled={loading} className="w-100" type="submit">
               Sign Up
             </Button>
+            <br />
+            <p style={{padding:'15px'}}>Already have an account? <Link to="/login">Log In</Link></p>
           </Form>
         </Card.Body>
       </Card>
-      <div className="w-100 text-center mt-2">
-        Already have an account? <Link to="/login">Log In</Link>
-      </div>
+      
+        
+     
     </>
   )
 }
