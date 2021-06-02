@@ -8,11 +8,13 @@ export function Footer() {
   return (
     <div className="footer" style={{backgroundColor:'#222629', padding:'-10%'}}>
       <div className="flexbox-container">
-        <div><img src={logo} alt="logo" /></div>
-        <div><img src={programInfo} alt="logo" /></div>
-        <div><p style={{color:'white'}}>Classrooms Without Borders is an independently funded program of the Jewish Federation of Greater Pittsburgh</p></div>
-        <div><p style={{color:'white'}}><a href="https://classroomswithoutborders.org/" target="_blank" rel="noopener noreferrer">Website</a></p></div>
-        <div><p style={{color:'white'}}><a href="https://classroomswithoutborders.org/donate/" target="_blank" rel="noopener noreferrer">Donate</a></p></div>
+        <div><a href="https://classroomswithoutborders.org/about-us/" target="_blank" rel="noopener noreferrer"><img src={logo} alt="logo" /></a></div>
+        <div><p style={{color:'white'}}>Classrooms Without Borders is an independently funded program of the Jewish Federation of Greater Pittsburgh
+        <br />
+        <ul><a href="https://classroomswithoutborders.org/" target="_blank" rel="noopener noreferrer">Website</a></ul>
+        <ul><a href="https://classroomswithoutborders.org/donate/" target="_blank" rel="noopener noreferrer">Donate</a></ul>
+        </p></div>
+        <div><img src={programInfo} alt="logo" height="100px"/></div>
         <div>
           <a href="https://www.facebook.com/classroomswithoutborders">
             <img src={facebook} alt="logo" />
