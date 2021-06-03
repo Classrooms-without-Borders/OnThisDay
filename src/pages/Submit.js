@@ -4,6 +4,7 @@ import {firebase} from '../util';
 import {storage} from '../util';
 import axios from 'axios';
 import { StyledButton, ImageUpload } from '../components';
+import { withRouter } from 'react-router-dom';
 
 const styles = theme => ({
    
@@ -46,10 +47,12 @@ class Submit extends Component {
             this.setState({lng : res.data.results[0].geometry.location.lng});
             console.log("lat" + this.state.lat);
             console.log("lng" + this.state.lng);
-            this.addUser();
+            this.addUser().then(result => {
+                this.props.history.push('/submit-success');
+            })
         })
-
     }
+
     addUser = async(e) => {
         await this.onUploadSubmission();
         console.log("current images are: ", this.state.images);
@@ -95,6 +98,9 @@ class Submit extends Component {
         let fileInput = document.getElementById('files');
         fileListDisplay.innerHTML = '';
         fileInput.value = "";
+        return new Promise(function(resolve, reject) {
+            resolve("New submission added!");
+        });
     };
 
     onFileChange = e => {
@@ -160,7 +166,7 @@ class Submit extends Component {
         return (
             <div>
                 <h1 id="submitHeading">SUBMIT AN ENTRY</h1>
-                <form id="submitForm" onSubmit={this.processInfo}>
+                <form id="submitForm" onSubmit={this.processInfo.bind(this)}>
                     <div id="aboutYou">
                         <h4>ABOUT YOU</h4>
                         <fieldset>
@@ -260,4 +266,4 @@ class Submit extends Component {
     }
 }
 
-export default Submit;
+export default withRouter(Submit);

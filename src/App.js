@@ -14,6 +14,7 @@ import {
   Gallery,
   Details,
   Submit,
+  ThankYou,
   Login,
 } from './pages';
 
@@ -37,6 +38,7 @@ function App() {
                       <Route exact path="/gallery" component={Gallery} />
                       <Route exact path="/details" component={Details} />
                       <Route exact path="/submit" component={Submit} />
+                      <Route exact path="/submit-success" component={ThankYou} />
                       <Route exact path="/signup" component={Signup} />
                       <Route exact path="/login" component={Login} />
                       <Route exact path="/forgot-password" component={ForgotPassword} />
