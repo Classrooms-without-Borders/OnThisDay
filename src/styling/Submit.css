@@ -1,12 +1,3 @@
-/* prevents cutoff on small screen sizes */
-html,body {
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-    overflow-x: hidden;
-}
-
 #submitHeading {
     padding-top: 100px;
     color: white;

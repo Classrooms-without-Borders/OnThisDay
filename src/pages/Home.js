@@ -1,63 +1,27 @@
 import React from 'react';
-import '../styling/Home.css';
-import {
-    Header,
-    BigCard,
-    SmallCard,
-} from '../components';
-import { 
-    Grid, 
-    Container,
-    Box,
-} from '@material-ui/core';
+import { BigCard, CardGrid } from '../components';
+import constants from '../styling/Constants';
+// FOR TESTING ONLY
+import stockPhoto from '../images/home-stock-image.png';
 
 function Home() {
+    // FOR TESTING ONLY
+    const testSub = {
+        location: 'London, England',
+        eventDate: new Date('03/4/1944'),
+        subjectName: 'Sofka Skipwith',
+        images: [stockPhoto]    
+    };
+
+    // call getRecentSubmissions here
+    const submissions = [testSub, testSub, testSub, testSub];
+
     return (
-        <div> 
-            <Header active='Home'/>
-
-            {/* item xs, md changes width length of paper */}
-            <Container>
-                <Grid container>
-                    <Box m={2} pt={3}>
-
-                        <Grid item xs={12}>
-
-                            <BigCard></BigCard>
-
-                        </Grid>
-                    </Box>
-
-                </Grid>
-            </Container>
-            <br></br>
-            {/* want to make a three row card :( */}
-                <Container>
-                        <Grid container>
-                        <div className="flexbox-container">
-                                <Box m={2} pt={3}>
-                                    <Grid  p={2} item md={4}>
-                                        <SmallCard p={2} ></SmallCard>
-                                    </Grid>
-                                </Box>
-                                <Box m={2} pt={3}>
-                                    <Grid  p={2} item md={4}>
-                                        <SmallCard p={2} ></SmallCard>
-                                    </Grid>
-                                </Box>
-                                <Box m={2} pt={3}>
-                                    <Grid  p={2} item md={4}>
-                                        <SmallCard p={2} ></SmallCard>
-                                    </Grid>
-                                </Box>
-                            </div>
-                            
-                        </Grid>
-                </Container>
-                <br></br>
-                <br></br>
+        <div style={{backgroundColor: constants.color.dark}}>
+            <BigCard submission={submissions[0]} />
+            <CardGrid submissions={submissions.slice(1)} />
         </div>
-    )
+    );
 }
 
 export default Home;

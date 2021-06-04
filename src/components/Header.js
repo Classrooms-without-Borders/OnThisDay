@@ -2,26 +2,31 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import constants from '../styling/Constants';
 import { Navbar,  NavItem } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
 import { Searchbar } from './Searchbar';
 
-export function Header({ active }) {
+export function Header() {
+    const location = useLocation();
+
     // keep search permanently open on home page
     const [searchOpen, setSearchOpen] = useState(
-        active === 'Home' ? true : false
+        location.pathname === '/'
     );
 
     const useStyles = makeStyles({
         root: {
+            top: 0,
             backgroundColor: constants.color.dark,
             boxShadow: constants.boxShadow,
             zIndex: 99,
             width: '100%',
             position: 'fixed',
+            padding: 0,
             '& > div': {
                 justifyContent: 'space-between',
                 display: 'flex',
+                width: '100%',
                 alignItems: 'center',
                 '& a': {
                     margin: '0 0 0 18px',
@@ -59,7 +64,7 @@ export function Header({ active }) {
     const navlinkStyle = (linkName) => {
         return {
             color: constants.color.light,
-            opacity: linkName === active ? '100%' : '50%',
+            opacity: linkName === location.pathname ? '100%' : '50%',
             fontFamily: constants.fontFamily.body,
             fontWeight: 'normal',
             textTransform: 'capitalize',
@@ -89,7 +94,7 @@ export function Header({ active }) {
     }, [searchOpen]);
 
     return (
-        <React.Fragment>
+        <div style={{display: 'block'}}>
             <Navbar className={useStyles().root}>
                 <div>
                     <NavItem>
@@ -97,27 +102,27 @@ export function Header({ active }) {
                     </NavItem>
                     <div className="flexbox-container">
                         <NavItem>
-                            <NavLink exact to='/' style={navlinkStyle('Home')}>Home</NavLink>
+                            <NavLink exact to='/' style={navlinkStyle('/')}>Home</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink to='/gallery' style={navlinkStyle('Gallery')}>Gallery</NavLink>
+                            <NavLink to='/gallery' style={navlinkStyle('/gallery')}>Gallery</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink to='/submit' style={navlinkStyle('Submit')}>Submit</NavLink>
+                            <NavLink to='/submit' style={navlinkStyle('/submit')}>Submit</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink to='/about' style={navlinkStyle('About')}>About</NavLink>
+                            <NavLink to='/about' style={navlinkStyle('/about')}>About</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink to='/signup' style={navlinkStyle('About')}>Signup</NavLink>
+                            <NavLink to='/admin' style={navlinkStyle('/admin')}>Admin</NavLink>
                         </NavItem>
                         <NavItem id='search-icon' onClick={onClickSearchIcon}>
-                            <SearchIcon fontSize="large" />
+                            <SearchIcon fontSize='default' />
                         </NavItem>
                     </div>
                 </div>
             </Navbar>
             <Searchbar open={searchOpen} />
-        </React.Fragment>
+        </div>
     );
 }

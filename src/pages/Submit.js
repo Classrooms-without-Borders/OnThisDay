@@ -3,7 +3,6 @@ import '../styling/Submit.css'
 import {firebase} from '../util';
 import {storage} from '../util';
 import axios from 'axios';
-import { StyledButton, ImageUpload } from '../components';
 
 const styles = theme => ({
    

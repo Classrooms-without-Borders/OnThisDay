@@ -1,7 +1,6 @@
 import React from "react";
 import '../styling/About.css'
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import { Button, Typography } from '@material-ui/core';
 import { Container, Row, Col } from 'reactstrap';
 import pic from '../images/cwb-logo-reverse-w-tagline 1.png';
 
