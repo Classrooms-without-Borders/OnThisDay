@@ -1,0 +1,50 @@
+/* make content fill space between header and footer */
+html, body, #root .App {
+    min-height: 100vh;
+}
+.App {
+    display: flex;
+    flex-direction: column;
+}
+
+#successContainer {
+    flex: auto;
+    padding-top: 125px;
+    padding-bottom: 50px;
+    margin: auto;
+    color: white;
+}
+
+/* style individual elements */
+#successHeading {
+    font-weight: 800;
+}
+#successContainer button {
+    border-radius: 6px;
+    border:2px #F1592A solid;
+    text-align: center;
+    background-color: #F1592A;
+    color: white;
+    padding: 8px 35px;
+    margin: 8px;
+}
+#successContainer p {
+    width: 50vw;
+    margin: 16px auto;
+}
+
+/* making the design responsive */
+@media screen and (max-width: 605px) {
+    #successContainer {
+        padding-top: 175px;
+        width: 90vw;
+    }
+}
+@media screen and (max-width: 376px) {
+    #successContainer {
+        padding-bottom: 0px;
+    }
+    #successHeading {
+        font-size: 32px;
+    }
+}

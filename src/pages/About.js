@@ -106,6 +106,7 @@ stories and artifacts presented here as well as research and submit their own st
 								Message:
 								<textarea name="Text1" cols="20" rows="5"></textarea>
 							</label>
+							<br />
 							<input className="button" type="submit" value="Send Message" />
 						</form>
 				</div>
@@ -114,12 +115,12 @@ stories and artifacts presented here as well as research and submit their own st
 						<br></br>
 				
     
-					<Button variant="contained" color="primary">
+					<a href='/submit'><Button variant="contained" color="primary">
         				Submit an Entry
-      				</Button>
-					<Button variant="contained" color="primary">
+      				</Button></a>
+					<a href='/gallery'><Button variant="contained" color="primary">
         				Explore the Gallery
-      				</Button>
+      				</Button></a>
 					
 				</div>
 			</React.Fragment>

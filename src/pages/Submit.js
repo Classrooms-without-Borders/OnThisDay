@@ -3,10 +3,7 @@ import '../styling/Submit.css'
 import {firebase} from '../util';
 import {storage} from '../util';
 import axios from 'axios';
-
-const styles = theme => ({
-   
-});
+import { withRouter } from 'react-router-dom';
 
 class Submit extends Component {
 
@@ -45,10 +42,12 @@ class Submit extends Component {
             this.setState({lng : res.data.results[0].geometry.location.lng});
             console.log("lat" + this.state.lat);
             console.log("lng" + this.state.lng);
-            this.addUser();
+            this.addUser().then(result => {
+                this.props.history.push('/submit-success');
+            })
         })
-
     }
+
     addUser = async(e) => {
         await this.onUploadSubmission();
         console.log("current images are: ", this.state.images);
@@ -57,7 +56,7 @@ class Submit extends Component {
         // create new class
         const classRef = db.collection("classes").add({
             school: this.state.school,
-            grade: this.state.grade,
+            grade: parseInt(this.state.grade),
             teacherName: this.state.teacherName
         }); 
     
@@ -94,6 +93,9 @@ class Submit extends Component {
         let fileInput = document.getElementById('files');
         fileListDisplay.innerHTML = '';
         fileInput.value = "";
+        return new Promise(function(resolve, reject) {
+            resolve("New submission added!");
+        });
     };
 
     onFileChange = e => {
@@ -159,23 +161,52 @@ class Submit extends Component {
         return (
             <div>
                 <h1 id="submitHeading">SUBMIT AN ENTRY</h1>
-                <form id="submitForm" onSubmit={this.processInfo}>
+                <form id="submitForm" onSubmit={this.processInfo.bind(this)}>
                     <div id="aboutYou">
                         <h4>ABOUT YOU</h4>
-                        <input type="text" name="studentFirst" placeholder="First Name" onChange={this.updateInput} value={this.state.studentFirst} />
-                        <input type="text" name="studentLast" placeholder="Last Name" onChange={this.updateInput} value={this.state.studentLast} />
+                        <fieldset>
+                            <legend>First Name</legend>
+                            <input type="text" name="studentFirst" placeholder="First Name" onChange={this.updateInput} value={this.state.studentFirst} />
+                        </fieldset>
+                        
+                        <fieldset>
+                            <legend>Last Name</legend>
+                            <input type="text" id="studentLast" name="studentLast" placeholder="Last Name" onChange={this.updateInput} value={this.state.studentLast} />
+                        </fieldset>
 
-                        <input type="text" name="school" placeholder="School" onChange={this.updateInput} value={this.state.school} />
-                        <input type="text" name="grade" placeholder="Grade" onChange={this.updateInput} value={this.state.grade}/>
-                        <input type="text" name="teacherName" placeholder="Name of Teacher" onChange={this.updateInput} value={this.state.teacherName} />
+                        <fieldset>
+                            <legend>School</legend>
+                            <input type="text" id="school" name="school" placeholder="Name of School" onChange={this.updateInput} value={this.state.school} />
+                        </fieldset>
+                        <fieldset>
+                            <legend>Grade</legend>
+                            <input type="number" id="grade" name="grade" placeholder="10" min="1" max="12" onChange={this.updateInput} value={this.state.grade}/>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Teacher</legend>
+                            <input type="text" id="teacherName" name="teacherName" placeholder="Name of Teacher" onChange={this.updateInput} value={this.state.teacherName} />
+                        </fieldset>
+                    
                     </div>
                     <hr></hr>
                     <div id="aboutYourEntry">
                         <h4>ABOUT YOUR ENTRY</h4>
-                        <input type="text" name="subjectName" placeholder="Full name of historical figure" onChange={this.updateInput} value={this.state.subjectName} />
-                        <input type="text" name="location" placeholder="Location" onChange={this.updateInput} value={this.state.location} />
-                        <input type="text" name="date" placeholder="Date" onChange={this.updateInput} value={this.state.date} />
-                        <textarea multiline rows={5} name="description" placeholder="Description" onChange={this.updateInput} value={this.state.description} />
+                        <fieldset>
+                            <legend>Full name of historical figure</legend>
+                            <input type="text" id="subjectName" name="subjectName" placeholder="First Last" onChange={this.updateInput} value={this.state.subjectName} />
+                        </fieldset>
+                        <fieldset>
+                            <legend>Location</legend>
+                            <input type="text" id="location" name="location" placeholder="City, Country" onChange={this.updateInput} value={this.state.location} />
+                        </fieldset>
+                        <fieldset>
+                            <legend>Date</legend>
+                            <input type="text" id="date" name="date" placeholder="MM/DD/YYYY" onChange={this.updateInput} value={this.state.date} />
+                        </fieldset>
+                        <fieldset>
+                            <legend>Description</legend>
+                            <textarea multiline rows={5} id="description" name="description" placeholder="Write or paste your report here" onChange={this.updateInput} value={this.state.description} />
+                        </fieldset>
                     </div>
 
                     <div id="sources">
@@ -184,22 +215,28 @@ class Submit extends Component {
                             sourceList && sourceList.length > 0 ?
                             sourceList.map((x, i) => {
                                 return (
-                                    <div className="box">
-                                        {this.state.sourceList.length !== 1 && <button
-                                            className="deleteSrc"
-                                            onClick={() => this.handleRemoveClick(i)}>✕</button>}
+                                    <div>
+                                        <div className="sourceField">
+                                            {this.state.sourceList.length !== 1 && <button
+                                                className="deleteSrc"
+                                                onClick={() => this.handleRemoveClick(i)}>✕</button>}
 
-                                        <input type="text" class="srcName" name="sourceName" placeholder="Source Name" 
-                                        onChange={e => this.handleInputChange(e, i)} 
-                                        value={x.sourceName} 
-                                        />
-                                        
-                                        <input type="text" class="url" name="sourceUrl" placeholder="Source URL"
-                                        value={x.sourceUrl}
-                                        onChange={e => this.handleInputChange(e, i)}
-                                        />   
-
-                                        <br />
+                                            <fieldset class="sourceName">
+                                                <legend>Name</legend>
+                                                <input type="text" name="sourceName" placeholder="Source Name" 
+                                                value={x.sourceName}
+                                                onChange={e => this.handleInputChange(e, i)} 
+                                                />
+                                            </fieldset>
+                                            
+                                            <fieldset class="sourceUrl">
+                                                <legend>URL</legend>
+                                                <input type="text" name="sourceUrl" placeholder="Source URL"
+                                                value={x.sourceUrl}
+                                                onChange={e => this.handleInputChange(e, i)}
+                                                />   
+                                            </fieldset>
+                                        </div>
                                         {this.state.sourceList.length - 1 === i && <input type="button" onClick={this.handleAddClick} value="&#xFF0B; Add source"/>}
                                     </div>
                                 );
@@ -207,15 +244,15 @@ class Submit extends Component {
                         }
                         
                     </div>
-
-                    <h5>Photos</h5>
-                    <div id="file-list-display"></div>
-                    <label>
-                    &#xFF0B; Add photos<input type="file" name="images" id="files" multiple onChange={this.onFileChange} />
-                    </label>
                     
+                    <div id="photos">
+                        <h5>Photos</h5>
+                        <div id="file-list-display"></div>
+                        <label>
+                        &#xFF0B; Add photos<input type="file" name="images" id="files" multiple onChange={this.onFileChange} />
+                        </label>
+                    </div>
 
-                    <br /><br />
                     <input type="submit" value="Submit" />
 
                 </form>
@@ -224,4 +261,4 @@ class Submit extends Component {
     }
 }
 
-export default Submit;
+export default withRouter(Submit);

@@ -30,12 +30,12 @@ export function CardGrid({ submissions }) {
         for (let j = i; j < i + 3; j++) {
             if (j < submissions.length) {
                 row.push(
-                    <SmallCard submission={submissions[j]} />
+                    <SmallCard key={`grid-card-${j}`} submission={submissions[j]} />
                 )
             }
         }
         rows.push(
-            <div className={rowStyles().root}>{row}</div>
+            <div key={`grid-row-${i/3}`} className={rowStyles().root}>{row}</div>
         )
     }
 

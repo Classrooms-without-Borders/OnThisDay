@@ -2,11 +2,14 @@
     padding-top: 100px;
     color: white;
 }
+#submitForm h4, #submitForm h5 {
+    font-family: Montserrat, 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-weight: bold;
+}
 
 #submitForm {
     padding: 30px 45px;
     background-color: #EDEDED;
-    /* width: fit-content; */
     width: 50vw;
     margin: auto;
     text-align: left;
@@ -14,18 +17,39 @@
     margin: 40px auto;
 }
 
-#submitForm input, #submitForm textarea, #submitForm label {
+/* styling the input fields */
+#submitForm fieldset {
+    border: 1px #C4C4C4 solid;
+    margin-top: 3px;
+    background-color: white;
+}
+#submitForm legend {
+    font-size: small;
+    width: fit-content;
+    margin: 0px;
+    padding: 0px 4px;
+}
+#submitForm fieldset input, #submitForm textarea {
+    border: none;
+    width: 100%;
+    padding: 0px 4px;
+    background-color: white;
+    outline: none;
+}
+#submitForm fieldset {
     border: 1px #C4C4C4 solid;
     border-radius: 6px;
     padding: 5px 10px;
     transition-duration: 0.3s;
     transition-timing-function: ease;
+    width: 100%;
 }
-#submitForm input:focus, #submitForm textarea:focus {
+#submitForm fieldset:focus-within {
     border: 1px #F1592A solid;
     outline: none;
 }
 
+/* styling the buttons */
 #submitForm input[type=submit], #submitForm input[type=button], #submitForm label {
     border-radius: 6px;
     border:2px #F1592A solid;
@@ -42,25 +66,16 @@
     background-color: white;
     color: #F1592A;
     font-weight: bold;
+    width: fit-content;
+    padding: 8px 12px;
 }
-
-#submitForm h4, #submitForm h5 {
-    font-family: "Montserrat", 'Segoe UI', Tahoma, Verdana, sans-serif;
-    font-weight: bold;
-}
-
+/* hiding the file upload button so we can use label instead*/
 #files {
     width: 0.1px;
 	height: 0.1px;
 	opacity: 0;
     padding: 0px;
 	overflow: hidden;
-	/* position: absolute; */
-	/* z-index: -1; */
-}
-
-.deleteSrc {
-    border: none;
 }
 
 /* styling the about you section */
@@ -79,19 +94,19 @@
 #aboutYou h4 {
     grid-area: header;
 }
-#aboutYou input:nth-child(2) {
+#aboutYou fieldset:nth-child(2) {
     grid-area: first;
 }
-#aboutYou input:nth-child(3) {
+#aboutYou fieldset:nth-child(3) {
     grid-area: last;
 }
-#aboutYou input:nth-child(4) {
+#aboutYou fieldset:nth-child(4) {
     grid-area: school;
 }
-#aboutYou input:nth-child(5) {
+#aboutYou fieldset:nth-child(5) {
     grid-area: grade;
 }
-#aboutYou input:last-child {
+#aboutYou fieldset:last-child {
     grid-area: teacher;
 }
 
@@ -111,53 +126,46 @@
 #aboutYourEntry h4 {
     grid-area: header;
 }
-#aboutYourEntry input:nth-child(2) {
+#aboutYourEntry fieldset:nth-child(2) {
     grid-area: name;
 }
-#aboutYourEntry input:nth-child(3) {
+#aboutYourEntry fieldset:nth-child(3) {
     grid-area: place;
 }
-#aboutYourEntry input:nth-child(4) {
+#aboutYourEntry fieldset:nth-child(4) {
     grid-area: date;
 }
-#aboutYourEntry textarea {
+#aboutYourEntry fieldset:last-child {
     grid-area: descrip;
 }
-textarea {
-    width: 100%;
-}
 
+/* styling the sources section */
 #sources {
-    margin: 20px 0px;
-    /* width: 95%;
-    display: flex;
-    justify-content: space-between; */
-    /* display: grid;
-    grid-template-columns: 40% 60%;
-    column-gap: 12px;
-    row-gap: 12px;
-    grid-template-areas: 
-        "header header"
-        "srcName url"
-        "button ."; */
+    margin-top: 20px;
 }
-/* #sources h4 {
-    grid-area: header;
-} */
-#sources .url {
-    width: calc((100% - 26px) * 0.58);
+#sources .sourceUrl {
+    width: calc((100% - 26px) * 0.58 - (100% - 26px) * 0.02);
 }
-#sources .srcName {
+#sources .sourceName {
     width: calc((100% - 26px) * 0.4);
     margin-right: calc((100% - 26px) * 0.02);
+}
+.sourceField {
+    display: flex;
     margin-bottom: 12px;
 }
-#submitForm label {
-    padding-bottom: 8px;
-    padding-top: 0px;
-    padding-left: 16px;
+/* styling the delete buttons in the sources section */
+.deleteSrc {
+    border: none;
+    padding: 12px 12px 0px 0px;
 }
 
+/* styling the photos section */
+#photos {
+    margin: 20px 0px;
+}
+
+/* making the design responsive */
 @media screen and (max-width: 768px) {
     #submitForm {
         padding: 30px;
