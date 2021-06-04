@@ -3,8 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { SmallCard } from './Card';
 
 export function CardGrid({ submissions }) {
-    const numRows = Math.ceil(submissions.length / 3);
-
     const gridStyles = makeStyles({
         root: {
             display: 'block',
@@ -18,25 +16,24 @@ export function CardGrid({ submissions }) {
             display: 'inline-flex',
             flexDirection: 'row',
             flexFlow: 'row wrap',
-            justifyContent: 'space-between',
+            justifyContent: 'space-between', // TODO: make cards left align
             margin: '24px 0',
             width: '100%',
         },
     })
 
+    const numRows = Math.ceil(submissions.length / 3);
     let rows = [];
-    for (let i = 0; i < numRows; i += 3) {
+    for (let rowCount = 0; rowCount < numRows; rowCount++) {
         let row = [];
-        for (let j = i; j < i + 3; j++) {
-            if (j < submissions.length) {
-                row.push(
-                    <SmallCard key={`grid-card-${j}`} submission={submissions[j]} />
-                )
-            }
+        for (let subCount = rowCount * 3; subCount < rowCount * 3 + 3 && subCount < submissions.length; subCount++) {
+            row.push(
+                <SmallCard key={`grid-card-${subCount}`} submission={submissions[subCount]} />
+            );
         }
         rows.push(
-            <div key={`grid-row-${i/3}`} className={rowStyles().root}>{row}</div>
-        )
+            <div key={`grid-row-${rowCount}`} className={rowStyles().root}>{row}</div>
+        );
     }
 
     return (

@@ -41,7 +41,7 @@ function Home() {
             </div>
             <div style={{display: 'flex', backgroundColor: constants.color.lightGray}}>
                 <div style={{margin: '60px 0', width: '1400px'}}>
-                    <div style={{margin: 'auto', width: '800px', maxWidth: '45vw'}}>
+                    <div style={{margin: 'auto', textAlign: 'left', width: '800px', maxWidth: '45vw'}}>
                         <h1 style={{
                             fontFamily: constants.fontFamily.header,
                             fontWeight: 'bold',

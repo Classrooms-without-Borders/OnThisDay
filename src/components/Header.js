@@ -87,9 +87,11 @@ export function Header() {
 
     useEffect(() => {
         if (searchOpen) {
-            searchbarStyle.display = 'inherit'
+            searchbarStyle.display = 'inherit';
+            // TODO: add padding to document body to accommodate searchbar
         } else {
-            searchbarStyle.display = 'none'
+            searchbarStyle.display = 'none';
+            // TODO: remove padding from doc body once searchbar disappears
         }
     }, [searchOpen]);
 
@@ -109,7 +111,12 @@ export function Header() {
                             <NavLink exact to='/' style={navlinkStyle('/')}>Home</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink to='/gallery' style={navlinkStyle('/gallery')}>Gallery</NavLink>
+                            <NavLink 
+                                to='/gallery' 
+                                onClick={() => setSearchOpen(true)} 
+                                style={navlinkStyle('/gallery')}>
+                                    Gallery
+                            </NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink to='/submit' style={navlinkStyle('/submit')}>Submit</NavLink>

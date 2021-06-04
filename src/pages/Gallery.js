@@ -1,10 +1,14 @@
 import React from 'react';
+import { getAllSubmissions } from '../util';
+import { CardGrid } from '../components';
 
-function Gallery({ submissions }) {
+function Gallery() {
+    const allSubmissions = getAllSubmissions();
+
     return (
-        <React.Fragment>
-            <p>Test gallery</p>
-        </React.Fragment>
+        <div style={{margin: '150px auto 30px', maxWidth: '90vw'}}>
+            <CardGrid submissions={allSubmissions} />
+        </div>
     );
 }
 

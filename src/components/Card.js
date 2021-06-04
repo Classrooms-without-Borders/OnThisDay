@@ -85,7 +85,7 @@ export function SmallCard({submission}) {
     const smallCardStyle = makeStyles({
         root: {
             width: '100%',
-            height: '300px',
+            height: '360px',
             borderRadius: 0,
             boxShadow: constants.boxShadow.initial,
             transition: 'box-shadow 200ms',
