@@ -1,12 +1,18 @@
 import React from 'react';
 import { getAllSubmissions } from '../util';
 import { CardGrid } from '../components';
+import constants from '../styling/Constants';
 
 function Gallery() {
     const allSubmissions = getAllSubmissions();
 
     return (
-        <div style={{margin: '150px auto 30px', maxWidth: '90vw'}}>
+        <div style={{margin: '100px auto 30px', maxWidth: '90vw'}}>
+            <h1 style={{
+                fontFamily: constants.fontFamily.header,
+                fontWeight: 'bold',
+                color: constants.color.light,
+            }}>GALLERY</h1>
             <CardGrid submissions={allSubmissions} />
         </div>
     );
