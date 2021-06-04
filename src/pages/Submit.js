@@ -50,21 +50,24 @@ class Submit extends Component {
 
     addUser = async(e) => {
         await this.onUploadSubmission();
-        console.log("current images are: ", this.state.images);
+        console.log("current images are: ", [...new Set(this.state.images)]);
         const db = firebase.firestore();
+        console.log(new Date(this.state.date + "T00:00:00"));
 
         // create new class
-        const classRef = db.collection("classes").add({
+        db.collection("classes").add({
             school: this.state.school,
             grade: parseInt(this.state.grade),
             teacherName: this.state.teacherName
         }); 
     
         // create new submission
-        const subRef = db.collection("submissions").add({
-            date: firebase.firestore.Timestamp.fromDate(new Date(this.state.date)),
+        db.collection("submissions").add({
+            // date set in local time zone, uploaded to firebase as UTC without adjusting for time difference
+            // use getUTCDate() instead of getDate() so the same date appears no matter where the user is
+            date: firebase.firestore.Timestamp.fromDate(new Date(this.state.date + "T00:00:00")),
             description: this.state.description,
-            images: this.state.images,
+            images: [...new Set(this.state.images)],
             location: new firebase.firestore.GeoPoint(this.state.lat, this.state.lng),
             sources: this.state.sourceList,
             studentFirst: this.state.studentFirst,
@@ -201,7 +204,7 @@ class Submit extends Component {
                         </fieldset>
                         <fieldset>
                             <legend>Date</legend>
-                            <input type="text" id="date" name="date" placeholder="MM/DD/YYYY" onChange={this.updateInput} value={this.state.date} />
+                            <input type="text" id="date" name="date" placeholder="YYYY-MM-DD" onChange={this.updateInput} value={this.state.date} />
                         </fieldset>
                         <fieldset>
                             <legend>Description</legend>
