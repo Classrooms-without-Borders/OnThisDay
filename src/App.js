@@ -11,10 +11,11 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
+import constants from './styling/Constants';
 
 function App() {
     return (
-        <div className="App">
+        <div className="App" style={{backgroundColor: constants.color.dark}}>
             <Router>
                 <Header />
                 <Switch>

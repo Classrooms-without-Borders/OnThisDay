@@ -8,19 +8,19 @@ export function CardGrid({ submissions }) {
     const gridStyles = makeStyles({
         root: {
             display: 'block',
-            maxWidth: '1500px',
             margin: 'auto',
+            textAlign: 'center',
         },
     });
 
     const rowStyles = makeStyles({
         root: {
-            display: 'flex',
+            display: 'inline-flex',
             flexDirection: 'row',
             flexFlow: 'row wrap',
             justifyContent: 'space-between',
-            margin: '24px auto',
-            width: 'calc(100% - 120px)',
+            margin: '24px 0',
+            width: '100%',
         },
     })
 
@@ -40,6 +40,8 @@ export function CardGrid({ submissions }) {
     }
 
     return (
-        <div className={gridStyles().root}>{rows}</div>
+        <div className={gridStyles().root}>
+            {rows}
+        </div>
     );
 }

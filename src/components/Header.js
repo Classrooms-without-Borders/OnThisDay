@@ -9,16 +9,16 @@ import { Searchbar } from './Searchbar';
 export function Header() {
     const location = useLocation();
 
-    // keep search permanently open on home page
+    // keep search open on gallery page
     const [searchOpen, setSearchOpen] = useState(
-        location.pathname === '/'
+        location.pathname === '/gallery'
     );
 
     const useStyles = makeStyles({
         root: {
             top: 0,
             backgroundColor: constants.color.dark,
-            boxShadow: constants.boxShadow,
+            boxShadow: constants.boxShadow.initial,
             zIndex: 99,
             width: '100%',
             position: 'fixed',
@@ -93,12 +93,16 @@ export function Header() {
         }
     }, [searchOpen]);
 
+    useEffect(() => {
+        if (location.pathname !== '/gallery') setSearchOpen(false); 
+    }, [location.pathname]);
+
     return (
         <div style={{display: 'block'}}>
             <Navbar className={useStyles().root}>
                 <div>
                     <NavItem>
-                        <NavLink exact to='/'>On This Day in History</NavLink>
+                        <NavLink exact to='/'>On This Day</NavLink>
                     </NavItem>
                     <div className="flexbox-container">
                         <NavItem>
