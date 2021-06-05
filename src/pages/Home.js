@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 // FOR TESTING ONLY
 import stockPhoto from '../images/home-stock-image.png';
 import stockPhoto2 from '../images/sofka-skipwith.jpg';
+import StudentSubmission from "../util/StudentSubmission";
+import { getAllSubmissions } from '../util';
+
 
 function Home() {
     // FOR TESTING ONLY
@@ -24,14 +27,22 @@ function Home() {
     };
 
     // call getRecentSubmissions here
-    const submissions = [testSub, testSub2, testSub, testSub2];
+    //array of studentsubmission object
+    const submissions = getAllSubmissions();
+    if (submissions === undefined) {
+        return "not working";
+    }
+    let threeSubmissions = []; 
+    for (let i = 1; i < submissions.length; ++i) {
+        threeSubmissions[i - 1] = submissions[i];
+    }
 
     return (
         <React.Fragment>
             <div style={{backgroundColor: constants.color.dark}}>
                 <div style={{margin: '100px auto 40px', width: '1400px', maxWidth: '90vw'}}>
                     <BigCard submission={submissions[0]} />
-                    <CardGrid submissions={submissions.slice(1)} />
+                    <CardGrid submissions={threeSubmissions} /> {/*slice(1) passes in three */}
                     <div id='project-desc' style={{
                         backgroundColor: constants.color.light,
                         color: constants.color.dark,

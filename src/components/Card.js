@@ -3,6 +3,8 @@ import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { Card, CardMedia, CardContent } from '@material-ui/core';
 import constants from '../styling/Constants';
+import StudentSubmission from "../util/StudentSubmission";
+import { getAllSubmissions } from '../util';
 
 const cardImgStyle = {
     root: {
@@ -43,23 +45,37 @@ export function BigCard({ submission }) {
         },
     });
 
+    //let title = submission.eventTitle;
+
+    const submissions = getAllSubmissions();
+    if (submissions === undefined) {
+        return "not working";
+    }
+    let threeSubmissions = []; 
+    for (let i = 1; i < submissions.length; ++i) {
+        threeSubmissions[i - 1] = submissions[i];
+    }
+
+    //StudentSubmission ss = submission[0];
+
     return (
         <div style={{width: '100%', textAlign: 'center'}}>
             <div style={{width: '100%', margin: '0 auto'}}>
-                <Link to='/details'> {/* TODO: redirect to appropriate URL */}
+                <Link to='/details/:submissionId'> {/* TODO: redirect to appropriate URL */}
                     <Card className={bigCardStyle().root}>
                         <CardImg
                             component='img'
-                            alt={`Featured submission photo of ${submission.subjectName}`}
+
                             height='100%'
                             width='100%'
-                            image={submission.images[0]}
+                            
                         />
                         <CardContent>
-                            <h2>{submission.location}</h2>
+                        {/*    <h2>{submission.location}</h2>
                             <h1>{submission.date}</h1>
                             <h1>{submission.subjectName}</h1>
-                            <p>{submission.submitterName}</p>
+                            <p>{submission.submitterName}</p>*/}
+                          
                         </CardContent>
                     </Card>
                 </Link>
@@ -92,7 +108,7 @@ export function SmallCard({submission}) {
     return (
         <div style={smallCardDivStyle}>
             <Link to='/details'> {/* TODO: redirect to appropriate URL */}
-                <Card className={smallCardStyle().root}>
+                <Card className={smallCardStyle().root} >
                     <CardImg
                         component='img'
                         alt='Featured submission photo'
@@ -101,6 +117,8 @@ export function SmallCard({submission}) {
                         image={submission.images[0]}
                     />
                 </Card>
+                {submission.location}
+                {submission.subjectName}
             </Link>
         </div>
     );

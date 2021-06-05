@@ -6,10 +6,10 @@ import stockPhoto2 from '../images/sofka-skipwith.jpg'
 
 const db = firebase.firestore();
 
-function getAllSubmissions(){ 
+async function getAllSubmissions(){ 
     // FOR TESTING ONLY ---------------
     const testSub = {
-        location: 'London, England',
+        location: 'London, Englandddddddd',
         eventDate: new Date('03/4/1944'),
         subjectName: 'John Doe',
         images: [stockPhoto],
@@ -23,24 +23,29 @@ function getAllSubmissions(){
         submitterName: 'Brad Johnson',
     };
     let lst = [];
-    for (let i = 0; i < 7; i++) lst.push(testSub);
-    for (let i = 0; i < 5; i++) lst.push(testSub2);
-    return lst;
-    // ---------------------------------
+    //for (let i = 0; i < 7; i++) lst.push(testSub);
+    //for (let i = 0; i < 5; i++) lst.push(testSub2);
+    //return lst;
+   
 
-  let documents = []
-  const submissionObjects = [];
+  let submissionObjects = [];
   var i = 0;
-  db.collection('submissions').get().then((submissions) => {
+  await db.collection('submissions').get().then((submissions) => {
     submissions.forEach((doc) => {
+      console.log(doc.data().date);
+      console.log(doc.data().description);
+      console.log(doc.data().images);
+
       submissionObjects[i] = new StudentSubmission("title", doc.data().date, doc.data().description, doc.data().images, doc.data().sources, doc.data().studentName, doc.data().submittedDate, "");
       i+=1;
 
   })});
   
-  console.log(documents);
   console.log(submissionObjects);
-  console.log(submissionObjects.pop());
+  console.log(submissionObjects.length);
+  console.log(typeof submissionObjects);
+  console.log("this is first card " + submissionObjects[0]);
+
 
   return submissionObjects;
 };
