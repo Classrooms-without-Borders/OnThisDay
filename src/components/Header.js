@@ -127,6 +127,9 @@ export function Header() {
                         <NavItem>
                             <NavLink to='/admin' style={navlinkStyle('/admin')}>Admin</NavLink>
                         </NavItem>
+                        <NavItem>
+                            <NavLink to='/login' style={navlinkStyle('/login')}>Login</NavLink>
+                        </NavItem>
                         <NavItem id='search-icon' onClick={onClickSearchIcon}>
                             <SearchIcon fontSize='default' />
                         </NavItem>

@@ -4,9 +4,10 @@ Represents an individual student submission, similar to the submission collectio
 
 class StudentSubmission {
     constructor(
-        subjectName, location, eventDate, description,
+        id, subjectName, location, eventDate, description,
         images, sources, studentName, submitDate, className
     ) {
+        this.id = id;
         this.subjectName = subjectName;
         this.location = location;
         this.eventDate = eventDate;
@@ -19,6 +20,14 @@ class StudentSubmission {
     }
 
     //using template strings `${}` so we can console.log() for debugging 
+    get getId() {
+        return this._id;
+    }
+
+    set setId(value) {
+        this._id = value;
+    }
+
     get eventTitle() {
         return `${this.eventTitle}`;
     }
@@ -69,7 +78,6 @@ class StudentSubmission {
     set studentName(value) {
         this._studentName = value;
     }
-
 
     get submitDate() {
         return this.submitDate;

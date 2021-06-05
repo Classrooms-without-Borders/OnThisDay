@@ -37,6 +37,8 @@ async function getAllSubmissions(){
       console.log(doc.data().images);
 
       submissionObjects[i] = new StudentSubmission("title", doc.data().date, doc.data().description, doc.data().images, doc.data().sources, doc.data().studentName, doc.data().submittedDate, "");
+      submissionObjects[i] = new StudentSubmission(doc.data().subjectName, doc.data().location, doc.data().description, doc.data().images, doc.data().sources, doc.data().studentName, doc.data().submittedDate, "");
+
       i+=1;
 
   })});
