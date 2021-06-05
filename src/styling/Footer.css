@@ -1,8 +1,51 @@
 .flexbox-container {
     display: flex;
-    flex-direction: row;
     justify-content: center;
+    align-items: center;
 }
 .footer {
-    padding-top: 15px;
+    padding: 25px 15px;
+    background-color:#222629;
+}
+.footer p {
+    color: white;
+    margin: 0px;
+    padding-top: 10px;
+}
+#cwb_logo {
+    width: 100%;
+}
+#jewish_fed_logo {
+    width: 28%;
+    margin: 2%;
+}
+
+#footer_content {
+    min-width: 45%;
+}
+#footer_content #links {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+}
+
+@media screen and (max-width: 850px) {
+    .flexbox-container {
+        flex-direction: column;
+    }
+    #footer_content {
+        width: 90vw;
+        margin: auto;
+    }
+    #jewish_fed_logo {
+        width: 80%;
+    }
+}
+@media screen and (max-width: 468px) {
+    #footer_content #links {
+        width: 100%;
+    }
+    
 }
