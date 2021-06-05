@@ -96,7 +96,11 @@ export function Header() {
     }, [searchOpen]);
 
     useEffect(() => {
-        if (location.pathname !== '/gallery') setSearchOpen(false); 
+        if (location.pathname !== '/gallery') {
+            setSearchOpen(false); 
+        } else {
+            setSearchOpen(true);
+        }
     }, [location.pathname]);
 
     return (
