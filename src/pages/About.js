@@ -3,20 +3,24 @@ import '../styling/About.css'
 import { Button, Typography } from '@material-ui/core';
 import { Container, Row, Col } from 'reactstrap';
 import pic from '../images/CWB_Logo_KO_NoTag.png';
+import constants from '../styling/Constants';
 
 class About extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<div className="body">
+				<div className="body" style={{margin: '20px auto 30px', maxWidth: '90vw'}}>
 				<Container id="first-section">
 				<Row>
-				<Col sm="1" md="5" lg="6">
-					<Typography variant="h6" component="h2" className="title">
-						ABOUT THE PROJECT</Typography>
-					<img src={pic} className=" img-fluid"></img>
+				<Col sm="1" md="5" lg="5">
+					<h2 style={{
+                fontFamily: constants.fontFamily.header,
+                fontWeight: '600',
+                color: constants.color.light,
+            }}>ABOUT THE PROJECT</h2>
+					<img src={pic} className=" img-fluid" id="logo"></img>
 				</Col>
-				<Col sm="1" md="7" lg="6">
+				<Col sm="1" md="7" lg="7">
 					<Typography variant="subtitle1" gutterBottom className="title">
 					On this day, a project of <a href="https://classroomswithoutborders.org/" target="_blank" rel="noopener noreferrer">Classrooms Without Borders</a>, is a collection of student research to
 					uncover and share the personal histories of the individuals during World War II and the
@@ -37,23 +41,28 @@ class About extends React.Component {
 
 					 <Typography variant="subtitle1" gutterBottom>
 					 As part of a new Holocaust education curriculum, Educators and students may choose to focus
-on a specific time period or a specific region to research. We invite students to dig into the
-stories and artifacts presented here as well as research and submit their own stories.
-		     		</Typography>
-						 </Col>
-						</Row>
-						</Container>
+					on a specific time period or a specific region to research. We invite students to dig into the
+					stories and artifacts presented here as well as research and submit their own stories.
+		     	</Typography>
+					</Col>
+					</Row>
+				</Container>
 					  
 				<Container id="second-section">
 				<Row>
-				<Col sm="1" md="5" lg="6">
-					<Typography variant="h6" component="h2" className="title">
-						HOW IT WORKS</Typography>
+				<Col sm="1" md="5" lg="5">
+				<h2 style={{
+                fontFamily: constants.fontFamily.header,
+                fontWeight: '600',
+                color: constants.color.light,
+            }}>HOW IT WORKS</h2>
 				</Col>
-				<Col sm="1" md="7" lg="6" id="second-right">
-					<Typography variant="h4" component="h2" className="title2">
-						RESEARCH
-						</Typography>
+				<Col sm="1" md="7" lg="7" id="second-right">
+				<h3 style={{
+                fontFamily: constants.fontFamily.header,
+                fontWeight: '600',
+                color: constants.color.light,
+            }}>Research</h3>
 					<Typography variant="subtitle1" gutterBottom className="subtitle1">
 					  independently or as part of a class or group
 		     	</Typography>
@@ -85,10 +94,14 @@ stories and artifacts presented here as well as research and submit their own st
 
 				<Container id="third-section">
 				<Row>
-				<Col sm="1" md="5" lg="6">
-				<Typography variant="h5" gutterBottom className="list">CONTACT US</Typography>
+				<Col sm="1" md="5" lg="5">
+				<h3 style={{
+                fontFamily: constants.fontFamily.header,
+                fontWeight: '600',
+                color: constants.color.light,
+            }}>CONTACT US</h3>
 				</Col>
-				<Col sm="1" md="7" lg="6" >
+				<Col sm="1" md="7" lg="7" >
 				<Typography variant="subtitle1" gutterBottom className="subtitle1">
 				Educators, interested in learning more about how to bring on this day to your classroom?
 				</Typography>
