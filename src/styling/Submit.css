@@ -1,0 +1,179 @@
+#submitHeading {
+    padding-top: 100px;
+    color: white;
+}
+#submitForm h4, #submitForm h5 {
+    font-family: Montserrat, 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-weight: bold;
+}
+
+#submitForm {
+    padding: 30px 45px;
+    background-color: #EDEDED;
+    width: 50vw;
+    margin: auto;
+    text-align: left;
+    border-radius: 6px;
+    margin: 40px auto;
+}
+
+/* styling the input fields */
+#submitForm fieldset {
+    border: 1px #C4C4C4 solid;
+    margin-top: 3px;
+    background-color: white;
+}
+#submitForm legend {
+    font-size: small;
+    width: fit-content;
+    margin: 0px;
+    padding: 0px 4px;
+}
+#submitForm fieldset input, #submitForm textarea {
+    border: none;
+    width: 100%;
+    padding: 0px 4px;
+    background-color: white;
+    outline: none;
+}
+#submitForm fieldset {
+    border: 1px #C4C4C4 solid;
+    border-radius: 6px;
+    padding: 5px 10px;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    width: 100%;
+}
+#submitForm fieldset:focus-within {
+    border: 1px #F1592A solid;
+    outline: none;
+}
+
+/* styling the buttons */
+#submitForm input[type=submit], #submitForm input[type=button], #submitForm label {
+    border-radius: 6px;
+    border:2px #F1592A solid;
+    text-align: center;
+}
+#submitForm input[type=submit] {
+    background-color: #F1592A;
+    color: white;
+    padding: 8px 35px;
+    margin: auto;
+    display: block;
+}
+#submitForm input[type=button], #submitForm label {
+    background-color: white;
+    color: #F1592A;
+    font-weight: bold;
+    width: fit-content;
+    padding: 8px 12px;
+}
+/* hiding the file upload button so we can use label instead*/
+#files {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+    padding: 0px;
+	overflow: hidden;
+}
+
+/* styling the about you section */
+#aboutYou {
+    width: 93%;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    column-gap: 12px;
+    row-gap: 12px;
+    grid-template-areas: 
+        "header header header header"
+        "first first last last"
+        "school school school grade"
+        "teacher teacher teacher teacher";
+ }
+#aboutYou h4 {
+    grid-area: header;
+}
+#aboutYou fieldset:nth-child(2) {
+    grid-area: first;
+}
+#aboutYou fieldset:nth-child(3) {
+    grid-area: last;
+}
+#aboutYou fieldset:nth-child(4) {
+    grid-area: school;
+}
+#aboutYou fieldset:nth-child(5) {
+    grid-area: grade;
+}
+#aboutYou fieldset:last-child {
+    grid-area: teacher;
+}
+
+/* styling the about your entry section */
+#aboutYourEntry {
+    width: 93%;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    column-gap: 12px;
+    row-gap: 12px;
+    grid-template-areas: 
+        "header header header header"
+        "name name name name"
+        "place place place date"
+        "descrip descrip descrip descrip";
+}
+#aboutYourEntry h4 {
+    grid-area: header;
+}
+#aboutYourEntry fieldset:nth-child(2) {
+    grid-area: name;
+}
+#aboutYourEntry fieldset:nth-child(3) {
+    grid-area: place;
+}
+#aboutYourEntry fieldset:nth-child(4) {
+    grid-area: date;
+}
+#aboutYourEntry fieldset:last-child {
+    grid-area: descrip;
+}
+
+/* styling the sources section */
+#sources {
+    margin-top: 20px;
+}
+#sources .sourceUrl {
+    width: calc((100% - 26px) * 0.58 - (100% - 26px) * 0.02);
+}
+#sources .sourceName {
+    width: calc((100% - 26px) * 0.4);
+    margin-right: calc((100% - 26px) * 0.02);
+}
+.sourceField {
+    display: flex;
+    margin-bottom: 12px;
+}
+/* styling the delete buttons in the sources section */
+.deleteSrc {
+    border: none;
+    padding: 12px 12px 0px 0px;
+}
+
+/* styling the photos section */
+#photos {
+    margin: 20px 0px;
+}
+
+/* making the design responsive */
+@media screen and (max-width: 768px) {
+    #submitForm {
+        padding: 30px;
+        width: 90vw;
+    }
+}
+@media screen and (max-width: 426px) {
+    #submitHeading {
+        padding-top: 175px;
+    }
+}

@@ -2,29 +2,31 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import constants from '../styling/Constants';
 import { Navbar,  NavItem } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
 import { Searchbar } from './Searchbar';
 
-export function Header({ active }) {
-    // keep search permanently open on home page
-    const [showSearchIcon, setShowSearchIcon] = useState(
-        active === 'Home' ? false : true
-    );
+export function Header() {
+    const location = useLocation();
+
+    // keep search open on gallery page
     const [searchOpen, setSearchOpen] = useState(
-        active === 'Home' ? true : false
+        location.pathname === '/gallery'
     );
 
     const useStyles = makeStyles({
         root: {
+            top: 0,
             backgroundColor: constants.color.dark,
-            boxShadow: constants.boxShadow,
+            boxShadow: constants.boxShadow.initial,
             zIndex: 99,
             width: '100%',
             position: 'fixed',
+            padding: 0,
             '& > div': {
                 justifyContent: 'space-between',
                 display: 'flex',
+                width: '100%',
                 alignItems: 'center',
                 '& a': {
                     margin: '0 0 0 18px',
@@ -62,7 +64,7 @@ export function Header({ active }) {
     const navlinkStyle = (linkName) => {
         return {
             color: constants.color.light,
-            opacity: linkName === active ? '100%' : '50%',
+            opacity: linkName === location.pathname ? '100%' : '50%',
             fontFamily: constants.fontFamily.body,
             fontWeight: 'normal',
             textTransform: 'capitalize',
@@ -85,42 +87,60 @@ export function Header({ active }) {
 
     useEffect(() => {
         if (searchOpen) {
-            searchbarStyle.display = 'inherit'
+            searchbarStyle.display = 'inherit';
+            // TODO: add padding to document body to accommodate searchbar
         } else {
-            searchbarStyle.display = 'none'
+            searchbarStyle.display = 'none';
+            // TODO: remove padding from doc body once searchbar disappears
         }
     }, [searchOpen]);
 
+    useEffect(() => {
+        if (location.pathname !== '/gallery') {
+            setSearchOpen(false); 
+        } else {
+            setSearchOpen(true);
+        }
+    }, [location.pathname]);
+
     return (
-        <React.Fragment>
+        <div style={{display: 'block'}}>
             <Navbar className={useStyles().root}>
                 <div>
                     <NavItem>
-                        <NavLink exact to='/'>On This Day in History</NavLink>
+                        <NavLink exact to='/'>On This Day</NavLink>
                     </NavItem>
                     <div className="flexbox-container">
                         <NavItem>
-                            <NavLink exact to='/' style={navlinkStyle('Home')}>Home</NavLink>
+                            <NavLink exact to='/' style={navlinkStyle('/')}>Home</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink to='/gallery' style={navlinkStyle('Gallery')}>Gallery</NavLink>
+                            <NavLink 
+                                to='/gallery' 
+                                onClick={() => setSearchOpen(true)} 
+                                style={navlinkStyle('/gallery')}>
+                                    Gallery
+                            </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink to='/submit' style={navlinkStyle('Submit')}>Submit</NavLink>
+                            <NavLink to='/submit' style={navlinkStyle('/submit')}>Submit</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink to='/about' style={navlinkStyle('About')}>About</NavLink>
+                            <NavLink to='/about' style={navlinkStyle('/about')}>About</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink to='/signup' style={navlinkStyle('About')}>Signup</NavLink>
+                            <NavLink to='/admin' style={navlinkStyle('/admin')}>Admin</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink to='/login' style={navlinkStyle('/login')}>Login</NavLink>
                         </NavItem>
                         <NavItem id='search-icon' onClick={onClickSearchIcon}>
-                            <SearchIcon fontSize="medium" />
+                            <SearchIcon fontSize='default' />
                         </NavItem>
                     </div>
                 </div>
             </Navbar>
             <Searchbar open={searchOpen} />
-        </React.Fragment>
+        </div>
     );
 }

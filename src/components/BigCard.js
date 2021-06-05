@@ -9,6 +9,7 @@ import {
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import '../styling/BigCard.css';
+import { Details } from '../pages';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,11 +43,9 @@ var cardStyle = {
 }
 
 export function BigCard() {
-  const classes = useStyles();
-
   return (
     <div>
-      <Button component={Link} to="/details" color="primary">
+      <Button component={Link} to="/details/:" color="primary">
         <Card style={cardStyle} >
             <CardMedia
                 component="img"
@@ -56,10 +55,11 @@ export function BigCard() {
                 title="Contemplative Reptile"
               />
               <CardContent>
-              <h3 className="location"> London, England</h3>
+              <h3 className="location"> London, Englandddd</h3>
               <h3 className="date"> 3 Apr 1944</h3>
               <h3 className="event"> Sofka Skipwith</h3>
               <h3 className="author"> by Jane Doe</h3>
+              <Details/>
             </CardContent>
           </Card>
         </Button>

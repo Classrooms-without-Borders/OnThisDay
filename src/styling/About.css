@@ -1,13 +1,30 @@
 .btn-design{
-    color: #F1592A
+  color: #F1592A
 }
+
+#first-section{
+  margin-top: 100px;
+  text-align: left;
+}
+
+/* #second-section{
+  text-align: center;
+  margin-left: 10%;
+}
+
+.list {
+  margin:50px auto;
+  text-align: left;
+} */
 
 .contact-us-form{
   max-width: 500px;
 }
 
 .body {
+  padding-top: 80px;
   color:white;
+  padding-bottom: 30px;
 }
 .title {
   color: white;

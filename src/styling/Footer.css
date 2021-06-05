@@ -3,3 +3,6 @@
     flex-direction: row;
     justify-content: center;
 }
+.footer {
+    padding-top: 15px;
+}

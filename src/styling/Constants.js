@@ -19,7 +19,10 @@ const constants = {
         lightAccentPrimary: '#AFD7F2',
         accentSecondary: '#F1592A'
     },
-    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.6)'
-}
+    boxShadow: {
+        initial: '0px 4px 8px rgba(0, 0, 0, 0.6)',
+        hover: '0px 4px 20px rgba(0, 0, 0, 0.8)',
+    },
+};
 
 export default constants;

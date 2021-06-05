@@ -8,7 +8,8 @@ export function StyledButton({
     color=constants.color.accentSecondary,
     callToAction=false,
     active=true,
-    onClick=null
+    onClick=null,
+    width='auto',
 }) {
     const useStyles = makeStyles({
         root: {
@@ -17,14 +18,21 @@ export function StyledButton({
             color: constants.color.light,
             fontFamily: constants.fontFamily.body,
             textTransform: 'none',
-            fontSize: callToAction ? constants.fontSize.s : constants.fontSize.xs
+            fontSize: callToAction ? constants.fontSize.s : constants.fontSize.xs,
+            transition: 'opacity 300ms',
+            width,
+            '&:hover': {
+                backgroundColor: color,
+                opacity: '85%',
+                transition: 'opacity 300ms',
+            },
         },
     });
 
     return (
         <Button 
             variant='contained' disableElevation 
-            className={useStyles().root} onclick={onClick}
+            className={useStyles().root} onClick={onClick}
         >
             {children}
         </Button>

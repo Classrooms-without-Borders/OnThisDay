@@ -18,6 +18,7 @@ export default function Login() {
       setError("")
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
+      console.log("login worked");
       history.push("/dashboard")
     } catch {
       setError("Failed to log in")
@@ -49,10 +50,9 @@ export default function Login() {
             <Link to="/forgot-password">Forgot Password?</Link>
           </div>
         </Card.Body>
+        <p style={{padding:'15px'}}>Need an account? <Link to="/signup">Sign Up</Link></p>
       </Card>
-      <div className="w-100 text-center mt-2">
-        Need an account? <Link to="/signup">Sign Up</Link>
-      </div>
+      
     </>
   )
 }
