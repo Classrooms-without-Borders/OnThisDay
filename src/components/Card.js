@@ -8,15 +8,8 @@ const cardImgStyle = {
     root: {
         flexGrow: 1,
     },
-    paper: {
-        margin: 'auto',
-        maxWidth: '500px',
-    },
     media: {
         minWidth: '100%',
-    },
-    image: {
-        objectFit: 'cover',
     },
     img: {
         margin: 'auto',
