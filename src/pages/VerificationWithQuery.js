@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React, {useState} from "react";
 import {Component} from "react";
@@ -26,6 +25,22 @@ if (!firebase.apps.length){
 let db=firebase.firestore();
 const storage = firebase.storage();
 const auth = firebase.auth().app;
+let scountry = '';
+let scity = '';
+async function getQ(){
+  const isCountry=db.collection("unverified").where("countryName", "==",  scountry).get();
+  const isCity=db.collection("unverified").where("cityName", "==",  scity).get();
+  //const isSource=db.collection("unverified").where()
+  const [countrySnapshot, citySnapshot]=await Promise.all([
+    isCountry,
+    isCity
+  ]);
+  const countryArray = countrySnapshot.docs;
+  const cityArray=citySnapshot.docs;
+  const qArray=countryArray.concat(cityArray);
+  return qArray;
+}
+
 class App extends Component{
   constructor(props){
     super(props);
@@ -34,6 +49,7 @@ class App extends Component{
       checks: [],
       countryname: '',
       cityname: '',
+      sourcename1: '',
       renderList: null,
     };
   }
@@ -43,17 +59,22 @@ class App extends Component{
   myCitychangeHandler = (event1) => {
     this.setState({cityname: event1.target.value});
   }
+
     //clear page before rendering
     componentDidMount(){
       this.setState({
         renderList: false
       })
     }
+  
   handleFormSubmit = formSubmitEvent => {
     formSubmitEvent.preventDefault();
     console.log(this.state.countryname);
+    scountry=this.state.countryname;
+    scity=this.state.cityname;
     this.setState({renderList: true})
-    db.collection("unverified").where("countryName", "==", this.state.countryname).get().then((snapshot) => (
+    this.state.docs.length=0;
+    getQ().then((snapshot) => (
       snapshot.forEach((doc) => (
         console.log(doc.data().description),
         this.setState((prevState) => ({
@@ -72,7 +93,29 @@ class App extends Component{
         ))
       ))
     ))
-    
+  }
+  //show all entries
+  handleAllQuery = formSubmitEventAll => {
+    formSubmitEventAll.preventDefault();
+    this.state.docs.length=0;
+    db.collection("unverified").get().then((snapshot) => (
+      snapshot.forEach((doc) => (
+         this.setState((prevState) => ({
+          docs: [...prevState.docs, {
+            docID: doc.id,
+            name: doc.data().name,
+            description: doc.data().description,
+            date: doc.data().title,
+            country: doc.data().countryName,
+            city: doc.data().cityName,
+            sourcename: doc.data().sources,
+            link: doc.data().url
+          }],
+        }
+
+        ))
+      ))
+    ))
   }
 
   //state for checkboxes
@@ -130,7 +173,7 @@ class App extends Component{
         <p><strong>Event Description:</strong> {d.description}</p>
         <div>
         <label>
-        Validate {d.name}?
+        Validate {d.docID}?   
         <input
                   id={d.docID}
                   type="checkbox"
@@ -143,14 +186,24 @@ class App extends Component{
 
     return (
       <div>
-      <form>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>      <form>
         <h1>Submission Verification Portal</h1>
-        <p>Enter country:</p>
+        <p>Filter by country:</p>
         <input
           type="text"
           onChange={this.myCountrychangeHandler}
         />
+        <p>Filter by city:</p>
+        <input
+          type="text"
+          onChange={this.myCitychangeHandler}
+        />
+        <br />
+        <br />
         <button onClick={this.handleFormSubmit.bind(this)}>Submit</button>
+        <br />
+        <br />
+        <button onClick={this.handleAllQuery.bind(this)}>View All Unverified Submissions</button>     
         </form>
         {displayDocs}
         <br />
@@ -162,5 +215,3 @@ class App extends Component{
     );
 }
 }
-
-export default App;
