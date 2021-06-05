@@ -5,6 +5,39 @@ import { Container, Row, Col } from 'reactstrap';
 import pic from '../images/CWB_Logo_KO_NoTag.png';
 
 class About extends React.Component {
+	constructor() {
+        super();
+		this.formSubmit = this.formSubmit.bind(this);
+		this.state = {
+			fields: {},
+			errors: {}
+		}
+	}
+	handleChange(field, event) {
+		let fields = this.state.fields;
+		fields[field] = event.target.value;        
+		this.setState({fields});
+
+		
+	}
+
+	handleValidation() {
+		let fields = this.state.fields;
+		let errors = {};
+	}
+
+	formSubmit(event) {
+		event.preventDefault();
+		let fields = this.state.fields;
+		
+
+		if(this.handleValidation()){
+			alert("Form submitted");
+		} else{
+			alert("Form has errors.")
+		}
+		
+	}
 	render() {
 		return (
 			<React.Fragment>
@@ -95,31 +128,31 @@ stories and artifacts presented here as well as research and submit their own st
 				​<Typography variant="subtitle1" gutterBottom className="subtitle1">
 				Contact CWB's Educational Programs and Outreach Manager.
 				</Typography>
-				<form className="contact-us-form">
+				<form onSubmit={this.formSubmit} className="contact-us-form">
 					<div class="row">
 						<div class="col">
-							<input type="text" class="form-control" placeholder="First name"></input>
+							<input type="text" class="form-control" placeholder="FirstName" onChange={this.handleChange.bind(this, "firstName")} value={this.state.fields["firstName"]}></input>
 						</div>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Last name"></input>
+							<input type="text" class="form-control" placeholder="LastName" onChange={this.handleChange.bind(this, "lastName")} value={this.state.fields["lastName"]}></input>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Email"></input>
+							<input type="text" class="form-control" placeholder="Email" onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]}></input>
 						</div>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Phone"></input>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							<input type="text" class="form-control" placeholder="School"></input>
+							<input type="text" class="form-control" placeholder="Phone" onChange={this.handleChange.bind(this, "phone")} value={this.state.fields["phone"]}></input>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col">
-							<textarea name="message" class="form-control" rows="4" cols="50"></textarea>
+							<input type="text" class="form-control" placeholder="School" onChange={this.handleChange.bind(this, "school")} value={this.state.fields["school"]}></input>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<textarea name="message" class="form-control" rows="4" cols="50" placeholder="Message" onChange={this.handleChange.bind(this, "message")} value={this.state.fields["message"]}></textarea>
 						</div>
 					</div>
 					<input className="button" type="submit" value="Submit" />
