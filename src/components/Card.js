@@ -23,7 +23,7 @@ const cardImgStyle = {
 
 const CardImg = withStyles(cardImgStyle)(CardMedia);
 
-export function BigCard({ submission }) {
+export function BigCard({ submissionParam }) {
     const bigCardStyle = makeStyles({
         root: {
             display: 'flex',
@@ -61,7 +61,7 @@ export function BigCard({ submission }) {
     return (
         <div style={{width: '100%', textAlign: 'center'}}>
             <div style={{width: '100%', margin: '0 auto'}}>
-                <Link to='/details/:submissionId'> {/* TODO: redirect to appropriate URL */}
+                <Link to='/details'> {/* TODO: redirect to appropriate URL */}
                     <Card className={bigCardStyle().root}>
                         <CardImg
                             component='img'

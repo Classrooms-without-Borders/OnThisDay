@@ -28,7 +28,9 @@ function Home() {
 
     // call getRecentSubmissions here
     //array of studentsubmission object
-    const submissions = getAllSubmissions();
+    let submissions = [];
+    submissions = getAllSubmissions();
+
     if (submissions === undefined) {
         return "not working";
     }
@@ -36,12 +38,23 @@ function Home() {
     for (let i = 1; i < submissions.length; ++i) {
         threeSubmissions[i - 1] = submissions[i];
     }
+    /*
+    const studentSubmission = submissions[0];
+    let mySubjectName = submissions[0].subjectName;
+    let myLocation = studentSubmission.location;
+    let myEventDate = studentSubmission.eventDate;
+    let myStudentName = studentSubmission.studentName;
+    let myClassName = studentSubmission.className;
+    */
+
+    const studentSubmission = submissions[0];
+    //let id = studentSubmission.subjectName;
 
     return (
         <React.Fragment>
             <div style={{backgroundColor: constants.color.dark}}>
                 <div style={{margin: '100px auto 40px', width: '1400px', maxWidth: '90vw'}}>
-                    <BigCard submission={submissions[0]} />
+                    <BigCard submission = {submissions[0]} />
                     <CardGrid submissions={threeSubmissions} /> {/*slice(1) passes in three */}
                     <div id='project-desc' style={{
                         backgroundColor: constants.color.light,
