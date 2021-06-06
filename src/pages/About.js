@@ -139,10 +139,11 @@ class About extends React.Component {
 					 <br></br>
 					 <h1 style={header1}>REVIEW</h1>
 						<h2 style={bodyText2}>the CWB On This Day team will review and fact check all submissions</h2>
-					 <br></br>
+					<br />
 					 <h1 style={header1}>LIVE</h1>
 					<h2 style={bodyText2}>once verified your research will be made public on the site for others to use in future research</h2>
-					 <br></br>
+					 <br />
+					 
 				</Col>
 						</Row>
 						</Container>
@@ -170,28 +171,28 @@ class About extends React.Component {
 				<form className="contact-us-form" style = {bodyText1} onSubmit= {this.formSubmit.bind(this)}>
 					<div class="row">
 						<div class="col">
-							<input type="text" class="form-control" placeholder="First name*" ></input>
+							<input type="text" class="form-control" placeholder="FirstName*" onChange={this.handleChange.bind(this, "firstName")} value={this.state.fields["firstName"]}></input>
 						</div>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Last name*"></input>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							<input type="text" class="form-control" placeholder="Email*"></input>
-						</div>
-						<div class="col">
-							<input type="text" class="form-control" placeholder="Phone*"></input>
+							<input type="text" class="form-control" placeholder="LastName*" onChange={this.handleChange.bind(this, "lastName")} value={this.state.fields["lastName"]}></input>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col">
-							<input type="text" class="form-control" placeholder="School"></input>
+							<input type="text" class="form-control" placeholder="Email*" onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]}></input>
+						</div>
+						<div class="col">
+							<input type="text" class="form-control" placeholder="Phone*" onChange={this.handleChange.bind(this, "phone")} value={this.state.fields["phone"]}></input>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col">
-							<textarea name="message" class="form-control" rows="4" cols="50"></textarea>
+							<input type="text" class="form-control" placeholder="School" onChange={this.handleChange.bind(this, "school")} value={this.state.fields["school"]}></input>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<textarea name="message" class="form-control" rows="4" cols="50" placeholder="Message*" onChange={this.handleChange.bind(this, "message")} value={this.state.fields["message"]}></textarea>
 						</div>
 					</div>
 					<input className="button" type="submit" value="Submit" />
