@@ -8,6 +8,7 @@ import stockPhoto2 from '../images/sofka-skipwith.jpg';
 import StudentSubmission from "../util/StudentSubmission";
 import { getAllSubmissions } from '../util';
 
+//change
 
 async function Home() {
     // FOR TESTING ONLY
