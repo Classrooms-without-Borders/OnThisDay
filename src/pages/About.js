@@ -113,7 +113,7 @@ class About extends React.Component {
 					<img src={pic} className=" img-fluid" id="logo"></img>
 				</Col>
 				<Col sm="1" md="7" lg="7">
-					<p style = {bodyText1}>	On this day, a project of <a href="https://classroomswithoutborders.org/" target="_blank" rel="noopener noreferrer">Classrooms Without Borders</a>, is a collection of student research to
+					<p style = {bodyText1}>	On this day, a project of <a style={{color: constants.color.accentSecondary}}href="https://classroomswithoutborders.org/" target="_blank" rel="noopener noreferrer">Classrooms Without Borders</a>, is a collection of student research to
 					uncover and share the personal histories of the individuals during World War II and the
 					Holocaust. For too long, Holocaust education has been taught at the macro level, with total
 					numbers of lives lost and high level governmental implications of war. What is overlooked is the
