@@ -7,10 +7,12 @@ import stockPhoto from '../images/home-stock-image.png';
 import stockPhoto2 from '../images/sofka-skipwith.jpg';
 import StudentSubmission from "../util/StudentSubmission";
 import { getAllSubmissions } from '../util';
+import firebase from "firebase";
 
-//change
 
-async function Home() {
+const db = firebase.firestore();
+
+function Home() {
     // FOR TESTING ONLY
     const testSub = {
         location: 'London, England',
@@ -29,33 +31,105 @@ async function Home() {
 
     // call getRecentSubmissions here
     //array of studentsubmission object
-    let submissions = [];
-    submissions = getAllSubmissions();
+    let submissions =  getAllSubmissions();
+    //Promise.resolve(submissions).then(() => {
+
+        console.log("type of " + typeof submissions);
+        console.log("first element printed out " + submissions[0]);
+        console.log("length is sooo" + submissions.length);
+        //let newObject = submissions.pop();
+    // console.log("This is when poppin + " + newObject);
+    // newObject.pop();
+        console.log()
+
+   // });
 
     if (submissions === undefined) {
         return "not working";
     }
+
+    console.log("this is length -> " + submissions.length);
+    console.log("This is type of return from getAllSubmissions ->" + typeof submissions);
     let threeSubmissions = []; 
     for (let i = 1; i < submissions.length; ++i) {
         threeSubmissions[i - 1] = submissions[i];
     }
+
+    for (let i = 0; i < submissions.length; ++i) {
+        let mySubjectName = submissions[i].subjectName;
+        console.log("This is in loop " + mySubjectName)
+        let myLocation = submissions[i].location;
+        console.log("This is in loop " + myLocation)
+        let myEventDate = submissions[i].eventDate;
+        console.log("This is in loop " + myEventDate)
+        let myStudentName = submissions[i].studentName;
+        console.log("This is in loop " + myStudentName)
+        let myClassName = submissions[i].className;
+        console.log("This is in loop " + myClassName)
+    }
+
     
-    const studentSubmission = submissions[0];
+    const firstSubmission = submissions[1];
+    console.log("This is type of first card" + typeof firstSubmission);
+
     //let mySubjectName = submissions[0].subjectName;
     //let myLocation = studentSubmission.location;
     //let myEventDate = studentSubmission.eventDate;
     //let myStudentName = studentSubmission.studentName;
     //let myClassName = studentSubmission.className;
+
+
+    let i = 0;
+    let myId;
+    let mydescription;
+    let mylocation;
+    let myimages;
+    let mysources;
+    let mystudentFirst;
+    let mystudentLast;
+    let mysubjectName;
+    let mysubmittedDate;
+    let myEventDate;
+    
+   db.collection('submissions').get().then((submissions) => {
+    submissions.forEach((doc) => {
+      
+
+      myId = doc.id;
+      console.log("this is my id" + myId);
+      mydescription = doc.data().description;
+      mylocation = doc.data().location;
+      myimages = doc.data().images;
+      mysources = doc.data().sources;
+      mystudentFirst = doc.data().studentFirst;
+      mystudentLast = doc.data().studentLast;
+      mysubjectName = doc.data().subjectName;
+      mysubmittedDate = doc.data().submittedDate;
+      myEventDate = doc.data().date;
+
+      //submissionObjects[i] = new StudentSubmission(doc.id, doc.data().subjectName, doc.data().location, doc.data().date, doc.data().description, doc.data().images, doc.data().sources);
+
+
+      //submissionObjects[i] = new StudentSubmission("title", doc.data().date, doc.data().description, doc.data().images, doc.data().sources, doc.data().studentName, doc.data().submittedDate, "");
+      //submissionObjects[i] = new StudentSubmission(doc.data().subjectName, doc.data().location, doc.data().description, doc.data().images, doc.data().sources, doc.data().studentName, doc.data().submittedDate, "");
+
+      i+=1;
+
+  })});
     
 
-    //const studentSubmission = submissions[0];
+    const recentSubmission = new StudentSubmission(myId, mydescription, mylocation, myimages, mysources, mystudentFirst, mystudentLast, mysubjectName, mysubmittedDate);
     //let id = studentSubmission.subjectName;
+
+    console.log("this is the most recent submission " + recentSubmission);
+    console.log(recentSubmission);
+
 
     return (
         <React.Fragment>
             <div style={{backgroundColor: constants.color.dark}}>
                 <div style={{margin: '100px auto 40px', width: '1400px', maxWidth: '90vw'}}>
-                    <BigCard submission = {submissions[0]} />
+                    <BigCard id={myId} location={mylocation} subjectName={mysubjectName} studentFirst={mystudentFirst} studentLast={mystudentLast} eventDate={myEventDate} />
                     <CardGrid submissions={threeSubmissions} /> {/*slice(1) passes in three */}
                     <div id='project-desc' style={{
                         backgroundColor: constants.color.light,
@@ -101,6 +175,7 @@ async function Home() {
             </div>
         </React.Fragment>
     );
+      
 }
 
 export default Home;

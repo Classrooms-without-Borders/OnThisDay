@@ -23,7 +23,7 @@ const cardImgStyle = {
 
 const CardImg = withStyles(cardImgStyle)(CardMedia);
 
-export function BigCard({ submissionParam }) {
+export function BigCard({id, location, subjectName, studentFirst, studentLast, eventDate}) {
     const bigCardStyle = makeStyles({
         root: {
             display: 'flex',
@@ -46,6 +46,7 @@ export function BigCard({ submissionParam }) {
     });
 
     //let title = submission.eventTitle;
+    console.log("finally " + subjectName);
 
     const submissions = getAllSubmissions();
     if (submissions === undefined) {
@@ -62,6 +63,10 @@ export function BigCard({ submissionParam }) {
         <div style={{width: '100%', textAlign: 'center'}}>
             <div style={{width: '100%', margin: '0 auto'}}>
                 <Link to='/details'> {/* TODO: redirect to appropriate URL */}
+                <h2>{}</h2>
+                            <h1>this should work againnnn</h1>
+                            <h1>{subjectName}</h1>
+                            <p>{studentFirst}</p>
                     <Card className={bigCardStyle().root}>
                         <CardImg
                             component='img'
@@ -71,10 +76,10 @@ export function BigCard({ submissionParam }) {
                             
                         />
                         <CardContent>
-                        {/*    <h2>{submission.location}</h2>
-                            <h1>{submission.date}</h1>
-                            <h1>{submission.subjectName}</h1>
-                            <p>{submission.submitterName}</p>*/}
+                        <h2>this should work</h2>
+                            <h1>{}</h1>
+                            <h1>{}</h1>
+                            <p>{}</p>
                           
                         </CardContent>
                     </Card>
