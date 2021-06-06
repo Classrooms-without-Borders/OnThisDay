@@ -92,7 +92,7 @@ export function DateInput() {
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <StyledDatePicker
                 variant='inline' 
-                format='MMM dd, yyyy'
+                format='MMM d, yyyy'
                 label='Date'
                 onChange={handleDateChange}
                 value={selectedDate}

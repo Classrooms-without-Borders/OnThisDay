@@ -145,6 +145,14 @@ export function Searchbar({ open=true }) {
                     color: constants.color.light,
                 },
             },
+            '& .MuiInputBase-adornedEnd': {
+                width: '180px',
+            },
+            '& .MuiInputLabel-animated': {
+                '&:not(.MuiInputLabel-outlined)': {
+                    left: '12px',
+                },
+            },
         },
     });
 
@@ -153,9 +161,9 @@ export function Searchbar({ open=true }) {
             <div className={useStyles().root} id='basic-search'>
                 <div>
                     <p>What happened in</p>
-                    <TextInput label='City, Country' />
+                    <TextInput id='location-input' label='City, Country' />
                     <p>on</p>
-                    <DateInput label='Date' />
+                    <DateInput id='date-input' label='Date' />
                     <p>?</p>
                     <StyledButton color={constants.color.dark}>
                         Search
