@@ -8,9 +8,9 @@ import constants from '../styling/Constants';
 class About extends React.Component {
 	render() {
 		const header1 = {
-			fontFamily: constants.fontFamily.body,
-			fontSize: constants.fontSize.xl, 
-			fontWeight: '600',
+			fontFamily: '"Limelight", sans-serif',
+			fontSize: '50px', 
+			fontWeight: '400',
 			color: constants.color.accentTertiary,
 	}
 		const bodyText1 = {
