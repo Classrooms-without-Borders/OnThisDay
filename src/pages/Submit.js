@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import '../styling/Submit.css'
-import {firebase} from '../util';
-import {storage} from '../util';
+import {storage} from '../util/Authentication';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
+import firebase from "firebase";
 
 class Submit extends Component {
 
@@ -47,20 +47,13 @@ class Submit extends Component {
             })
         })
     }
-
+    
     addUser = async(e) => {
         await this.onUploadSubmission();
         console.log("current images are: ", [...new Set(this.state.images)]);
         const db = firebase.firestore();
         console.log(new Date(this.state.date + "T00:00:00"));
-
-        // create new class
-        db.collection("classes").add({
-            school: this.state.school,
-            grade: parseInt(this.state.grade),
-            teacherName: this.state.teacherName
-        }); 
-    
+            
         // create new submission
         db.collection("submissions").add({
             // date set in local time zone, uploaded to firebase as UTC without adjusting for time difference
@@ -68,11 +61,15 @@ class Submit extends Component {
             date: firebase.firestore.Timestamp.fromDate(new Date(this.state.date + "T00:00:00")),
             description: this.state.description,
             images: [...new Set(this.state.images)],
-            location: new firebase.firestore.GeoPoint(this.state.lat, this.state.lng),
+            coordinates: new firebase.firestore.GeoPoint(this.state.lat, this.state.lng),
+            location: this.state.location,
             sources: this.state.sourceList,
             studentFirst: this.state.studentFirst,
             studentLast: this.state.studentLast,
             subjectName: this.state.subjectName,
+            school: this.state.school,
+            grade: parseInt(this.state.grade),
+            teacherName: this.state.teacherName,
             submittedDate: firebase.firestore.Timestamp.fromDate(new Date())
         }); 
         
