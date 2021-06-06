@@ -42,10 +42,17 @@ var cardStyle = {
   top: '247px'
 }
 
-export function BigCard() {
+export function BigCard(studentSubmission) {
+  let mySubjectName = studentSubmission.subjectName;
+  let myLocation = studentSubmission.location;
+  let myEventDate = studentSubmission.eventDate;
+  let myStudentName = studentSubmission.studentName;
+  let myClassName = studentSubmission.className;
+
+
   return (
     <div>
-      <Button component={Link} to="/details/:" color="primary">
+      <Button component={Link} to="/details/" color="primary">
         <Card style={cardStyle} >
             <CardMedia
                 component="img"
@@ -59,7 +66,7 @@ export function BigCard() {
               <h3 className="date"> 3 Apr 1944</h3>
               <h3 className="event"> Sofka Skipwith</h3>
               <h3 className="author"> by Jane Doe</h3>
-              <Details/>
+              <Details subjectName= {mySubjectName} location={myLocation} eventDate={myEventDate} studentName={myStudentName} className={myClassName} />
             </CardContent>
           </Card>
         </Button>

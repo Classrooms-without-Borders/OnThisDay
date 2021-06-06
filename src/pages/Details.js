@@ -35,12 +35,30 @@ class Details extends React.Component {
 	 
 	render() {
 		return (
+      
 
-     
-    <React.Fragment> 
-      <Carousel>
+      <React.Fragment> 
+
+        <Carousel>
         <Carousel.Item>
           <img src={logo}  alt="logo"/>
+          <h1>Hello world</h1>
+          <h1>Hello world</h1>
+
+          <h1>Hello world</h1>
+
+          <h1>Hello world</h1>
+          <h1>Hello world</h1>
+
+          <h1>Hello world</h1>
+
+          <h1>Hello world</h1>
+          <h1>Hello world</h1>
+
+          <h1>Hello world</h1>
+
+
+
         </Carousel.Item>
         <Carousel.Item>
           <img src={logo}  alt="logo"/>  
@@ -52,7 +70,8 @@ class Details extends React.Component {
 
         {/*Right now everything is hard coded but should be passed in as props in future */}
       <div className="card-body"> 
-        <h1 className="title-event">ffdnfdsifisfdn</h1>
+        <h1>Hello world</h1>
+        <h1 className="title-event">this should still show up</h1>
         <h2 className="title-location">{this.props.location}</h2>
         <h2 className="title-date">{this.props.eventDate}</h2>
 
