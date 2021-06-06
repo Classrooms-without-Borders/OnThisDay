@@ -13,10 +13,9 @@ const config = {
     appId: "1:570389339615:web:471b8d5c20067bcb52786a",
     measurementId: "G-C4MWCCVMS2"
 };
-
-//firebase.initializeApp(config);
-const storage = firebase.storage();
-const auth = firebase.auth().app;
-export { storage, auth, firebase as default };
-
 */
+//firebase.initializeApp(config);
+//const storage = firebase.storage();
+//const auth = firebase.auth().app;
+//export { storage, auth, firebase as default };
+
