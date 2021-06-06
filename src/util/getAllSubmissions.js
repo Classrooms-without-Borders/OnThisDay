@@ -26,7 +26,8 @@ async function getAllSubmissions(){
     //for (let i = 0; i < 7; i++) lst.push(testSub);
     //for (let i = 0; i < 5; i++) lst.push(testSub2);
     //return lst;
-   
+    console.log("Hello wolrd");
+
 
   let submissionObjects = new Array();
   var i = 0;
@@ -34,7 +35,6 @@ async function getAllSubmissions(){
     submissions.forEach((doc) => {
       
 
-      
       console.log(doc.id);
       console.log(doc.data().date);
       console.log(doc.data().description);
