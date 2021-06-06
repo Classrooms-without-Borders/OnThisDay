@@ -3,6 +3,8 @@ import React, {Component} from "react";
 import firebase from 'firebase/app';
 import 'firebase/firestore'
 
+import React, { useContext, useState, useEffect } from "react"
+import {auth} from './Authentication'
 //firebase init stuff
 const firebaseConfig = {
   apiKey: "AIzaSyDQo6NTf4fsIjvqbbhISSAx_X6Svtx2LFw",
@@ -36,21 +38,20 @@ class AdminPortal extends Component{
 
   //get ALL the data from the unverified database and put it into docs array
   //also populate options checkbox array with corresponding name
-  componentDidMount = () => {
-
-    db.collection("unverified").get().then((snapshot) => (
+componentDidMount = () => {
+  console.log("welcome2")
+    db.collection("submissions").get().then((snapshot) => (
       snapshot.forEach((doc) => (
-        
+        console.log(doc.data().subjectName),
         this.setState((prevState) => ({
+
           docs: [...prevState.docs, {
             docID: doc.id,
-            name: doc.data().name,
+            name: doc.data().subjectName,
             description: doc.data().description,
-            date: doc.data().title,
-            country: doc.data().countryName,
-            city: doc.data().cityName,
-            sourcename: doc.data().sources,
-            link: doc.data().url
+            date: doc.data().date.toString(),
+            studentfirst: doc.data().studentFirst,
+            studentlast: doc.data().studentLast,
           }],
         }
 
@@ -78,7 +79,7 @@ class AdminPortal extends Component{
     formSubmitEvent.preventDefault();
     //array of id strings for delete
     let stringarr = this.state.checks.map((c)=>
-      db.collection("unverified").doc(String(c))
+      db.collection("submissions").doc(String(c))
     .get()
     .then(function(doc) {
       if (doc.exists) {
@@ -86,7 +87,7 @@ class AdminPortal extends Component{
         //push doc with same name to verified collection
         db.collection("verified").doc(String(c)).set(doc.data());
         //delete document from unverified collection
-        db.collection("unverified").doc(String(c)).delete().then(()=>{
+        db.collection("submissions").doc(String(c)).delete().then(()=>{
             console.log("Document successfully deleted!");
         }).catch((error)=>{
           console.error("Error removing document: ", error);
@@ -108,10 +109,6 @@ class AdminPortal extends Component{
         <h1>Submission ID: {d.docID}</h1>
         <p><strong>Name of Person: </strong> {d.name}</p>
         <p><strong>Date: </strong> {d.date}</p>
-        <p><strong>City: </strong> {d.city}</p>
-        <p><strong>Country: </strong> {d.country}</p>
-        <p><strong>Name of Source: </strong> {d.sourcename}</p>
-        <p><strong>Source link: </strong> {d.link}</p>
         <p><strong>Event Description:</strong> {d.description}</p>
         <div>
         <label>
@@ -139,7 +136,5 @@ class AdminPortal extends Component{
       
     );
   }
-
 }
-
 export default AdminPortal;
