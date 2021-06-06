@@ -11,13 +11,18 @@ const cardImgStyle = {
         flexGrow: 1,
     },
     media: {
-        minWidth: '100%',
+        // minWidth: '100%',
+        height: '100%',
+        width: '100%',
+        objectFit: 'cover'
     },
     img: {
         margin: 'auto',
         display: 'block',
-        maxWidth: '100%',
-        maxHeight: '100%',
+        height: '100%',
+        width: '100%'
+        // maxWidth: '100%',
+        // maxHeight: '100%',
     },
 };
 
@@ -84,12 +89,34 @@ export function BigCard({ submissionParam }) {
     );
 }
 
+const useStyles = makeStyles((theme) => ({
+    Card: {
+        width: '100%',
+        height: '360px',
+        borderRadius: 0,
+        boxShadow: constants.boxShadow.initial,
+        transition: 'box-shadow 200ms',
+        '&:hover': {
+            boxShadow: constants.boxShadow.hover,
+            transition: 'box-shadow 200ms',
+        }
+      },
+      Media: {
+        height: '360px',
+        width: '100%',
+        // objectFit: 'fill'
+      }
+}));
+
 export function SmallCard({submission}) {
+    const classes = useStyles;
     const smallCardDivStyle = {
         display: 'inline-flex',
         width: 'calc(100% / 3 - 24px)',
         marginLeft: 0,
     };
+
+    
 
     const smallCardStyle = makeStyles({
         root: {
@@ -108,6 +135,15 @@ export function SmallCard({submission}) {
     return (
         <div style={smallCardDivStyle}>
             <Link to='/details'> {/* TODO: redirect to appropriate URL */}
+            {/* TODO: make image stretch to fit container */}
+            {/* <Card className={smallCardStyle().root}>
+                <CardMedia
+                        component='img'
+                        className={classes.Media}
+                        image={submission.images[0]}
+                        alt='Featured submission photo'
+                />
+            </Card> */}
                 <Card className={smallCardStyle().root} >
                     <CardImg
                         component='img'
