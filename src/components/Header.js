@@ -128,9 +128,7 @@ export function Header() {
                         <NavItem>
                             <NavLink to='/about' style={navlinkStyle('/about')}>About</NavLink>
                         </NavItem>
-                        <NavItem>
-                            <NavLink to='/admin' style={navlinkStyle('/admin')}>Admin</NavLink>
-                        </NavItem>
+              
                         <NavItem>
                             <NavLink to='/login' style={navlinkStyle('/login')}>Login</NavLink>
                         </NavItem>
