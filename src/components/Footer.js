@@ -8,25 +8,37 @@ import '../styling/Footer.css';
 
 export function Footer() {
   return (
-    <div className="footer" style={{backgroundColor:'#222629', padding:'-10%'}}>
+    <div className="footer">
       <div className="flexbox-container">
-        <div><a href="https://classroomswithoutborders.org/about-us/" target="_blank" rel="noopener noreferrer"><img src={logo} alt="logo" /></a></div>
-        <div><p style={{color:'white'}}>Classrooms Without Borders is an independently funded program of the Jewish Federation of Greater Pittsburgh</p>
-        <br />
-        <ul><b><a href="https://classroomswithoutborders.org/" target="_blank" rel="noopener noreferrer" style={{color:'white'}}>Website</a></b></ul>
-        <ul><b><a href="https://classroomswithoutborders.org/donate/" target="_blank" rel="noopener noreferrer" style={{color:'white'}}>Donate</a></b></ul>
+        <a href="https://classroomswithoutborders.org/about-us/" target="_blank" rel="noopener noreferrer" id="cwb_logo">
+          <img src={logo} alt="logo" />
+        </a>
         
-          <a href="https://www.facebook.com/classroomswithoutborders">
-            <img src={facebook} alt="logo" hspace="20"/>
+
+        <div id="footer_content">
+          <p>Classrooms Without Borders is an independently funded program of the Jewish Federation of Greater Pittsburgh</p>
+          <br />
+          <div id="links">
+
+
+            <b><a href="https://classroomswithoutborders.org/" target="_blank" rel="noopener noreferrer" style={{color:'white'}}>Website</a></b>
+
+            <a href="https://www.facebook.com/classroomswithoutborders">
+            <img src={facebook} alt="logo"/>
           </a>
           <a href="https://www.instagram.com/classroomswithoutborders/">
-              <img src={insta}  alt="logo" hspace="20" />
+              <img src={insta}  alt="logo"/>
           </a>
           <a href="https://twitter.com/cwbpgh">
               <img src={twitter}  alt="logo"  />
-            </a>
+          </a>
+
+            <b><a href="https://classroomswithoutborders.org/donate/" target="_blank" rel="noopener noreferrer" style={{color:'white'}}>Donate</a></b>
+          </div>
+          
         </div>
-        <div><img src={programInfo} alt="logo" height="100px"/></div>
+
+        <img src={programInfo} id="jewish_fed_logo" alt="logo"/>
         <div>
          
         </div>

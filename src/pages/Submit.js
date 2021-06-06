@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import '../styling/Submit.css'
-import {firebase} from '../util';
-import {storage} from '../util';
+import {storage} from '../util/Authentication';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
+import firebase from "firebase";
 
 class Submit extends Component {
 
@@ -40,19 +40,15 @@ class Submit extends Component {
         axios.get(apiUrl).then(res => {
             this.setState({lat : res.data.results[0].geometry.location.lat});
             this.setState({lng : res.data.results[0].geometry.location.lng});
-            console.log("lat" + this.state.lat);
-            console.log("lng" + this.state.lng);
             this.addUser().then(result => {
                 this.props.history.push('/submit-success');
             })
         })
     }
-
+    
     addUser = async(e) => {
         await this.onUploadSubmission();
-        console.log("current images are: ", [...new Set(this.state.images)]);
         const db = firebase.firestore();
-        console.log(new Date(this.state.date + "T00:00:00"));
 
         // create new class
         db.collection("classes").add({
@@ -68,11 +64,15 @@ class Submit extends Component {
             date: firebase.firestore.Timestamp.fromDate(new Date(this.state.date + "T00:00:00")),
             description: this.state.description,
             images: [...new Set(this.state.images)],
-            location: new firebase.firestore.GeoPoint(this.state.lat, this.state.lng),
+            coordinates: new firebase.firestore.GeoPoint(this.state.lat, this.state.lng),
+            location: this.state.location,
             sources: this.state.sourceList,
             studentFirst: this.state.studentFirst,
             studentLast: this.state.studentLast,
             subjectName: this.state.subjectName,
+            school: this.state.school,
+            grade: parseInt(this.state.grade),
+            teacherName: this.state.teacherName,
             submittedDate: firebase.firestore.Timestamp.fromDate(new Date())
         }); 
         
@@ -134,7 +134,6 @@ class Submit extends Component {
         });
 
         return Promise.all(promises)
-        .then(() => console.log("All images successfully uploaded!"))
         .catch(err => console.log(err.code));
     }
 
