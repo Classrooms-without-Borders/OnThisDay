@@ -8,24 +8,6 @@ import { Searchbar } from './Searchbar';
 import { searchSubmissions } from '../util';
 
 export function Header() {
-    const [subjectName, setSubjectName] = useState();
-    const [location, setLocation] = useState();
-    const [eventDateStart, setEventDateStart] = useState();
-    const [eventDateEnd, setEventDateEnd] = useState();
-    const [studentName, setStudentName] = useState();
-    const [schoolName, setSchoolName] = useState();
-    const [grade, setGrade] = useState();
-    const [teacherName, setTeacherName] = useState();
-
-    //test    
-    const testDate = new Date('12/31/1944');
-    Promise.resolve(searchSubmissions(
-        subjectName, 'Tripoli, Greece', testDate, testDate,
-        studentName, schoolName, grade, teacherName
-    )).then((subs) => {
-        console.log(subs);
-    });
-
     const url = useLocation();
 
     // keep search open on gallery page
