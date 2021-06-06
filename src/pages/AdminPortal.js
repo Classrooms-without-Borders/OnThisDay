@@ -2,7 +2,6 @@ import '../styling/AdminPortal.css';
 import React, {Component} from "react";
 import firebase from 'firebase/app';
 import 'firebase/firestore'
-import {auth} from './Authentication'
 
 //firebase init stuff
 const firebaseConfig = {
