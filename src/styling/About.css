@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
+
 .body {
-  font-family: Montserrat;
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 500;
-  line-height: 37px;
 }
 
 .btn-design{
@@ -16,19 +17,12 @@
 }
 
 #first-section{
-  margin-top: 100px;
   text-align: left;
 }
 
-/* #second-section{
-  text-align: center;
-  margin-left: 10%;
+#second-section{
+  margin-top: 30px;
 }
-
-.list {
-  margin:50px auto;
-  text-align: left;
-} */
 
 .contact-us-form{
   max-width: 500px;
@@ -39,34 +33,23 @@
   color:white;
   padding-bottom: 30px;
 }
+
+h1, h2, h3, p{
+  text-align: left;
+}
 .title {
   color: white;
   font-family: Montserrat;
 }
 
+#logo {
+  margin-top:20px;
+}
 .subtitle1{
   text-align: left;
 }
 .title2 {
   text-align: left;
-  color: #E8910E;
-}
-.txt-design{
-    position: absolute;
-    width: 594px;
-    height: 133px;
-    left: 64px;
-    top: 1353px;
-
-    /* Heading 1 */
-
-    font-family: Montserrat;
-    
-    font-style: normal;
-    font-weight: 800;
-    font-size: 54px;
-    line-height: 66px;
-    text-transform: uppercase;
 }
 
 .contact-us-form{
@@ -78,6 +61,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    max-width: 500px;
 
 }
 
