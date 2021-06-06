@@ -223,9 +223,6 @@ class About extends React.Component {
         				Explore the Gallery
       				</Button></a>
 					
-					  <script type="text/javascript"
-							src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
-					</script>
 					<script type="text/javascript">
 					(function(){
 						emailjs.init("user_gjKd9grfF7emgMHDOS2Sc")})();
