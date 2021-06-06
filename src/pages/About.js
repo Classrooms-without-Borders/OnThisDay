@@ -25,16 +25,29 @@ class About extends React.Component {
 		let errors = {};
 		let formIsValid = true;
 
-		//todo: cahnge to firstname, lastName
-		if(!fields["name"]){
+		//first name
+		if(!fields["firstName"]){
 				formIsValid = false;
-				errors["name"] = "Cannot be empty";
+				errors["firstName"] = "Cannot be empty";
 		}
 
-		if(typeof fields["name"] !== "undefined"){
-				if(!fields["name"].match(/^[a-zA-Z]+$/)){
+		if(typeof fields["firstName"] !== "undefined"){
+				if(!fields["firstName"].match(/^[a-zA-Z]+$/)){
 					formIsValid = false;
-					errors["name"] = "Only letters";
+					errors["firstName"] = "Only letters";
+				}        
+		}
+
+		//last name
+		if(!fields["lastName"]){
+				formIsValid = false;
+				errors["lastName"] = "Cannot be empty";
+		}
+
+		if(typeof fields["lastName"] !== "undefined"){
+				if(!fields["lastName"].match(/^[a-zA-Z]+$/)){
+					formIsValid = false;
+					errors["lastName"] = "Only letters";
 				}        
 		}
 		//Email
@@ -53,6 +66,25 @@ class About extends React.Component {
 			 }
 		}  
 
+		//last name
+		if(!fields["phone"]){
+				formIsValid = false;
+				errors["phone"] = "Cannot be empty";
+		}
+
+		if(typeof fields["phone"] !== "undefined"){
+				if(!fields["phone"].match(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/)){
+					formIsValid = false;
+					errors["phone"] = "Please type in a valid phone number";
+				}        
+		}
+
+		if(!fields["message"]){
+				formIsValid = false;
+				errors["message"] = "Cannot be empty";
+		}
+
+
 		this.setState({errors: errors});
 		return formIsValid;
 	}
@@ -66,7 +98,7 @@ class About extends React.Component {
 			alert("Form submitted");
 			// this is where we add the email TODO
 		} else{
-			alert("Please fill out all fields.")
+			alert("Please fill out all fields and make sure all fields follow the correct format.")
 		}
 
 }
@@ -171,18 +203,18 @@ class About extends React.Component {
 				<form className="contact-us-form" style = {bodyText1} onSubmit= {this.formSubmit.bind(this)}>
 					<div class="row">
 						<div class="col">
-							<input type="text" class="form-control" placeholder="FirstName*" onChange={this.handleChange.bind(this, "firstName")} value={this.state.fields["firstName"]}></input>
+							<input type="text" class="form-control" placeholder="First Name*" onChange={this.handleChange.bind(this, "firstName")} value={this.state.fields["firstName"]}></input>
 						</div>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="LastName*" onChange={this.handleChange.bind(this, "lastName")} value={this.state.fields["lastName"]}></input>
+							<input type="text" class="form-control" placeholder="Last Name*" onChange={this.handleChange.bind(this, "lastName")} value={this.state.fields["lastName"]}></input>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Email*" onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]}></input>
+							<input type="text" class="form-control" placeholder="Email*: ex@gmail.com" onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]}></input>
 						</div>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Phone*" onChange={this.handleChange.bind(this, "phone")} value={this.state.fields["phone"]}></input>
+							<input type="text" class="form-control" placeholder="Phone*: xxx-xxx-xxxx" onChange={this.handleChange.bind(this, "phone")} value={this.state.fields["phone"]}></input>
 						</div>
 					</div>
 					<div class="row">
