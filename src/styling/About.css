@@ -2,7 +2,6 @@
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 500;
-  line-height: 37px;
 }
 
 .btn-design{
@@ -19,15 +18,9 @@
   text-align: left;
 }
 
-/* #second-section{
-  text-align: center;
-  margin-left: 10%;
+#second-section{
+  margin-top: 30px;
 }
-
-.list {
-  margin:50px auto;
-  text-align: left;
-} */
 
 .contact-us-form{
   max-width: 500px;
@@ -39,7 +32,7 @@
   padding-bottom: 30px;
 }
 
-h2, h3{
+h1, h2, h3, p{
   text-align: left;
 }
 .title {
@@ -55,7 +48,6 @@ h2, h3{
 }
 .title2 {
   text-align: left;
-  color: #E8910E;
 }
 
 .contact-us-form{
@@ -67,6 +59,7 @@ h2, h3{
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    max-width: 500px;
 
 }
 

@@ -7,6 +7,23 @@ import constants from '../styling/Constants';
 
 class About extends React.Component {
 	render() {
+		const header1 = {
+			fontFamily: constants.fontFamily.body,
+			fontSize: constants.fontSize.xl, 
+			fontWeight: '600',
+			color: constants.color.accentTertiary,
+	}
+		const bodyText1 = {
+			fontFamily: constants.fontFamily.body,
+			fontWeight: '500',
+			color: constants.color.light,
+		}
+		const bodyText2 = {
+			fontFamily: constants.fontFamily.body,
+			fontSize: constants.fontSize.s, 
+			fontWeight: '600',
+			color: constants.color.light,
+		}
 		return (
 			<React.Fragment>
 				<div className="body" style={{margin: '20px auto 30px', maxWidth: '90vw'}}>
@@ -21,29 +38,21 @@ class About extends React.Component {
 					<img src={pic} className=" img-fluid" id="logo"></img>
 				</Col>
 				<Col sm="1" md="7" lg="7">
-					<Typography variant="subtitle1" gutterBottom className="title">
-					On this day, a project of <a href="https://classroomswithoutborders.org/" target="_blank" rel="noopener noreferrer">Classrooms Without Borders</a>, is a collection of student research to
+					<p style = {bodyText1}>	On this day, a project of <a href="https://classroomswithoutborders.org/" target="_blank" rel="noopener noreferrer">Classrooms Without Borders</a>, is a collection of student research to
 					uncover and share the personal histories of the individuals during World War II and the
 					Holocaust. For too long, Holocaust education has been taught at the macro level, with total
 					numbers of lives lost and high level governmental implications of war. What is overlooked is the
 					individual. The human beings that comprise the numbers and the immense potential that was
 					annihilated. For students to grapple with the implications of the Holocaust and genocide studies,
-					they must connect to the humanity that was eradicated.
-		     		</Typography>
+					they must connect to the humanity that was eradicated.</p>
 					 <br />
-
-					 <Typography variant="subtitle1" gutterBottom>
-					 Through careful research, first person sources, family photographs, and more, students are
+					 <p style = {bodyText1}>Through careful research, first person sources, family photographs, and more, students are
 						asked to dig deep into the personal, historical and military stories from the Holocaust that may
-						be largely unknown. Only by understanding what was, can we really understand what was lost.
-		     		</Typography>
+						be largely unknown. Only by understanding what was, can we really understand what was lost.</p>
 					 <br />
-
-					 <Typography variant="subtitle1" gutterBottom>
-					 As part of a new Holocaust education curriculum, Educators and students may choose to focus
+					 <p style = {bodyText1}>As part of a new Holocaust education curriculum, Educators and students may choose to focus
 					on a specific time period or a specific region to research. We invite students to dig into the
-					stories and artifacts presented here as well as research and submit their own stories.
-		     	</Typography>
+					stories and artifacts presented here as well as research and submit their own stories.</p>
 					</Col>
 					</Row>
 				</Container>
@@ -58,35 +67,17 @@ class About extends React.Component {
             }}>HOW IT WORKS</h2>
 				</Col>
 				<Col sm="1" md="7" lg="7" id="second-right">
-				<h3 style={{
-                fontFamily: constants.fontFamily.header,
-                fontWeight: '600',
-                color: constants.color.light,
-            }}>Research</h3>
-					<Typography variant="subtitle1" gutterBottom className="subtitle1">
-					  independently or as part of a class or group
-		     	</Typography>
+				<h1 style={header1}>RESEARCH</h1>
+						<h2 style={bodyText2}>independently or as part of a class or group</h2>
 					 <br></br>
-					 <Typography variant="h4" component="h2" className="title2">
-						SUBMIT
-						</Typography>
-					<Typography variant="subtitle1" gutterBottom className="subtitle1">
-					use the submission portal to submit your research, sources and artifacts
-		     	</Typography>
+					 <h1 style={header1}>SUBMIT</h1>
+						<h2 style={bodyText2}>use the submission portal to submit your research, sources and artifacts</h2>
 					 <br></br>
-					 <Typography variant="h4" component="h2" className="title2">
-						REVIEW
-						</Typography>
-					<Typography variant="subtitle1" gutterBottom className="subtitle1">
-					the CWB On This Day team will review and fact check all submissions
-		     	</Typography>
+					 <h1 style={header1}>REVIEW</h1>
+						<h2 style={bodyText2}>the CWB On This Day team will review and fact check all submissions</h2>
 					 <br></br>
-					 <Typography variant="h4" component="h2" className="title2">
-						LIVE
-						</Typography>
-					<Typography variant="subtitle1" gutterBottom className="subtitle1">
-					once verified your research will be made public on the site for others to use in future research
-		     	</Typography>
+					 <h1 style={header1}>LIVE</h1>
+					<h2 style={bodyText2}>once verified your research will be made public on the site for others to use in future research</h2>
 					 <br></br>
 				</Col>
 						</Row>
@@ -102,13 +93,17 @@ class About extends React.Component {
             }}>CONTACT US</h3>
 				</Col>
 				<Col sm="1" md="7" lg="7" >
-				<Typography variant="subtitle1" gutterBottom className="subtitle1">
-				Educators, interested in learning more about how to bring on this day to your classroom?
-				</Typography>
-				​<Typography variant="subtitle1" gutterBottom className="subtitle1">
-				Contact CWB's Educational Programs and Outreach Manager.
-				</Typography>
-				<form className="contact-us-form">
+				<p style={{
+						fontFamily: constants.fontFamily.body,
+						fontWeight: '400',
+						color: constants.color.light,
+				}}>Educators, interested in learning more about how to bring on this day to your classroom?</p>
+				<p style={{
+						fontFamily: constants.fontFamily.body,
+						fontWeight: '400',
+						color: constants.color.light,
+				}}>Contact CWB's Educational Programs and Outreach Manager.</p>
+				<form className="contact-us-form" style = {bodyText1}>
 					<div class="row">
 						<div class="col">
 							<input type="text" class="form-control" placeholder="First name"></input>
