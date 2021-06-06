@@ -32,10 +32,6 @@ async function getAllSubmissions(){
   var i = 0;
   await db.collection('submissions').get().then((submissions) => {
     submissions.forEach((doc) => {
-      console.log(doc.data().date);
-      console.log(doc.data().description);
-      console.log(doc.data().images);
-
       submissionObjects[i] = new StudentSubmission("title", doc.data().date, doc.data().description, doc.data().images, doc.data().sources, doc.data().studentName, doc.data().submittedDate, "");
       submissionObjects[i] = new StudentSubmission(doc.data().subjectName, doc.data().location, doc.data().description, doc.data().images, doc.data().sources, doc.data().studentName, doc.data().submittedDate, "");
 
@@ -43,12 +39,6 @@ async function getAllSubmissions(){
 
   })});
   
-  console.log(submissionObjects);
-  console.log(submissionObjects.length);
-  console.log(typeof submissionObjects);
-  console.log("this is first card " + submissionObjects[0]);
-
-
   return submissionObjects;
 };
 

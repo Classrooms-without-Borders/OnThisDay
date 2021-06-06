@@ -40,8 +40,6 @@ class Submit extends Component {
         axios.get(apiUrl).then(res => {
             this.setState({lat : res.data.results[0].geometry.location.lat});
             this.setState({lng : res.data.results[0].geometry.location.lng});
-            console.log("lat" + this.state.lat);
-            console.log("lng" + this.state.lng);
             this.addUser().then(result => {
                 this.props.history.push('/submit-success');
             })
@@ -50,9 +48,7 @@ class Submit extends Component {
 
     addUser = async(e) => {
         await this.onUploadSubmission();
-        console.log("current images are: ", [...new Set(this.state.images)]);
         const db = firebase.firestore();
-        console.log(new Date(this.state.date + "T00:00:00"));
 
         // create new class
         db.collection("classes").add({
@@ -134,7 +130,6 @@ class Submit extends Component {
         });
 
         return Promise.all(promises)
-        .then(() => console.log("All images successfully uploaded!"))
         .catch(err => console.log(err.code));
     }
 

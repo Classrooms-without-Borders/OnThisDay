@@ -5,13 +5,32 @@ import { Navbar,  NavItem } from 'reactstrap';
 import { NavLink, useLocation } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
 import { Searchbar } from './Searchbar';
+import { searchSubmissions } from '../util';
 
 export function Header() {
-    const location = useLocation();
+    const [subjectName, setSubjectName] = useState();
+    const [location, setLocation] = useState();
+    const [eventDateStart, setEventDateStart] = useState();
+    const [eventDateEnd, setEventDateEnd] = useState();
+    const [studentName, setStudentName] = useState();
+    const [schoolName, setSchoolName] = useState();
+    const [grade, setGrade] = useState();
+    const [teacherName, setTeacherName] = useState();
+
+    //test    
+    const testDate = new Date('12/31/1944');
+    Promise.resolve(searchSubmissions(
+        subjectName, 'Tripoli, Greece', testDate, testDate,
+        studentName, schoolName, grade, teacherName
+    )).then((subs) => {
+        console.log(subs);
+    });
+
+    const url = useLocation();
 
     // keep search open on gallery page
     const [searchOpen, setSearchOpen] = useState(
-        location.pathname === '/gallery'
+        url.pathname === '/gallery'
     );
 
     const useStyles = makeStyles({
@@ -64,7 +83,7 @@ export function Header() {
     const navlinkStyle = (linkName) => {
         return {
             color: constants.color.light,
-            opacity: linkName === location.pathname ? '100%' : '50%',
+            opacity: linkName === url.pathname ? '100%' : '50%',
             fontFamily: constants.fontFamily.body,
             fontWeight: 'normal',
             textTransform: 'capitalize',
@@ -96,12 +115,12 @@ export function Header() {
     }, [searchOpen]);
 
     useEffect(() => {
-        if (location.pathname !== '/gallery') {
+        if (url.pathname !== '/gallery') {
             setSearchOpen(false); 
         } else {
             setSearchOpen(true);
         }
-    }, [location.pathname]);
+    }, [url.pathname]);
 
     return (
         <div style={{display: 'block'}}>
