@@ -129,9 +129,10 @@ export function Header() {
                         <NavItem>
                             <NavLink to='/about' style={navlinkStyle('/about')}>About</NavLink>
                         </NavItem>
-              
                         <NavItem>
-                            <NavLink to='/login' style={navlinkStyle('/login')}>Login</NavLink>
+                            <a href='mailto:Programs@classroomswithoutborders.org' style={navlinkStyle('')}>
+                                Contact Us
+                            </a>
                         </NavItem>
                         <NavItem id='search-icon' onClick={onClickSearchIcon}>
                             <SearchIcon fontSize='default' />
