@@ -32,36 +32,13 @@ async function getAllSubmissions(){
   var i = 0;
   await db.collection('submissions').get().then((submissions) => {
     submissions.forEach((doc) => {
-      
-
-      
-      console.log(doc.id);
-      console.log(doc.data().date);
-      console.log(doc.data().description);
-      console.log(doc.data().location);
-      console.log(doc.data().images);
-      console.log(doc.data().sources);
-      console.log(doc.data().studentFirst);
-      console.log(doc.data().studentLast);
-      console.log(doc.data().subjectName);
-      console.log(doc.data().submittedDate);
-
-      submissionObjects[i] = new StudentSubmission(doc.id, doc.data().subjectName, doc.data().location, doc.data().date, doc.data().description, doc.data().images, doc.data().sources);
-
-
-      //submissionObjects[i] = new StudentSubmission("title", doc.data().date, doc.data().description, doc.data().images, doc.data().sources, doc.data().studentName, doc.data().submittedDate, "");
-      //submissionObjects[i] = new StudentSubmission(doc.data().subjectName, doc.data().location, doc.data().description, doc.data().images, doc.data().sources, doc.data().studentName, doc.data().submittedDate, "");
+      submissionObjects[i] = new StudentSubmission("title", doc.data().date, doc.data().description, doc.data().images, doc.data().sources, doc.data().studentName, doc.data().submittedDate, "");
+      submissionObjects[i] = new StudentSubmission(doc.data().subjectName, doc.data().location, doc.data().description, doc.data().images, doc.data().sources, doc.data().studentName, doc.data().submittedDate, "");
 
       i+=1;
 
   })});
   
-  console.log(submissionObjects);
-  console.log(submissionObjects.length);
-  console.log(typeof submissionObjects);
-  console.log("this is first card " + submissionObjects[0]);
-
-
   return submissionObjects;
 };
 

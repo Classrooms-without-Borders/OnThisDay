@@ -86,7 +86,7 @@ function AdvancedSearch({ open=false }) {
                     <TextInput placeholder='Name' id='submitter-name' name='submitter-name' />
                 </div>
                 <div id='adv-search-school'>
-                    <label htmlFor='school'>School</label>
+                    <label htmlFor='school'>School name</label>
                     <TextInput placeholder='School' id='school' name='school' />
                 </div>
                 <div id='adv-search-grade'>
@@ -94,7 +94,7 @@ function AdvancedSearch({ open=false }) {
                     <TextInput placeholder='Grade' id='grade' name='grade' />
                 </div>
                 <div id='adv-search-teacher'>
-                    <label htmlFor='teacher'>Teacher</label>
+                    <label htmlFor='teacher'>Teacher name</label>
                     <TextInput placeholder='Teacher' id='teacher' name='teacher' />
                 </div>
             </div>
@@ -145,6 +145,14 @@ export function Searchbar({ open=true }) {
                     color: constants.color.light,
                 },
             },
+            '& .MuiInputBase-adornedEnd': {
+                width: '180px',
+            },
+            '& .MuiInputLabel-animated': {
+                '&:not(.MuiInputLabel-outlined)': {
+                    left: '12px',
+                },
+            },
         },
     });
 
@@ -153,9 +161,9 @@ export function Searchbar({ open=true }) {
             <div className={useStyles().root} id='basic-search'>
                 <div>
                     <p>What happened in</p>
-                    <TextInput label='City, Country' />
+                    <TextInput id='location-input' label='City, Country' />
                     <p>on</p>
-                    <DateInput label='Date' />
+                    <DateInput id='date-input' label='Date' />
                     <p>?</p>
                     <StyledButton color={constants.color.dark}>
                         Search
