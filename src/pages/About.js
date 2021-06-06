@@ -182,10 +182,10 @@ class About extends React.Component {
 				<form className="contact-us-form" style = {bodyText1} onSubmit= {this.formSubmit.bind(this)}>
 					<div class="row">
 						<div class="col">
-							<input type="text" class="form-control" placeholder="FirstName*" onChange={this.handleChange.bind(this, "firstName")} value={this.state.fields["firstName"]}></input>
+							<input type="text" class="form-control" placeholder="First Name*" onChange={this.handleChange.bind(this, "firstName")} value={this.state.fields["firstName"]}></input>
 						</div>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="LastName*" onChange={this.handleChange.bind(this, "lastName")} value={this.state.fields["lastName"]}></input>
+							<input type="text" class="form-control" placeholder="Last Name*" onChange={this.handleChange.bind(this, "lastName")} value={this.state.fields["lastName"]}></input>
 						</div>
 					</div>
 					<div class="row">
