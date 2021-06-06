@@ -70,7 +70,7 @@ export function DateInput() {
 
     const StyledDatePicker = withStyles({
         root: {
-            width: '140px',
+            width: '180px',
             '& label': {
                 top: '-10px',
             },
@@ -97,8 +97,12 @@ export function DateInput() {
                 onChange={handleDateChange}
                 value={selectedDate}
                 className={useStyles().root}
-                size='small'
+                maxDate={new Date(1950, 12, 31)}
+                maxDateMessage='Please choose a date in 1950 or earlier'
+                minDate={new Date(1925, 1, 1)}
+                minDateMessage='Please choose a date in 1925 or later'
                 disableFuture={true}
+                inputProps={{ readOnly: true }}
             />
         </MuiPickersUtilsProvider>
     );

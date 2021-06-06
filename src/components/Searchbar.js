@@ -86,7 +86,7 @@ function AdvancedSearch({ open=false }) {
                     <TextInput placeholder='Name' id='submitter-name' name='submitter-name' />
                 </div>
                 <div id='adv-search-school'>
-                    <label htmlFor='school'>School</label>
+                    <label htmlFor='school'>School name</label>
                     <TextInput placeholder='School' id='school' name='school' />
                 </div>
                 <div id='adv-search-grade'>
@@ -94,7 +94,7 @@ function AdvancedSearch({ open=false }) {
                     <TextInput placeholder='Grade' id='grade' name='grade' />
                 </div>
                 <div id='adv-search-teacher'>
-                    <label htmlFor='teacher'>Teacher</label>
+                    <label htmlFor='teacher'>Teacher name</label>
                     <TextInput placeholder='Teacher' id='teacher' name='teacher' />
                 </div>
             </div>
