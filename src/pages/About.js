@@ -25,7 +25,7 @@ class About extends React.Component {
 		let errors = {};
 		let formIsValid = true;
 
-		//Name
+		//todo: cahnge to firstname, lastName
 		if(!fields["name"]){
 				formIsValid = false;
 				errors["name"] = "Cannot be empty";
@@ -57,26 +57,16 @@ class About extends React.Component {
 		return formIsValid;
 	}
 
-	contactSubmit(e){
-		e.preventDefault();
-
-		if(this.handleValidation()){
-			 alert("Form submitted");
-		}else{
-			 alert("Form has errors.")
-		}
-
-	}
 
 	formSubmit(event) {
 		event.preventDefault();
 		let fields = this.state.fields;
 
-
 		if(this.handleValidation()){
 			alert("Form submitted");
+			// this is where we add the email TODO
 		} else{
-			alert("Form has errors.")
+			alert("Please fill out all fields.")
 		}
 
 }
@@ -177,21 +167,21 @@ class About extends React.Component {
 						fontWeight: '400',
 						color: constants.color.light,
 				}}>Contact CWB's Educational Programs and Outreach Manager.</p>
-				<form className="contact-us-form" style = {bodyText1}>
+				<form className="contact-us-form" style = {bodyText1} onSubmit= {this.formSubmit.bind(this)}>
 					<div class="row">
 						<div class="col">
-							<input type="text" class="form-control" placeholder="First name"></input>
+							<input type="text" class="form-control" placeholder="First name*" ></input>
 						</div>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Last name"></input>
+							<input type="text" class="form-control" placeholder="Last name*"></input>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Email"></input>
+							<input type="text" class="form-control" placeholder="Email*"></input>
 						</div>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Phone"></input>
+							<input type="text" class="form-control" placeholder="Phone*"></input>
 						</div>
 					</div>
 					<div class="row">
