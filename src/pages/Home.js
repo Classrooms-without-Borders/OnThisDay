@@ -9,7 +9,7 @@ import StudentSubmission from "../util/StudentSubmission";
 import { getAllSubmissions } from '../util';
 
 
-function Home() {
+async function Home() {
     // FOR TESTING ONLY
     const testSub = {
         location: 'London, England',
@@ -38,16 +38,16 @@ function Home() {
     for (let i = 1; i < submissions.length; ++i) {
         threeSubmissions[i - 1] = submissions[i];
     }
-    /*
+    
     const studentSubmission = submissions[0];
-    let mySubjectName = submissions[0].subjectName;
-    let myLocation = studentSubmission.location;
-    let myEventDate = studentSubmission.eventDate;
-    let myStudentName = studentSubmission.studentName;
-    let myClassName = studentSubmission.className;
-    */
+    //let mySubjectName = submissions[0].subjectName;
+    //let myLocation = studentSubmission.location;
+    //let myEventDate = studentSubmission.eventDate;
+    //let myStudentName = studentSubmission.studentName;
+    //let myClassName = studentSubmission.className;
+    
 
-    const studentSubmission = submissions[0];
+    //const studentSubmission = submissions[0];
     //let id = studentSubmission.subjectName;
 
     return (
