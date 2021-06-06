@@ -1,9 +1,11 @@
 import React from "react";
 import '../styling/About.css'
 import { Button, Typography } from '@material-ui/core';
+import{ init } from 'emailjs-com';
 import { Container, Row, Col } from 'reactstrap';
 import pic from '../images/CWB_Logo_KO_NoTag.png';
 import constants from '../styling/Constants';
+import * as emailjs from 'emailjs-com'
 
 class About extends React.Component {
 	constructor(props) {
@@ -63,8 +65,16 @@ class About extends React.Component {
 		let fields = this.state.fields;
 
 		if(this.handleValidation()){
+			// this is where we add the email
+			emailjs.send(
+				'gmail',
+				'template_rr8z11c',
+				fields,
+				
+			)
+
 			alert("Form submitted");
-			// this is where we add the email TODO
+			
 		} else{
 			alert("Please fill out all fields.")
 		}
@@ -91,6 +101,7 @@ class About extends React.Component {
 		return (
 			<React.Fragment>
 				<div className="body" style={{margin: '20px auto 30px', maxWidth: '90vw'}}>
+				
 				<Container id="first-section">
 				<Row>
 				<Col sm="1" md="5" lg="5">
@@ -197,7 +208,6 @@ class About extends React.Component {
 					</div>
 					<input className="button" type="submit" value="Submit" />
 				</form>
-				
 				</Col>
 					
 					</Row>
@@ -213,6 +223,13 @@ class About extends React.Component {
         				Explore the Gallery
       				</Button></a>
 					
+					  <script type="text/javascript"
+							src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
+					</script>
+					<script type="text/javascript">
+					(function(){
+						emailjs.init("user_gjKd9grfF7emgMHDOS2Sc")})();
+					</script>
 				</div>
 			</React.Fragment>
 		);
