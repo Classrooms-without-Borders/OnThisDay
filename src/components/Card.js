@@ -5,6 +5,7 @@ import { Card, CardMedia, CardContent } from '@material-ui/core';
 import constants from '../styling/Constants';
 import StudentSubmission from "../util/StudentSubmission";
 import { getAllSubmissions } from '../util';
+import { Translate } from '@material-ui/icons';
 
 const cardImgStyle = {
     root: {
@@ -121,7 +122,7 @@ export function SmallCard({submission}) {
     const smallCardStyle = makeStyles({
         root: {
             width: '100%',
-            height: '360px',
+            height: '100%',
             borderRadius: 0,
             boxShadow: constants.boxShadow.initial,
             transition: 'box-shadow 200ms',
@@ -130,6 +131,29 @@ export function SmallCard({submission}) {
                 transition: 'box-shadow 200ms',
             },
         },
+        content: {
+            width: '100%',
+            backgroundColor: "#000000",
+            opacity: '70%',
+            position: 'relative',
+            transform: `translate(0%, -100%)`,
+            padding: '23px 30px',
+            '& > p': {
+                margin: 0,
+                textAlign: 'left',
+                color: 'white',
+                
+            },
+            '& > #location': {
+                fontWeight: 700,
+                fontSize: constants.fontSize.s,
+            }, 
+            '& > #name': {
+                fontWeight: 800,
+                fontSize: constants.fontSize.l,
+            }
+        }
+
     });
 
     return (
@@ -153,8 +177,10 @@ export function SmallCard({submission}) {
                         image={submission.images[0]}
                     />
                 </Card>
-                {submission.location}
-                {submission.subjectName}
+                <div className={smallCardStyle().content}>
+                    <p id="location">{submission.location}</p>
+                    <p id="name">{submission.subjectName}</p>
+                </div>
             </Link>
         </div>
     );
