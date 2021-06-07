@@ -22,13 +22,18 @@ export function CardGrid({ submissions }) {
         },
     })
 
+    const smallCards = {
+        width: "20",
+        objectFit: "fill"
+    }
+
     const numRows = Math.ceil(submissions.length / 3);
     let rows = [];
     for (let rowCount = 0; rowCount < numRows; rowCount++) {
         let row = [];
         for (let subCount = rowCount * 3; subCount < rowCount * 3 + 3 && subCount < submissions.length; subCount++) {
             row.push(
-                <SmallCard key={`grid-card-${subCount}`} submission={submissions[subCount]} />
+                <SmallCard id="smallCards" style={smallCards} key={`grid-card-${subCount}`} submission={submissions[subCount]} />
             );
         }
         rows.push(

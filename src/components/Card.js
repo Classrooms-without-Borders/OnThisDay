@@ -5,19 +5,25 @@ import { Card, CardMedia, CardContent } from '@material-ui/core';
 import constants from '../styling/Constants';
 import StudentSubmission from "../util/StudentSubmission";
 import { getAllSubmissions } from '../util';
+import { Translate } from '@material-ui/icons';
 
 const cardImgStyle = {
     root: {
         flexGrow: 1,
     },
     media: {
-        minWidth: '100%',
+        // minWidth: '100%',
+        height: '100%',
+        width: '100%',
+        objectFit: 'cover'
     },
     img: {
         margin: 'auto',
         display: 'block',
-        maxWidth: '100%',
-        maxHeight: '100%',
+        height: '100%',
+        width: '100%'
+        // maxWidth: '100%',
+        // maxHeight: '100%',
     },
 };
 
@@ -64,7 +70,6 @@ export function BigCard({id, location, subjectName, studentFirst, studentLast, e
             <div style={{width: '100%', margin: '0 auto'}}>
                 <Link to='/details'> {/* TODO: redirect to appropriate URL */}
                 <h2>{}</h2>
-                            <h1>this should work againnnn</h1>
                             <h1>{subjectName}</h1>
                             <p>{studentFirst}</p>
                     <Card className={bigCardStyle().root}>
@@ -76,7 +81,6 @@ export function BigCard({id, location, subjectName, studentFirst, studentLast, e
                             
                         />
                         <CardContent>
-                        <h2>this should work</h2>
                             <h1>{}</h1>
                             <h1>{}</h1>
                             <p>{}</p>
@@ -89,17 +93,39 @@ export function BigCard({id, location, subjectName, studentFirst, studentLast, e
     );
 }
 
+const useStyles = makeStyles((theme) => ({
+    Card: {
+        width: '100%',
+        height: '360px',
+        borderRadius: 0,
+        boxShadow: constants.boxShadow.initial,
+        transition: 'box-shadow 200ms',
+        '&:hover': {
+            boxShadow: constants.boxShadow.hover,
+            transition: 'box-shadow 200ms',
+        }
+      },
+      Media: {
+        height: '360px',
+        width: '100%',
+        // objectFit: 'fill'
+      }
+}));
+
 export function SmallCard({submission}) {
+    const classes = useStyles;
     const smallCardDivStyle = {
         display: 'inline-flex',
         width: 'calc(100% / 3 - 24px)',
         marginLeft: 0,
     };
 
+    
+
     const smallCardStyle = makeStyles({
         root: {
             width: '100%',
-            height: '360px',
+            height: '60%',
             borderRadius: 0,
             boxShadow: constants.boxShadow.initial,
             transition: 'box-shadow 200ms',
@@ -108,11 +134,43 @@ export function SmallCard({submission}) {
                 transition: 'box-shadow 200ms',
             },
         },
+        content: {
+            width: '100%',
+            backgroundColor: "#000000",
+            opacity: '70%',
+            position: 'relative',
+            transform: `translate(0%, -100%)`,
+            padding: '23px 30px',
+            '& > p': {
+                margin: 0,
+                textAlign: 'left',
+                color: 'white',
+                
+            },
+            '& > #location': {
+                fontWeight: 700,
+                fontSize: constants.fontSize.s,
+            }, 
+            '& > #name': {
+                fontWeight: 800,
+                fontSize: constants.fontSize.l,
+            }
+        }
+
     });
 
     return (
         <div style={smallCardDivStyle}>
             <Link to='/details'> {/* TODO: redirect to appropriate URL */}
+            {/* TODO: make image stretch to fit container */}
+            {/* <Card className={smallCardStyle().root}>
+                <CardMedia
+                        component='img'
+                        className={classes.Media}
+                        image={submission.images[0]}
+                        alt='Featured submission photo'
+                />
+            </Card> */}
                 <Card className={smallCardStyle().root} >
                     <CardImg
                         component='img'
@@ -122,8 +180,10 @@ export function SmallCard({submission}) {
                         image={submission.images[0]}
                     />
                 </Card>
-                {submission.location}
-                {submission.subjectName}
+                <div className={smallCardStyle().content}>
+                    <p id="location">{submission.location}</p>
+                    <p id="name">{submission.subjectName}</p>
+                </div>
             </Link>
         </div>
     );

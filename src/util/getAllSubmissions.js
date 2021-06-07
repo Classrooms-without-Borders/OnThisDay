@@ -23,11 +23,10 @@ async function getAllSubmissions(){
         submitterName: 'Brad Johnson',
     };
     let lst = [];
-    //for (let i = 0; i < 7; i++) lst.push(testSub);
-    //for (let i = 0; i < 5; i++) lst.push(testSub2);
-    //return lst;
-    console.log("Hello wolrd");
-
+    for (let i = 0; i < 7; i++) lst.push(testSub);
+    for (let i = 0; i < 5; i++) lst.push(testSub2);
+    return lst;
+   
 
   let submissionObjects = new Array();
   var i = 0;

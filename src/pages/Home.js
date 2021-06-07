@@ -3,7 +3,7 @@ import { BigCard, CardGrid, StyledButton } from '../components';
 import constants from '../styling/Constants';
 import { Link } from 'react-router-dom';
 // FOR TESTING ONLY
-import stockPhoto from '../images/home-stock-image.png';
+import stockPhoto from '../images/3Sandor7.jpg';
 import stockPhoto2 from '../images/sofka-skipwith.jpg';
 import StudentSubmission from "../util/StudentSubmission";
 import { getAllSubmissions } from '../util';
@@ -129,8 +129,8 @@ function Home() {
         <React.Fragment>
             <div style={{backgroundColor: constants.color.dark}}>
                 <div style={{margin: '100px auto 40px', width: '1400px', maxWidth: '90vw'}}>
-                    <BigCard id={myId} location={mylocation} subjectName={mysubjectName} studentFirst={mystudentFirst} studentLast={mystudentLast} eventDate={myEventDate} />
-                    <CardGrid submissions={threeSubmissions} /> {/*slice(1) passes in three */}
+                    <BigCard submission = {testSub} />
+                    <CardGrid submissions={[testSub, testSub2, testSub]} /> {/*slice(1) passes in three */}
                     <div id='project-desc' style={{
                         backgroundColor: constants.color.light,
                         color: constants.color.dark,
