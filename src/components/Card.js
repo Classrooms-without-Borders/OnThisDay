@@ -3,9 +3,8 @@ import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { Card, CardMedia, CardContent } from '@material-ui/core';
 import constants from '../styling/Constants';
-import StudentSubmission from "../util/StudentSubmission";
+// import StudentSubmission from "../util/StudentSubmission";
 import { getAllSubmissions } from '../util';
-import { Translate } from '@material-ui/icons';
 
 const cardImgStyle = {
     root: {
@@ -113,7 +112,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export function SmallCard({submission}) {
-    const classes = useStyles;
     const smallCardDivStyle = {
         display: 'inline-flex',
         width: 'calc(100% / 3 - 24px)',

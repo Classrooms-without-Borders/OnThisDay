@@ -31,26 +31,26 @@ class Submit extends Component {
         let errors = {};
         let formIsValid = true;
 
-        if (this.state.date == "" || this.state.subjectName == "" || this.state.location == "" || this.state.description == "" ||
-        this.state.studentFirst == "" || this.state.studentLast == "" || this.state.school == "" || this.state.grade == "" || 
-        this.state.teacherName == "" || this.state.sourceList[0]["sourceName"] == "" || this.state.sourceList[0]["sourceUrl"] == "") {
+        if (this.state.date === "" || this.state.subjectName === "" || this.state.location === "" || this.state.description === "" ||
+        this.state.studentFirst === "" || this.state.studentLast === "" || this.state.school === "" || this.state.grade === "" || 
+        this.state.teacherName === "" || this.state.sourceList[0]["sourceName"] === "" || this.state.sourceList[0]["sourceUrl"] === "") {
             formIsValid = false;
             errors["empty"] = "Field cannot be empty";
         }
-        if (this.state.subjectName != "") {
-            if (this.state.subjectName.match(/^[a-zA-Z]+$/) == false) {
+        if (this.state.subjectName !== "") {
+            if (this.state.subjectName.match(/^[a-zA-Z]+$/) === false) {
                 formIsValid = false;
                 errors["name"] = "Only letters";
             }
         }
-        if (this.state.studentFirst != "") {
-            if (this.state.studentFirst.match(/^[a-zA-Z]+$/) == false) {
+        if (this.state.studentFirst !== "") {
+            if (this.state.studentFirst.match(/^[a-zA-Z]+$/) === false) {
                 formIsValid = false;
                 errors["name"] = "Only letters";
             }
         }
-        if (this.state.studentLast != "") {
-            if (this.state.studentLast.match(/^[a-zA-Z]+$/) == false) {
+        if (this.state.studentLast !== "") {
+            if (this.state.studentLast.match(/^[a-zA-Z]+$/) === false) {
                 formIsValid = false;
                 errors["name"] = "Only letters";
             }
