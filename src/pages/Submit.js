@@ -22,10 +22,42 @@ class Submit extends Component {
             grade: "",
             teacherName: "",
             lat:"",
-            lng:""
+            lng:"",
+            errors: {}
         };
     }
     
+    handleValidation() {
+        let errors = {};
+        let formIsValid = true;
+
+        if (this.state.date == "" || this.state.subjectName == "" || this.state.location == "" || this.state.description == "" ||
+        this.state.studentFirst == "" || this.state.studentLast == "" || this.state.school == "" || this.state.grade == "" || 
+        this.state.teacherName == "" || this.state.sourceList[0]["sourceName"] == "" || this.state.sourceList[0]["sourceUrl"] == "") {
+            formIsValid = false;
+            errors["empty"] = "Field cannot be empty";
+        }
+        if (this.state.subjectName != "") {
+            if (this.state.subjectName.match(/^[a-zA-Z]+$/) == false) {
+                formIsValid = false;
+                errors["name"] = "Only letters";
+            }
+        }
+        if (this.state.studentFirst != "") {
+            if (this.state.studentFirst.match(/^[a-zA-Z]+$/) == false) {
+                formIsValid = false;
+                errors["name"] = "Only letters";
+            }
+        }
+        if (this.state.studentLast != "") {
+            if (this.state.studentLast.match(/^[a-zA-Z]+$/) == false) {
+                formIsValid = false;
+                errors["name"] = "Only letters";
+            }
+        }
+        this.setState({errors: errors});
+        return formIsValid;
+    }
     updateInput = e => {
         this.setState({
             [e.target.name]: e.target.value
@@ -34,6 +66,10 @@ class Submit extends Component {
 
     processInfo = e => {
         e.preventDefault();
+        if (!this.handleValidation()) {
+            alert("Please fill out all fields and make sure all fields follow the correct format.");
+            return;
+        }
         this.onUploadSubmission();
         // need to figure out how to securely store api key, maybe heroku config vars?
         const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.location}&key=AIzaSyBQ6AXhN1dWqYH5pjf8zuIoUyfTb1j0bAY`
@@ -49,16 +85,9 @@ class Submit extends Component {
     addUser = async(e) => {
         await this.onUploadSubmission();
         const db = firebase.firestore();
-
-        // create new class
-        db.collection("classes").add({
-            school: this.state.school,
-            grade: parseInt(this.state.grade),
-            teacherName: this.state.teacherName
-        }); 
     
         // create new submission
-        db.collection("submissions").add({
+        db.collection("unverified").add({
             // date set in local time zone, uploaded to firebase as UTC without adjusting for time difference
             // use getUTCDate() instead of getDate() so the same date appears no matter where the user is
             date: firebase.firestore.Timestamp.fromDate(new Date(this.state.date + "T00:00:00")),
@@ -90,8 +119,10 @@ class Submit extends Component {
             grade: "",
             teacherName: "",
             lat: "",
-            lng: ""
+            lng: "",
+            errors: {}
         });
+
         let fileListDisplay = document.getElementById('file-list-display');
         let fileInput = document.getElementById('files');
         fileListDisplay.innerHTML = '';
