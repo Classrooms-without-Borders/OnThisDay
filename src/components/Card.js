@@ -158,10 +158,12 @@ export function SmallCard({submission}) {
         }
 
     });
-
+    var r = Math.floor(Math.random() * 100) + 1;
     return (
         <div style={smallCardDivStyle}>
-            <Link to='/details'> {/* TODO: redirect to appropriate URL */}
+            <Link to={`/details/${r}`} />
+
+            {/* TODO: redirect to appropriate URL */}
             {/* TODO: make image stretch to fit container */}
             {/* <Card className={smallCardStyle().root}>
                 <CardMedia
@@ -184,7 +186,6 @@ export function SmallCard({submission}) {
                     <p id="location">{submission.location}</p>
                     <p id="name">{submission.subjectName}</p>
                 </div>
-            </Link>
         </div>
     );
 }

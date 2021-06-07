@@ -12,7 +12,7 @@ import firebase from "firebase";
 
 const db = firebase.firestore();
 
-function Home() {
+async function Home() {
     // FOR TESTING ONLY
     const testSub = {
         location: 'London, England',
@@ -31,12 +31,12 @@ function Home() {
 
     // call getRecentSubmissions here
     //array of studentsubmission object
-    let submissions =  getAllSubmissions();
+    let submissions = await getAllSubmissions();
     //Promise.resolve(submissions).then(() => {
 
-        console.log("type of " + typeof submissions);
-        console.log("first element printed out " + submissions[0]);
-        console.log("length is sooo" + submissions.length);
+   //     console.log("type of " + typeof submissions);
+     //   console.log("first element printed out " + submissions[0]);
+       // console.log("length is sooo" + submissions.length);
         //let newObject = submissions.pop();
     // console.log("This is when poppin + " + newObject);
     // newObject.pop();
@@ -72,7 +72,7 @@ function Home() {
     const firstSubmission = submissions[1];
     console.log("This is type of first card" + typeof firstSubmission);
 
-    //let mySubjectName = submissions[0].subjectName;
+    let mySubjectName = submissions[0].subjectName;
     //let myLocation = studentSubmission.location;
     //let myEventDate = studentSubmission.eventDate;
     //let myStudentName = studentSubmission.studentName;
