@@ -70,14 +70,14 @@ class Details extends React.Component {
 
         {/*Right now everything is hard coded but should be passed in as props in future */}
       <div className="card-body"> 
-        <h1>Hello world</h1>
-        <h1 className="title-event">this should still show up</h1>
-        <h2 className="title-location">{this.props.location}</h2>
-        <h2 className="title-date">{this.props.eventDate}</h2>
+        <h1>{this.props.subjectName}</h1>
+        <h1 className="title-event">{this.props.subjectName}</h1>
+        <h2 className="title-location">{this.props.subjectName}</h2>
+        <h2 className="title-date">{this.props.subjectName}</h2>
 
         <div className="row=title">
-          <h3 className="card-submitter">{this.props.studentName}</h3>
-          <h3 className="card-grade">{this.props.className}</h3>
+          <h3 className="card-submitter">dfdfd</h3>
+          <h3 className="card-grade">dfdfd</h3>
         </div>
 
         <br></br>
