@@ -19,7 +19,9 @@ export function Footer() {
           <p>Classrooms Without Borders is an independently funded program of the Jewish Federation of Greater Pittsburgh</p>
           <br />
           <div id="links">
-            <b><a href="https://classroomswithoutborders.org/" target="_blank" rel="noopener noreferrer">Website</a></b>
+
+
+            <b><a href="https://classroomswithoutborders.org/" target="_blank" rel="noopener noreferrer" style={{color:'white'}}>Website</a></b>
 
             <a href="https://www.facebook.com/classroomswithoutborders">
             <img src={facebook} alt="logo"/>
@@ -31,7 +33,7 @@ export function Footer() {
               <img src={twitter}  alt="logo"  />
           </a>
 
-            <b><a href="https://classroomswithoutborders.org/donate/" target="_blank" rel="noopener noreferrer">Donate</a></b>
+            <b><a href="https://classroomswithoutborders.org/donate/" target="_blank" rel="noopener noreferrer" style={{color:'white'}}>Donate</a></b>
           </div>
           
         </div>

@@ -1,6 +1,9 @@
 #submitHeading {
     padding-top: 100px;
     color: white;
+    font-family: Montserrat, 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-weight: bold;
+    text-align: center;
 }
 #submitForm h4, #submitForm h5 {
     font-family: Montserrat, 'Segoe UI', Tahoma, Verdana, sans-serif;

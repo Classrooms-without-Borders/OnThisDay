@@ -3,8 +3,9 @@ import React, {Component} from "react";
 import firebase from 'firebase/app';
 import 'firebase/firestore'
 
+
 import { useContext, useState, useEffect } from "react"
-//import {auth} from './Authentication'
+
 //firebase init stuff
 const firebaseConfig = {
   apiKey: "AIzaSyDQo6NTf4fsIjvqbbhISSAx_X6Svtx2LFw",

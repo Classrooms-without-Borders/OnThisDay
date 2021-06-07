@@ -18,6 +18,7 @@ html, body, #root .App {
 /* style individual elements */
 #successHeading {
     font-weight: 800;
+    text-align: center;
 }
 #successContainer button {
     border-radius: 6px;
@@ -31,6 +32,7 @@ html, body, #root .App {
 #successContainer p {
     width: 50vw;
     margin: 16px auto;
+    text-align: center;
 }
 
 /* making the design responsive */
