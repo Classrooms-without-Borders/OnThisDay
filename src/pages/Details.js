@@ -168,24 +168,20 @@ class Details extends React.Component {
 
         {/*Right now everything is hard coded but should be passed in as props in future */}
       <div className="card-body">
-        <h1 className="title-event">Karina Zhang</h1>
+        <h1 className="title-event">Ferenc Coper</h1>
         <br></br>
-        <h2 className="title-location">London, England</h2>
+        <h2 className="title-location">Kiev, Ukraine</h2>
         <br></br>
 
-        <h2 className="title-date">January 1, 1965 at 12:00:00 AM UTC-5</h2>
+        <h2 className="title-date">January 1, 1963 at 12:00:00 AM UTC-5</h2>
 
         <div className="row=title">
           <h3 className="card-submitter">By Karina Zhang</h3>
-          <h3 className="submitter-location"> Midland</h3>
+          <h3 className="submitter-location"> Midland High School</h3>
         </div>
 
         <br></br>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-
-At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+        <p>This is me in forced labor. During the war, first I was sent to Gyongyos for forced labor service, then to Vac, and following that I spent one and a half years in Sastov, Ukraine, near Kiev. It was in August, 1942 when we went there. When full Jews were ordered to be sent further away, I, as a war-orphan, was offered the chance to stay in Vac. People who had Christian spouses were allowed to stay. They were given white armbands. I was contemplating whether I should go or stay, and in the end I decided to leave. But right then a guard kicked me back to the line. He wouldn't let me leave. Thank God. Because less than fifty percent of the company I was supposed to join ever returned. Later on, it was our turn to be sent to Ukraine. My company was a wonderful unit, an extraordinary group of people. Lots of medical doctors and lawyers among them. At the beginning of 1944 we were disarmed. Then on May 20, 1944 I was taken to Pecs, and from there to Szombathely. There I pulled the gold ring off my finger because I knew it would be taken from me anyway. I gave it away to someone in the street, so at least I gave it to someone I wanted to. We worked at an airport in Szombathely.</p>
 
 
       </div>
