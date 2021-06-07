@@ -2,6 +2,7 @@ import React from 'react';
 import { BigCard, CardGrid, StyledButton } from '../components';
 import constants from '../styling/Constants';
 import { Link } from 'react-router-dom';
+import onThisDayPhoto from '../images/CWBLarge.png';
 // FOR TESTING ONLY
 import stockPhoto from '../images/3Sandor7.jpg';
 import stockPhoto2 from '../images/sofka-skipwith.jpg';
@@ -15,9 +16,9 @@ const db = firebase.firestore();
 function Home() {
     // FOR TESTING ONLY
     const testSub = {
-        location: 'London, England',
-        eventDate: new Date('03/4/1944'),
-        subjectName: 'John Doe',
+        location: 'Kiev, Ukraine',
+        eventDate: new Date('03/4/1943'),
+        subjectName: 'Ferenc Sandor',
         images: [stockPhoto],
         submitterName: 'Amy Smith',
     };
@@ -166,7 +167,7 @@ function Home() {
                     width: '900px',
                     maxWidth: '50vw',
                 }}>
-                    <img src={stockPhoto} alt='Todo: insert image description' style={{
+                    <img src={onThisDayPhoto} alt='On this day: Classrooms Without Borders' style={{
                         objectFit: 'cover',
                         width: '100%',
                     }} />

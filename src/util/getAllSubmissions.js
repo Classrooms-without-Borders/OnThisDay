@@ -9,9 +9,9 @@ const db = firebase.firestore();
 async function getAllSubmissions(){ 
     // FOR TESTING ONLY ---------------
     const testSub = {
-        location: 'London, Englandddddddd',
-        eventDate: new Date('03/4/1944'),
-        subjectName: 'John Doe',
+        location: 'Kiev, Ukraine',
+        eventDate: new Date('01/1/1943'),
+        subjectName: 'Ferenc Sandor',
         images: [stockPhoto],
         submitterName: 'Amy Smith',
     };
