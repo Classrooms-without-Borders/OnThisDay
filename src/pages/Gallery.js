@@ -16,7 +16,7 @@ function Gallery() {
     const testSub = {
         location: 'London, England',
         eventDate: new Date('03/4/1944'),
-        subjectName: 'John Doe',
+        subjectName: 'Ferenc Sandor',
         images: [stockPhoto],
         submitterName: 'Amy Smith',
     };
@@ -25,7 +25,7 @@ function Gallery() {
         eventDate: new Date('09/09/1939'),
         subjectName: 'Sofka Skipwith',
         images: [stockPhoto2],
-        submitterName: 'Brad Johnson',
+        submitterName: 'Elizabeth Song',
     };
     const allSubmissions = getAllSubmissions();
     //var myStringArray = ["Hello","World"];

@@ -96,7 +96,7 @@ function Home() {
       
 
       myId = doc.id;
-      console.log("this is my id" + myId);
+      console.log("doc id: " + myId);
       mydescription = doc.data().description;
       mylocation = doc.data().location;
       myimages = doc.data().images;
@@ -122,7 +122,6 @@ function Home() {
     //let id = studentSubmission.subjectName;
 
     console.log("this is the most recent submission " + recentSubmission);
-    console.log(recentSubmission);
 
 
     return (
