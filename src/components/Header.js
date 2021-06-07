@@ -9,6 +9,7 @@ import { searchSubmissions } from '../util';
 
 export function Header() {
     const url = useLocation();
+    const size = useWindowSize();
 
     // keep search open on gallery page
     const [searchOpen, setSearchOpen] = useState(
@@ -28,14 +29,17 @@ export function Header() {
                 justifyContent: 'space-between',
                 display: 'flex',
                 width: '100%',
+                flexDirection: size.width >= 768 ? 'row' : 'column',
+                paddingTop: size.width >= 768 ? 0 : 15,
                 alignItems: 'center',
                 '& a': {
-                    margin: '0 0 0 18px',
+                    margin: '0px 12px',
                 },
             },
             '& .flexbox-container': {
+                // width: size.width >= 768 ? 'auto' : '90vw',
                 display: 'flex',
-                flexDirection: 'row',
+                flexDirection: size.width >= 428 ? 'row' : 'column',
                 alignItems: 'center',
             },
             '& li': {
@@ -67,6 +71,7 @@ export function Header() {
             color: constants.color.light,
             opacity: linkName === url.pathname ? '100%' : '50%',
             fontFamily: constants.fontFamily.body,
+            fontSize: size.width >= 768 ? constants.fontSize.s : constants.fontSize.xs,
             fontWeight: 'normal',
             textTransform: 'capitalize',
             margin: '0 12px',
@@ -104,10 +109,30 @@ export function Header() {
         }
     }, [url.pathname]);
 
+    function useWindowSize() {
+        const [windowSize, setWindowSize] = useState({
+          width: undefined,
+          height: undefined,
+        });
+        useEffect(() => {
+          function handleResize() {
+            setWindowSize({
+              width: window.innerWidth,
+              height: window.innerHeight,
+            });
+          }
+          window.addEventListener("resize", handleResize);
+          handleResize();
+          // Remove event listener on cleanup
+          return () => window.removeEventListener("resize", handleResize);
+        }, []);
+        return windowSize;
+      }
+
     return (
         <div style={{display: 'block'}}>
             <Navbar className={useStyles().root}>
-                <div>
+                <div id="header">
                     <NavItem>
                         <NavLink exact to='/'>On This Day</NavLink>
                     </NavItem>
