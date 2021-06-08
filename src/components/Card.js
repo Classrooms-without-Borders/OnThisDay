@@ -179,7 +179,7 @@ export function SmallCard({submission}) {
                         alt='Featured submission photo'
                         height='100%'
                         width='100%'
-                        image={submission.images[0]}
+                
                     />
                 </Card>
                 <div className={smallCardStyle().content}>

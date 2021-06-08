@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BigCard, CardGrid, StyledButton } from '../components';
 import constants from '../styling/Constants';
 import { Link } from 'react-router-dom';
@@ -12,7 +12,9 @@ import firebase from "firebase";
 
 const db = firebase.firestore();
 
-async function Home() {
+//use useEffect
+
+ function Home() {
     // FOR TESTING ONLY
     const testSub = {
         location: 'London, England',
@@ -29,9 +31,27 @@ async function Home() {
         submitterName: 'Brad Johnson',
     };
 
+    //let submissions;
+    const [submissions, setSubmissions] = useState(null);
+
+     useEffect( () => {
+         
+        const fetchData = async () => {
+            // You can await here
+            const data = await getAllSubmissions();
+            setSubmissions(data);
+           // console.log("this is submission" + data);
+            // ...
+          }
+          fetchData();
+          
+
+    }, []);
+
+
     // call getRecentSubmissions here
     //array of studentsubmission object
-    let submissions = await getAllSubmissions();
+   // let submissions =  await getAllSubmissions();
     //Promise.resolve(submissions).then(() => {
 
    //     console.log("type of " + typeof submissions);
@@ -43,6 +63,8 @@ async function Home() {
         console.log()
 
    // });
+
+   /*
 
     if (submissions === undefined) {
         return "not working";
@@ -72,7 +94,7 @@ async function Home() {
     const firstSubmission = submissions[1];
     console.log("This is type of first card" + typeof firstSubmission);
 
-    let mySubjectName = submissions[0].subjectName;
+   //let mySubjectName = submissions[0].subjectName;
     //let myLocation = studentSubmission.location;
     //let myEventDate = studentSubmission.eventDate;
     //let myStudentName = studentSubmission.studentName;
@@ -123,14 +145,33 @@ async function Home() {
 
     console.log("this is the most recent submission " + recentSubmission);
     console.log(recentSubmission);
+    
+  */
+  console.log("finally submissions" + submissions);
+ if (submissions) {
+   // console.log("first one " + submissions[0]);
+    console.log("pls work" + JSON.stringify(submissions[0]))
 
 
+    //console.log("first one field " + submissions[0].id)
+
+
+ }
+  //console.log(submissions[0])
+
+  //array map, for each 
+  //check for early return, check componenet if passed in
+
+  
+  //console.log("this is first object " + submissions ?? submissions[0]);
     return (
         <React.Fragment>
             <div style={{backgroundColor: constants.color.dark}}>
                 <div style={{margin: '100px auto 40px', width: '1400px', maxWidth: '90vw'}}>
                     <BigCard submission = {testSub} />
-                    <CardGrid submissions={[testSub, testSub2, testSub]} /> {/*slice(1) passes in three */}
+                    {submissions && <CardGrid submissions={submissions }/>}
+
+
                     <div id='project-desc' style={{
                         backgroundColor: constants.color.light,
                         color: constants.color.dark,
