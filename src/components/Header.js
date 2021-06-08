@@ -6,6 +6,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
 import { Searchbar } from './Searchbar';
 import { searchSubmissions } from '../util';
+import useWindowSize from '../styling/WindowSize';
 
 export function Header() {
     const url = useLocation();
@@ -37,7 +38,6 @@ export function Header() {
                 },
             },
             '& .flexbox-container': {
-                // width: size.width >= 768 ? 'auto' : '90vw',
                 display: 'flex',
                 flexDirection: size.width >= 428 ? 'row' : 'column',
                 alignItems: 'center',
@@ -108,26 +108,6 @@ export function Header() {
             setSearchOpen(true);
         }
     }, [url.pathname]);
-
-    function useWindowSize() {
-        const [windowSize, setWindowSize] = useState({
-          width: undefined,
-          height: undefined,
-        });
-        useEffect(() => {
-          function handleResize() {
-            setWindowSize({
-              width: window.innerWidth,
-              height: window.innerHeight,
-            });
-          }
-          window.addEventListener("resize", handleResize);
-          handleResize();
-          // Remove event listener on cleanup
-          return () => window.removeEventListener("resize", handleResize);
-        }, []);
-        return windowSize;
-      }
 
     return (
         <div style={{display: 'block'}}>
