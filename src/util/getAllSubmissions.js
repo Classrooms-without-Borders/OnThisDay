@@ -23,20 +23,24 @@ async function getAllSubmissions(){
         submitterName: 'Brad Johnson',
     };
     let lst = [];
-    for (let i = 0; i < 7; i++) lst.push(testSub);
-    for (let i = 0; i < 5; i++) lst.push(testSub2);
-    return lst;
+    //for (let i = 0; i < 7; i++) lst.push(testSub);
+    //for (let i = 0; i < 5; i++) lst.push(testSub2);
+    //return lst;
    
 
-  let submissionObjects = new Array();
+  let  submissionObjects = [];
   var i = 0;
+
+  //look into async await then
   await db.collection('submissions').get().then((submissions) => {
     submissions.forEach((doc) => {
-      submissionObjects[i] = new StudentSubmission("title", doc.data().date, doc.data().description, doc.data().images, doc.data().sources, doc.data().studentName, doc.data().submittedDate, "");
-      submissionObjects[i] = new StudentSubmission(doc.data().subjectName, doc.data().location, doc.data().description, doc.data().images, doc.data().sources, doc.data().studentName, doc.data().submittedDate, "");
+      console.log("this is before "+ submissionObjects);
 
+      //submissionObjects[i] = new StudentSubmission("title", doc.data().date, doc.data().description, doc.data().images, doc.data().sources, doc.data().studentName, doc.data().submittedDate, "");
+      //submissionObjects[i] = new StudentSubmission(doc.data().subjectName, doc.data().location, doc.data().description, doc.data().images, doc.data().sources, doc.data().studentName, doc.data().submittedDate, "");
+      submissionObjects.push(new StudentSubmission(doc.data().subjectName, doc.data().location, doc.data().description, doc.data().images, doc.data().sources, doc.data().studentName, doc.data().submittedDate, ""));
       
-
+      
       console.log(doc.id);
       console.log(doc.data().date);
       console.log(doc.data().description);
@@ -47,11 +51,19 @@ async function getAllSubmissions(){
       console.log(doc.data().studentLast);
       console.log(doc.data().subjectName);
       console.log(doc.data().submittedDate);
+      //console.log("this is after" + submissionObjects);
 
+
+      
  
       i+=1;
 
-  })});
+  })
+  console.log("this is after" + submissionObjects);
+
+  });
+
+
   
   return submissionObjects;
 };
