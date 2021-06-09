@@ -3,9 +3,9 @@ import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { Card, CardMedia, CardContent } from '@material-ui/core';
 import constants from '../styling/Constants';
-import StudentSubmission from "../util/StudentSubmission";
+// import StudentSubmission from "../util/StudentSubmission";
 import { getAllSubmissions } from '../util';
-import { Translate } from '@material-ui/icons';
+import useWindowSize from '../styling/WindowSize';
 
 const cardImgStyle = {
     root: {
@@ -108,24 +108,25 @@ const useStyles = makeStyles((theme) => ({
       Media: {
         height: '360px',
         width: '100%',
-        // objectFit: 'fill'
       }
 }));
 
 export function SmallCard({submission}) {
-    const classes = useStyles;
+    const size = useWindowSize();
+
     const smallCardDivStyle = {
         display: 'inline-flex',
-        width: 'calc(100% / 3 - 24px)',
+        width: size.width >= 650 ? 'calc(100% / 3 - 24px)' : '100%',
+        margin: size.width >= 650 ? 0 : '16px 0px',
         marginLeft: 0,
+        height: 360,
     };
-
-    
 
     const smallCardStyle = makeStyles({
         root: {
             width: '100%',
-            height: '60%',
+            height: '100%',
+            overflowY: 'hidden',
             borderRadius: 0,
             boxShadow: constants.boxShadow.initial,
             transition: 'box-shadow 200ms',
@@ -141,6 +142,7 @@ export function SmallCard({submission}) {
             position: 'relative',
             transform: `translate(0%, -100%)`,
             padding: '23px 30px',
+            margin: 0,
             '& > p': {
                 margin: 0,
                 textAlign: 'left',

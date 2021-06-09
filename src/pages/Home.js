@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BigCard, CardGrid, StyledButton } from '../components';
 import constants from '../styling/Constants';
 import { Link } from 'react-router-dom';
+import onThisDayPhoto from '../images/CWBLarge.png';
 // FOR TESTING ONLY
 import stockPhoto from '../images/3Sandor7.jpg';
 import stockPhoto2 from '../images/sofka-skipwith.jpg';
@@ -17,9 +18,9 @@ const db = firebase.firestore();
  function Home() {
     // FOR TESTING ONLY
     const testSub = {
-        location: 'London, England',
-        eventDate: new Date('03/4/1944'),
-        subjectName: 'John Doe',
+        location: 'Kiev, Ukraine',
+        eventDate: new Date('03/4/1943'),
+        subjectName: 'Ferenc Sandor',
         images: [stockPhoto],
         submitterName: 'Amy Smith',
     };
@@ -118,7 +119,7 @@ const db = firebase.firestore();
       
 
       myId = doc.id;
-      console.log("this is my id" + myId);
+      console.log("doc id: " + myId);
       mydescription = doc.data().description;
       mylocation = doc.data().location;
       myimages = doc.data().images;
@@ -144,13 +145,14 @@ const db = firebase.firestore();
     //let id = studentSubmission.subjectName;
 
     console.log("this is the most recent submission " + recentSubmission);
-    console.log(recentSubmission);
+;
     
   */
   console.log("finally submissions" + submissions);
  if (submissions) {
    // console.log("first one " + submissions[0]);
     console.log("pls work" + JSON.stringify(submissions[0]))
+
 
 
     //console.log("first one field " + submissions[0].id)
@@ -208,7 +210,7 @@ const db = firebase.firestore();
                     width: '900px',
                     maxWidth: '50vw',
                 }}>
-                    <img src={stockPhoto} alt='Todo: insert image description' style={{
+                    <img src={onThisDayPhoto} alt='On this day: Classrooms Without Borders' style={{
                         objectFit: 'cover',
                         width: '100%',
                     }} />

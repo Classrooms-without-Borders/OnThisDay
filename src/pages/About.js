@@ -1,6 +1,6 @@
 import React from "react";
 import '../styling/About.css'
-import { Button, Typography } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import{ init } from 'emailjs-com';
 import { Container, Row, Col } from 'reactstrap';
 import pic from '../images/CWB_Logo_KO_NoTag.png';
@@ -62,7 +62,7 @@ class About extends React.Component {
 			let lastAtPos = fields["email"].lastIndexOf('@');
 			let lastDotPos = fields["email"].lastIndexOf('.');
 
-			if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') == -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2)) {
+			if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') === -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2)) {
 				 formIsValid = false;
 				 errors["email"] = "Email is not valid";
 			 }
