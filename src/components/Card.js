@@ -64,7 +64,8 @@ export function BigCard({submission}) {
                         <CardContent>
                             <h1>{submission.date}</h1>
                             <h1>{submission.subjectName}</h1>
-                            <p>By {`${submission.studentFirst} ${submission.studentLast}`}</p>
+                            <p>By {submission.studentName}</p>
+                            {/* STUFF WORKING HERE */}
                         </CardContent>
                     </Card>
                 </Link>
