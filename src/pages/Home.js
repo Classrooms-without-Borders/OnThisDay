@@ -10,175 +10,25 @@ import StudentSubmission from "../util/StudentSubmission";
 import { getAllSubmissions } from '../util';
 import firebase from "firebase";
 
-
 const db = firebase.firestore();
 
-//use useEffect
-
- function Home() {
-    // FOR TESTING ONLY
-    const testSub = {
-        location: 'Kiev, Ukraine',
-        eventDate: new Date('03/4/1943'),
-        subjectName: 'Ferenc Sandor',
-        images: [stockPhoto],
-        submitterName: 'Amy Smith',
-    };
-    const testSub2 = {
-        location: 'St. Petersburg, Russia',
-        eventDate: new Date('09/09/1939'),
-        subjectName: 'Sofka Skipwith',
-        images: [stockPhoto2],
-        submitterName: 'Brad Johnson',
-    };
-
-    //let submissions;
+function Home() {
     const [submissions, setSubmissions] = useState(null);
 
-     useEffect( () => {
-         
+    useEffect(() => {
         const fetchData = async () => {
-            // You can await here
             const data = await getAllSubmissions();
             setSubmissions(data);
-           // console.log("this is submission" + data);
-            // ...
-          }
-          fetchData();
-          
-
+        }
+        fetchData();
     }, []);
 
-
-    // call getRecentSubmissions here
-    //array of studentsubmission object
-   // let submissions =  await getAllSubmissions();
-    //Promise.resolve(submissions).then(() => {
-
-   //     console.log("type of " + typeof submissions);
-     //   console.log("first element printed out " + submissions[0]);
-       // console.log("length is sooo" + submissions.length);
-        //let newObject = submissions.pop();
-    // console.log("This is when poppin + " + newObject);
-    // newObject.pop();
-        console.log()
-
-   // });
-
-   /*
-
-    if (submissions === undefined) {
-        return "not working";
-    }
-
-    console.log("this is length -> " + submissions.length);
-    console.log("This is type of return from getAllSubmissions ->" + typeof submissions);
-    let threeSubmissions = []; 
-    for (let i = 1; i < submissions.length; ++i) {
-        threeSubmissions[i - 1] = submissions[i];
-    }
-
-    for (let i = 0; i < submissions.length; ++i) {
-        let mySubjectName = submissions[i].subjectName;
-        console.log("This is in loop " + mySubjectName)
-        let myLocation = submissions[i].location;
-        console.log("This is in loop " + myLocation)
-        let myEventDate = submissions[i].eventDate;
-        console.log("This is in loop " + myEventDate)
-        let myStudentName = submissions[i].studentName;
-        console.log("This is in loop " + myStudentName)
-        let myClassName = submissions[i].className;
-        console.log("This is in loop " + myClassName)
-    }
-
-    
-    const firstSubmission = submissions[1];
-    console.log("This is type of first card" + typeof firstSubmission);
-
-   //let mySubjectName = submissions[0].subjectName;
-    //let myLocation = studentSubmission.location;
-    //let myEventDate = studentSubmission.eventDate;
-    //let myStudentName = studentSubmission.studentName;
-    //let myClassName = studentSubmission.className;
-
-
-    let i = 0;
-    let myId;
-    let mydescription;
-    let mylocation;
-    let myimages;
-    let mysources;
-    let mystudentFirst;
-    let mystudentLast;
-    let mysubjectName;
-    let mysubmittedDate;
-    let myEventDate;
-    
-   db.collection('submissions').get().then((submissions) => {
-    submissions.forEach((doc) => {
-      
-
-      myId = doc.id;
-      console.log("doc id: " + myId);
-      mydescription = doc.data().description;
-      mylocation = doc.data().location;
-      myimages = doc.data().images;
-      mysources = doc.data().sources;
-      mystudentFirst = doc.data().studentFirst;
-      mystudentLast = doc.data().studentLast;
-      mysubjectName = doc.data().subjectName;
-      mysubmittedDate = doc.data().submittedDate;
-      myEventDate = doc.data().date;
-
-      //submissionObjects[i] = new StudentSubmission(doc.id, doc.data().subjectName, doc.data().location, doc.data().date, doc.data().description, doc.data().images, doc.data().sources);
-
-
-      //submissionObjects[i] = new StudentSubmission("title", doc.data().date, doc.data().description, doc.data().images, doc.data().sources, doc.data().studentName, doc.data().submittedDate, "");
-      //submissionObjects[i] = new StudentSubmission(doc.data().subjectName, doc.data().location, doc.data().description, doc.data().images, doc.data().sources, doc.data().studentName, doc.data().submittedDate, "");
-
-      i+=1;
-
-  })});
-    
-
-    const recentSubmission = new StudentSubmission(myId, mydescription, mylocation, myimages, mysources, mystudentFirst, mystudentLast, mysubjectName, mysubmittedDate);
-    //let id = studentSubmission.subjectName;
-
-    console.log("this is the most recent submission " + recentSubmission);
-;
-    
-  */
-  console.log("finally submissions" + submissions);
- if (submissions) {
-   // console.log("first one " + submissions[0]);
-    console.log("pls work" + JSON.stringify(submissions[0]))
-
-
-
-    //console.log("first one field " + submissions[0].id)
-
-
- }
-  //console.log(submissions[0])
-
-  //array map, for each 
-  //check for early return, check componenet if passed in
-
-  
-  //console.log("this is first object " + submissions ?? submissions[0]);
     return (
         <React.Fragment>
             <div style={{backgroundColor: constants.color.dark}}>
                 <div style={{margin: '100px auto 40px', width: '1400px', maxWidth: '90vw'}}>
-                    <BigCard submission = {testSub} />
-                    {submissions && <CardGrid submissions={submissions }/>}
-
-
-                    <div id='project-desc' style={{
-                        backgroundColor: constants.color.light,
-                        color: constants.color.dark,
-                    }}>
-                    </div>
+                    {submissions && <BigCard submission={submissions[0]} />}
+                    {submissions && <CardGrid submissions={[...submissions, submissions[0]]} /> /*TODO*/}
                 </div>
             </div>
             <div style={{display: 'flex', backgroundColor: constants.color.lightGray}}>
@@ -205,14 +55,13 @@ const db = firebase.firestore();
                     </div>
                 </div>
                 <div className='img-panel' style={{
-                    overflow: 'hidden',
                     height: '400px',
-                    width: '900px',
-                    maxWidth: '50vw',
+                    width: '40vw',
+                    padding: '60px 10vw 60px 0',
                 }}>
                     <img src={onThisDayPhoto} alt='On this day: Classrooms Without Borders' style={{
-                        objectFit: 'cover',
-                        width: '100%',
+                        height: '100%',
+                        width: 'auto',
                     }} />
                 </div>
             </div>
