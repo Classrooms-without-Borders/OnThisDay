@@ -3,8 +3,6 @@ import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { Card, CardMedia, CardContent } from '@material-ui/core';
 import constants from '../styling/Constants';
-// import StudentSubmission from "../util/StudentSubmission";
-import { getAllSubmissions } from '../util';
 import useWindowSize from '../styling/WindowSize';
 
 const cardImgStyle = {
@@ -65,7 +63,6 @@ export function BigCard({submission}) {
                             <h1>{submission.date}</h1>
                             <h1>{submission.subjectName}</h1>
                             <p>By {submission.studentName}</p>
-                            {/* STUFF WORKING HERE */}
                         </CardContent>
                     </Card>
                 </Link>

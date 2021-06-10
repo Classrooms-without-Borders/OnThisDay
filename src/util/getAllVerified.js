@@ -1,15 +1,12 @@
 import firebase from "firebase";
 import StudentSubmission from "./StudentSubmission";
-// FOR TESTING ONLY
-import stockPhoto from '../images/home-stock-image.png';
-import stockPhoto2 from '../images/sofka-skipwith.jpg'
 
 const db = firebase.firestore();
 
-async function getAllSubmissions(){ 
+async function getAllVerified(){ 
   let submissionObjects = [];
 
-  await db.collection('submissions').get().then((submissions) => {
+  await db.collection('verified').get().then((submissions) => {
     submissions.forEach((doc) => {
       submissionObjects.push(new StudentSubmission(
         doc.id,
@@ -19,7 +16,7 @@ async function getAllSubmissions(){
         doc.data().description,
         doc.data().images,
         doc.data().sources,
-        doc.data().studentName,
+        `${doc.data().studentFirst} ${doc.data().studentLast}`,
         doc.data().submittedDate,
         "")); // TODO: add class names
     });
@@ -28,4 +25,4 @@ async function getAllSubmissions(){
   return submissionObjects;
 };
 
-export default getAllSubmissions;
+export default getAllVerified;

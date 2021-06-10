@@ -3,23 +3,16 @@ import { BigCard, CardGrid, StyledButton } from '../components';
 import constants from '../styling/Constants';
 import { Link } from 'react-router-dom';
 import onThisDayPhoto from '../images/CWBLarge.png';
-// FOR TESTING ONLY
-import stockPhoto from '../images/3Sandor7.jpg';
-import stockPhoto2 from '../images/sofka-skipwith.jpg';
-import StudentSubmission from "../util/StudentSubmission";
-import { getAllSubmissions } from '../util';
-import firebase from "firebase";
-
-const db = firebase.firestore();
+import { getAllVerified } from '../util';
 
 function Home() {
     const [submissions, setSubmissions] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await getAllSubmissions();
+            const data = await getAllVerified();
             setSubmissions(data);
-        }
+        };
         fetchData();
     }, []);
 
@@ -28,7 +21,7 @@ function Home() {
             <div style={{backgroundColor: constants.color.dark}}>
                 <div style={{margin: '100px auto 40px', width: '1400px', maxWidth: '90vw'}}>
                     {submissions && <BigCard submission={submissions[0]} />}
-                    {submissions && <CardGrid submissions={[...submissions, submissions[0]]} /> /*TODO*/}
+                    {submissions && <CardGrid submissions={submissions.slice(0,3)} /> /*TODO: PLACEHOLDER*/}
                 </div>
             </div>
             <div style={{display: 'flex', backgroundColor: constants.color.lightGray}}>
