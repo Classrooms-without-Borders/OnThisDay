@@ -58,10 +58,8 @@ export function BigCard({submission}) {
                     <Card className={bigCardStyle().root}>
                         <CardImg
                             component='img'
-
                             height='100%'
                             width='100%'
-                            
                         />
                         <CardContent>
                             <h1>{submission.date}</h1>
