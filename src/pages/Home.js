@@ -21,7 +21,7 @@ function Home() {
             <div style={{backgroundColor: constants.color.dark}}>
                 <div style={{margin: '100px auto 40px', width: '1400px', maxWidth: '90vw'}}>
                     {submissions && <BigCard submission={submissions[0]} />}
-                    {submissions && <CardGrid submissions={submissions.slice(0,3)} /> /*TODO: PLACEHOLDER*/}
+                    {submissions && <CardGrid submissions={submissions.slice(1, 4)} />}
                 </div>
             </div>
             <div style={{display: 'flex', backgroundColor: constants.color.lightGray}}>
