@@ -17,7 +17,10 @@ class Details extends React.Component {
         this.setState({ user });
       });
   }
-	 
+  //let currentSubmission;
+  //var currentSubmission = props.location.state.mySubmission;
+  //let var = this.props.location.state;
+
 	render() {
 		return (
 
@@ -36,11 +39,10 @@ class Details extends React.Component {
 
         {/*Right now everything is hard coded but should be passed in as props in future */}
       <div className="card-body">
-        <h1 className="title-event">Ferenc Coper</h1>
+        <h1 className="title-event">{}</h1>
         <br></br>
         <h2 className="title-location">Kiev, Ukraine</h2>
         <br></br>
-
         <h2 className="title-date">January 1, 1963</h2>
 
         <div className="row=title">
