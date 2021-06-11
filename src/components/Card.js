@@ -10,7 +10,6 @@ const cardImgStyle = {
         flexGrow: 1,
     },
     media: {
-        // minWidth: '100%',
         height: '100%',
         width: '100%',
         objectFit: 'cover'
@@ -20,8 +19,6 @@ const cardImgStyle = {
         display: 'block',
         height: '100%',
         width: '100%'
-        // maxWidth: '100%',
-        // maxHeight: '100%',
     },
 };
 
@@ -42,10 +39,17 @@ export function BigCard({submission}) {
                 transition: 'box-shadow 200ms',
             },
             '& .MuiCardContent-root': {
-                zIndex: 99,
                 color: constants.color.light,
+                backgroundColor: '#000000',
+                opacity: '70%',
                 left: 0, // TODO: style card info within display
+                position: 'relative',
+                transform: `translate(-100%, 0%)`,
             },
+            '& img': {
+                objectFit: 'cover',
+                width: '100%'
+            }
         },
     });
 
@@ -54,11 +58,13 @@ export function BigCard({submission}) {
             <div style={{width: '100%', margin: '0 auto'}}>
                 <Link to='/details'> {/* TODO: redirect to appropriate URL */}
                     <Card className={bigCardStyle().root}>
-                        <CardImg
+                        {/* <CardImg
                             component='img'
                             height='100%'
                             width='100%'
-                        />
+                        /> */}
+                        <img src={submission.images[0]} alt='Featured submission photo'></img>
+
                         <CardContent>
                             <h1>{submission.date}</h1>
                             <h1>{submission.subjectName}</h1>
@@ -75,7 +81,7 @@ export function SmallCard({submission}) {
     const size = useWindowSize();
 
     const smallCardDivStyle = {
-        display: 'inline-flex',
+        // display: 'inline-flex',
         width: size.width >= 650 ? 'calc(100% / 3 - 24px)' : '100%',
         margin: size.width >= 650 ? 0 : '16px 0px',
         marginLeft: 0,
@@ -101,7 +107,7 @@ export function SmallCard({submission}) {
             opacity: '70%',
             position: 'relative',
             transform: `translate(0%, -100%)`,
-            padding: '23px 30px',
+            padding: '24px 28px',
             margin: 0,
             '& > p': {
                 margin: 0,
@@ -123,19 +129,20 @@ export function SmallCard({submission}) {
 
     return (
         <div style={smallCardDivStyle}>
-            <Link to={`/details/${submission.id}`} />
+            <Link to={`/details/${submission.id}`} >
                 <Card className={smallCardStyle().root} >
-                    <CardImg
+                    {/* <CardImg
                         component='img'
-                        alt='Featured submission photo'
                         height='100%'
                         width='100%'
-                    />
+                    /> */}
+                    <img src={submission.images[0]} alt='Featured submission photo'></img>
                 </Card>
                 <div className={smallCardStyle().content}>
                     <p id="location">{submission.location}</p>
                     <p id="name">{submission.subjectName}</p>
                 </div>
+            </Link>
         </div>
     );
 }
