@@ -5,6 +5,8 @@ import Source from '../components/Source'
 import Carousel from 'react-bootstrap/Carousel' 
 import logo from '../images/cwb-logo-reverse-w-tagline 1.png';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
+
 
 class Details extends React.Component {
    componentDidMount() {
@@ -20,7 +22,7 @@ class Details extends React.Component {
   //let currentSubmission;
   //var currentSubmission = props.location.state.mySubmission;
   //let var = this.props.location.state;
-
+  
 	render() {
 		return (
 
@@ -44,7 +46,7 @@ class Details extends React.Component {
         <h2 className="title-location">Kiev, Ukraine</h2>
         <br></br>
         <h2 className="title-date">January 1, 1963</h2>
-
+        <h1>{this.props.location.state}</h1>
         <div className="row=title">
           <h3 className="card-submitter">By Karina Zhang</h3>
           <h3 className="submitter-location"> Midland High School</h3>
@@ -66,5 +68,6 @@ class Details extends React.Component {
 	}
 }
 
+const addRouter = withRouter(Details);
 
 export default Details;
