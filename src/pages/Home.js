@@ -49,7 +49,6 @@ function Home() {
                 </div>
                 <div className='img-panel' style={{
                     height: '400px',
-                    width: '40vw',
                     padding: '60px 10vw 60px 0',
                 }}>
                     <img src={onThisDayPhoto} alt='On this day: Classrooms Without Borders' style={{

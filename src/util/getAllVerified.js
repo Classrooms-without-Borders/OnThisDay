@@ -12,7 +12,7 @@ async function getAllVerified(){
         doc.id,
         doc.data().subjectName,
         doc.data().location,
-        doc.data().date,
+        doc.data().date.toDate(),
         doc.data().description,
         doc.data().images,
         doc.data().sources,
