@@ -33,13 +33,7 @@ class Details extends React.Component {
     <React.Fragment> 
       <Carousel>
         <Carousel.Item>
-          <img src={logo}  alt="logo"/>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img src={logo}  alt="logo"/>  
-        </Carousel.Item>
-        <Carousel.Item>
-          <img src={logo}  alt="logo"/>
+          <img src={this.props.location.submission.images[0]} />
         </Carousel.Item>
       </Carousel>
 
@@ -59,6 +53,7 @@ class Details extends React.Component {
 
 
         {this.props.location.submission.location && <h3 className="submitter-location">  {this.props.location.submission.location}</h3>}
+        {JSON.stringify(this.props.location.submission.eventDate) && <h3 className="submitter-location">  {JSON.stringify(this.props.location.submission.eventDate)} </h3>}
 
 
         {this.props.location.submission.description && <p> {this.props.location.submission.description}</p>}
