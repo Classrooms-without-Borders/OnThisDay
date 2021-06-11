@@ -136,7 +136,10 @@ export function SmallCard({submission}) {
 
     return (
         <div style={smallCardDivStyle}>
-            <Link to={`/details/${submission.id}`} >
+            <Link to={{
+    pathname: `/details/${submission.id}`,
+    submission: submission }
+  }>
                 <Card className={smallCardStyle().root} >
                     <img src={submission.images[0]} alt='Featured submission photo'></img>
                 </Card>
