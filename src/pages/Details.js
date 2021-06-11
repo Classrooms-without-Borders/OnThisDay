@@ -31,9 +31,15 @@ class Details extends React.Component {
 		return (
 
     <React.Fragment> 
-      <Carousel>
+       <Carousel>
         <Carousel.Item>
-          {logo}
+          <img src={this.props.location.submission.images[0]}  alt="logo"/>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img src={logo}  alt="logo"/>  
+        </Carousel.Item>
+        <Carousel.Item>
+          <img src={logo}  alt="logo"/>
         </Carousel.Item>
       </Carousel>
 
