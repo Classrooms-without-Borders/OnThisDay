@@ -5,8 +5,13 @@ import { Card, CardMedia, CardContent } from '@material-ui/core';
 import constants from '../styling/Constants';
 import useWindowSize from '../styling/WindowSize';
 import { dateToString } from '../util';
+import { withRouter } from 'react-router-dom';
+import {Details} from '../pages';
 
 export function BigCard({submission}) {
+
+    const [mySubmission, setMySubmission] = React.useState(submission);
+
     const bigCardStyle = makeStyles({
         root: {
             display: 'flex',
@@ -49,14 +54,18 @@ export function BigCard({submission}) {
         },
     });
 
+    //const addRouter = withRouter(Details);
+
     return (
         <div style={{width: '100%', textAlign: 'center'}}>
             <div style={{width: '100%', margin: '0 auto'}}>
-            <Link
-  to={{
+            <Link to={{
     pathname: `/details/${submission.id}`,
-    state: { mySubmission: submission }
-  }}>
+    submission: submission }
+  }>
+
+
+
             {/* TODO: redirect to appropriate URL */}
                     <Card className={bigCardStyle().root}>
                         <img src={submission.images[0]} alt='Featured submission photo'></img>
