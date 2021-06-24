@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styling/Details.css'
 import Source from '../components/Source'
-//import { makeStyles } from '@material-ui/core/styles';
+import { dateToString } from '../util';
 import Carousel from 'react-bootstrap/Carousel' 
 import logo from '../images/cwb-logo-reverse-w-tagline 1.png';
 import axios from 'axios';
@@ -59,7 +59,7 @@ class Details extends React.Component {
 
 
         {this.props.location.submission.location && <h3 className="submitter-location">  {this.props.location.submission.location}</h3>}
-        {JSON.stringify(this.props.location.submission.eventDate) && <h3 className="submitter-location">  {JSON.stringify(this.props.location.submission.eventDate)} </h3>}
+        {dateToString(this.props.location.submission.eventDate) && <h3 className="submitter-location">  {dateToString(this.props.location.submission.eventDate)} </h3>}
 
 
         {this.props.location.submission.description && <p> {this.props.location.submission.description}</p>}
