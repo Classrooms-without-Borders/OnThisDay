@@ -114,7 +114,7 @@ export function Header() {
             <Navbar className={useStyles().root}>
                 <div id="header">
                     <NavItem>
-                        <NavLink exact to='/'>On This Day</NavLink>
+                        <NavLink exact to='/'>On This Day beta</NavLink>
                     </NavItem>
                     <div className="flexbox-container">
                         <NavItem>
