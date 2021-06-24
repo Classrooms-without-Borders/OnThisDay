@@ -43,7 +43,6 @@ class Details extends React.Component {
         </Carousel.Item>
       </Carousel>
 
-        {/*Right now everything is hard coded but should be passed in as props in future */}
       <div className="card-body">
         <h1 className="title-event">{}</h1>
 
@@ -54,7 +53,6 @@ class Details extends React.Component {
 
 
         {/* {this.props.location.submission.submitDate && <h2 className="title-date"> By {this.props.location.submission.studentName}</h2>}  */}
-{/*  */}
         <div className="row=title">
 
 

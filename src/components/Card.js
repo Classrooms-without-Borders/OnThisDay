@@ -1,12 +1,10 @@
 import React from 'react';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { Card, CardMedia, CardContent } from '@material-ui/core';
 import constants from '../styling/Constants';
 import useWindowSize from '../styling/WindowSize';
 import { dateToString } from '../util';
-import { withRouter } from 'react-router-dom';
-import {Details} from '../pages';
 
 export function BigCard({submission}) {
 
@@ -54,14 +52,13 @@ export function BigCard({submission}) {
         },
     });
 
-    //const addRouter = withRouter(Details);
 
     return (
         <div style={{width: '100%', textAlign: 'center'}}>
             <div style={{width: '100%', margin: '0 auto'}}>
             <Link to={{
-    pathname: `/details/${submission.id}`,
-    submission: submission }
+            pathname: `/details/${submission.id}`,
+            submission: submission }
   }>
 
 
