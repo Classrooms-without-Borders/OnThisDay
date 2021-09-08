@@ -1,66 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BigCard, CardGrid, StyledButton } from '../components';
 import constants from '../styling/Constants';
 import { Link } from 'react-router-dom';
-// FOR TESTING ONLY
-import stockPhoto from '../images/home-stock-image.png';
-import stockPhoto2 from '../images/sofka-skipwith.jpg';
-import StudentSubmission from "../util/StudentSubmission";
-import { getAllSubmissions } from '../util';
-
+import onThisDayPhoto from '../images/CWBLarge.png';
+import { getAllVerified } from '../util';
 
 function Home() {
-    // FOR TESTING ONLY
-    const testSub = {
-        location: 'London, England',
-        eventDate: new Date('03/4/1944'),
-        subjectName: 'John Doe',
-        images: [stockPhoto],
-        submitterName: 'Amy Smith',
-    };
-    const testSub2 = {
-        location: 'St. Petersburg, Russia',
-        eventDate: new Date('09/09/1939'),
-        subjectName: 'Sofka Skipwith',
-        images: [stockPhoto2],
-        submitterName: 'Brad Johnson',
-    };
+    const [submissions, setSubmissions] = useState(null);
 
-    // call getRecentSubmissions here
-    //array of studentsubmission object
-    let submissions = [];
-    submissions = getAllSubmissions();
-
-    if (submissions === undefined) {
-        return "not working";
-    }
-    let threeSubmissions = []; 
-    for (let i = 1; i < submissions.length; ++i) {
-        threeSubmissions[i - 1] = submissions[i];
-    }
-    /*
-    const studentSubmission = submissions[0];
-    let mySubjectName = submissions[0].subjectName;
-    let myLocation = studentSubmission.location;
-    let myEventDate = studentSubmission.eventDate;
-    let myStudentName = studentSubmission.studentName;
-    let myClassName = studentSubmission.className;
-    */
-
-    const studentSubmission = submissions[0];
-    //let id = studentSubmission.subjectName;
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await getAllVerified();
+            setSubmissions(data);
+        };
+        fetchData();
+    }, []);
 
     return (
         <React.Fragment>
             <div style={{backgroundColor: constants.color.dark}}>
                 <div style={{margin: '100px auto 40px', width: '1400px', maxWidth: '90vw'}}>
-                    <BigCard submission = {submissions[0]} />
-                    <CardGrid submissions={threeSubmissions} /> {/*slice(1) passes in three */}
-                    <div id='project-desc' style={{
-                        backgroundColor: constants.color.light,
-                        color: constants.color.dark,
-                    }}>
-                    </div>
+                    {submissions && <BigCard submission={submissions[0]} />}
+                    {submissions && <CardGrid submissions={submissions.slice(1, 4)} />}
                 </div>
             </div>
             <div style={{display: 'flex', backgroundColor: constants.color.lightGray}}>
@@ -87,19 +48,18 @@ function Home() {
                     </div>
                 </div>
                 <div className='img-panel' style={{
-                    overflow: 'hidden',
                     height: '400px',
-                    width: '900px',
-                    maxWidth: '50vw',
+                    padding: '60px 10vw 60px 0',
                 }}>
-                    <img src={stockPhoto} alt='Todo: insert image description' style={{
-                        objectFit: 'cover',
-                        width: '100%',
+                    <img src={onThisDayPhoto} alt='On this day: Classrooms Without Borders' style={{
+                        height: '100%',
+                        width: 'auto',
                     }} />
                 </div>
             </div>
         </React.Fragment>
     );
+      
 }
 
 export default Home;

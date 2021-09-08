@@ -1,14 +1,18 @@
-import React from 'react';
-import { getAllSubmissions } from '../util';
+import React, { useState, useEffect } from 'react';
+import { getAllVerified } from '../util';
 import { CardGrid } from '../components';
 import constants from '../styling/Constants';
 
 function Gallery() {
-    let allSubmissions = getAllSubmissions();
+    const [submissions, setSubmissions] = useState(null);
 
-    Promise.resolve(allSubmissions).then((submissions) => {
-        allSubmissions = submissions;
-    });
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await getAllVerified();
+            setSubmissions(data);
+        };
+        fetchData();
+    }, []);
 
     return (
         <div style={{margin: '100px auto 30px', maxWidth: '90vw'}}>
@@ -17,7 +21,7 @@ function Gallery() {
                 fontWeight: 'bold',
                 color: constants.color.light,
             }}>GALLERY</h1>
-            <CardGrid submissions={allSubmissions} />
+            {submissions && <CardGrid submissions={submissions} />}
         </div>
     );
 }

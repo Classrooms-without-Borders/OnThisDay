@@ -24,6 +24,7 @@ function App() {
                     <Route exact path="/about" component={About} />
                     <Route exact path="/gallery" component={Gallery} />
                     <Route exact path="/details" component={Details} />
+                    <Route exact path="/details/:userId" component={Details} />
                     <Route exact path="/submit" component={Submit} />
                     <Route exact path="/submit-success" component={ThankYou} />
                     <Route exact path="/signup" component={Signup} />
