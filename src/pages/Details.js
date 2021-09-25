@@ -1,64 +1,39 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styling/Details.css'
 import Source from '../components/Source'
-//import { makeStyles } from '@material-ui/core/styles';
+import { dateToString } from '../util';
 import Carousel from 'react-bootstrap/Carousel' 
 import logo from '../images/cwb-logo-reverse-w-tagline 1.png';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
-
-
-
-
-import {
-  firebase
-} from '../util';
-
-const useStyles = makeStyles({
-  root: {
-    width: '100%',
-    maxWidth: 500,
-  },
-});
-  
 
 class Details extends React.Component {
-    /*
-    constructor () {
-  		super();
-     }
-     */
-   //classes = useStyles();
+   componentDidMount() {
+    const { match: { params } } = this.props;
+  
+    axios.get(`/details/${params.userId}`)
+      .then(({ data: user }) => {
+        console.log('user', user);
+  
+        this.setState({ user });
 
-
-	 
+      });
+  }
+  //console.log({this.props.location.state})
+  //let currentSubmission;
+  //var currentSubmission = props.location.state.mySubmission;
+  //let var = this.props.location.state;
+  
 	render() {
+    console.log("hello");
+    console.log(this.props.location);
 		return (
-      
 
-      <React.Fragment> 
-
-        <Carousel>
+    <React.Fragment> 
+       <Carousel>
         <Carousel.Item>
-          <img src={logo}  alt="logo"/>
-          <h1>Hello world</h1>
-          <h1>Hello world</h1>
-
-          <h1>Hello world</h1>
-
-          <h1>Hello world</h1>
-          <h1>Hello world</h1>
-
-          <h1>Hello world</h1>
-
-          <h1>Hello world</h1>
-          <h1>Hello world</h1>
-
-          <h1>Hello world</h1>
-
-
-
+          <img src={this.props.location.submission.images[0]}  alt="logo"/>
         </Carousel.Item>
         <Carousel.Item>
           <img src={logo}  alt="logo"/>  
@@ -68,20 +43,29 @@ class Details extends React.Component {
         </Carousel.Item>
       </Carousel>
 
-        {/*Right now everything is hard coded but should be passed in as props in future */}
-      <div className="card-body"> 
-        <h1>{this.props.subjectName}</h1>
-        <h1 className="title-event">{this.props.subjectName}</h1>
-        <h2 className="title-location">{this.props.subjectName}</h2>
-        <h2 className="title-date">{this.props.subjectName}</h2>
+      <div className="card-body">
+        <h1 className="title-event">{}</h1>
 
+        {this.props.location.submission.subjectName && <h2 className="title-location"> {this.props.location.submission.subjectName}</h2>}
+
+        <br></br>
+    
+
+
+        {/* {this.props.location.submission.submitDate && <h2 className="title-date"> By {this.props.location.submission.studentName}</h2>}  */}
         <div className="row=title">
-          <h3 className="card-submitter">dfdfd</h3>
-          <h3 className="card-grade">dfdfd</h3>
+
+
+        {this.props.location.submission.location && <h3 className="submitter-location">  {this.props.location.submission.location}</h3>}
+        {dateToString(this.props.location.submission.eventDate) && <h3 className="submitter-location">  {dateToString(this.props.location.submission.eventDate)} </h3>}
+
+
+        {this.props.location.submission.description && <p> {this.props.location.submission.description}</p>}
+
         </div>
 
         <br></br>
-        <p> {this.props.description} </p>
+
 
       </div>
    
@@ -95,7 +79,6 @@ class Details extends React.Component {
 	}
 }
 
+const addRouter = withRouter(Details);
 
 export default Details;
-
-

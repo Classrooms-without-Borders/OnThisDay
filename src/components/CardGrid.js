@@ -1,8 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { SmallCard } from './Card';
+import useWindowSize from '../styling/WindowSize';
 
 export function CardGrid({ submissions }) {
+    const size = useWindowSize();
+
     const gridStyles = makeStyles({
         root: {
             display: 'block',
@@ -14,13 +17,18 @@ export function CardGrid({ submissions }) {
     const rowStyles = makeStyles({
         root: {
             display: 'inline-flex',
-            flexDirection: 'row',
+            flexDirection: size.width >= 650 ? 'row' : 'column',
             flexFlow: 'row wrap',
             justifyContent: 'space-between', // TODO: make cards left align
-            margin: '24px 0',
+            marginTop: 24,
             width: '100%',
         },
     })
+
+    const smallCards = {
+        width: "20",
+        objectFit: "fill"
+    }
 
     const numRows = Math.ceil(submissions.length / 3);
     let rows = [];
@@ -28,7 +36,7 @@ export function CardGrid({ submissions }) {
         let row = [];
         for (let subCount = rowCount * 3; subCount < rowCount * 3 + 3 && subCount < submissions.length; subCount++) {
             row.push(
-                <SmallCard key={`grid-card-${subCount}`} submission={submissions[subCount]} />
+                <SmallCard id="smallCards" style={smallCards} key={`grid-card-${subCount}`} submission={submissions[subCount]} />
             );
         }
         rows.push(

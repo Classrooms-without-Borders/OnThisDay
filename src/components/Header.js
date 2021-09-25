@@ -6,9 +6,11 @@ import { NavLink, useLocation } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
 import { Searchbar } from './Searchbar';
 import { searchSubmissions } from '../util';
+import useWindowSize from '../styling/WindowSize';
 
 export function Header() {
     const url = useLocation();
+    const size = useWindowSize();
 
     // keep search open on gallery page
     const [searchOpen, setSearchOpen] = useState(
@@ -28,14 +30,16 @@ export function Header() {
                 justifyContent: 'space-between',
                 display: 'flex',
                 width: '100%',
+                flexDirection: size.width >= 768 ? 'row' : 'column',
+                paddingTop: size.width >= 768 ? 0 : 15,
                 alignItems: 'center',
                 '& a': {
-                    margin: '0 0 0 18px',
+                    margin: '0px 12px',
                 },
             },
             '& .flexbox-container': {
                 display: 'flex',
-                flexDirection: 'row',
+                flexDirection: size.width >= 428 ? 'row' : 'column',
                 alignItems: 'center',
             },
             '& li': {
@@ -67,6 +71,7 @@ export function Header() {
             color: constants.color.light,
             opacity: linkName === url.pathname ? '100%' : '50%',
             fontFamily: constants.fontFamily.body,
+            fontSize: size.width >= 768 ? constants.fontSize.s : constants.fontSize.xs,
             fontWeight: 'normal',
             textTransform: 'capitalize',
             margin: '0 12px',
@@ -107,9 +112,9 @@ export function Header() {
     return (
         <div style={{display: 'block'}}>
             <Navbar className={useStyles().root}>
-                <div>
+                <div id="header">
                     <NavItem>
-                        <NavLink exact to='/'>On This Day</NavLink>
+                        <NavLink exact to='/'>On This Day beta</NavLink>
                     </NavItem>
                     <div className="flexbox-container">
                         <NavItem>

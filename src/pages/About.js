@@ -1,6 +1,6 @@
 import React from "react";
 import '../styling/About.css'
-import { Button, Typography } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import{ init } from 'emailjs-com';
 import { Container, Row, Col } from 'reactstrap';
 import pic from '../images/CWB_Logo_KO_NoTag.png';
@@ -62,7 +62,7 @@ class About extends React.Component {
 			let lastAtPos = fields["email"].lastIndexOf('@');
 			let lastDotPos = fields["email"].lastIndexOf('.');
 
-			if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') == -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2)) {
+			if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') === -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2)) {
 				 formIsValid = false;
 				 errors["email"] = "Email is not valid";
 			 }
@@ -145,19 +145,19 @@ class About extends React.Component {
 					<img src={pic} className=" img-fluid" id="logo"></img>
 				</Col>
 				<Col sm="1" md="7" lg="7">
-					<p style = {bodyText1}>	On this day, a project of <a style={{color: constants.color.accentSecondary}}href="https://classroomswithoutborders.org/" target="_blank" rel="noopener noreferrer">Classrooms Without Borders</a>, is a collection of student research to
+					<p style = {bodyText1}>	ON THIS DAY, a project of <a style={{color: constants.color.accentSecondary}}href="https://classroomswithoutborders.org/" target="_blank" rel="noopener noreferrer">Classrooms Without Borders</a>, is a collection of student research to
 					uncover and share the personal histories of the individuals during World War II and the
 					Holocaust. For too long, Holocaust education has been taught at the macro level, with total
 					numbers of lives lost and high level governmental implications of war. What is overlooked is the
 					individual. The human beings that comprise the numbers and the immense potential that was
-					annihilated. For students to grapple with the implications of the Holocaust and genocide studies,
+					annihilated. For students to grapple with the implications of the Holocaust and Genocide Studies,
 					they must connect to the humanity that was eradicated.</p>
 					 <br />
 					 <p style = {bodyText1}>Through careful research, first person sources, family photographs, and more, students are
 						asked to dig deep into the personal, historical and military stories from the Holocaust that may
 						be largely unknown. Only by understanding what was, can we really understand what was lost.</p>
 					 <br />
-					 <p style = {bodyText1}>As part of a new Holocaust education curriculum, Educators and students may choose to focus
+					 <p style = {bodyText1}>As part of a new Holocaust Education curriculum, Educators and students may choose to focus
 					on a specific time period or a specific region to research. We invite students to dig into the
 					stories and artifacts presented here as well as research and submit their own stories.</p>
 					</Col>
@@ -181,7 +181,7 @@ class About extends React.Component {
 						<h2 style={bodyText2}>use the submission portal to submit your research, sources and artifacts</h2>
 					 <br></br>
 					 <h1 style={header1}>REVIEW</h1>
-						<h2 style={bodyText2}>the CWB On This Day team will review and fact check all submissions</h2>
+						<h2 style={bodyText2}>the CWB ON THIS DAY team will review and fact check all submissions</h2>
 					<br />
 					 <h1 style={header1}>LIVE</h1>
 					<h2 style={bodyText2}>once verified your research will be made public on the site for others to use in future research</h2>
@@ -205,7 +205,7 @@ class About extends React.Component {
 						fontFamily: constants.fontFamily.body,
 						fontWeight: '400',
 						color: constants.color.light,
-				}}>Educators, interested in learning more about how to bring on this day to your classroom?</p>
+				}}>Educators, interested in learning more about how to bring ON THIS DAY to your classroom?</p>
 				<p style={{
 						fontFamily: constants.fontFamily.body,
 						fontWeight: '400',

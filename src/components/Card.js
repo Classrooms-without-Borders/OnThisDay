@@ -1,29 +1,15 @@
 import React from 'react';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { Card, CardMedia, CardContent } from '@material-ui/core';
 import constants from '../styling/Constants';
-import StudentSubmission from "../util/StudentSubmission";
-import { getAllSubmissions } from '../util';
+import useWindowSize from '../styling/WindowSize';
+import { dateToString } from '../util';
 
-const cardImgStyle = {
-    root: {
-        flexGrow: 1,
-    },
-    media: {
-        minWidth: '100%',
-    },
-    img: {
-        margin: 'auto',
-        display: 'block',
-        maxWidth: '100%',
-        maxHeight: '100%',
-    },
-};
+export function BigCard({submission}) {
 
-const CardImg = withStyles(cardImgStyle)(CardMedia);
+    const [mySubmission, setMySubmission] = React.useState(submission);
 
-export function BigCard({id, location, subjectName, studentFirst, studentLast, eventDate}) {
     const bigCardStyle = makeStyles({
         root: {
             display: 'flex',
@@ -38,49 +24,53 @@ export function BigCard({id, location, subjectName, studentFirst, studentLast, e
                 transition: 'box-shadow 200ms',
             },
             '& .MuiCardContent-root': {
-                zIndex: 99,
                 color: constants.color.light,
-                left: 0, // TODO: style card info within display
+                backgroundColor: '#000000',
+                opacity: '70%',
+                position: 'relative',
+                transform: `translate(-100%, 0%)`,
+                padding: '36px',
             },
+            '& img': {
+                objectFit: 'cover',
+                width: '100%'
+            },
+            '& h1': {
+                fontFamily: constants.fontFamily.header,
+                textTransform: 'uppercase',
+                fontSize: constants.fontSize.xl,
+                fontWeight: 'bold',
+            },
+            '& #bigcard-name': {
+                color: constants.color.lightAccentPrimary,
+            },
+            '& h2': {
+                fontFamily: constants.fontFamily.header,
+                fontSize: constants.fontSize.s,
+                fontWeight: 'bold',
+            }
         },
     });
 
-    //let title = submission.eventTitle;
-    console.log("finally " + subjectName);
-
-    const submissions = getAllSubmissions();
-    if (submissions === undefined) {
-        return "not working";
-    }
-    let threeSubmissions = []; 
-    for (let i = 1; i < submissions.length; ++i) {
-        threeSubmissions[i - 1] = submissions[i];
-    }
-
-    //StudentSubmission ss = submission[0];
 
     return (
         <div style={{width: '100%', textAlign: 'center'}}>
             <div style={{width: '100%', margin: '0 auto'}}>
-                <Link to='/details'> {/* TODO: redirect to appropriate URL */}
-                <h2>{}</h2>
-                            <h1>this should work againnnn</h1>
-                            <h1>{subjectName}</h1>
-                            <p>{studentFirst}</p>
-                    <Card className={bigCardStyle().root}>
-                        <CardImg
-                            component='img'
+            <Link to={{
+            pathname: `/details/${submission.id}`,
+            submission: submission }
+  }>
 
-                            height='100%'
-                            width='100%'
-                            
-                        />
+
+
+            {/* TODO: redirect to appropriate URL */}
+                    <Card className={bigCardStyle().root}>
+                        <img src={submission.images[0]} alt='Featured submission photo'></img>
                         <CardContent>
-                        <h2>this should work</h2>
-                            <h1>{}</h1>
-                            <h1>{}</h1>
-                            <p>{}</p>
-                          
+                            <h2 id='bigcard-location'>{submission.location}</h2>
+                            <h1 id='bigcard-date'>{dateToString(submission.eventDate)}</h1>
+                            <h1 id='bigcard-name'>{submission.subjectName}</h1>
+                            <p>By {submission.studentName}</p>
                         </CardContent>
                     </Card>
                 </Link>
@@ -90,16 +80,20 @@ export function BigCard({id, location, subjectName, studentFirst, studentLast, e
 }
 
 export function SmallCard({submission}) {
+    const size = useWindowSize();
+
     const smallCardDivStyle = {
-        display: 'inline-flex',
-        width: 'calc(100% / 3 - 24px)',
+        width: size.width >= 650 ? 'calc(100% / 3 - 24px)' : '100%',
+        margin: size.width >= 650 ? 0 : '16px 0px',
         marginLeft: 0,
+        height: 360,
     };
 
     const smallCardStyle = makeStyles({
         root: {
             width: '100%',
-            height: '360px',
+            height: '100%',
+            overflowY: 'hidden',
             borderRadius: 0,
             boxShadow: constants.boxShadow.initial,
             transition: 'box-shadow 200ms',
@@ -108,22 +102,48 @@ export function SmallCard({submission}) {
                 transition: 'box-shadow 200ms',
             },
         },
+        content: {
+            width: '100%',
+            backgroundColor: "#000000",
+            opacity: '70%',
+            position: 'relative',
+            transform: `translate(0%, -100%)`,
+            padding: '24px 28px',
+            margin: 0,
+            '& > p': {
+                margin: 0,
+                textAlign: 'left',
+                color: 'white',
+                
+            },
+            '& > #location': {
+                fontWeight: 'bold',
+                fontSize: constants.fontSize.s,
+                fontFamily: constants.fontFamily.header,
+            }, 
+            '& > #date': {
+                fontWeight: 'bold',
+                fontSize: constants.fontSize.xl,
+                fontFamily: constants.fontFamily.header,
+                textTransform: 'uppercase',
+            }
+        }
+
     });
 
     return (
         <div style={smallCardDivStyle}>
-            <Link to='/details'> {/* TODO: redirect to appropriate URL */}
+            <Link to={{
+    pathname: `/details/${submission.id}`,
+    submission: submission }
+  }>
                 <Card className={smallCardStyle().root} >
-                    <CardImg
-                        component='img'
-                        alt='Featured submission photo'
-                        height='100%'
-                        width='100%'
-                        image={submission.images[0]}
-                    />
+                    <img src={submission.images[0]} alt='Featured submission photo'></img>
                 </Card>
-                {submission.location}
-                {submission.subjectName}
+                <div className={smallCardStyle().content}>
+                    <p id="location">{submission.location}</p>
+                    <p id="date">{dateToString(submission.eventDate)}</p>
+                </div>
             </Link>
         </div>
     );

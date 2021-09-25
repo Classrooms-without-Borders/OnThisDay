@@ -31,6 +31,8 @@
 }
 
 .title-event {
+  display:inline;
+
   font-family: Montserrat;
   font-style: normal;
   font-weight: 800;
@@ -46,6 +48,8 @@
 }
 
 .title-location {
+  display:inline;
+
   font-family: Montserrat;
   font-style: normal;
   font-weight: 800;
@@ -59,6 +63,8 @@
 }
 
 .title-date {
+  display:inline;
+
   font-family: Montserrat;
   font-style: normal;
   font-weight: 800;
