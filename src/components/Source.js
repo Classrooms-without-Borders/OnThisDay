@@ -1,13 +1,33 @@
 import React from 'react';
-
-function Source() {
-  return(
-  <div className="source" style={{backgroundColor:'#0093D0', padding:'-10%'}}>
-  <h2>Sources</h2>
-  <h4>Source Title</h4>
-  <p> <a href="https://classroomswithoutborders.org/" target="_blank" rel="noopener noreferrer">www.source1.com</a> </p>
-  </div>
-  )
+import { Component } from 'react';
+ 
+class  Source extends Component {
+ constructor(props) {
+   super(props);
+ }
+ 
+ 
+ render() {
+   return (
+       <div className="source" style={{backgroundColor:'#0093D0', padding:'-10%'}}>
+   <h2>Sources</h2>
+   <br></br>
+  
+   <ul>{
+           this.props.sourceList.map(function(source){
+           // returns Nathan, then John, then Jane
+        
+           return <li> <p> <a href={source.sourceUrl} target="_blank" rel="noopener noreferrer">{source.sourceName}</a> </p> </li>
+         })
+       }</ul>
+   </div>
+     );
+ }
+ 
+ 
+ 
+ 
+ 
 }
-
+ 
 export default Source;
