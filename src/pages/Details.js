@@ -13,7 +13,6 @@ class Details extends React.Component {
    const { match: { params } } = this.props;
     axios.get(`/details/${params.userId}`)
      .then(({ data: user }) => {
-       console.log('user', user);
         this.setState({ user });
  
      });
