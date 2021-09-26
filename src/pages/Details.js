@@ -18,10 +18,7 @@ class Details extends React.Component {
  
      });
  }
- //console.log({this.props.location.state})
- //let currentSubmission;
- //var currentSubmission = props.location.state.mySubmission;
- //let var = this.props.location.state;
+
   render() {
    console.log("hello");
    console.log(this.props.location);
@@ -44,19 +41,13 @@ class Details extends React.Component {
        <h1 className="title-event">{}</h1>
  
        {this.props.location.submission.subjectName && <h2 className="title-location"> {this.props.location.submission.subjectName}</h2>}
-      
-     
+          
        <br></br>
   
- 
- 
-       {/* {this.props.location.submission.submitDate && <h2 className="title-date"> By {this.props.location.submission.studentName}</h2>}  */}
        <div className="row=title">
- 
  
        {this.props.location.submission.location && <h3 className="submitter-location">  {this.props.location.submission.location}</h3>}
        {dateToString(this.props.location.submission.eventDate) && <h3 className="submitter-location">  {dateToString(this.props.location.submission.eventDate)} </h3>}
- 
  
        {this.props.location.submission.description && <p> {this.props.location.submission.description}</p>}
  
@@ -64,20 +55,15 @@ class Details extends React.Component {
  
        <br></br>
  
- 
      </div>
  
      <Source sourceList={this.props.location.submission.sources}/>
  
- 
- 
      </React.Fragment>
-   
  
      );
  }
 }
  
-const addRouter = withRouter(Details);
  
 export default Details;

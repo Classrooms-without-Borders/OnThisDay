@@ -20,7 +20,8 @@ const constants = {
         accentPrimary: '#0093D0',
         lightAccentPrimary: '#AFD7F2',
         accentSecondary: '#F1592A',
-        accentTertiary: '#E8910E'
+        accentTertiary: '#E8910E',
+        backgroundColorSource: '#0093D0'
     },
     boxShadow: {
         initial: '0px 4px 8px rgba(0, 0, 0, 0.6)',

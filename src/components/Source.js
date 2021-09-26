@@ -1,32 +1,26 @@
 import React from 'react';
 import { Component } from 'react';
+import constants from '../styling/Constants';
  
 class  Source extends Component {
  constructor(props) {
    super(props);
  }
  
- 
  render() {
    return (
-       <div className="source" style={{backgroundColor:'#0093D0', padding:'-10%'}}>
+       <div className="source" style={{backgroundColor:constants.color.backgroundColorSource, padding:'-10%'}}>
    <h2>Sources</h2>
    <br></br>
   
    <ul>{
-           this.props.sourceList.map(function(source){
-           // returns Nathan, then John, then Jane
-        
+           this.props.sourceList.map(function(source){        
            return <li> <p> <a href={source.sourceUrl} target="_blank" rel="noopener noreferrer">{source.sourceName}</a> </p> </li>
          })
        }</ul>
    </div>
      );
  }
- 
- 
- 
- 
  
 }
  
