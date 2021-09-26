@@ -4,8 +4,9 @@ import { Header, Footer, PrivateRoute } from './components';
 import {
   Home, About, Gallery, Details, Submit, Login,
   ForgotPassword, UpdateProfile, Dashboard, Signup,
-  AdminPortal, ThankYou
+  AdminPortal, ThankYou, Map
 } from './pages';
+
 import {
     BrowserRouter as Router,
     Switch,
@@ -30,6 +31,7 @@ function App() {
                     <Route exact path="/signup" component={Signup} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/forgot-password" component={ForgotPassword} />
+                    <Route exact path="/map" component={Map} />
                     <PrivateRoute path="/dashboard" component={Dashboard} />
                     <PrivateRoute path="/update-profile" component={UpdateProfile} />
                     <PrivateRoute path="/admin-portal" component={AdminPortal} />
