@@ -14,6 +14,7 @@ const containerStyle = {
   top: '50.4px'
 };
 
+//TODO: pull these from firebase
 const markers = [
   {
     id: 1,
@@ -81,10 +82,12 @@ function Map() {
           >
             {activeMarker === id ? (
               <InfoWindow onCloseClick={() => setActiveMarker(null)}>
+                {/* TODO: put these in a MarkerDetail component */}
                 <div>
                   <h4>{subjectName}</h4>
                   <p>{date}</p>
                   <p>{location}</p>
+                  {/* TODO: Issues with rendering specific submission pages when not accessing from /gallery */}
                   <a href="./details/RXGWrhS63csz6VF51tES">See entry</a>
                 </div>
               </InfoWindow>
