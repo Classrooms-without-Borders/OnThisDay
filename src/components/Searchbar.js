@@ -4,6 +4,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import constants from '../styling/Constants';
 import { TextInput, DateInput, StyledButton } from '../components';
+import { formatDateData } from '../util';
 import { useHistory } from 'react-router-dom';
 
 function getInputVal(wrapId) {
@@ -19,15 +20,23 @@ function saveLocalSearch() {
 
     let date = getInputVal('date-input-wrap');
     if (date) date = new Date(date);
-    window.localStorage.setItem('dateFrom', date);
+    window.localStorage.setItem('dateFrom', formatDateData(date));
 
     let dateFrom = getInputVal('date-from-wrap');
-    if (dateFrom) dateFrom = new Date(dateFrom);
-    window.localStorage.setItem('dateFrom', dateFrom); // override date if needed
+    if (dateFrom) {
+        dateFrom = new Date(dateFrom);
+    } else {
+        dateFrom = date;
+    }
+    window.localStorage.setItem('dateFrom', formatDateData(dateFrom));
 
     let dateTo = getInputVal('date-to-wrap');
-    if (dateTo) dateTo = new Date(dateTo);
-    window.localStorage.setItem('dateTo', dateTo);
+    if (dateTo) {
+        dateTo = new Date(dateTo);
+    } else {
+        dateTo = date;
+    }
+    window.localStorage.setItem('dateTo', formatDateData(dateTo));
 
     window.localStorage.setItem('subjectName', getInputVal('subject-name-wrap'));
     window.localStorage.setItem('submitterName', getInputVal('submitter-name-wrap'));
@@ -65,25 +74,16 @@ function submitSearch(history, e) {
     let localVals = {};
     localFields.forEach((field) => {
         localVals[field] = getLocal(field);
-        if (localVals[field] instanceof Date) {
-            localVals[field] = new Intl.DateTimeFormat('en', { 
-                month: 'short',
-                day: 'numeric',
-                year: 'numeric'
-            });
-        }
     });
     if (!localVals.dateTo) localVals.dateTo = localVals.dateFrom;
 
-    let newPath = `/gallery${localVals != {} ? '?' : ''}`;
+    let newPath = `/gallery${localVals !== {} ? '?' : ''}`;
     for (const [key, val] of Object.entries(localVals)) {
-        console.log(`${key} - ${val}`);
         newPath += `&${key}=${val}`
     }
     newPath = newPath.replace('&', '');
 
     history.push(newPath);
-    console.log(localVals)
 }
 
 export function Searchbar({ open=true }) {
@@ -159,7 +159,7 @@ export function Searchbar({ open=true }) {
             fontFamily: constants.fontFamily.body,
             fontSize: constants.fontSize.xs,
             height: 'fit-content',
-            maxHeight: 'calc(100vh - 200px)',
+            maxHeight: 'calc(100vh - 100px)',
             overflow: 'auto',
             backgroundColor: constants.color.lightGray,
             color: constants.color.dark,

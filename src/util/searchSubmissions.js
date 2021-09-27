@@ -36,6 +36,7 @@ async function searchSubmissions(
                             // TODO: store student's class
                         ));
                     });
+                    console.log(res);
                 });
         }
     }
