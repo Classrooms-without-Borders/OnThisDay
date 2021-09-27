@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { 
   GoogleMap, 
   useLoadScript, 
@@ -6,6 +6,7 @@ import {
   InfoWindow 
 } from '@react-google-maps/api';
 import { mapStyles } from '../styling/mapStyles';
+import { getAllVerified } from '../util';
 
 const containerStyle = {
   width: '100vw',
@@ -14,44 +15,20 @@ const containerStyle = {
   top: '50.4px'
 };
 
-//TODO: pull these from firebase
-const markers = [
-  {
-    id: 1,
-    subjectName: "Person 1",
-    location: "Poland",
-    date: "October 1, 1942",
-    position: { lat: 50.02, lng: 19.11 }
-  },
-  {
-    id: 2,
-    subjectName: "Person 2",
-    location: "Poland",
-    date: "September 12, 1933",
-    position: { lat: 50.04, lng: 19.57 }
-  },
-  {
-    id: 3,
-    subjectName: "Person 3",
-    location: "Poland",
-    date: "May 5, 1937",
-    position: { lat: 50.17, lng: 19.05 }
-  },
-  {
-    id: 4,
-    subjectName: "Person 4",
-    location: "Poland",
-    date: "September 19, 1934",
-    position: { lat: 52.13, lng: 21.0 }
-  }
-];
-
-
 function Map() {
   const [activeMarker, setActiveMarker] = useState(null);
+  const [markers, setMarkers] = useState([]);
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyBQ6AXhN1dWqYH5pjf8zuIoUyfTb1j0bAY",
   });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getAllVerified();
+      setMarkers(data);
+    };
+    fetchData();
+  }, [])
 
   if (loadError) return 'Error loading maps';
   if (!isLoaded) return 'Loading maps';
@@ -71,13 +48,13 @@ function Map() {
         zoom={4.75}
         options={{ styles: mapStyles }}
       >
-        {markers.map(({ id, subjectName, location, date, position }) => (
+        {markers.map(({ id, subjectName, location, date, lat, lng }) => (
           <Marker
             key={id}
             subjectName={subjectName}
             location = {location}
-            date = {date}
-            position={position}
+            date={date}
+            position={{lat: lat, lng: lng}}
             onClick={() => handleActiveMarker(id)}
           >
             {activeMarker === id ? (
@@ -88,7 +65,7 @@ function Map() {
                   <p>{date}</p>
                   <p>{location}</p>
                   {/* TODO: Issues with rendering specific submission pages when not accessing from /gallery */}
-                  <a href="./details/RXGWrhS63csz6VF51tES">See entry</a>
+                  <a href={'./details/' + id}>See entry</a>
                 </div>
               </InfoWindow>
             ) : null}
@@ -99,4 +76,4 @@ function Map() {
   );
 }
 
-export default Map;
+export default React.memo(Map);
