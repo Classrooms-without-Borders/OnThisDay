@@ -34,7 +34,7 @@ function saveLocalSearch() {
     if (dateTo) {
         dateTo = new Date(dateTo);
     } else {
-        dateTo = date;
+        dateTo = dateFrom;
     }
     window.localStorage.setItem('dateTo', formatDateData(dateTo));
 

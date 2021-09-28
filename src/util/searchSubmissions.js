@@ -21,7 +21,7 @@ async function searchSubmissions(
         eventDateEnd = new Date(eventDateEnd.getTime() + 60000 * 60 * 24);
 
         if (location) { // basic search
-            await db.collection('submissions')
+            await db.collection('verified')
                 .where('location', '==', location)
                 .where('date', '>=', eventDateStart)
                 .where('date', '<=', eventDateEnd)
