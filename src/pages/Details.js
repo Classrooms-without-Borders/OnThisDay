@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styling/Details.css'
-import Source from '../components/Source'
+import Source from '../components/Source';
+import ImageCarousel from '../components/ImageCarousel';
 import { dateToString } from '../util';
 import Carousel from 'react-bootstrap/Carousel'
 import logo from '../images/cwb-logo-reverse-w-tagline 1.png';
@@ -19,23 +20,15 @@ class Details extends React.Component {
  }
 
   render() {
-   console.log("hello");
-   console.log(this.props.location);
+   //console.log(this.props.location); for error checking
    return (
  
    <React.Fragment>
-      <Carousel>
-       <Carousel.Item>
-         <img src={this.props.location.submission.images[0]}  alt="logo"/>
-       </Carousel.Item>
-       <Carousel.Item>
-         <img src={logo}  alt="logo"/> 
-       </Carousel.Item>
-       <Carousel.Item>
-         <img src={logo}  alt="logo"/>
-       </Carousel.Item>
-     </Carousel>
- 
+
+      
+    {this.props.location.submission.images && <ImageCarousel imageList={this.props.location.submission.images}/>}
+
+
      <div className="card-body">
        <h1 className="title-event">{}</h1>
  
