@@ -3,6 +3,7 @@ import {
   GoogleMap, 
   useLoadScript, 
   Marker, 
+  MarkerClusterer,
   InfoWindow 
 } from '@react-google-maps/api';
 import { mapStyles } from '../styling/mapStyles';
@@ -45,32 +46,36 @@ function Map() {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={{ lat: 50, lng: 15 }}
-        zoom={4.75}
+        zoom={4}
         options={{ styles: mapStyles }}
       >
-        {markers.map(({ id, subjectName, location, date, lat, lng }) => (
-          <Marker
-            key={id}
-            subjectName={subjectName}
-            location = {location}
-            date={date}
-            position={{lat: lat, lng: lng}}
-            onClick={() => handleActiveMarker(id)}
-          >
-            {activeMarker === id ? (
-              <InfoWindow onCloseClick={() => setActiveMarker(null)}>
-                {/* TODO: put these in a MarkerDetail component */}
-                <div>
-                  <h4>{subjectName}</h4>
-                  <p>{date}</p>
-                  <p>{location}</p>
-                  {/* TODO: Issues with rendering specific submission pages when not accessing from /gallery */}
-                  <a href={'./details/' + id}>See entry</a>
-                </div>
-              </InfoWindow>
-            ) : null}
-          </Marker>
-        ))}
+        <MarkerClusterer>
+          {clusterer =>
+          markers.map(({ id, subjectName, location, date, lat, lng }) => (
+            <Marker
+              key={id}
+              subjectName={subjectName}
+              location = {location}
+              date={date}
+              position={{lat: lat, lng: lng}} // centers map over europe
+              onClick={() => handleActiveMarker(id)}
+              clusterer={clusterer}
+            >
+              {activeMarker === id ? (
+                <InfoWindow onCloseClick={() => setActiveMarker(null)}>
+                  {/* TODO: put these in a MarkerDetail component */}
+                  <div>
+                    <h4>{subjectName}</h4>
+                    <p>{date}</p>
+                    <p>{location}</p>
+                    {/* TODO: Issues with rendering specific submission pages when not accessing from /gallery */}
+                    <a href={'./details/' + id}>See entry</a>
+                  </div>
+                </InfoWindow>
+              ) : null}
+            </Marker>
+          ))}
+          </MarkerClusterer>
       </GoogleMap>
     </div>
   );
