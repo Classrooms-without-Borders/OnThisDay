@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { 
   GoogleMap, 
-  useLoadScript, 
-  Marker, 
-  MarkerClusterer,
-  InfoWindow 
+  useLoadScript,
+  MarkerClusterer
 } from '@react-google-maps/api';
 import { mapStyles } from '../styling/mapStyles';
 import { getAllVerified } from '../util';
+import CustomMarker from '../components/Markers';
 
 const containerStyle = {
   width: '100vw',
@@ -17,7 +16,6 @@ const containerStyle = {
 };
 
 function Map() {
-  const [activeMarker, setActiveMarker] = useState(null);
   const [markers, setMarkers] = useState([]);
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyBQ6AXhN1dWqYH5pjf8zuIoUyfTb1j0bAY",
@@ -33,47 +31,22 @@ function Map() {
 
   if (loadError) return 'Error loading maps';
   if (!isLoaded) return 'Loading maps';
-  
-  const handleActiveMarker = (marker) => {
-    if (marker === activeMarker) {
-      return;
-    }
-    setActiveMarker(marker);
-  };
 
   return (
     <div className="Map">
       <GoogleMap
         mapContainerStyle={containerStyle}
-        center={{ lat: 50, lng: 15 }}
+        center={{ lat: 50, lng: 15 }} // centers map over Europe
         zoom={4}
         options={{ styles: mapStyles }}
       >
         <MarkerClusterer>
           {clusterer =>
           markers.map(({ id, subjectName, location, date, lat, lng }) => (
-            <Marker
-              key={id}
-              subjectName={subjectName}
-              location = {location}
-              date={date}
-              position={{lat: lat, lng: lng}} // centers map over europe
-              onClick={() => handleActiveMarker(id)}
-              clusterer={clusterer}
-            >
-              {activeMarker === id ? (
-                <InfoWindow onCloseClick={() => setActiveMarker(null)}>
-                  {/* TODO: put these in a MarkerDetail component */}
-                  <div>
-                    <h4>{subjectName}</h4>
-                    <p>{date}</p>
-                    <p>{location}</p>
-                    {/* TODO: Issues with rendering specific submission pages when not accessing from /gallery */}
-                    <a href={'./details/' + id}>See entry</a>
-                  </div>
-                </InfoWindow>
-              ) : null}
-            </Marker>
+            <CustomMarker 
+              {...{id, subjectName, location, date, clusterer}}
+              position={{lat: lat, lng: lng}}
+            />
           ))}
           </MarkerClusterer>
       </GoogleMap>
