@@ -12,25 +12,20 @@ const MarkerDetail = (props) => {
                     {props.subjectName}
                 </h4>
                 <br />
+
+                <h4 className='submitter-location'>
+                    {props.location}
+                </h4>
                 {/* TODO: (Karina) Issue with accessing date, always undefined for some reason */}
                 <h4 className='submitter-location'>
                     {props.date === undefined ? 'Sep 17, 1933' : props.date.toDate()}
                 </h4>
-                <h4 className='submitter-location'>
-                    {props.location}
-                </h4>
+
                 <br /><br />
                 {/* TODO: Issues with rendering specific submission pages when not accessing from /gallery */}
-                <a href={'./details/' + props.id} style={{
-                    color: constants.color.lightGray,
-                    fontWeight: 'normal'
-                }}>
-                    <div style={{
-                        backgroundColor: constants.color.accentPrimary,
-                        width: '100%',
-                        padding: 4
-                    }}>
-                    See entry
+                <a href={'./details/' + props.id} style={{ color: constants.color.lightGray, fontWeight: 'normal' }}>
+                    <div style={{ backgroundColor: constants.color.accentPrimary, width: '100%', padding: 4 }}>
+                        See entry
                     </div>
                 </a>
                 

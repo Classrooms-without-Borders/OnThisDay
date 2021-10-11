@@ -129,6 +129,9 @@ export function Header() {
                             </NavLink>
                         </NavItem>
                         <NavItem>
+                            <NavLink to='/map' style={navlinkStyle('/map')}>Map</NavLink>
+                        </NavItem>
+                        <NavItem>
                             <NavLink to='/submit' style={navlinkStyle('/submit')}>Submit</NavLink>
                         </NavItem>
                         <NavItem>
