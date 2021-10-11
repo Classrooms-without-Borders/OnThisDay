@@ -6,7 +6,7 @@ import {
 } from '@react-google-maps/api';
 import { mapStyles } from '../styling/mapStyles';
 import { getAllVerified } from '../util';
-import CustomMarker from '../components/Markers';
+import CustomMarker from '../components/CustomMarker';
 
 const containerStyle = {
   width: '100vw',
@@ -42,9 +42,9 @@ function Map() {
       >
         <MarkerClusterer>
           {clusterer =>
-          markers.map(({ id, subjectName, location, date, lat, lng }) => (
+          markers.map(({ id, subjectName, location, date, lat, lng, images }) => (
             <CustomMarker 
-              {...{id, subjectName, location, date, clusterer}}
+              {...{id, subjectName, location, date, clusterer, images}}
               position={{lat: lat, lng: lng}}
             />
           ))}
