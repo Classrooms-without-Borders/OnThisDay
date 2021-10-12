@@ -42,9 +42,9 @@ function Map() {
       >
         <MarkerClusterer>
           {clusterer =>
-          markers.map(({ id, subjectName, location, date, lat, lng, images }) => (
+          markers.map(({ id, subjectName, location, eventDate, lat, lng, images }) => (
             <CustomMarker 
-              {...{id, subjectName, location, date, clusterer, images}}
+              {...{id, subjectName, location, eventDate, clusterer, images}}
               position={{lat: lat, lng: lng}}
             />
           ))}

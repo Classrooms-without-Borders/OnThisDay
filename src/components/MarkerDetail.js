@@ -2,6 +2,7 @@ import React from "react";
 import '../styling/Details.css';
 import ImageCarousel from '../components/ImageCarousel';
 import constants from '../styling/Constants';
+import { dateToString } from '../util/format';
 
 const MarkerDetail = (props) => {
     return (
@@ -16,9 +17,8 @@ const MarkerDetail = (props) => {
                 <h4 className='submitter-location'>
                     {props.location}
                 </h4>
-                {/* TODO: (Karina) Issue with accessing date, always undefined for some reason */}
                 <h4 className='submitter-location'>
-                    {props.date === undefined ? 'Sep 17, 1933' : props.date.toDate()}
+                    {dateToString(props.eventDate)}
                 </h4>
 
                 <br /><br />

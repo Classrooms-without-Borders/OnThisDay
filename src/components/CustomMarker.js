@@ -16,13 +16,9 @@ const CustomMarker = (props) => {
     };
     return (
         <Marker
-            subjectName={props.subjectName}
-            location = {props.location}
-            date={props.date}
             position={props.position}
             onClick={() => handleActiveMarker(props.id)}
             clusterer={props.clusterer}
-            images={props.images}
         >
             {activeMarker === props.id ? (
             <InfoWindow onCloseClick={() => setActiveMarker(null)}>
@@ -30,7 +26,7 @@ const CustomMarker = (props) => {
                     id={props.id}
                     subjectName={props.subjectName}
                     location = {props.location}
-                    date={props.date}
+                    eventDate={props.eventDate}
                     images={props.images}
                 />
             </InfoWindow>
