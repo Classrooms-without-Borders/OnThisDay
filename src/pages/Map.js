@@ -7,6 +7,7 @@ import {
 } from '@react-google-maps/api';
 import { mapStyles } from '../styling/mapStyles';
 import { getAllVerified } from '../util';
+import { Link } from "react-router-dom"
 
 const containerStyle = {
   width: '100vw',
@@ -64,8 +65,15 @@ function Map() {
                   <h4>{subjectName}</h4>
                   <p>{date}</p>
                   <p>{location}</p>
+                  <h2>hello</h2>
                   {/* TODO: Issues with rendering specific submission pages when not accessing from /gallery */}
                   <a href={'./details/' + id}>See entry</a>
+
+                  <p>this is a new link </p>
+                  <Link to={"/details/" + id} className="btn btn-primary w-100 mt-3">
+            Go to a specific page in gallery
+          </Link>
+
                 </div>
               </InfoWindow>
             ) : null}

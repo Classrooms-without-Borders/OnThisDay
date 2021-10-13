@@ -25,31 +25,31 @@ class Details extends React.Component {
  
    <React.Fragment>
 
-      
-    {this.props.location.submission.images && <ImageCarousel imageList={this.props.location.submission.images}/>}
+    {this.props.location?.submission?.images && <ImageCarousel imageList={this.props.location.submission.images}/>}
 
 
      <div className="card-body">
        <h1 className="title-event">{}</h1>
  
-       {this.props.location.submission.subjectName && <h2 className="title-location"> {this.props.location.submission.subjectName}</h2>}
+       {this.props.location?.submission?.subjectName && <h2 className="title-location"> {this.props.location.submission.subjectName}</h2>}
           
        <br></br>
-  
+      
        <div className="row=title">
+
  
-       {this.props.location.submission.location && <h3 className="submitter-location">  {this.props.location.submission.location}</h3>}
-       {dateToString(this.props.location.submission.eventDate) && <h3 className="submitter-location">  {dateToString(this.props.location.submission.eventDate)} </h3>}
+       {this.props.location?.submission?.location && <h3 className="submitter-location">  {this.props.location.submission.location}</h3>}
  
-       {this.props.location.submission.description && <p> {this.props.location.submission.description}</p>}
+       {this.props.location?.submission?.description && <p> {this.props.location.submission.description}</p>}
  
+      
        </div>
  
        <br></br>
  
      </div>
  
-     <Source sourceList={this.props.location.submission.sources}/>
+     {this.props.location?.submission?.sources && <Source sourceList={this.props.location.submission.sources}/>}
  
      </React.Fragment>
  
