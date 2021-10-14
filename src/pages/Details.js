@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styling/Details.css'
 import Source from '../components/Source';
 import ImageCarousel from '../components/ImageCarousel';
@@ -7,40 +7,72 @@ import Carousel from 'react-bootstrap/Carousel'
 import logo from '../images/cwb-logo-reverse-w-tagline 1.png';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
+import Gallery from './Gallery';
+import { getAllVerified } from '../util';
+import { useLocation } from 'react-router-dom';
  
- 
-class Details extends React.Component {
-  componentDidMount() {
-   const { match: { params } } = this.props;
-    axios.get(`/details/${params.userId}`)
-     .then(({ data: user }) => {
-        this.setState({ user });
- 
-     });
- }
+//Gallery();
 
-  render() {
-   //console.log(this.props.location); for error checking
+//pass in as componenet
+
+//functinal compoenent
+
+//react routing library - pass in id?
+
+function Details () {
+  const [submissions, setSubmissions] = useState(null);
+
+  
+ useEffect(() => {
+  const fetchData = async () => {
+      const data = await getAllVerified(); //just get the one
+      setSubmissions(data);
+  };
+  fetchData();
+}, []);
+
+
+  let str =  JSON.stringify(window.location.pathname);
+  let submissionId = str.split("/").pop();
+
+
+  submissionId = submissionId.replace('"', '');
+
+  let mySubmission;
+  if (submissions != null) {
+    var arrayLength = submissions.length;
+    for (var i = 0; i < arrayLength; i++) {
+        let string_id = submissions[i].id;
+        string_id = string_id.replace('"', '');
+        if (submissionId === string_id) {
+
+          mySubmission = JSON.parse(JSON.stringify(submissions[i]));
+        }
+       
+    }
+}
+
+
    return (
  
    <React.Fragment>
 
-    {this.props.location?.submission?.images && <ImageCarousel imageList={this.props.location.submission.images}/>}
+    {mySubmission?.images && <ImageCarousel imageList={mySubmission.images}/>}
 
 
      <div className="card-body">
        <h1 className="title-event">{}</h1>
  
-       {this.props.location?.submission?.subjectName && <h2 className="title-location"> {this.props.location.submission.subjectName}</h2>}
+       {mySubmission?.subjectName && <h2 className="title-location"> {mySubmission.subjectName}</h2>}
           
        <br></br>
       
        <div className="row=title">
 
  
-       {this.props.location?.submission?.location && <h3 className="submitter-location">  {this.props.location.submission.location}</h3>}
+       {mySubmission?.location && <h3 className="submitter-location">  {mySubmission.location}</h3>}
  
-       {this.props.location?.submission?.description && <p> {this.props.location.submission.description}</p>}
+       {mySubmission?.description && <p> {mySubmission.description}</p>}
  
       
        </div>
@@ -49,13 +81,13 @@ class Details extends React.Component {
  
      </div>
  
-     {this.props.location?.submission?.sources && <Source sourceList={this.props.location.submission.sources}/>}
+     {mySubmission?.sources && <Source sourceList={mySubmission.sources}/>}
  
      </React.Fragment>
  
      );
  }
-}
+
  
  
 export default Details;
