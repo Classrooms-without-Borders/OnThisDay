@@ -77,10 +77,10 @@ async function searchSubmissions(
         .then((entries) => {
             entries.forEach((doc) => {
                 res.push(new StudentSubmission(
-                    doc.data().id, 
+                    doc.id, 
                     doc.data().subjectName,
                     doc.data().location, 
-                    '', '', // TODO Anna: lat and lng
+                    '', '', // TODO Anna: add lat and lng
                     doc.data().date.toDate(),
                     doc.data().description,
                     doc.data().images,
