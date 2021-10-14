@@ -5,7 +5,6 @@ import { Navbar,  NavItem } from 'reactstrap';
 import { NavLink, useLocation } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
 import { Searchbar } from './Searchbar';
-import { searchSubmissions } from '../util';
 import useWindowSize from '../styling/WindowSize';
 
 export function Header() {

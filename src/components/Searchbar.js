@@ -4,7 +4,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import constants from '../styling/Constants';
 import { TextInput, DateInput, StyledButton } from '../components';
-import { formatDateData, searchSubmissions } from '../util';
+import { formatDateData } from '../util';
 import { useHistory } from 'react-router-dom';
 
 function getInputVal(wrapId) {
@@ -65,17 +65,6 @@ async function submitSearch(history, e) {
     e.preventDefault();
     saveLocalSearch();
 
-    const searchResult = await searchSubmissions(
-        getLocal('location'),
-        new Date(getLocal('dateFrom')),
-        new Date(getLocal('dateTo'))
-    );
-    
-    // TODO: REMOVE AFTER TESTING IS DONE
-    console.log('SEARCH RESULT-----')
-    console.log(searchResult);
-    console.log('------------------')
-
     // construct query string for URL path
     const localFields = [
         'location', 'dateFrom', 'dateTo',
@@ -99,7 +88,6 @@ async function submitSearch(history, e) {
 
 export function Searchbar({ open=true }) {
     const [advancedOpen, setAdvancedOpen] = useState(false);
-    const [results, setResults] = useState();
     const history = useHistory();
     
     useEffect(() => {
