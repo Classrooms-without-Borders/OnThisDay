@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { Card, CardMedia, CardContent } from '@material-ui/core';
 import constants from '../styling/Constants';
@@ -7,6 +7,9 @@ import useWindowSize from '../styling/WindowSize';
 import { dateToString } from '../util';
 
 export function BigCard({submission}) {
+
+    const [mySubmission, setMySubmission] = React.useState(submission);
+
     const bigCardStyle = makeStyles({
         root: {
             display: 'flex',
@@ -49,10 +52,18 @@ export function BigCard({submission}) {
         },
     });
 
+
     return (
         <div style={{width: '100%', textAlign: 'center'}}>
             <div style={{width: '100%', margin: '0 auto'}}>
-                <Link to='/details'> {/* TODO: redirect to appropriate URL */}
+            <Link to={{
+            pathname: `/details/${submission.id}`,
+            submission: submission }
+  }>
+
+
+
+            {/* TODO: redirect to appropriate URL */}
                     <Card className={bigCardStyle().root}>
                         <img src={submission.images[0]} alt='Featured submission photo'></img>
                         <CardContent>
@@ -122,7 +133,10 @@ export function SmallCard({submission}) {
 
     return (
         <div style={smallCardDivStyle}>
-            <Link to={`/details/${submission.id}`} >
+            <Link to={{
+    pathname: `/details/${submission.id}`,
+    submission: submission }
+  }>
                 <Card className={smallCardStyle().root} >
                     <img src={submission.images[0]} alt='Featured submission photo'></img>
                 </Card>

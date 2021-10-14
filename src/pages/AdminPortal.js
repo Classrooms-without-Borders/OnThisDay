@@ -2,7 +2,6 @@ import '../styling/AdminPortal.css';
 import React, {Component} from "react";
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import { useContext, useState, useEffect } from "react"
 
 //firebase init stuff
 const firebaseConfig = {
