@@ -37,7 +37,6 @@ function saveLocalSearch() {
         dateTo = dateFrom;
     }
     window.localStorage.setItem('dateTo', formatDateData(dateTo));
-    console.log(window.localStorage.getItem('dateFrom'))
 
     window.localStorage.setItem('subjectName', getInputVal('subject-name-wrap'));
     window.localStorage.setItem('submitterName', getInputVal('submitter-name-wrap'));
