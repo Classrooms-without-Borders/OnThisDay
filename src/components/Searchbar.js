@@ -37,6 +37,7 @@ function saveLocalSearch() {
         dateTo = dateFrom;
     }
     window.localStorage.setItem('dateTo', formatDateData(dateTo));
+    console.log(window.localStorage.getItem('dateFrom'))
 
     window.localStorage.setItem('subjectName', getInputVal('subject-name-wrap'));
     window.localStorage.setItem('submitterName', getInputVal('submitter-name-wrap'));
@@ -154,8 +155,9 @@ export function Searchbar({ open=true }) {
 
     const advancedStyles = makeStyles({
         root: {
+            // TODO Anna: unhide advanced
+            display: 'none', //advancedOpen ? 'inline-block' : 'none',
             zIndex: 1,
-            display: advancedOpen ? 'inline-block' : 'none',
             fontFamily: constants.fontFamily.body,
             fontSize: constants.fontSize.xs,
             height: 'fit-content',
@@ -279,7 +281,7 @@ export function Searchbar({ open=true }) {
                     <StyledButton color={constants.color.dark} onClick={e => submitSearch(history, e)}>
                         Search
                     </StyledButton>
-                    <button id='open-adv-search' onClick={() => setAdvancedOpen(!advancedOpen)}>
+                    <button id='open-adv-search' style={{display: 'none'}} onClick={() => setAdvancedOpen(!advancedOpen)}>
                         {advancedOpen 
                             ? <ArrowDropUpIcon style={{color: constants.color.dark}} />
                             : <ArrowDropDownIcon style={{color: constants.color.dark}} />}

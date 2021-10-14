@@ -35,44 +35,63 @@ function cleanDates(start, end) {
 
 async function searchSubmissions(
     location=null, 
-    eventDateStart=null,
-    eventDateEnd=null,
+    dateFrom=null,
+    dateTo=null,
     subjectName=null,
-    studentName=null,
-    schoolName=null,
-    grade=null,
-    teacherName=null,
+    studentFirst=null,
+    studentLast=null,
 ) {
+    const args = Object.values(arguments).map(arg =>
+        typeof arg === 'string' ? arg.split('%20').join(' ') : arg
+    );
+
+    const params = {
+        'location': ['location', '=='],
+        'dateFrom': ['date', '>='],
+        'dateTo': ['date', '<='],
+        'subjectName': ['subjectName', '=='],
+        'studentFirst': ['studentFirst', '=='],
+        'studentLast': ['studentLast', '==']
+    };
+
     const db = firebase.firestore();
 
     let res = [];
 
-    if (eventDateStart && eventDateEnd) {
-        [eventDateStart, eventDateEnd] = cleanDates(eventDateStart, eventDateEnd);
-
-        if (location) { // basic search
-            await db.collection('verified')
-                .where('location', '==', location)
-                .where('date', '>=', eventDateStart)
-                .where('date', '<=', eventDateEnd)
-                .get()
-                .then((entries) => {
-                    entries.forEach((doc) => {
-                        res.push(new StudentSubmission(
-                            doc.data().id, 
-                            doc.data().subjectName,
-                            doc.data().location, 
-                            doc.data().date,
-                            doc.data().description,
-                            doc.data().sources,
-                            `${doc.data().studentFirst} ${doc.data().studentLast}`,
-                            doc.data().submittedDate,
-                            // TODO: store student's class
-                        ));
-                    });
-                });
-        }
+    if (dateFrom && dateFrom !== '' && dateTo && dateTo !== '') {
+        [args[1], args[2]] = cleanDates(dateFrom, dateTo);
     }
+
+    // construct search function
+    const attachParams = (collection) => {
+        Object.values(params).forEach((param, index) => {
+            if (args[index] && args[index] !== '') {
+                collection = collection.where(...param, args[index]);
+            }
+        });
+        return collection;
+    }
+
+    await attachParams(db.collection('verified'))
+        .get()
+        .then((entries) => {
+            entries.forEach((doc) => {
+                res.push(new StudentSubmission(
+                    doc.data().id, 
+                    doc.data().subjectName,
+                    doc.data().location, 
+                    '', '', // TODO Anna: lat and lng
+                    doc.data().date.toDate(),
+                    doc.data().description,
+                    doc.data().images,
+                    doc.data().sources,
+                    `${doc.data().studentFirst} ${doc.data().studentLast}`,
+                    doc.data().submittedDate,
+                    '' // TODO: store student's class
+                ));
+            });
+        });
+
     return res;
 }
 

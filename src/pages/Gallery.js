@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { getAllVerified, searchSubmissions } from '../util';
+import { getAllVerified, searchSubmissions, toDate } from '../util';
 import { CardGrid } from '../components';
 import constants from '../styling/Constants';
 
@@ -21,12 +21,10 @@ function Gallery() {
                 return tmp[tmp.length - 1];
             });
             const eventLocation = queryParams[0];
-            const dateFrom = new Date(queryParams[1]);
-            const dateTo = new Date(queryParams[2]);
-            // const subjectName = queryParams[3];
-            // const submitterName = queryParams[4];
-            // const grade = queryParams[5];
-            // const teacher = queryParams[6];
+            const dateFrom = queryParams[1] !== '' ? 
+                toDate(queryParams[1]) : toDate('1-1-1925');
+            const dateTo = queryParams[2] !== '' ?
+                toDate(queryParams[2]) : toDate('31-12-1950');
             // TODO Anna: implement advanced search
 
             const querySubmissions = async () => {
@@ -38,7 +36,7 @@ function Gallery() {
             querySubmissions();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [location]);
 
     return (
         <div style={{margin: '100px auto 30px', maxWidth: '90vw'}}>
