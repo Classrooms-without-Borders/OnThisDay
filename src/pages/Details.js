@@ -10,14 +10,6 @@ import { withRouter } from 'react-router-dom';
 import Gallery from './Gallery';
 import { getAllVerified } from '../util';
 import { useLocation } from 'react-router-dom';
- 
-//Gallery();
-
-//pass in as componenet
-
-//functinal compoenent
-
-//react routing library - pass in id?
 
 function Details () {
   const [submissions, setSubmissions] = useState(null);
@@ -52,6 +44,7 @@ function Details () {
     }
 }
 
+/* TODO: do the filtering of a submission in the backend instead of right here - will cause a big performance hit */
 
    return (
  
@@ -88,6 +81,4 @@ function Details () {
      );
  }
 
- 
- 
 export default Details;
