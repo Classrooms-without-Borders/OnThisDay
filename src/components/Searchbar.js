@@ -1,80 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import constants from '../styling/Constants';
 import { TextInput, DateInput, StyledButton } from '../components';
-import { formatDateData } from '../util';
-import { useHistory } from 'react-router-dom';
+import { formatDateData, getQueryParam, SearchContext } from '../util';
+import { useHistory, useLocation } from 'react-router-dom';
 
 function getInputVal(wrapId) {
     return document.getElementById(wrapId)?.getElementsByTagName('input')[0]?.value;
 }
 
-function getLocal(key) {
-    return window.localStorage.getItem(key);
-}
-
-function saveLocalSearch() {
-    window.localStorage.setItem('location', getInputVal('location-input-wrap'));
-
-    let date = getInputVal('date-input-wrap');
-    if (date) date = new Date(date);
-    window.localStorage.setItem('dateFrom', formatDateData(date));
-
-    let dateFrom = getInputVal('date-from-wrap');
-    if (dateFrom) {
-        dateFrom = new Date(dateFrom);
-    } else {
-        dateFrom = date;
-    }
-    window.localStorage.setItem('dateFrom', formatDateData(dateFrom));
-
-    let dateTo = getInputVal('date-to-wrap');
-    if (dateTo) {
-        dateTo = new Date(dateTo);
-    } else {
-        dateTo = dateFrom;
-    }
-    window.localStorage.setItem('dateTo', formatDateData(dateTo));
-
-    window.localStorage.setItem('subjectName', getInputVal('subject-name-wrap'));
-    window.localStorage.setItem('submitterName', getInputVal('submitter-name-wrap'));
-    window.localStorage.setItem('grade', getInputVal('grade-wrap'));
-    window.localStorage.setItem('teacher', getInputVal('teacher-wrap'));
-}
-
-function setElemVal(wrapId, val) {
-    document.getElementById(wrapId).getElementsByTagName('input').value = val;
-}
-
-function updateFields() {
-    setElemVal('location-input-wrap', getLocal('location'));
-    setElemVal('date-input-wrap', getLocal('dateFrom'));
-    setElemVal('date-from-wrap', getLocal('dateFrom'));
-    setElemVal('date-to-wrap', getLocal('dateTo'));
-    setElemVal('subject-name-wrap', getLocal('subjectName'));
-    setElemVal('submitter-name-wrap', getLocal('submitterName'));
-    setElemVal('school-wrap', getLocal('school'));
-    setElemVal('grade-wrap', getLocal('grade'));
-    setElemVal('teacher-wrap', getLocal('teacher'));
-}
-
 // execute search by redirecting to gallery with query params in URL
-async function submitSearch(history, e) {
-    e.preventDefault();
-    saveLocalSearch();
-
+function submitSearch(history, searchContext) {
     // construct query string for URL path
-    const localFields = [
-        'location', 'dateFrom', 'dateTo',
-        'subjectName', 'submitterName', 'grade', 'teacher'
-    ];
-    
-    let localVals = {};
-    localFields.forEach((field) => {
-        localVals[field] = getLocal(field);
-    });
+    let localVals = Object.assign({}, searchContext);
     if (!localVals.dateTo) localVals.dateTo = localVals.dateFrom;
 
     let newPath = `/gallery${localVals !== {} ? '?' : ''}`;
@@ -86,17 +26,48 @@ async function submitSearch(history, e) {
     history.push(newPath);
 }
 
+function createNewContext(searchContext) {
+    // save params to context
+    let newContext = Object.assign({}, searchContext);
+
+    newContext.location = getInputVal('location-input-wrap');
+    newContext.subjectName = getInputVal('subject-name-wrap');
+    newContext.submitterName = getInputVal('submitter-name-wrap');
+    newContext.grade = getInputVal('grade-wrap');
+    newContext.teacher = getInputVal('teacher-wrap');
+    
+    let date = getInputVal('date-input-wrap');
+    if (date) date = new Date(date);
+    newContext.dateFrom = formatDateData(date);
+
+    let dateFrom = getInputVal('date-from-wrap');
+    if (dateFrom) {
+        dateFrom = new Date(dateFrom);
+    } else {
+        dateFrom = date;
+    }
+    newContext.dateFrom = formatDateData(dateFrom);
+
+    let dateTo = getInputVal('date-to-wrap');
+    if (dateTo) {
+        dateTo = new Date(dateTo);
+    } else {
+        dateTo = dateFrom;
+    }
+    newContext.dateTo = formatDateData(dateTo);
+
+    return newContext;
+}
+
 export function Searchbar({ open=true }) {
     const [advancedOpen, setAdvancedOpen] = useState(false);
     const history = useHistory();
-    
+    const [searchContext, setSearchContext] = useContext(SearchContext);
+    const searchPath = useLocation().search;
+
     useEffect(() => {
         setAdvancedOpen(false);
     }, [open]);
-
-    useEffect(() => {
-        updateFields();
-    }, []);
 
     const useStyles = makeStyles({
         root: {
@@ -259,7 +230,13 @@ export function Searchbar({ open=true }) {
                     </span>
                 </div>
             </div>
-            <StyledButton color={constants.color.dark} onClick={e => submitSearch(history, e)}>
+            <StyledButton 
+                color={constants.color.dark}
+                onClick={() => {
+                    setSearchContext(createNewContext(searchContext));
+                    submitSearch(history, createNewContext(searchContext));
+                }}
+            >
                 Search
             </StyledButton>
         </div>
@@ -270,14 +247,24 @@ export function Searchbar({ open=true }) {
                 <div>
                     <p>What happened in</p>
                     <span className='select-wrap' id='location-input-wrap'>
-                        <TextInput id='location-input' label='City, Country' />
+                        <TextInput id='location-input' label='City, Country'
+                            defaultValue={getQueryParam('location', searchPath)}
+                        />
                     </span>
                     <p>on</p>
                     <span id='date-input-wrap' className='select-wrap'>
-                        <DateInput id='date-input' label='Date' />
+                        <DateInput id='date-input' label='Date' 
+                            defaultValue={getQueryParam('dateFrom', searchPath)}
+                        />
                     </span>
                     <p>?</p>
-                    <StyledButton color={constants.color.dark} onClick={e => submitSearch(history, e)}>
+                    <StyledButton
+                        color={constants.color.dark}
+                        onClick={() => {
+                            setSearchContext(createNewContext(searchContext));
+                            submitSearch(history, createNewContext(searchContext));
+                        }}
+                    >
                         Search
                     </StyledButton>
                     <button id='open-adv-search' style={{display: 'none'}} onClick={() => setAdvancedOpen(!advancedOpen)}>
