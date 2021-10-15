@@ -1,10 +1,17 @@
 # What Is This?
-Classrooms Without Borders was looking for an original and unique web application to engage high school students with the historical events leading up to and during the Holocaust. Students would be able to research activities in this web app occurring during any particular day during World War 2 and submit to a portal with a write up, resources, photos, etc. This "Day in History" web application would be a database for research but also an anthology of the submissions provided by students. It aims to be a growing resource throughout time as students use it. The interface would also display a timeline and map of relevant information.
+Classrooms Without Borders was looking for an original and unique web application to engage high school students with the historical events leading up to and during the Holocaust. Students would be able to research activities in this web app occurring during any particular day during World War 2 and submit to a portal with a write up, resources, photos, etc. This "Day in History" web application would be a database for research but also an anthology of the submissions provided by students. It aims to be a growing resource throughout time as students use it. The interface displays a timeline and map of relevant information, built by the student developers.
 
-This was completed as a project led by Elizabeth Song, Karina Zhang, Anna Xing, Marcelo Morales, Namrata Rajamaran and Megan Lin. Special thanks to anyone who has helped us thus far!
+This was completed as a project led by:
+* Elizabeth Song (Claremont McKenna College): Product Manager
+* Karina Zhang (New York University): Back-end Developer
+* Anna Xing (University of Waterloo): Full-stack Developer, Designer
+* Marcelo Morales (John Hopkins University): Full-stack Developer
+* Namrata Rajaraman (North Carolina State University): Back-end Developer
+* Megan Lin: Front-end Developer, Designer
+* Special thanks to anyone who has helped us thus far, from our mentors to the Classrooms without Borders team for giving us this opportunity!
 
-# How to Use
-TODO
+# How to Use 
+TODO - explain product use cases for users 
 
 # Dev Setup
 * Clone this git repository.
