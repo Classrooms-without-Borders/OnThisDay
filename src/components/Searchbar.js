@@ -1,17 +1,27 @@
-import React, { useEffect, useState, useContext } from 'react';
+import { DateInput, StyledButton, TextInput } from '../components';
 import { makeStyles } from '@material-ui/core/styles';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
-import constants from '../styling/Constants';
-import { TextInput, DateInput, StyledButton } from '../components';
-import { formatDateData, getQueryParam, SearchContext } from '../util';
+import React, { useEffect, useState, useContext } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import constants from '../styling/Constants';
+import { formatDateData, getQueryParam, SearchContext } from '../util';
 
+/**
+ * Takes a DOM id and returns the value in the corresponding input element.
+ * This is used to get values in MUI inputs, which consist of many nested elements.
+ * @param {String} wrapId DOM id of target input element
+ * @returns {String} Value in the input element with the given id
+ */
 function getInputVal(wrapId) {
     return document.getElementById(wrapId)?.getElementsByTagName('input')[0]?.value;
 }
 
-// execute search by redirecting to gallery with query params in URL
+/**
+ * Executes search by redirecting to /gallery with query params in the URL.
+ * @param {History} history Object returned by useHistory() hook
+ * @param {React.Context} searchContext Object returned by useContext(SearchContext) hook
+ */
 function submitSearch(history, searchContext) {
     // construct query string for URL path
     let localVals = Object.assign({}, searchContext);
@@ -26,20 +36,22 @@ function submitSearch(history, searchContext) {
     history.push(newPath);
 }
 
+/**
+ * Creates an object which contains current values of the search fields.
+ * This object can then be used to update the application's search context.
+ * @param {React.Context} searchContext Object returned by useContext(SearchContext) hook
+ * @returns {Object} Object with fields updated based on current search inputs
+ */
 function createNewContext(searchContext) {
-    // save params to context
     let newContext = Object.assign({}, searchContext);
 
-    newContext.location = getInputVal('location-input-wrap');
-    newContext.subjectName = getInputVal('subject-name-wrap');
-    newContext.submitterName = getInputVal('submitter-name-wrap');
-    newContext.grade = getInputVal('grade-wrap');
-    newContext.teacher = getInputVal('teacher-wrap');
-    
-    let date = getInputVal('date-input-wrap');
-    if (date) date = new Date(date);
-    newContext.dateFrom = formatDateData(date);
+    // parse date in basic search
+    let date = getInputVal('date-input-wrap'); // obtain date in text format
+    if (date) date = new Date(date); // create date object
+    newContext.dateFrom = formatDateData(date); // store in standard format
 
+    // parse dateFrom in advanced search
+    // TODO Anna: change advanced search UI to avoid duplicating date
     let dateFrom = getInputVal('date-from-wrap');
     if (dateFrom) {
         dateFrom = new Date(dateFrom);
@@ -48,6 +60,7 @@ function createNewContext(searchContext) {
     }
     newContext.dateFrom = formatDateData(dateFrom);
 
+    // parse dateTo in advanced search
     let dateTo = getInputVal('date-to-wrap');
     if (dateTo) {
         dateTo = new Date(dateTo);
@@ -56,9 +69,20 @@ function createNewContext(searchContext) {
     }
     newContext.dateTo = formatDateData(dateTo);
 
+    newContext.grade = getInputVal('grade-wrap');
+    newContext.location = getInputVal('location-input-wrap');
+    newContext.subjectName = getInputVal('subject-name-wrap');
+    newContext.submitterName = getInputVal('submitter-name-wrap');
+    newContext.teacher = getInputVal('teacher-wrap');
+
     return newContext;
 }
 
+/**
+ * Searchbar allowing search by location, date, and advanced search features.
+ * TODO Anna: advanced search panel is currently hidden since advanced search 
+ * implementation is still in progress.
+ */
 export function Searchbar({ open=true }) {
     const [advancedOpen, setAdvancedOpen] = useState(false);
     const history = useHistory();
@@ -67,7 +91,7 @@ export function Searchbar({ open=true }) {
 
     useEffect(() => {
         setAdvancedOpen(false);
-    }, [open]);
+    }, [open]); // when searchbar is toggled, hide advanced search panel
 
     const useStyles = makeStyles({
         root: {
@@ -182,6 +206,10 @@ export function Searchbar({ open=true }) {
         },
     });
 
+    /**
+     * Component for advanced search panel.
+     * TODO Anna: currently hidden while advanced search is being implemented.
+     */
     const AdvancedSearch = () => 
         <div className={advancedStyles().root}>
             <div className='adv-search-section' id='adv-search-by-submission'>
