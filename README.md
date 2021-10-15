@@ -1,3 +1,11 @@
+# What Is This?
+Classrooms Without Borders was looking for an original and unique web application to engage high school students with the historical events leading up to and during the Holocaust. Students would be able to research activities in this web app occurring during any particular day during World War 2 and submit to a portal with a write up, resources, photos, etc. This "Day in History" web application would be a database for research but also an anthology of the submissions provided by students. It aims to be a growing resource throughout time as students use it. The interface would also display a timeline and map of relevant information.
+
+This was completed as a project led by Elizabeth Song, Karina Zhang, Anna Xing, Marcelo Morales, Namrata Rajamaran and Megan Lin. Special thanks to anyone who has helped us thus far!
+
+# How to Use
+TODO
+
 # Dev Setup
 * Clone this git repository.
 * Run `npm install` to install all package dependencies.
