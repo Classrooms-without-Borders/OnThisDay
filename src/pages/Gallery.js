@@ -35,7 +35,7 @@ function Gallery() {
     }, [location]);
 
     return (
-        <div style={{margin: '100px auto 30px', maxWidth: '90vw'}}>
+        <div className='page-content' style={{margin: '100px auto 30px', maxWidth: '90vw'}}>
             <h1 style={{
                 fontFamily: constants.fontFamily.header,
                 fontWeight: 'bold',
