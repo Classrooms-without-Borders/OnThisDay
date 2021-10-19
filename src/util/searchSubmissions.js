@@ -1,38 +1,47 @@
 import firebase from 'firebase';
 import StudentSubmission from './StudentSubmission';
 
-// expands a date range by 1 month on either side
-// this deals with messy time offsets when pulling from Firestore
-// TODO: find a better way to deal with time offsets!
+/**
+ * Bug workaround that expands a date range by 1 month on either side.
+ * This shouldn't be necessary, but our Date objects seem inconsistent with
+ * Firestore, and expected results don't show up unless we expand the range.
+ * TODO Anna: change our Date objects to deal with this bug.
+ * @param {Date} start Original start date
+ * @param {Date} end Original end date
+ * @returns {[Date, Date]} Expanded start and end dates
+ */
 function cleanDates(start, end) {
     const startMonth = start.getMonth();
     const endMonth = end.getMonth();
 
     let expStart, expEnd;
 
-    if (startMonth > 0) {
-        expStart = new Date(
-            start.getFullYear(), startMonth - 1, start.getDate()
-        );
-    } else {
-        expStart = new Date(
-            start.getFullYear() - 1, 11, start.getDate()
-        );
-    }
+    expStart = new Date(
+        start.getFullYear() - (startMonth ? 0 : 1), // subtract a year if startMonth was Jan
+        startMonth ? startMonth - 1 : 11, // change month to Nov if year has decremented
+        start.getDate()
+    );
 
-    if (endMonth < 11) {
-        expEnd = new Date(
-            end.getFullYear(), endMonth + 1, end.getDate()
-        );
-    } else {
-        expEnd = new Date(
-            end.getFullYear() + 1, 0, end.getDate()
-        );
-    }
-    
+    expEnd = new Date(
+        end.getFullYear() + (endMonth === 11), // add a year if startMonth was Dec
+        endMonth < 11 ? endMonth + 1 : 0, // change month to Jan if year has incremented
+        end.getDate()
+    );
+
     return [expStart, expEnd];
 }
 
+/**
+ * Searches verified collection in Firestore for all submissions matching
+ * the given search parameters. All parameters are optional.
+ * @param {String} location Location of event
+ * @param {Date} dateFrom Date at which to begin query
+ * @param {Date} dateTo Date at which to end query
+ * @param {String} subjectName Subject name
+ * @param {String} studentFirst Student's first name
+ * @param {String} studentLast Student's last name
+ * @returns {Array<StudentSubmission>} Array of objects representing submissions.
+ */
 async function searchSubmissions(
     location=null, 
     dateFrom=null,
@@ -87,7 +96,6 @@ async function searchSubmissions(
                     doc.data().sources,
                     `${doc.data().studentFirst} ${doc.data().studentLast}`,
                     doc.data().submittedDate,
-                    '' // TODO: store student's class
                 ));
             });
         });
