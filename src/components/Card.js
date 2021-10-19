@@ -55,8 +55,8 @@ export function BigCard({submission}) {
             <div style={{width: '100%', margin: '0 auto'}}>
                 <Link to={{
                     pathname: `/details/${submission.id}`,
-                    submission: submission }
-                }>
+                    submission: submission
+                }}>
                     <Card className={bigCardStyle().root}>
                         <img src={submission.images[0]} alt='Featured submission'></img>
                         <CardContent>
@@ -127,8 +127,8 @@ export function SmallCard({submission}) {
         <div style={smallCardDivStyle}>
             <Link to={{
                 pathname: `/details/${submission.id}`,
-                submission: submission }
-            }>
+                submission: submission
+            }}>
                 <Card className={smallCardStyle().root} >
                     <img src={submission.images[0]} alt='Featured submission'></img>
                 </Card>
