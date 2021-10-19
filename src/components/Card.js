@@ -19,6 +19,7 @@ export function BigCard({submission}) {
             borderRadius: 0,
             boxShadow: constants.boxShadow.initial,
             transition: 'box-shadow 200ms',
+            textAlign: 'left',
             '&:hover': {
                 boxShadow: constants.boxShadow.hover,
                 transition: 'box-shadow 200ms',
