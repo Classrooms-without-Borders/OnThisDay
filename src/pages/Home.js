@@ -17,9 +17,9 @@ function Home() {
     }, []);
 
     return (
-        <React.Fragment>
+        <div className='page-content'>
             <div style={{backgroundColor: constants.color.dark}}>
-                <div style={{margin: '100px auto 40px', width: '1400px', maxWidth: '90vw'}}>
+                <div style={{margin: '40px auto', width: '1400px', maxWidth: '90vw'}}>
                     {submissions && <BigCard submission={submissions[0]} />}
                     {submissions && <CardGrid submissions={submissions.slice(1, 4)} />}
                 </div>
@@ -57,7 +57,7 @@ function Home() {
                     }} />
                 </div>
             </div>
-        </React.Fragment>
+        </div>
     );
       
 }

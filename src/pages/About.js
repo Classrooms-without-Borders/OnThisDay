@@ -1,7 +1,6 @@
 import React from "react";
 import '../styling/About.css'
 import { Button } from '@material-ui/core';
-import{ init } from 'emailjs-com';
 import { Container, Row, Col } from 'reactstrap';
 import pic from '../images/CWB_Logo_KO_NoTag.png';
 import constants from '../styling/Constants';
@@ -132,7 +131,7 @@ class About extends React.Component {
 		}
 		return (
 			<React.Fragment>
-				<div className="body" style={{margin: '20px auto 30px', maxWidth: '90vw'}}>
+				<div className="about body page-content" style={{margin: '20px auto 30px', maxWidth: '90vw'}}>
 				
 				<Container id="first-section">
 				<Row>

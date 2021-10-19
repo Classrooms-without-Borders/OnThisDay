@@ -1,21 +1,41 @@
 import React, { useState, useEffect } from 'react';
-import { getAllVerified } from '../util';
+import { useLocation } from 'react-router-dom';
+import { getAllVerified, searchSubmissions, toDate, getQueryParams } from '../util';
 import { CardGrid } from '../components';
 import constants from '../styling/Constants';
 
 function Gallery() {
     const [submissions, setSubmissions] = useState(null);
+    const location = useLocation();
 
     useEffect(() => {
-        const fetchData = async () => {
-            const data = await getAllVerified();
-            setSubmissions(data);
-        };
-        fetchData();
-    }, []);
+        if (location.search === '') {
+            const fetchData = async () => {
+                const data = await getAllVerified();
+                setSubmissions(data);
+            };
+            fetchData();
+        } else { // fetch only queried submissions
+            const queryParams = getQueryParams(location.search);
+            const eventLocation = queryParams[0];
+            const dateFrom = queryParams[1] !== '' ? 
+                toDate(queryParams[1]) : toDate('1-1-1925');
+            const dateTo = queryParams[2] !== '' ?
+                toDate(queryParams[2]) : toDate('31-12-1950');
+            // TODO Anna: implement advanced search
+
+            const querySubmissions = async () => {
+                const data = await searchSubmissions(
+                    eventLocation, dateFrom, dateTo
+                );
+                setSubmissions(data);
+            };
+            querySubmissions();
+        }
+    }, [location]);
 
     return (
-        <div style={{margin: '100px auto 30px', maxWidth: '90vw'}}>
+        <div className='page-content' style={{margin: '100px auto 30px', maxWidth: '90vw'}}>
             <h1 style={{
                 fontFamily: constants.fontFamily.header,
                 fontWeight: 'bold',

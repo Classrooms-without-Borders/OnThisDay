@@ -30,7 +30,7 @@ const useStyles = makeStyles({
     },
 });
 
-export function TextInput({ label, children }) {
+export function TextInput({ label, children, defaultValue }) {
     const StyledTextField = withStyles({
         root: {
             '& .MuiInput-underline:after': {
@@ -53,6 +53,7 @@ export function TextInput({ label, children }) {
         <StyledTextField 
             variant='outlined'
             label={label} 
+            defaultValue={defaultValue}
             className={useStyles().root}
             size='small'
         >

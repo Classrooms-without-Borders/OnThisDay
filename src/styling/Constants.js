@@ -27,6 +27,10 @@ const constants = {
         initial: '0px 4px 8px rgba(0, 0, 0, 0.6)',
         hover: '0px 4px 20px rgba(0, 0, 0, 0.8)',
     },
+    size: {
+        navHeight: '50px',
+        searchbarHeight: '110px',
+    }
 };
 
 export default constants;

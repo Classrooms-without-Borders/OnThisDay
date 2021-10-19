@@ -190,9 +190,9 @@ class Submit extends Component {
     render() {
         let sourceList = [{sourceName: "", sourceUrl:""}];
         sourceList = this.state.sourceList;
-                
+
         return (
-            <div>
+            <div className='page-content'>
                 <h1 id="submitHeading">SUBMIT AN ENTRY</h1>
                 <form id="submitForm" onSubmit={this.processInfo.bind(this)}>
                     <div id="aboutYou">

@@ -4,11 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { AuthProvider } from "./util/AuthContext";
+import { AuthProvider, SearchProvider } from "./util";
 
 ReactDOM.render(
   <AuthProvider>
-    <App />
+    <SearchProvider>
+      <App />
+    </SearchProvider>
   </AuthProvider>,
   document.getElementById('root')
 );

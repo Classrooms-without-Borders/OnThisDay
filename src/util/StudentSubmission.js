@@ -18,7 +18,6 @@ class StudentSubmission {
         this.sources = sources; // map of (title, URL) pairs
         this.studentName = studentName;
         this.submitDate = submitDate;
-        this.className = className;
     }
 }
 
