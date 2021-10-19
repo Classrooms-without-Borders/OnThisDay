@@ -18,7 +18,7 @@ class Details extends React.Component {
     return (
       <React.Fragment>
         {this.props.location.submission.images && <ImageCarousel imageList={this.props.location.submission.images}/>}
-        <div className="card-body" style={{textAlign: 'left'}}>
+        <div className="card-body">
           <h1 className="title-event">{}</h1>
           {this.props.location.submission.subjectName && <h2 className="title-location"> {this.props.location.submission.subjectName}</h2>}
           <br></br>

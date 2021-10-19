@@ -30,6 +30,10 @@
   background-color:  #E5E5E5;
 }
 
+.card-body p {
+  text-align: left;
+}
+
 .title-event {
   display:inline;
 
