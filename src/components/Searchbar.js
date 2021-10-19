@@ -1,11 +1,13 @@
-import { DateInput, StyledButton, TextInput } from '../components';
+import React, { useEffect, useState, useContext } from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
+import { DateInput, StyledButton, TextInput } from '../components';
+import { useHistory, useLocation } from 'react-router-dom';
+import { formatDateData, getQueryParam, SearchContext } from '../util';
+
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
-import React, { useEffect, useState, useContext } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
 import constants from '../styling/Constants';
-import { formatDateData, getQueryParam, SearchContext } from '../util';
 
 /**
  * Takes a DOM id and returns the value in the corresponding input element.
