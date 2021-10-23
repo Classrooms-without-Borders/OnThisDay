@@ -1,12 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { 
-  GoogleMap, 
-  useLoadScript,
-  MarkerClusterer
-} from '@react-google-maps/api';
-import { mapStyles } from '../styling/mapStyles';
-import { getAllVerified } from '../util';
 import CustomMarker from '../components/CustomMarker';
+import { getAllVerified } from '../util';
+import { GoogleMap, MarkerClusterer, useLoadScript } from '@react-google-maps/api';
+import { mapStyles } from '../styling/mapStyles';
+import React, { useState, useEffect } from "react";
 
 const containerStyle = {
   width: '100vw',

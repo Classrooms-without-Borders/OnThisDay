@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import {
-    Marker,
-    InfoWindow 
-} from '@react-google-maps/api';
+import { InfoWindow, Marker } from '@react-google-maps/api';
 import MarkerDetail from './MarkerDetail';
 
 const CustomMarker = (props) => {

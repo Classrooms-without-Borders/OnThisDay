@@ -1,8 +1,8 @@
-import React from "react";
-import '../styling/Details.css';
-import ImageCarousel from '../components/ImageCarousel';
 import constants from '../styling/Constants';
 import { dateToString } from '../util/format';
+import ImageCarousel from '../components/ImageCarousel';
+import React from "react";
+import '../styling/Details.css';
 
 const MarkerDetail = (props) => {
     return (
@@ -22,7 +22,6 @@ const MarkerDetail = (props) => {
                 </h4>
 
                 <br /><br />
-                {/* TODO: Issues with rendering specific submission pages when not accessing from /gallery */}
                 <a href={'./details/' + props.id} style={{ color: constants.color.lightGray, fontWeight: 'normal' }}>
                     <div style={{ backgroundColor: constants.color.accentPrimary, width: '100%', padding: 4 }}>
                         See entry
