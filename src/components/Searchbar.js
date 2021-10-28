@@ -158,7 +158,7 @@ function AdvancedSearch({ advancedOpen=false }) {
                     </span>
                 </div>
                 <div id='adv-search-subject-name'>
-                    <label htmlFor='subject-name'>Subject name</label>
+                    <label htmlFor='subject-name'>Person of interest</label>
                     <span className='select-wrap' id='subject-name-wrap'>
                         <TextInput placeholder='Name' id='subject-name' name='subject-name' />
                     </span>
