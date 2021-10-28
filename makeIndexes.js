@@ -4,17 +4,17 @@
  * Then run: firebase deploy --only firestore:indexes
  * This will deploy the indexes to Firestore.
  * 
- * Note: Firestore only supports up to 200 indexes
+ * TODO Anna: Firestore only supports up to 200 indexes.
  * This means we can only support index combos for up to 7 fields,
- * since 2^8 > 200. We exclude date here because we will always be
- * querying for date -- if dates are not provided by the user, we
- * set the dates to the earliest and latest possible dates supported
- * by this project.
+ * since 2^8 > 200. We exclude teacherName here as a result, 
+ * so we need to filter for teacherName on the client side instead
+ * if the user searches by this field.
  */
 const fs = require('fs');
 
 const fieldpaths = [
     'location',
+    'date',
     'grade',
     'school',
     'studentFirst',
