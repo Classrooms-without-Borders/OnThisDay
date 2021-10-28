@@ -19,14 +19,14 @@ function Gallery() {
             const queryParams = getQueryParams(location.search);
             const eventLocation = queryParams[0];
             const dateFrom = queryParams[1] !== '' ? 
-                toDate(queryParams[1]) : toDate('1-1-1925');
+                toDate(queryParams[1]) : ''
             const dateTo = queryParams[2] !== '' ?
-                toDate(queryParams[2]) : toDate('31-12-1950');
-            // TODO Anna: implement advanced search
+                toDate(queryParams[2]) : ''
 
             const querySubmissions = async () => {
                 const data = await searchSubmissions(
-                    eventLocation, dateFrom, dateTo
+                    eventLocation, dateFrom, dateTo, 
+                    ...queryParams.slice(3)
                 );
                 setSubmissions(data);
             };

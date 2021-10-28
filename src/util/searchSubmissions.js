@@ -54,13 +54,17 @@ async function searchSubmissions(
         typeof arg === 'string' ? arg.split('%20').join(' ') : arg
     );
 
+    // key: parameter DOM id
+    // value: [Firestore parameter, comparison operator]
     const params = {
         'location': ['location', '=='],
         'dateFrom': ['date', '>='],
         'dateTo': ['date', '<='],
         'subjectName': ['subjectName', '=='],
         'studentFirst': ['studentFirst', '=='],
-        'studentLast': ['studentLast', '==']
+        'studentLast': ['studentLast', '=='],
+        'grade': ['grade', '=='],
+        'teacherName': ['teacherName', '==']
     };
 
     const db = firebase.firestore();
@@ -96,6 +100,9 @@ async function searchSubmissions(
                     doc.data().sources,
                     `${doc.data().studentFirst} ${doc.data().studentLast}`,
                     doc.data().submittedDate,
+                    doc.data().school,
+                    doc.data().grade,
+                    doc.data().teacherName,
                 ));
             });
         });

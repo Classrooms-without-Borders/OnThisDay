@@ -73,6 +73,7 @@ function createNewContext(searchContext) {
 
     newContext.grade = getInputVal('grade-wrap');
     newContext.location = getInputVal('location-input-wrap');
+    newContext.school = getInputVal('school-wrap');
     newContext.subjectName = getInputVal('subject-name-wrap');
     newContext.submitterName = getInputVal('submitter-name-wrap');
     newContext.teacher = getInputVal('teacher-wrap');
@@ -81,9 +82,121 @@ function createNewContext(searchContext) {
 }
 
 /**
+ * Component for advanced search panel dropdown.
+ */
+function AdvancedSearch({ advancedOpen=false }) {
+    const advancedStyles = makeStyles({
+        root: {
+            display: advancedOpen ? 'inline-block' : 'none',
+            zIndex: 1,
+            fontFamily: constants.fontFamily.body,
+            fontSize: constants.fontSize.xs,
+            height: 'fit-content',
+            maxHeight: 'calc(100vh - 100px)',
+            overflow: 'auto',
+            backgroundColor: constants.color.lightGray,
+            color: constants.color.dark,
+            boxShadow: constants.boxShadow.initial,
+            top: '150px',
+            width: 'fit-content',
+            position: 'fixed',
+            padding: '36px 36px 0',
+            margin: 'auto',
+            '& label': {
+                margin: '0 12px',
+            },
+            '& > div > div': {
+                display: 'flex',
+                margin: '12px 0',
+                alignItems: 'center',
+                width: '100%',
+                '& > div': {
+                    display: 'inline-block',
+                    margin: '3px 0',
+                },
+            },
+            '& .select-wrap': {
+                float: 'right',
+                marginRight: 0,
+                marginLeft: 'auto',
+            },
+            '& h2': {
+                fontFamily: constants.fontFamily.header,
+                fontWeight: 'bold',
+                fontSize: constants.fontSize.m,
+                textTransform: 'uppercase',
+            },
+            '& h3': {
+                fontFamily: constants.fontFamily.header,
+                fontWeight: 'bold',
+                fontSize: constants.fontSize.s,
+                textTransform: 'uppercase',
+            },
+            '& .adv-search-section': {
+                margin: '12px auto',
+                padding: '0 0 12px',
+            },
+            '& .inline': {
+                width: '100%',
+                display: 'inline-flex',
+            },
+        },
+    });
+
+    return (
+        <div className={advancedStyles().root}>
+            <div className='adv-search-section' id='adv-search-by-submission'>
+                <h3>By Submission</h3>
+                <div id='adv-search-date' className='inline'>
+                    <label htmlFor='date-from'>From</label>
+                    <span className='select-wrap' id='date-from-wrap'>
+                        <DateInput placeholder='Date' id='date-from' name='date-from' />
+                    </span>
+                    <label htmlFor='date-to'>to</label>
+                    <span className='select-wrap' id='date-to-wrap'>
+                        <DateInput placeholder='Date' id='date-to' name='date-to' />
+                    </span>
+                </div>
+                <div id='adv-search-subject-name'>
+                    <label htmlFor='subject-name'>Subject name</label>
+                    <span className='select-wrap' id='subject-name-wrap'>
+                        <TextInput placeholder='Name' id='subject-name' name='subject-name' />
+                    </span>
+                </div>
+            </div>
+            <div className='adv-search-section' id='adv-search-by-submitter'>
+                <h3>By Submitter</h3>
+                <div id='adv-search-submitter-name'>
+                    <label htmlFor='submitter-name'>Submitter name</label>
+                    <span className='select-wrap' id='submitter-name-wrap'>
+                        <TextInput placeholder='Name' id='submitter-name' name='submitter-name' />
+                    </span>
+                </div>
+                <div id='adv-search-school'>
+                    <label htmlFor='school'>School name</label>
+                    <span className='select-wrap' id='school-wrap'>
+                        <TextInput placeholder='School' id='school' name='school' />
+                    </span>
+                </div>
+                <div id='adv-search-grade'>
+                    <label htmlFor='grade'>Grade</label>
+                    <span className='select-wrap' id='grade-wrap'>
+                        <TextInput placeholder='Grade' id='grade' name='grade' />
+                    </span>
+                </div>
+                <div id='adv-search-teacher'>
+                    <label htmlFor='teacher'>Teacher name</label>
+                    <span className='select-wrap' id='teacher-wrap'>
+                        <TextInput placeholder='Teacher' id='teacher' name='teacher' />
+                    </span>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+/**
  * Searchbar allowing search by location, date, and advanced search features.
- * TODO Anna: advanced search panel is currently hidden since advanced search 
- * implementation is still in progress.
  */
 export function Searchbar({ open=true }) {
     const [advancedOpen, setAdvancedOpen] = useState(false);
@@ -149,128 +262,6 @@ export function Searchbar({ open=true }) {
         },
     });
 
-    const advancedStyles = makeStyles({
-        root: {
-            // TODO Anna: unhide advanced
-            display: 'none', //advancedOpen ? 'inline-block' : 'none',
-            zIndex: 1,
-            fontFamily: constants.fontFamily.body,
-            fontSize: constants.fontSize.xs,
-            height: 'fit-content',
-            maxHeight: 'calc(100vh - 100px)',
-            overflow: 'auto',
-            backgroundColor: constants.color.lightGray,
-            color: constants.color.dark,
-            boxShadow: constants.boxShadow.initial,
-            top: '150px',
-            width: 'fit-content',
-            position: 'fixed',
-            padding: '36px',
-            margin: 'auto',
-            '& label': {
-                margin: '0 12px',
-            },
-            '& > div > div': {
-                display: 'flex',
-                margin: '12px 0',
-                alignItems: 'center',
-                width: '100%',
-                '& > div': {
-                    display: 'inline-block',
-                    margin: '3px 0',
-                },
-            },
-            '& .select-wrap': {
-                float: 'right',
-                marginRight: 0,
-                marginLeft: 'auto',
-            },
-            '& h2': {
-                fontFamily: constants.fontFamily.header,
-                fontWeight: 'bold',
-                fontSize: constants.fontSize.m,
-                textTransform: 'uppercase',
-            },
-            '& h3': {
-                fontFamily: constants.fontFamily.header,
-                fontWeight: 'bold',
-                fontSize: constants.fontSize.s,
-                textTransform: 'uppercase',
-            },
-            '& .adv-search-section': {
-                margin: '12px auto',
-                padding: '0 0 12px',
-            },
-            '& .inline': {
-                width: '100%',
-                display: 'inline-flex',
-            },
-        },
-    });
-
-    /**
-     * Component for advanced search panel.
-     * TODO Anna: currently hidden while advanced search is being implemented.
-     */
-    const AdvancedSearch = () => 
-        <div className={advancedStyles().root}>
-            <div className='adv-search-section' id='adv-search-by-submission'>
-                <h3>By Submission</h3>
-                <div id='adv-search-date' className='inline'>
-                    <label htmlFor='date-from'>From</label>
-                    <span className='select-wrap' id='date-from-wrap'>
-                        <DateInput placeholder='Date' id='date-from' name='date-from' />
-                    </span>
-                    <label htmlFor='date-to'>to</label>
-                    <span className='select-wrap' id='date-to-wrap'>
-                        <DateInput placeholder='Date' id='date-to' name='date-to' />
-                    </span>
-                </div>
-                <div id='adv-search-subject-name'>
-                    <label htmlFor='subject-name'>Subject name</label>
-                    <span className='select-wrap' id='subject-name-wrap'>
-                        <TextInput placeholder='Name' id='subject-name' name='subject-name' />
-                    </span>
-                </div>
-            </div>
-            <div className='adv-search-section' id='adv-search-by-submitter'>
-                <h3>By Submitter</h3>
-                <div id='adv-search-submitter-name'>
-                    <label htmlFor='submitter-name'>Submitter name</label>
-                    <span className='select-wrap' id='submitter-name-wrap'>
-                        <TextInput placeholder='Name' id='submitter-name' name='submitter-name' />
-                    </span>
-                </div>
-                <div id='adv-search-school'>
-                    <label htmlFor='school'>School name</label>
-                    <span className='select-wrap' id='school-wrap'>
-                        <TextInput placeholder='School' id='school' name='school' />
-                    </span>
-                </div>
-                <div id='adv-search-grade'>
-                    <label htmlFor='grade'>Grade</label>
-                    <span className='select-wrap' id='grade-wrap'>
-                        <TextInput placeholder='Grade' id='grade' name='grade' />
-                    </span>
-                </div>
-                <div id='adv-search-teacher'>
-                    <label htmlFor='teacher'>Teacher name</label>
-                    <span className='select-wrap' id='teacher-wrap'>
-                        <TextInput placeholder='Teacher' id='teacher' name='teacher' />
-                    </span>
-                </div>
-            </div>
-            <StyledButton 
-                color={constants.color.dark}
-                onClick={() => {
-                    setSearchContext(createNewContext(searchContext));
-                    submitSearch(history, createNewContext(searchContext));
-                }}
-            >
-                Search
-            </StyledButton>
-        </div>
-
     return (
         <div style={{position: 'relative', textAlign: 'center'}}>
             <div className={useStyles().root} id='basic-search'>
@@ -297,14 +288,14 @@ export function Searchbar({ open=true }) {
                     >
                         Search
                     </StyledButton>
-                    <button id='open-adv-search' style={{display: 'none'}} onClick={() => setAdvancedOpen(!advancedOpen)}>
+                    <button id='open-adv-search' onClick={() => setAdvancedOpen(!advancedOpen)}>
                         {advancedOpen 
                             ? <ArrowDropUpIcon style={{color: constants.color.dark}} />
                             : <ArrowDropDownIcon style={{color: constants.color.dark}} />}
                     </button>
                 </div>
             </div>
-            <AdvancedSearch />
+            <AdvancedSearch advancedOpen={advancedOpen} />
         </div>
     );
 }
