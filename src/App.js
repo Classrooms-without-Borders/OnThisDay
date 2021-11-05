@@ -6,7 +6,6 @@ import {
   ForgotPassword, UpdateProfile, Dashboard, Signup,
   AdminPortal, ThankYou, Map
 } from './pages';
-
 import {
     BrowserRouter as Router,
     Switch,
