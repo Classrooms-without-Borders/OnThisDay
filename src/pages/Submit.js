@@ -138,24 +138,21 @@ class Submit extends Component {
         this.setState({files: currentFiles})
         let fileListDisplay = document.getElementById('file-list-display');
         fileListDisplay.innerHTML = '';
-        this.setState({imageList: []});
-        for (let i = 0; i < currentFiles.length; i++) {
+        this.setState({imageList: [{image: "", caption:""}]});
+        for (let i = 1; i < currentFiles.length; i++) {
             this.setState((prevState) => ({
                 imageList: [...prevState.imageList, {image: "", caption:""}]
             }));
-        }
-        
+        } 
     };
 
     onUploadSubmission = () => {
         if (!this.state.files) {
             return;
         }
-        const promises = [];
     
         Array.from(this.state.files).forEach((file, i) => {
             const uploadTask = storage.ref().child(`images/${file.name}`).put(file);
-            promises.push(uploadTask);
             uploadTask.on("state_changed", snapshot => {
                 const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 if (snapshot.state === "running") {
@@ -174,9 +171,6 @@ class Submit extends Component {
                 });                
             });
         });
-
-        return Promise.all(promises)
-        .catch(err => console.log(err.code));
     }
 
     handleInputChange = (e, index, targetList) => {
@@ -189,7 +183,6 @@ class Submit extends Component {
             const list = [...this.state.imageList];
             list[index][name] = value;
             this.setState({imageList: list});
-            console.log(list);
         }
         
     };
