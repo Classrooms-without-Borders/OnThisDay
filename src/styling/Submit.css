@@ -80,6 +80,14 @@
 	overflow: hidden;
 }
 
+#photos img {
+    max-height: 200px;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+}
+
 /* styling the about you section */
 #aboutYou {
     width: 93%;

@@ -135,9 +135,7 @@ class Submit extends Component {
 
     onFileChange = e => {
         const currentFiles = e.target.files;
-        this.setState({files: currentFiles})
-        let fileListDisplay = document.getElementById('file-list-display');
-        fileListDisplay.innerHTML = '';
+        this.setState({files: currentFiles});
         this.setState({imageList: [{image: "", caption:""}]});
         for (let i = 1; i < currentFiles.length; i++) {
             this.setState((prevState) => ({
@@ -150,9 +148,12 @@ class Submit extends Component {
         if (!this.state.files) {
             return;
         }
-    
+        
+        const promises = [];
+
         Array.from(this.state.files).forEach((file, i) => {
             const uploadTask = storage.ref().child(`images/${file.name}`).put(file);
+            promises.push(uploadTask);
             uploadTask.on("state_changed", snapshot => {
                 const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 if (snapshot.state === "running") {
@@ -171,6 +172,9 @@ class Submit extends Component {
                 });                
             });
         });
+        
+        return Promise.all(promises)
+        .catch(err => console.log(err.code));
     }
 
     handleInputChange = (e, index, targetList) => {
@@ -297,19 +301,12 @@ class Submit extends Component {
                     
                     <div id="photos">
                         <h5>Photos</h5>
-                        <div id="file-list-display"></div>
                         {
                             files.length > 0 ?
                             [...files].map((file, i) => {
                                 return (
                                     <div>
-                                        <img src={URL.createObjectURL(file)} style={{
-                                            maxHeight: 200, 
-                                            maxWidth: "100%", 
-                                            objectFit: 'contain',
-                                            display: 'block',
-                                            margin: 'auto'
-                                        }}/>
+                                        <img src={URL.createObjectURL(file)} />
                                         <div className="sourceField">
                                             <fieldset class="sourceName">
                                                 <legend>Name</legend>
