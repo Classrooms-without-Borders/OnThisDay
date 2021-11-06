@@ -16,6 +16,8 @@ class Submit extends Component {
             sourceList: [{sourceName: "", sourceUrl:""}],
             description: "",
             images: [],
+            imageList:[{image: "", caption: ""}],
+            files: [],
             studentFirst: "",
             studentLast: "",
             school: "",
@@ -62,6 +64,7 @@ class Submit extends Component {
         this.setState({
             [e.target.name]: e.target.value
         });
+        // console.log("did it for", e.target.name, "which is", e.target.value);
     }
 
     processInfo = e => {
@@ -76,8 +79,12 @@ class Submit extends Component {
         axios.get(apiUrl).then(res => {
             this.setState({lat : res.data.results[0].geometry.location.lat});
             this.setState({lng : res.data.results[0].geometry.location.lng});
-            this.addUser().then(result => {
-                this.props.history.push('/submit-success');
+            this.addUser().then((result, err) => {
+                if (err) {
+                    alert("Something went wrong :( Try again later!");
+                } else {
+                    this.props.history.push('/submit-success');
+                }
             })
         })
     }
@@ -93,6 +100,7 @@ class Submit extends Component {
             date: firebase.firestore.Timestamp.fromDate(new Date(this.state.date + "T00:00:00")),
             description: this.state.description,
             images: [...new Set(this.state.images)],
+            imageList: this.state.imageList,
             coordinates: new firebase.firestore.GeoPoint(this.state.lat, this.state.lng),
             location: this.state.location,
             sources: this.state.sourceList,
@@ -112,6 +120,7 @@ class Submit extends Component {
             sourceList: [{sourceName: "", sourceUrl:""}],
             description: "",
             images: [],
+            imageList:[{image: "", caption: ""}],
             files:[],
             studentFirst: "",
             studentLast: "",
@@ -123,22 +132,27 @@ class Submit extends Component {
             errors: {}
         });
 
-        let fileListDisplay = document.getElementById('file-list-display');
-        let fileInput = document.getElementById('files');
-        fileListDisplay.innerHTML = '';
-        fileInput.value = "";
+        // let fileListDisplay = document.getElementById('file-list-display');
+        // let fileInput = document.getElementById('files');
+        // fileListDisplay.innerHTML = '';
+        // fileInput.value = "";
         return new Promise(function(resolve, reject) {
             resolve("New submission added!");
         });
     };
 
     onFileChange = e => {
-        this.setState({files: e.target.files})
+        const currentFiles = e.target.files;
+        this.setState({files: currentFiles})
         let fileListDisplay = document.getElementById('file-list-display');
         fileListDisplay.innerHTML = '';
-        for (let i = 0; i < e.target.files.length; i++) { 
-            fileListDisplay.innerHTML += `<p>${e.target.files[i].name}</p>`;
+        this.setState({imageList: []});
+        for (let i = 0; i < currentFiles.length; i++) {
+            this.setState((prevState) => ({
+                imageList: [...prevState.imageList, {image: "", caption:""}]
+            }));
         }
+        
     };
 
     onUploadSubmission = () => {
@@ -148,7 +162,7 @@ class Submit extends Component {
         }
         const promises = [];
     
-        Array.from(this.state.files).forEach(file => {
+        Array.from(this.state.files).forEach((file, i) => {
             const uploadTask = storage.ref().child(`images/${file.name}`).put(file);
             promises.push(uploadTask);
             uploadTask.on("state_changed", snapshot => {
@@ -158,9 +172,15 @@ class Submit extends Component {
                 }
             },
             error => console.log(error.code),
-            async () => {
-                const downloadURL = await uploadTask.snapshot.ref.getDownloadURL();
-                this.setState({images: [...this.state.images, downloadURL]});
+            () => {
+                uploadTask.snapshot.ref.getDownloadURL().then(data => {
+                    this.setState(prevState => ({
+                        imageList: prevState.imageList.map((obj, j) => 
+                            j == i ? Object.assign(obj, {image: data}) : obj
+                        )
+                        
+                    }));
+                });                
             });
         });
 
@@ -168,11 +188,19 @@ class Submit extends Component {
         .catch(err => console.log(err.code));
     }
 
-    handleInputChange = (e, index) => {
+    handleInputChange = (e, index, targetList) => {
         const { name, value } = e.target;
-        const list = [...this.state.sourceList];
-        list[index][name] = value;
-        this.setState({sourceList: list});
+        if (targetList === 'sourceList') {
+            const list = [...this.state.sourceList];
+            list[index][name] = value;
+            this.setState({sourceList: list});
+        } else if (targetList === 'imageList') {
+            const list = [...this.state.imageList];
+            list[index][name] = value;
+            this.setState({imageList: list});
+            console.log(list);
+        }
+        
     };
 
     handleRemoveClick = index => {
@@ -185,11 +213,16 @@ class Submit extends Component {
         this.setState((prevState) => ({
             sourceList: [...prevState.sourceList, {sourceName: "", sourceUrl:""}]
         }));
+        
     };
 
     render() {
         let sourceList = [{sourceName: "", sourceUrl:""}];
         sourceList = this.state.sourceList;
+        let files = [];
+        files = this.state.files;
+        let imageList =[{image: "", caption: ""}];
+        imageList = this.state.imageList;
 
         return (
             <div className='page-content'>
@@ -258,7 +291,7 @@ class Submit extends Component {
                                                 <legend>Name</legend>
                                                 <input type="text" name="sourceName" placeholder="Source Name" 
                                                 value={x.sourceName}
-                                                onChange={e => this.handleInputChange(e, i)} 
+                                                onChange={e => this.handleInputChange(e, i, "sourceList")} 
                                                 />
                                             </fieldset>
                                             
@@ -266,7 +299,7 @@ class Submit extends Component {
                                                 <legend>URL</legend>
                                                 <input type="text" name="sourceUrl" placeholder="Source URL"
                                                 value={x.sourceUrl}
-                                                onChange={e => this.handleInputChange(e, i)}
+                                                onChange={e => this.handleInputChange(e, i, "sourceList")}
                                                 />   
                                             </fieldset>
                                         </div>
@@ -281,8 +314,40 @@ class Submit extends Component {
                     <div id="photos">
                         <h5>Photos</h5>
                         <div id="file-list-display"></div>
+                        {
+                            files.length > 0 ?
+                            [...files].map((file, i) => {
+                                return (
+                                    <div>
+                                        <img src={URL.createObjectURL(file)} style={{
+                                            maxHeight: 200, 
+                                            maxWidth: "100%", 
+                                            objectFit: 'contain',
+                                            display: 'block',
+                                            margin: 'auto'
+                                        }}/>
+                                        <div className="sourceField">
+                                            <fieldset class="sourceName">
+                                                <legend>Name</legend>
+                                                <input type="text" name="image" placeholder="Name" 
+                                                value={file.name}
+                                                readOnly
+                                                />
+                                            </fieldset>
+                                            
+                                            <fieldset class="sourceUrl">
+                                                <legend>Caption</legend>
+                                                <input type="text" name="caption" placeholder="Image Caption" value={imageList.caption}
+                                                onChange={e => this.handleInputChange(e, i, "imageList")}
+                                                />   
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                );
+                            }) : ""
+                        }
                         <label>
-                        &#xFF0B; Add photos<input type="file" name="images" id="files" multiple onChange={this.onFileChange} />
+                            &#xFF0B; Add photos<input type="file" name="images" id="files" multiple onChange={this.onFileChange} />
                         </label>
                     </div>
 
