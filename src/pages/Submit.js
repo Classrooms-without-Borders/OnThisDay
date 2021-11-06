@@ -15,7 +15,6 @@ class Submit extends Component {
             location: "",
             sourceList: [{sourceName: "", sourceUrl:""}],
             description: "",
-            images: [],
             imageList:[{image: "", caption: ""}],
             files: [],
             studentFirst: "",
@@ -64,7 +63,6 @@ class Submit extends Component {
         this.setState({
             [e.target.name]: e.target.value
         });
-        // console.log("did it for", e.target.name, "which is", e.target.value);
     }
 
     processInfo = e => {
@@ -99,7 +97,6 @@ class Submit extends Component {
             // use getUTCDate() instead of getDate() so the same date appears no matter where the user is
             date: firebase.firestore.Timestamp.fromDate(new Date(this.state.date + "T00:00:00")),
             description: this.state.description,
-            images: [...new Set(this.state.images)],
             imageList: this.state.imageList,
             coordinates: new firebase.firestore.GeoPoint(this.state.lat, this.state.lng),
             location: this.state.location,
@@ -119,7 +116,6 @@ class Submit extends Component {
             location: "",
             sourceList: [{sourceName: "", sourceUrl:""}],
             description: "",
-            images: [],
             imageList:[{image: "", caption: ""}],
             files:[],
             studentFirst: "",
@@ -131,11 +127,7 @@ class Submit extends Component {
             lng: "",
             errors: {}
         });
-
-        // let fileListDisplay = document.getElementById('file-list-display');
-        // let fileInput = document.getElementById('files');
-        // fileListDisplay.innerHTML = '';
-        // fileInput.value = "";
+        
         return new Promise(function(resolve, reject) {
             resolve("New submission added!");
         });
@@ -156,7 +148,6 @@ class Submit extends Component {
     };
 
     onUploadSubmission = () => {
-        this.setState({images: []});
         if (!this.state.files) {
             return;
         }
