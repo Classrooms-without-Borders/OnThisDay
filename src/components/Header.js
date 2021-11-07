@@ -7,6 +7,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import { Searchbar } from './Searchbar';
 import useWindowSize from '../styling/WindowSize';
 
+export let searchOpenVar;
+
 export function Header() {
     const url = useLocation();
     const size = useWindowSize();
@@ -77,14 +79,16 @@ export function Header() {
         }
     }
 
-    const searchbarStyle = {
-        display: searchOpen ? 'inherit' : 'none'
+    let searchbarStyle = {
+        display: searchOpen ? 'inherit' : 'none',
+        padding: searchOpen ? 0 : 20
     }
 
     // show or hide searchbars
     const onClickSearchIcon = () => {
         if (searchOpen) {
             setSearchOpen(false);
+            searchOpenVar = true;
         } else {
             setSearchOpen(true);
         }
@@ -104,19 +108,19 @@ export function Header() {
     useEffect(() => {
         if (searchOpen) {
             searchbarStyle.display = 'inherit';
+            searchbarStyle.padding = 1000;
+            
+            // TODO: add padding to document body to accommodate searchbar
+        } else {
+            searchbarStyle.display = 'none';
+            searchbarStyle.padding = 0;
+            // TODO: remove padding from doc body once searchbar disappears
             // push page content down if searchbar is open
             if (document.getElementsByClassName('page-content').length > 0) {
                 document.getElementsByClassName('page-content')[0]
                     .style.marginTop = searchOpenMargin;
             }
-        } else {
-            searchbarStyle.display = 'none';
-            // pull page content back up if searchbar is closed
-            if (document.getElementsByClassName('page-content').length > 0) {
-                document.getElementsByClassName('page-content')[0]
-                    .style.marginTop = searchClosedMargin;
-            }
-        }
+        } 
     }, [searchOpen]);
 
     useEffect(() => {
@@ -128,7 +132,7 @@ export function Header() {
     }, [url.pathname]);
 
     return (
-        <div style={{display: 'block'}}>
+        <div style={{display: 'block', paddingTop: searchbarStyle.padding}}>
             <Navbar className={useStyles().root}>
                 <div id="header">
                     <NavItem>
@@ -147,6 +151,9 @@ export function Header() {
                             </NavLink>
                         </NavItem>
                         <NavItem>
+                            <NavLink to='/map' style={navlinkStyle('/map')}>Map</NavLink>
+                        </NavItem>
+                        <NavItem>
                             <NavLink to='/submit' style={navlinkStyle('/submit')}>Submit</NavLink>
                         </NavItem>
                         <NavItem>
@@ -163,7 +170,7 @@ export function Header() {
                     </div>
                 </div>
             </Navbar>
-            <Searchbar open={searchOpen} />
+            <Searchbar open={searchOpen} padding= {searchbarStyle.padding} />
         </div>
     );
 }

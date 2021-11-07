@@ -104,6 +104,7 @@ export function DateInput() {
                 minDateMessage='Please choose a date in 1925 or later'
                 disableFuture={true}
                 inputProps={{ readOnly: true }}
+                shouldCloseOnSelect={false}
             />
         </MuiPickersUtilsProvider>
     );

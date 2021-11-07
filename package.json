@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=12.x"
+    "node": "12.x"
   },
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",
@@ -24,6 +24,7 @@
     "date-fns": "^2.0.0-beta.5",
     "emailjs-com": "^2.6.4",
     "firebase": "^8.6.1",
+    "google-maps-react": "^2.0.6",
     "got": "^8.3.2",
     "heroku": "^7.53.0",
     "phoenix": "^1.5.9",
