@@ -17,7 +17,7 @@ class Details extends React.Component {
   render() {
     return (
       <React.Fragment>
-        {this.props.location.submission.images && <ImageCarousel imageList={this.props.location.submission.images}/>}
+        {this.props.location.submission.imageList && <ImageCarousel imageList={this.props.location.submission.imageList}/>}
         <div className="card-body">
           <h1 className="title-event">{}</h1>
           {this.props.location.submission.subjectName && <h2 className="title-location"> {this.props.location.submission.subjectName}</h2>}

@@ -5,7 +5,7 @@ Represents an individual student submission, similar to the submission collectio
 class StudentSubmission {
     constructor(
         id, subjectName, location, lat, lng, eventDate, description,
-        images, sources, studentName, submitDate, className
+        imageList, sources, studentName, submitDate, className
     ) {
         this.id = id;
         this.subjectName = subjectName;
@@ -14,7 +14,7 @@ class StudentSubmission {
         this.lng = lng;
         this.eventDate = eventDate;
         this.description = description;
-        this.images = images; // list of reference strings
+        this.imageList = imageList; // map -> [imageLink, caption]
         this.sources = sources; // map of (title, URL) pairs
         this.studentName = studentName;
         this.submitDate = submitDate;
