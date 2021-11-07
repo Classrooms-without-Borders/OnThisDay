@@ -7,6 +7,13 @@ import useWindowSize from '../styling/WindowSize';
 import { dateToString } from '../util';
 
 export function BigCard({submission}) {
+
+    // const [firstKey] = submission.imageList.keys();
+    // console.log(firstKey);
+
+    // const [firstValue] = submission.imageList.values();
+    // console.log(firstValue); 
+
     const bigCardStyle = makeStyles({
         root: {
             display: 'flex',
@@ -60,7 +67,9 @@ export function BigCard({submission}) {
 
             {/* TODO: redirect to appropriate URL */}
                     <Card className={bigCardStyle().root}>
-                        {submission.imageList && <img src={submission.imageList[0].image} alt={submission.imageList[0].caption}></img>}
+
+                    {submission.imageList[0] && <img src={submission.imageList[0].image} alt='Featured submission'></img>}
+
                         <CardContent>
                             <h2 id='bigcard-location'>{submission.location}</h2>
                             <h1 id='bigcard-date'>{dateToString(submission.eventDate)}</h1>
@@ -75,6 +84,22 @@ export function BigCard({submission}) {
 }
 
 export function SmallCard({submission}) {
+
+    // JSON.stringify("this is submission passed in subject name" + submission.subjectName);
+    // JSON.stringify("this is submission passed in images" + submission.imageList);
+ 
+
+    // const [firstKey] = submission.imageList.keys();
+    // console.log(firstKey);
+
+    // const [firstValue] = submission.imageList.values();
+    // console.log(firstValue); 
+
+    // if (submission.imageList[0]) {
+
+    // console.log("this is a submission printing out" + submission.imageList[0].image);
+    // }
+
     const size = useWindowSize();
 
     const smallCardDivStyle = {
@@ -133,7 +158,9 @@ export function SmallCard({submission}) {
     submission: submission }
   }>
                 <Card className={smallCardStyle().root} >
-                    {submission.imageList && <img src={submission.imageList[0].image} alt={submission.imageList[0].caption}></img>}
+
+                {submission.imageList[0] && <img src={submission.imageList[0].image} alt='Featured submission'></img>}
+
                 </Card>
                 <div className={smallCardStyle().content}>
                     <p id="location">{submission.location}</p>

@@ -9,8 +9,13 @@
 .source {
   padding: 30px;
   text-align: left;
-  
 }
+
+.caption {
+  padding: 30px;
+  color: white;
+}
+
 
 .source h4 {
   font-family: 'Open Sans', sans-serif;

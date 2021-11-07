@@ -15,7 +15,7 @@ class  Source extends Component {
   
    <ul>{
            this.props.sourceList.map(function(source){        
-           return <li> <p> <a href={source.sourceUrl} target="_blank" rel="noopener noreferrer">{source.sourceName}</a> </p> </li>
+            return <li> <p> <a href={source.sourceUrl} target="_blank" rel="noopener noreferrer">{source.sourceName}</a> </p> </li>
          })
        }</ul>
    </div>

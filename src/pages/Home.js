@@ -16,6 +16,18 @@ function Home() {
         fetchData();
     }, []);
 
+    if (submissions) {
+
+    console.log(JSON.stringify("this is all the submissions" + submissions[0].subjectName));
+    console.log(JSON.stringify("this is all the submissions" + JSON.stringify(submissions[0].imageList)));
+    console.log(JSON.stringify("this is all the submissions" + JSON.stringify(submissions[3].imageList[0])));
+
+    console.log("this is a caption " + submissions[3].imageList[0].caption); //getting a caption
+    console.log("this is a image url " + submissions[3].imageList[0].image);
+
+
+
+    }
     return (
         <div className='page-content'>
             <div style={{backgroundColor: constants.color.dark}}>
