@@ -1,4 +1,1286 @@
 {
-  "indexes": [],
+  "indexes": [
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "verified",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "location", "order": "ASCENDING" },
+        { "fieldPath": "grade", "order": "ASCENDING" },
+        { "fieldPath": "school", "order": "ASCENDING" },
+        { "fieldPath": "studentFirst", "order": "ASCENDING" },
+        { "fieldPath": "studentLast", "order": "ASCENDING" },
+        { "fieldPath": "subjectName", "order": "ASCENDING" },
+        { "fieldPath": "teacherName", "order": "ASCENDING" }
+      ]
+    }
+  ],
   "fieldOverrides": []
 }

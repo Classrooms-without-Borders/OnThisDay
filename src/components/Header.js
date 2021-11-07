@@ -5,7 +5,10 @@ import { Navbar,  NavItem } from 'reactstrap';
 import { NavLink, useLocation } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
 import { Searchbar } from './Searchbar';
+import { addPx } from '../util';
 import useWindowSize from '../styling/WindowSize';
+
+export let searchOpenVar;
 
 export function Header() {
     const url = useLocation();
@@ -77,47 +80,48 @@ export function Header() {
         }
     }
 
-    const searchbarStyle = {
-        display: searchOpen ? 'inherit' : 'none'
+    let searchbarStyle = {
+        display: searchOpen ? 'inherit' : 'none',
+        padding: searchOpen ? 0 : 20
     }
 
     // show or hide searchbars
     const onClickSearchIcon = () => {
         if (searchOpen) {
             setSearchOpen(false);
+            searchOpenVar = true;
         } else {
             setSearchOpen(true);
         }
     };
 
-    // TODO Anna: use Constants.js to set margin
-    const searchOpenMargin = '180px';
-    const searchClosedMargin = '90px';
-
     // set top margin of page content for consistency with search open
-    if (document.getElementsByClassName('page-content').length > 0) {
-        document.getElementsByClassName('page-content')[0]
-            .style.marginTop = searchOpen ? searchOpenMargin : searchClosedMargin;
-        // TODO Anna: use constants to set margin
+    const marginNoSearch = addPx(20, constants.size.navHeight);
+    const marginWithSearch = addPx(marginNoSearch, constants.size.searchbarHeight);
+
+    // TODO Anna: don't use document.get.. and use React virtual DOM instead
+    const pageContent = document.getElementsByClassName('page-content');
+
+    if (pageContent.length) {
+        pageContent[0].style.marginTop = searchOpen ? marginWithSearch : marginNoSearch;
     }
 
     useEffect(() => {
         if (searchOpen) {
             searchbarStyle.display = 'inherit';
-            // push page content down if searchbar is open
-            if (document.getElementsByClassName('page-content').length > 0) {
-                document.getElementsByClassName('page-content')[0]
-                    .style.marginTop = searchOpenMargin;
+
+            if (pageContent.length) {
+                pageContent[0].style.marginTop = marginWithSearch;
             }
         } else {
             searchbarStyle.display = 'none';
-            // pull page content back up if searchbar is closed
-            if (document.getElementsByClassName('page-content').length > 0) {
-                document.getElementsByClassName('page-content')[0]
-                    .style.marginTop = searchClosedMargin;
+            searchbarStyle.padding = 0;
+
+            if (pageContent.length) {
+                pageContent[0].style.marginTop = marginNoSearch;
             }
-        }
-    }, [searchOpen]);
+        } 
+    }, [searchOpen, pageContent]);
 
     useEffect(() => {
         if (url.pathname !== '/gallery') {
@@ -128,7 +132,7 @@ export function Header() {
     }, [url.pathname]);
 
     return (
-        <div style={{display: 'block'}}>
+        <div style={{display: 'block', paddingTop: searchbarStyle.padding}}>
             <Navbar className={useStyles().root}>
                 <div id="header">
                     <NavItem>
@@ -166,7 +170,7 @@ export function Header() {
                     </div>
                 </div>
             </Navbar>
-            <Searchbar open={searchOpen} />
+            <Searchbar open={searchOpen} padding= {searchbarStyle.padding} />
         </div>
     );
 }

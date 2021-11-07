@@ -24,6 +24,7 @@
     "date-fns": "^2.0.0-beta.5",
     "emailjs-com": "^2.6.4",
     "firebase": "^8.6.1",
+    "google-maps-react": "^2.0.6",
     "got": "^8.3.2",
     "heroku": "^7.53.0",
     "phoenix": "^1.5.9",
@@ -60,5 +61,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "firebase-tools": "^9.21.0"
   }
 }
