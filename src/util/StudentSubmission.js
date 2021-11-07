@@ -20,9 +20,9 @@ class StudentSubmission {
         this.sources = sources; // map of (title, URL) pairs
         this.studentName = studentName;
         this.submitDate = submitDate;
-        this.school = school;
-        this.grade = grade;
-        this.teacherName = teacherName;
+        // this.school = school;
+        // this.grade = grade;
+        // this.teacherName = teacherName;
     }
 }
 

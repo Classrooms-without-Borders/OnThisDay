@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import '../styling/Details.css'
-import Source from '../components/Source';
+import axios from 'axios';
 import ImageCarousel from '../components/ImageCarousel';
+import Source from '../components/Source';
+import React from 'react';
+import '../styling/Details.css'
 import { dateToString } from '../util';
-
  
 class Details extends React.Component {
   componentDidMount() {
@@ -33,44 +33,6 @@ class Details extends React.Component {
       </React.Fragment>
     );
   }
-
 }
-
-/* TODO: do the filtering of a submission in the backend instead of right here - will cause a big performance hit */
-
-   return (
- 
-   <React.Fragment>
-
-    {mySubmission?.images && <ImageCarousel imageList={mySubmission.images}/>}
-
-
-     <div className="card-body">
-       <h1 className="title-event">{}</h1>
- 
-       {mySubmission?.subjectName && <h2 className="title-location"> {mySubmission.subjectName}</h2>}
-          
-       <br></br>
-      
-       <div className="row=title">
-
- 
-       {mySubmission?.location && <h3 className="submitter-location">  {mySubmission.location}</h3>}
- 
-       {mySubmission?.description && <p> {mySubmission.description}</p>}
- 
-      
-       </div>
- 
-       <br></br>
- 
-     </div>
- 
-     {mySubmission?.sources && <Source sourceList={mySubmission.sources}/>}
- 
-     </React.Fragment>
- 
-     );
- }
 
 export default Details;
