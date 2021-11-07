@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { BigCard, CardGrid, StyledButton, Header } from '../components';
+import { BigCard, CardGrid, StyledButton } from '../components';
 import constants from '../styling/Constants';
 import { Link } from 'react-router-dom';
 import onThisDayPhoto from '../images/CWBLarge.png';
 import { getAllVerified } from '../util';
-import { searchOpenVar } from '../components/Header';
-
 
 function Home() {
     const [submissions, setSubmissions] = useState(null);
@@ -18,15 +16,10 @@ function Home() {
         fetchData();
     }, []);
 
-    let paddingImage = 0;
-    // if (searchOpenVar == true) {
-    //     paddingImage = 80;
-    // }
-
     return (
         <div className='page-content'>
             <div style={{backgroundColor: constants.color.dark}}>
-                <div style={{margin: '40px auto', width: '1400px', maxWidth: '90vw'}}>
+                <div style={{margin: 'auto', width: '1400px', maxWidth: '90vw'}}>
                     {submissions && <BigCard submission={submissions[0]} />}
                     {submissions && <CardGrid submissions={submissions.slice(1, 4)} />}
                 </div>
