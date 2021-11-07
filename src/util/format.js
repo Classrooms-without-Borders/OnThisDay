@@ -35,3 +35,17 @@ export function toDate(datestring) {
     const [day, month, year] = datestring.split('-');
     return new Date(year, month, day);
 }
+
+/**
+ * Adds multiple strings representing sizes in px and returns a px measurement.
+ * @param {String[]} args Strings representing numbers optionally followed by 'px'
+ * @returns {String} String representing the sum of the inputs followed by 'px'
+ */
+export function addPx(...args) {
+    let sum = 0;
+    args.map(arg => {
+        sum += parseInt(arg.toString().replace('px', ''));
+        return arg;
+    })
+    return sum.toString().concat('px');
+}

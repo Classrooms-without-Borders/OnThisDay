@@ -1,15 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
-import { Card, CardMedia, CardContent } from '@material-ui/core';
+import { Card, CardContent } from '@material-ui/core';
 import constants from '../styling/Constants';
 import useWindowSize from '../styling/WindowSize';
 import { dateToString } from '../util';
 
 export function BigCard({submission}) {
-
-    const [mySubmission, setMySubmission] = React.useState(submission);
-
     const bigCardStyle = makeStyles({
         root: {
             display: 'flex',
@@ -61,11 +58,9 @@ export function BigCard({submission}) {
             submission: submission }
   }>
 
-
-
             {/* TODO: redirect to appropriate URL */}
                     <Card className={bigCardStyle().root}>
-                        <img src={submission.images[0]} alt='Featured submission photo'></img>
+                        {submission.imageList && <img src={submission.imageList[0].image} alt={submission.imageList[0].caption}></img>}
                         <CardContent>
                             <h2 id='bigcard-location'>{submission.location}</h2>
                             <h1 id='bigcard-date'>{dateToString(submission.eventDate)}</h1>
@@ -138,7 +133,7 @@ export function SmallCard({submission}) {
     submission: submission }
   }>
                 <Card className={smallCardStyle().root} >
-                    <img src={submission.images[0]} alt='Featured submission photo'></img>
+                    {submission.imageList && <img src={submission.imageList[0].image} alt={submission.imageList[0].caption}></img>}
                 </Card>
                 <div className={smallCardStyle().content}>
                     <p id="location">{submission.location}</p>
