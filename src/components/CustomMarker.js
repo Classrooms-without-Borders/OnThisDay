@@ -24,7 +24,7 @@ const CustomMarker = (props) => {
                     subjectName={props.subjectName}
                     location = {props.location}
                     eventDate={props.eventDate}
-                    images={props.images}
+                    imageList={props.imageList}
                 />
             </InfoWindow>
             ) : null}

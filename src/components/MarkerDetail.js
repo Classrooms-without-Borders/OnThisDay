@@ -7,7 +7,7 @@ import '../styling/Details.css';
 const MarkerDetail = (props) => {
     return (
         <div style={{backgroundColor: constants.color.dark}}>
-            {props.images && <ImageCarousel imageList={props.images} height={200}/>}
+            {props.imageList && <ImageCarousel imageList={props.imageList} height={200}/>}
             <div className='card-body'>
                 <h4 className='title-location' style={{fontSize: 32}}>
                     {props.subjectName}
