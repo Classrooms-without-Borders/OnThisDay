@@ -5,9 +5,11 @@ import React from "react";
 import '../styling/Details.css';
 
 const MarkerDetail = (props) => {
+    console.log("this is in my image list  inside marker" + JSON.stringify(props.images));
+    console.log("this is in my image map  inside marker" + JSON.stringify(props.imageList));
     return (
         <div style={{backgroundColor: constants.color.dark}}>
-            {props.images && <ImageCarousel imageList={props.images} height={200}/>}
+            {props.imageList && <ImageCarousel imageList={props.imageList} height={200}/>}
             <div className='card-body'>
                 <h4 className='title-location' style={{fontSize: 32}}>
                     {props.subjectName}

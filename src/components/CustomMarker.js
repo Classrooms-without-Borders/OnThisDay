@@ -11,6 +11,20 @@ const CustomMarker = (props) => {
         }
         setActiveMarker(marker);
     };
+
+    
+
+    let myStringArray = props.imageList;
+    var arrayLength = myStringArray.length;
+    let listOfImages = [];
+    for (var i = 0; i < arrayLength; i++) {
+        console.log("object is " + JSON.stringify(myStringArray[i]));
+        //Do something
+        listOfImages.push(myStringArray[i].image);
+        console.log("this is in my image list " + JSON.stringify(listOfImages[i]));
+    }
+    
+
     return (
         <Marker
             position={props.position}
@@ -24,7 +38,8 @@ const CustomMarker = (props) => {
                     subjectName={props.subjectName}
                     location = {props.location}
                     eventDate={props.eventDate}
-                    images={props.images}
+                    images={listOfImages}
+                    imageList={props.imageList}
                 />
             </InfoWindow>
             ) : null}

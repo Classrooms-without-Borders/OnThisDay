@@ -30,6 +30,9 @@ function Map() {
   if (loadError) return 'Error loading maps';
   if (!isLoaded) return 'Loading maps';
 
+  //let myImage = "hello";
+
+
   return (
     <div className="Map">
       <GoogleMap
@@ -40,9 +43,9 @@ function Map() {
       >
         <MarkerClusterer>
           {clusterer =>
-          markers.map(({ id, subjectName, location, eventDate, lat, lng, images }) => (
+          markers.map(({ id, subjectName, location, eventDate, lat, lng, imageList }) => (
             <CustomMarker 
-              {...{id, subjectName, location, eventDate, clusterer, images}}
+              {...{id, subjectName, location, eventDate, clusterer, imageList}}
               position={{lat: lat, lng: lng}}
             />
           ))}
