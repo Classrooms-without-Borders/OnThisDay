@@ -18,7 +18,7 @@ function Home() {
 
     return (
         <div className='page-content'>
-            <div style={{backgroundColor: constants.color.dark}}>
+            <div style={{backgroundColor: constants.color.dark, paddingBottom: '60px'}}>
                 <div style={{margin: 'auto', width: '1400px', maxWidth: '90vw'}}>
                     {submissions && <BigCard submission={submissions[0]} />}
                     {submissions && <CardGrid submissions={submissions.slice(1, 4)} />}
