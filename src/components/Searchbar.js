@@ -196,6 +196,16 @@ function AdvancedSearch({ advancedOpen=false }) {
 }
 
 /**
+ * Workaround to resolve error where React renders more/less
+ * hooks than the previous error after conducting a search.
+ */
+function handleHookErr() {
+    window.onerror = () => {
+        window.location.reload();
+    };
+}
+
+/**
  * Searchbar allowing search by location, date, and advanced search features.
  */
 export function Searchbar({ open=true }) {
@@ -203,6 +213,8 @@ export function Searchbar({ open=true }) {
     const history = useHistory();
     const [searchContext, setSearchContext] = useContext(SearchContext);
     const searchPath = useLocation().search;
+
+    handleHookErr();
 
     useEffect(() => {
         setAdvancedOpen(false);

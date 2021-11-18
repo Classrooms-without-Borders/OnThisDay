@@ -9,27 +9,29 @@ function Gallery() {
     const location = useLocation();
 
     useEffect(() => {
+        const fetchData = async () => {
+            const data = await getAllVerified();
+            setSubmissions(data);
+        };
+
+        const queryParams = getQueryParams(location.search);
+        const eventLocation = queryParams[0];
+        const dateFrom = queryParams[1] !== '' ? 
+            toDate(queryParams[1]) : ''
+        const dateTo = queryParams[2] !== '' ?
+            toDate(queryParams[2]) : ''
+
+        const querySubmissions = async () => {
+            const data = await searchSubmissions(
+                eventLocation, dateFrom, dateTo, 
+                ...queryParams.slice(3)
+            );
+            setSubmissions(data);
+        };
+
         if (location.search === '') {
-            const fetchData = async () => {
-                const data = await getAllVerified();
-                setSubmissions(data);
-            };
             fetchData();
         } else { // fetch only queried submissions
-            const queryParams = getQueryParams(location.search);
-            const eventLocation = queryParams[0];
-            const dateFrom = queryParams[1] !== '' ? 
-                toDate(queryParams[1]) : ''
-            const dateTo = queryParams[2] !== '' ?
-                toDate(queryParams[2]) : ''
-
-            const querySubmissions = async () => {
-                const data = await searchSubmissions(
-                    eventLocation, dateFrom, dateTo, 
-                    ...queryParams.slice(3)
-                );
-                setSubmissions(data);
-            };
             querySubmissions();
         }
     }, [location]);
