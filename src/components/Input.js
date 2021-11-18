@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import DateFnsUtils from '@date-io/date-fns';
 import constants from '../styling/Constants';
@@ -30,7 +30,7 @@ const useStyles = makeStyles({
     },
 });
 
-export function TextInput({ label, children, defaultValue }) {
+export function TextInput({ label, children, defaultValue='' }) {
     const StyledTextField = withStyles({
         root: {
             '& .MuiInput-underline:after': {
@@ -62,8 +62,15 @@ export function TextInput({ label, children, defaultValue }) {
     );
 }
 
-export function DateInput() {
-    const [selectedDate, setSelectedDate] = React.useState(null);
+/**
+ * Datepicker component.
+ * We set the default for defaultDate to be Dec 1, 1934 since 
+ * this ends up rendering as Jan 1, 1935 in the display.
+ * @param {Date} defaultDate date to display in datepicker. 
+ * @returns Datepicker component
+ */
+export function DateInput({ defaultDate=new Date(1934, 12, 1) }) {
+    const [selectedDate, setSelectedDate] = useState(defaultDate);
 
     const handleDateChange = (date) => {
         setSelectedDate(date);
@@ -93,18 +100,14 @@ export function DateInput() {
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <StyledDatePicker
                 variant='inline' 
-                format='MMM d, yyyy'
-                label='Date'
+                format='dd-MM-yyyy'
+                placeholder='DD-MM-YYYY'
                 onChange={handleDateChange}
                 value={selectedDate}
+                invalidDateMessage=''
                 className={useStyles().root}
                 maxDate={new Date(1950, 12, 31)}
-                maxDateMessage='Please choose a date in 1950 or earlier'
                 minDate={new Date(1925, 1, 1)}
-                minDateMessage='Please choose a date in 1925 or later'
-                disableFuture={true}
-                inputProps={{ readOnly: true }}
-                shouldCloseOnSelect={false}
             />
         </MuiPickersUtilsProvider>
     );

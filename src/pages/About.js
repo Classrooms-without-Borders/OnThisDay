@@ -141,7 +141,8 @@ class About extends React.Component {
                 fontWeight: '600',
                 color: constants.color.light,
             }}>ABOUT THE PROJECT</h2>
-					<img src={pic} className=" img-fluid" id="logo"></img>
+					<img src={pic} className=" img-fluid" id="logo" 
+						alt="Classrooms Without Borders logo"></img>
 				</Col>
 				<Col sm="1" md="7" lg="7">
 					<p style = {bodyText1}>	ON THIS DAY, a project of <a style={{color: constants.color.accentSecondary}}href="https://classroomswithoutborders.org/" target="_blank" rel="noopener noreferrer">Classrooms Without Borders</a>, is a collection of student research to

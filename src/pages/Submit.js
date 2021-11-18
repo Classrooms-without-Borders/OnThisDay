@@ -165,7 +165,7 @@ class Submit extends Component {
                 uploadTask.snapshot.ref.getDownloadURL().then(data => {
                     this.setState(prevState => ({
                         imageList: prevState.imageList.map((obj, j) => 
-                            j == i ? Object.assign(obj, {image: data}) : obj
+                            j === i ? Object.assign(obj, {image: data}) : obj
                         )
                         
                     }));
@@ -306,7 +306,8 @@ class Submit extends Component {
                             [...files].map((file, i) => {
                                 return (
                                     <div>
-                                        <img src={URL.createObjectURL(file)} />
+                                        <img src={URL.createObjectURL(file)}
+                                            alt="Uploaded file" />
                                         <div className="sourceField">
                                             <fieldset class="sourceName">
                                                 <legend>Name</legend>

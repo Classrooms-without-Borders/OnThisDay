@@ -6,7 +6,7 @@
 export const getQueryParams = search => {
 	return search?.split('&').map(param => {
         let tmp = param.split('=').at(-1);
-        if (typeof tmp === 'string') return tmp.replace('%20', ' ');
+        if (typeof tmp === 'string') return tmp.replaceAll('%20', ' ');
         return tmp;
     });
 };
@@ -20,7 +20,7 @@ export const getQueryParams = search => {
 export const getQueryParam = (param, search) => {
     const res = search?.split(param + '=').at(-1).split('&')[0];
     if (typeof res === 'string') {
-        return res.replace('%20', ' ');
+        return res.replaceAll('%20', ' ');
     }
     return res;
 };

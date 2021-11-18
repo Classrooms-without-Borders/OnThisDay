@@ -60,6 +60,7 @@ function createNewContext(searchContext) {
     } else {
         dateFrom = date;
     }
+    console.log(dateFrom)
     newContext.dateFrom = formatDateData(dateFrom);
 
     // parse dateTo in advanced search
@@ -85,6 +86,8 @@ function createNewContext(searchContext) {
  * Component for advanced search panel dropdown.
  */
 function AdvancedSearch({ advancedOpen=false }) {
+    const searchPath = useLocation().search;
+
     const advancedStyles = makeStyles({
         root: {
             display: advancedOpen ? 'inline-block' : 'none',
@@ -150,17 +153,23 @@ function AdvancedSearch({ advancedOpen=false }) {
                 <div id='adv-search-date' className='inline'>
                     <label htmlFor='date-from'>From</label>
                     <span className='select-wrap' id='date-from-wrap'>
-                        <DateInput placeholder='Date' id='date-from' name='date-from' />
+                        <DateInput placeholder='Date' id='date-from' name='date-from'
+                            defaultDate={getQueryParam('dateFrom', searchPath)}
+                        />
                     </span>
                     <label htmlFor='date-to'>to</label>
                     <span className='select-wrap' id='date-to-wrap'>
-                        <DateInput placeholder='Date' id='date-to' name='date-to' />
+                        <DateInput placeholder='Date' id='date-to' name='date-to'
+                            defaultDate={getQueryParam('dateTo', searchPath)}
+                        />
                     </span>
                 </div>
                 <div id='adv-search-subject-name'>
                     <label htmlFor='subject-name'>Person of interest</label>
                     <span className='select-wrap' id='subject-name-wrap'>
-                        <TextInput placeholder='Name' id='subject-name' name='subject-name' />
+                        <TextInput placeholder='Name' id='subject-name' name='subject-name'
+                            defaultValue={getQueryParam('subjectName', searchPath)}
+                        />
                     </span>
                 </div>
             </div>
@@ -169,30 +178,50 @@ function AdvancedSearch({ advancedOpen=false }) {
                 <div id='adv-search-submitter-name'>
                     <label htmlFor='submitter-name'>Submitter name</label>
                     <span className='select-wrap' id='submitter-name-wrap'>
-                        <TextInput placeholder='Name' id='submitter-name' name='submitter-name' />
+                        <TextInput placeholder='Name' id='submitter-name' name='submitter-name'
+                            defaultValue={getQueryParam('submitterName', searchPath)}
+                        />
                     </span>
                 </div>
                 <div id='adv-search-school'>
                     <label htmlFor='school'>School name</label>
                     <span className='select-wrap' id='school-wrap'>
-                        <TextInput placeholder='School' id='school' name='school' />
+                        <TextInput placeholder='School' id='school' name='school'
+                            defaultValue={getQueryParam('school', searchPath)}
+                        />
                     </span>
                 </div>
                 <div id='adv-search-grade'>
                     <label htmlFor='grade'>Grade</label>
                     <span className='select-wrap' id='grade-wrap'>
-                        <TextInput placeholder='Grade' id='grade' name='grade' />
+                        <TextInput placeholder='Grade' id='grade' name='grade'
+                            defaultValue={getQueryParam('grade', searchPath)}
+                        />
                     </span>
                 </div>
                 <div id='adv-search-teacher'>
                     <label htmlFor='teacher'>Teacher name</label>
                     <span className='select-wrap' id='teacher-wrap'>
-                        <TextInput placeholder='Teacher' id='teacher' name='teacher' />
+                        <TextInput placeholder='Teacher' id='teacher' name='teacher'
+                            defaultValue={getQueryParam('teacher', searchPath)}
+                        />
                     </span>
                 </div>
             </div>
         </div>
     );
+}
+
+/**
+ * Workaround to resolve error where React renders more/less
+ * hooks than the previous error after conducting a search.
+ */
+function handleHookErr() {
+    window.onerror = (msg) => {
+        if (msg.includes('Error: Rendered')) {
+            window.location.reload();
+        }
+    };
 }
 
 /**
@@ -203,6 +232,8 @@ export function Searchbar({ open=true }) {
     const history = useHistory();
     const [searchContext, setSearchContext] = useContext(SearchContext);
     const searchPath = useLocation().search;
+
+    handleHookErr();
 
     useEffect(() => {
         setAdvancedOpen(false);
@@ -275,7 +306,7 @@ export function Searchbar({ open=true }) {
                     <p>on</p>
                     <span id='date-input-wrap' className='select-wrap'>
                         <DateInput id='date-input' label='Date' 
-                            defaultValue={getQueryParam('dateFrom', searchPath)}
+                            defaultDate={getQueryParam('dateFrom', searchPath)}
                         />
                     </span>
                     <p>?</p>
