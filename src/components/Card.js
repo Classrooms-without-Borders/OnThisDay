@@ -7,13 +7,6 @@ import useWindowSize from '../styling/WindowSize';
 import { dateToString } from '../util';
 
 export function BigCard({submission}) {
-
-    // const [firstKey] = submission.imageList.keys();
-    // console.log(firstKey);
-
-    // const [firstValue] = submission.imageList.values();
-    // console.log(firstValue); 
-
     const bigCardStyle = makeStyles({
         root: {
             display: 'flex',
@@ -84,22 +77,6 @@ export function BigCard({submission}) {
 }
 
 export function SmallCard({submission}) {
-
-    // JSON.stringify("this is submission passed in subject name" + submission.subjectName);
-    // JSON.stringify("this is submission passed in images" + submission.imageList);
- 
-
-    // const [firstKey] = submission.imageList.keys();
-    // console.log(firstKey);
-
-    // const [firstValue] = submission.imageList.values();
-    // console.log(firstValue); 
-
-    // if (submission.imageList[0]) {
-
-    // console.log("this is a submission printing out" + submission.imageList[0].image);
-    // }
-
     const size = useWindowSize();
 
     const smallCardDivStyle = {
@@ -159,7 +136,7 @@ export function SmallCard({submission}) {
   }>
                 <Card className={smallCardStyle().root} >
 
-                {submission.imageList[0] && <img src={submission.imageList[0].image} alt='Featured submission'></img>}
+                {submission?.imageList && submission?.imageList[0] && <img src={submission.imageList[0].image} alt='Featured submission'></img>}
 
                 </Card>
                 <div className={smallCardStyle().content}>

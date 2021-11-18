@@ -200,8 +200,10 @@ function AdvancedSearch({ advancedOpen=false }) {
  * hooks than the previous error after conducting a search.
  */
 function handleHookErr() {
-    window.onerror = () => {
-        window.location.reload();
+    window.onerror = (msg) => {
+        if (msg.includes('Error: Rendered')) {
+            window.location.reload();
+        }
     };
 }
 
