@@ -3,10 +3,6 @@ import { Component } from 'react';
 import constants from '../styling/Constants';
  
 class  Source extends Component {
- constructor(props) {
-   super(props);
- }
- 
  render() {
    return (
        <div className="source" style={{backgroundColor:constants.color.backgroundColorSource, padding:'-10%'}}>

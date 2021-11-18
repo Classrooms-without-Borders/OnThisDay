@@ -8,8 +8,6 @@ async function getAllVerified(){
 
   await db.collection('verified').get().then((submissions) => {
     submissions.forEach((doc) => {
-      const coordinates = doc.data().coordinates.toJSON();
-
       submissionObjects.push(new StudentSubmission(
         doc.id,
         doc.data().subjectName,

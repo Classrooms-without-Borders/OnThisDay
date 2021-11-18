@@ -120,7 +120,8 @@ export function Header() {
             if (pageContent.length) {
                 pageContent[0].style.marginTop = marginNoSearch;
             }
-        } 
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchOpen, pageContent]);
 
     useEffect(() => {

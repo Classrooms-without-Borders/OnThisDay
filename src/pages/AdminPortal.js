@@ -3,16 +3,6 @@ import React, {Component} from "react";
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
-//firebase init stuff
-const firebaseConfig = {
-  apiKey: "AIzaSyDQo6NTf4fsIjvqbbhISSAx_X6Svtx2LFw",
-  authDomain: "onthisdaycwb.firebaseapp.com",
-  projectId: "onthisdaycwb",
-  storageBucket: "onthisdaycwb.appspot.com",
-  messagingSenderId: "570389339615",
-  appId: "1:570389339615:web:471b8d5c20067bcb52786a",
-  measurementId: "G-C4MWCCVMS2"
-};
 // Initialize Firebase database and stop it from refreshing
 if (!firebase.apps.length){
   //firebase.initializeApp(firebaseConfig);
@@ -37,10 +27,8 @@ class AdminPortal extends Component{
   //get ALL the data from the unverified database and put it into docs array
   //also populate options checkbox array with corresponding name
 componentDidMount = () => {
-  console.log("welcome2")
     db.collection("submissions").get().then((snapshot) => (
       snapshot.forEach((doc) => (
-        console.log(doc.data().subjectName),
         this.setState((prevState) => ({
 
           docs: [...prevState.docs, {
@@ -76,12 +64,11 @@ componentDidMount = () => {
   handleFormSubmit = formSubmitEvent => {
     formSubmitEvent.preventDefault();
     //array of id strings for delete
-    let stringarr = this.state.checks.map((c)=>
+    this.state.checks.map((c)=>
       db.collection("submissions").doc(String(c))
     .get()
     .then(function(doc) {
       if (doc.exists) {
-        //console.log("Document data:", doc.data());
         //push doc with same name to verified collection
         db.collection("verified").doc(String(c)).set(doc.data());
         //delete document from unverified collection
