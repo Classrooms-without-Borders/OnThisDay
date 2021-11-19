@@ -212,30 +212,30 @@ class About extends React.Component {
 						color: constants.color.light,
 				}}>Contact CWB's Educational Programs and Outreach Manager.</p>
 				<form className="contact-us-form" style = {bodyText1} onSubmit= {this.formSubmit.bind(this)}>
-					<div class="row">
-						<div class="col">
-							<input type="text" class="form-control" placeholder="First Name*" onChange={this.handleChange.bind(this, "firstName")} value={this.state.fields["firstName"]}></input>
+					<div className="row">
+						<div className="col">
+							<input type="text" className="form-control" placeholder="First Name*" onChange={this.handleChange.bind(this, "firstName")} value={this.state.fields["firstName"]}></input>
 						</div>
-						<div class="col">
-							<input type="text" class="form-control" placeholder="Last Name*" onChange={this.handleChange.bind(this, "lastName")} value={this.state.fields["lastName"]}></input>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							<input type="text" class="form-control" placeholder="Email*: ex@gmail.com" onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]}></input>
-						</div>
-						<div class="col">
-							<input type="text" class="form-control" placeholder="Phone*: xxx-xxx-xxxx" onChange={this.handleChange.bind(this, "phone")} value={this.state.fields["phone"]}></input>
+						<div className="col">
+							<input type="text" className="form-control" placeholder="Last Name*" onChange={this.handleChange.bind(this, "lastName")} value={this.state.fields["lastName"]}></input>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col">
-							<input type="text" class="form-control" placeholder="School" onChange={this.handleChange.bind(this, "school")} value={this.state.fields["school"]}></input>
+					<div className="row">
+						<div className="col">
+							<input type="text" className="form-control" placeholder="Email*: ex@gmail.com" onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]}></input>
+						</div>
+						<div className="col">
+							<input type="text" className="form-control" placeholder="Phone*: xxx-xxx-xxxx" onChange={this.handleChange.bind(this, "phone")} value={this.state.fields["phone"]}></input>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col">
-							<textarea name="message" class="form-control" rows="4" cols="50" placeholder="Message*" onChange={this.handleChange.bind(this, "message")} value={this.state.fields["message"]}></textarea>
+					<div className="row">
+						<div className="col">
+							<input type="text" className="form-control" placeholder="School" onChange={this.handleChange.bind(this, "school")} value={this.state.fields["school"]}></input>
+						</div>
+					</div>
+					<div className="row">
+						<div className="col">
+							<textarea name="message" className="form-control" rows="4" cols="50" placeholder="Message*" onChange={this.handleChange.bind(this, "message")} value={this.state.fields["message"]}></textarea>
 						</div>
 					</div>
 					<input className="button" type="submit" value="Submit" />

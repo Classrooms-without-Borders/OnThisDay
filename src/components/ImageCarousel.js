@@ -10,9 +10,7 @@ class ImageCarousel extends Component {
       {this.props.imageList.map(imageObject =>     
         <Carousel.Item> 
           <img src={imageObject.image} height={this.props.height} alt="Classrooms Without Borders logo"/> 
-     
-            <h2 class="caption">{imageObject.caption}</h2>
-       
+            <h2 className="caption">{imageObject.caption}</h2>
         </Carousel.Item>
       )}
     </Carousel>

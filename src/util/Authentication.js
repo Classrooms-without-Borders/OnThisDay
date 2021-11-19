@@ -17,9 +17,6 @@ const app= firebase.initializeApp({
 
 const storage = firebase.storage();
 
-
-console.log(firebase2 === firebase);
-
 const auth = app.auth();
 //export default app;
 export { storage, auth, firebase2,  app as default };

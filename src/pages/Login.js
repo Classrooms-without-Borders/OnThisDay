@@ -18,7 +18,6 @@ export default function Login() {
       setError("")
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
-      console.log("login worked");
       history.push("/dashboard")
     } catch {
       setError("Failed to log in")

@@ -259,7 +259,7 @@ class Submit extends Component {
                         </fieldset>
                         <fieldset>
                             <legend>Description</legend>
-                            <textarea multiline rows={5} id="description" name="description" placeholder="Write or paste your report here" onChange={this.updateInput} value={this.state.description} />
+                            <textarea rows={5} id="description" name="description" placeholder="Write or paste your report here" onChange={this.updateInput} value={this.state.description} />
                         </fieldset>
                     </div>
 
@@ -269,13 +269,13 @@ class Submit extends Component {
                             sourceList && sourceList.length > 0 ?
                             sourceList.map((x, i) => {
                                 return (
-                                    <div>
+                                    <div key={`source-${i}`}>
                                         <div className="sourceField">
                                             {this.state.sourceList.length !== 1 && <button
                                                 className="deleteSrc"
                                                 onClick={() => this.handleRemoveClick(i)}>✕</button>}
 
-                                            <fieldset class="sourceName">
+                                            <fieldset className="sourceName">
                                                 <legend>Name</legend>
                                                 <input type="text" name="sourceName" placeholder="Source Name" 
                                                 value={x.sourceName}
@@ -283,7 +283,7 @@ class Submit extends Component {
                                                 />
                                             </fieldset>
                                             
-                                            <fieldset class="sourceUrl">
+                                            <fieldset className="sourceUrl">
                                                 <legend>URL</legend>
                                                 <input type="text" name="sourceUrl" placeholder="Source URL"
                                                 value={x.sourceUrl}
@@ -305,11 +305,11 @@ class Submit extends Component {
                             files.length > 0 ?
                             [...files].map((file, i) => {
                                 return (
-                                    <div>
+                                    <div key={`photo-${i}`}>
                                         <img src={URL.createObjectURL(file)}
                                             alt="Uploaded file" />
                                         <div className="sourceField">
-                                            <fieldset class="sourceName">
+                                            <fieldset className="sourceName">
                                                 <legend>Name</legend>
                                                 <input type="text" name="image" placeholder="Name" 
                                                 value={file.name}
@@ -317,7 +317,7 @@ class Submit extends Component {
                                                 />
                                             </fieldset>
                                             
-                                            <fieldset class="sourceUrl">
+                                            <fieldset className="sourceUrl">
                                                 <legend>Caption</legend>
                                                 <input type="text" name="caption" placeholder="Image Caption" value={imageList.caption}
                                                 onChange={e => this.handleInputChange(e, i, "imageList")}

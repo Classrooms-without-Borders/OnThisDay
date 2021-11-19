@@ -69,14 +69,12 @@ class App extends Component{
   
   handleFormSubmit = formSubmitEvent => {
     formSubmitEvent.preventDefault();
-    console.log(this.state.countryname);
     scountry=this.state.countryname;
     scity=this.state.cityname;
     this.setState({renderList: true})
     this.state.docs.length=0;
     getQ().then((snapshot) => (
       snapshot.forEach((doc) => (
-        console.log(doc.data().description),
         this.setState((prevState) => ({
           docs: [...prevState.docs, {
             docID: doc.id,
@@ -141,7 +139,6 @@ class App extends Component{
     .get()
     .then(function(doc) {
       if (doc.exists) {
-        //console.log("Document data:", doc.data());
         //push doc with same name to verified collection
         db.collection("verified").doc(String(c)).set(doc.data());
         //delete document from unverified collection
