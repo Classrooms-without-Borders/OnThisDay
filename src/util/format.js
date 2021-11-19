@@ -33,7 +33,7 @@ export function formatDateData(date) {
  */
 export function toDate(datestring) {
     const [day, month, year] = datestring.split('-');
-    return new Date(year, month, day);
+    return new Date(year, parseInt(month) - 1, day);
 }
 
 /**
