@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@material-ui/core';
 import constants from '../styling/Constants';
-import useWindowSize from '../styling/WindowSize';
 import { dateToString } from '../util';
 
 export function BigCard({submission}) {
@@ -53,16 +52,12 @@ export function BigCard({submission}) {
     return (
         <div style={{width: '100%', textAlign: 'center'}}>
             <div style={{width: '100%', margin: '0 auto'}}>
-            <Link to={{
-            pathname: `/details/${submission.id}`,
-            submission: submission }
-  }>
-
-            {/* TODO: redirect to appropriate URL */}
+                <Link to={{
+                    pathname: `/details/${submission.id}`,
+                    submission: submission }
+                }>
                     <Card className={bigCardStyle().root}>
-
-                    {submission.imageList[0] && <img src={submission.imageList[0].image} alt='Featured submission'></img>}
-
+                        {submission.imageList[0] && <img src={submission.imageList[0].image} alt='Featured submission'></img>}
                         <CardContent>
                             <h2 id='bigcard-location'>{submission.location}</h2>
                             <h1 id='bigcard-date'>{dateToString(submission.eventDate)}</h1>
@@ -77,15 +72,6 @@ export function BigCard({submission}) {
 }
 
 export function SmallCard({submission}) {
-    const size = useWindowSize();
-
-    const smallCardDivStyle = {
-        width: size.width >= 650 ? 'calc(100% / 3 - 24px)' : '100%',
-        margin: size.width >= 650 ? 0 : '16px 0px',
-        marginLeft: 0,
-        height: 360,
-    };
-
     const smallCardStyle = makeStyles({
         root: {
             width: '100%',
@@ -129,15 +115,13 @@ export function SmallCard({submission}) {
     });
 
     return (
-        <div style={smallCardDivStyle}>
+        <div style={{height: 360}}>
             <Link to={{
-    pathname: `/details/${submission.id}`,
-    submission: submission }
-  }>
+                pathname: `/details/${submission.id}`,
+                submission: submission }
+            }>
                 <Card className={smallCardStyle().root} >
-
-                {submission?.imageList && submission?.imageList[0] && <img src={submission.imageList[0].image} alt='Featured submission'></img>}
-
+                    {submission?.imageList && submission?.imageList[0] && <img src={submission.imageList[0].image} alt='Featured submission'></img>}
                 </Card>
                 <div className={smallCardStyle().content}>
                     <p id="location">{submission.location}</p>

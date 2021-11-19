@@ -69,7 +69,7 @@ export function TextInput({ label, children, defaultValue='' }) {
  * @param {Date} defaultDate date to display in datepicker. 
  * @returns Datepicker component
  */
-export function DateInput({ defaultDate=new Date(1934, 12, 1) }) {
+export function DateInput({ defaultDate=new Date('01-12-1934') }) {
     const [selectedDate, setSelectedDate] = useState(defaultDate);
 
     const handleDateChange = (date) => {
@@ -104,7 +104,7 @@ export function DateInput({ defaultDate=new Date(1934, 12, 1) }) {
                 placeholder='DD-MM-YYYY'
                 onChange={handleDateChange}
                 value={selectedDate}
-                invalidDateMessage=''
+                helperText=''
                 className={useStyles().root}
                 maxDate={new Date(1950, 12, 31)}
                 minDate={new Date(1925, 1, 1)}
