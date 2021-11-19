@@ -60,7 +60,6 @@ function createNewContext(searchContext) {
     } else {
         dateFrom = date;
     }
-    console.log(dateFrom)
     newContext.dateFrom = formatDateData(dateFrom);
 
     // parse dateTo in advanced search
@@ -314,6 +313,7 @@ export function Searchbar({ open=true }) {
                         color={constants.color.dark}
                         onClick={() => {
                             setSearchContext(createNewContext(searchContext));
+                            setAdvancedOpen(false);
                             submitSearch(history, createNewContext(searchContext));
                         }}
                     >
