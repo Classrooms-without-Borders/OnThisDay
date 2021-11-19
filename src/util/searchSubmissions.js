@@ -96,7 +96,7 @@ async function searchSubmissions(
                     '', '', // TODO Anna: add lat and lng
                     doc.data().date.toDate(),
                     doc.data().description,
-                    doc.data().images,
+                    doc.data().imageList,
                     doc.data().sources,
                     `${doc.data().studentFirst} ${doc.data().studentLast}`,
                     doc.data().submittedDate,
