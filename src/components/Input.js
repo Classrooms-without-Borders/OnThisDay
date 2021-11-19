@@ -7,6 +7,7 @@ import {
     KeyboardDatePicker, 
     MuiPickersUtilsProvider 
 } from '@material-ui/pickers';
+import { toDate } from '../util';
 
 const useStyles = makeStyles({
     root: {
@@ -69,8 +70,8 @@ export function TextInput({ label, children, defaultValue='' }) {
  * @param {Date} defaultDate date to display in datepicker. 
  * @returns Datepicker component
  */
-export function DateInput({ defaultDate=new Date('01-12-1934') }) {
-    const [selectedDate, setSelectedDate] = useState(defaultDate);
+export function DateInput({ defaultDate='01-12-1934' }) {
+    const [selectedDate, setSelectedDate] = useState(toDate(defaultDate));
 
     const handleDateChange = (date) => {
         setSelectedDate(date);
