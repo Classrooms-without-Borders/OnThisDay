@@ -18,7 +18,7 @@ export function dateToString(date) {
  * @returns {String} Date string in D-M-YYYY format
  */
 export function formatDateData(date) {
-    if (date === '') return date;
+    if (date === '' || date === null) return date;
     const yrFormat = new Intl.DateTimeFormat('en', { year: 'numeric' });
     const mthFormat = new Intl.DateTimeFormat('en', { month: 'numeric' });
     const dayFormat = new Intl.DateTimeFormat('en', { day: 'numeric' });

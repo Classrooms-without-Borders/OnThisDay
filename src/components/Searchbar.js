@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { DateInput, StyledButton, TextInput } from '../components';
 import { useHistory, useLocation } from 'react-router-dom';
-import { formatDateData, getQueryParam, SearchContext } from '../util';
+import { formatDateData, toDate, getQueryParam, SearchContext } from '../util';
 
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
@@ -49,14 +49,14 @@ function createNewContext(searchContext) {
 
     // parse date in basic search
     let date = getInputVal('date-input-wrap'); // obtain date in text format
-    if (date) date = new Date(date); // create date object
+    if (date) date = toDate(date); // create date object
     newContext.dateFrom = formatDateData(date); // store in standard format
 
     // parse dateFrom in advanced search
     // TODO Anna: change advanced search UI to avoid duplicating date
     let dateFrom = getInputVal('date-from-wrap');
     if (dateFrom) {
-        dateFrom = new Date(dateFrom);
+        dateFrom = toDate(dateFrom);
     } else {
         dateFrom = date;
     }
@@ -65,7 +65,7 @@ function createNewContext(searchContext) {
     // parse dateTo in advanced search
     let dateTo = getInputVal('date-to-wrap');
     if (dateTo) {
-        dateTo = new Date(dateTo);
+        dateTo = toDate(dateTo);
     } else {
         dateTo = dateFrom;
     }
