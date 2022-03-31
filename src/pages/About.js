@@ -176,7 +176,7 @@ class About extends React.Component {
 				<Col sm="1" md="7" lg="7" id="second-right">
 				<h1 style={header1}><a href="https://wke.lt/w/s/FWx-RH" target="_blank">RESEARCH</a></h1>
 						<h2 style={bodyText2}>independently or as part of a class or group
-						<br></br>CWB has compiled a visual library guide to aide students in sound historical research: <a href="https://wke.lt/w/s/FWx-RH" target="_blank">https://wke.lt/w/s/FWx-RH</a></h2>
+						<br></br>CWB has compiled a <a href="https://wke.lt/w/s/FWx-RH" target="_blank">visual library guide</a> to aide students in sound historical research.</h2>
 					 <br></br>
 					 <h1 style={header1}>SUBMIT</h1>
 						<h2 style={bodyText2}>use the submission portal to submit your research, sources and artifacts</h2>
